@@ -20,12 +20,14 @@ GET /users?limit=100&offset=20
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
 ## Querying collections
-SAKo utilizes the query string to limit the scope of the data of a collection (`GET` only) or of an operation performed on a collection (`POST` only). Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
+SAKo utilizes the query string to limit the scope of the data of a collection (`GET` only), of an operation performed on a collection (`POST` only) or the returned data of any other type of request. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
 
 All query parameters are optional and a request without any query parameters will always be valid.
 
 The recognized parameters are as follows:
 * `limit`: The maximum amount of items in the collection
+
+	Valid in: `GET`, `DELETE`, operations
 
 	Must be a positive non-zero integer. The maximum value is defined by the collection.
 
@@ -33,11 +35,15 @@ The recognized parameters are as follows:
 
 * `offset`: The location at which to commence the lookup
 
+	Valid in : `GET`, `DELETE`, operations
+
 	Must be a positive non-zero integer.
 
 	Example: `?offset=20` to ignore the first 20 items and only return items after them.
 
 * `search`: Limits the collection to items matching a certain search value
+
+	Valid in: `GET`, `DELETE`, operations
 
 	* `search.val`: The value to search for
 
@@ -49,7 +55,15 @@ The recognized parameters are as follows:
 
 	Example: `?search.val=John Smith&search.in=name,nickname` to find items with a name or nickname similar to “John Smith”.
 
+* `fields`: The fields to return, defaults are defined per resource or collection
+
+	Valid in: `GET`, operations
+
+	Must be a comma-separated list of field names.
+
 * `:[field]`: Returns only items matching a set of requirements
+
+	Valid in: `GET`, `DELETE`, operations
 
 	If this parameter is defined directly it is treated as `WHERE [field] = [value]` or `WHERE [field] in ([value])`.
 
