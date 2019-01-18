@@ -2,7 +2,7 @@
 SAKo tries to conform to RESTful API design norms and principles, however, due to the complexity of some of the operations exposed through the API, it has been deemed needed to expand upon these.
 
 ## URL length
-Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, SAKo permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests if the value is of the header is set to `GET`. In this case, SAKo expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
+Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, SAKo permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests if the value of the header is set to `GET`. In this case, SAKo expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
 ```
 POST /users
@@ -19,7 +19,7 @@ GET /users?limit=100&offset=20
 
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
-## Querying collections
+## Querying collections and resources
 SAKo utilizes the query string to limit the scope of the data of a collection (`GET` only), of an operation performed on a collection (`POST` only) or the returned data of any other type of request. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
 
 All query parameters are optional and a request without any query parameters will always be valid.
@@ -27,7 +27,7 @@ All query parameters are optional and a request without any query parameters wil
 The recognized parameters are as follows:
 * `limit`: The maximum amount of items in the collection
 
-	Valid in: `GET`, `DELETE`, operations
+	Valid in: Collections (`GET`, `DELETE`, operations)
 
 	Must be a positive non-zero integer. The maximum value is defined by the collection.
 
@@ -35,7 +35,7 @@ The recognized parameters are as follows:
 
 * `offset`: The location at which to commence the lookup
 
-	Valid in : `GET`, `DELETE`, operations
+	Valid in : Collections (`GET`, `DELETE`, operations)
 
 	Must be a positive non-zero integer.
 
@@ -43,7 +43,7 @@ The recognized parameters are as follows:
 
 * `search`: Limits the collection to items matching a certain search value
 
-	Valid in: `GET`, `DELETE`, operations
+	Valid in: Collections (`GET`, `DELETE`, operations)
 
 	* `search.val`: The value to search for
 
@@ -57,13 +57,13 @@ The recognized parameters are as follows:
 
 * `fields`: The fields to return, defaults are defined per resource or collection
 
-	Valid in: `GET`, operations
+	Valid in: Collections, resources (`GET`, operations)
 
 	Must be a comma-separated list of field names.
 
 * `:[field]`: Returns only items matching a set of requirements
 
-	Valid in: `GET`, `DELETE`, operations
+	Valid in: Collections (`GET`, `DELETE`, operations)
 
 	If this parameter is defined directly it is treated as `WHERE [field] = [value]` or `WHERE [field] in ([value])`.
 
