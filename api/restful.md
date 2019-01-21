@@ -1,6 +1,12 @@
 # RESTful API design principles
 SAKo tries to conform to RESTful API design norms and principles, however, due to the complexity of some of the operations exposed through the API, it has been deemed needed to expand upon these.
 
+## Content-Type
+SAKo attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. SAKo supports the following content types:
+* `application/vnd.msgpack` (recommended)
+* `application/json`
+* `text/csv` (recommended for user exports only)
+
 ## URL length
 Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, SAKo permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, SAKo expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
@@ -20,14 +26,14 @@ GET /users?limit=100&offset=20
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
 ## Querying collections and resources
-SAKo utilizes the query string to limit the scope of the data of a collection (`GET` only), of an operation performed on a collection (`POST` only) or the returned data of any other type of request. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
+SAKo utilizes the query string to limit the scope of the data of a collection (`GET`, `DELETE` and `PATCH` only), of an operation performed on a collection (`POST` only) or the returned data of any other type of request. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
 
 All query parameters are optional and a request without any query parameters will always be valid.
 
 The recognized parameters are as follows:
 * `limit`: The maximum amount of items in the collection
 
-	Valid in: Collections (`GET`, `DELETE`, operations)
+	Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
 
 	Must be a positive non-zero integer. The maximum value is defined by the collection.
 
@@ -35,7 +41,7 @@ The recognized parameters are as follows:
 
 * `offset`: The location at which to commence the lookup
 
-	Valid in: Collections (`GET`, `DELETE`, operations)
+	Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
 
 	Must be a positive non-zero integer.
 
@@ -51,7 +57,7 @@ The recognized parameters are as follows:
 
 * `filter`: A filter to apply to a collection
 
-	Valid in: Collections (`GET`, `DELETE`, operations)
+	Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
 
 	Must be a base64 representation of a JSON object containing the filters according to the following spec (loosely inspired by MongoDB's db.collection.find https://docs.mongodb.com/manual/reference/method/db.collection.find/):
 
@@ -85,3 +91,11 @@ SAKo treats paths as *resource identifiers* and HTTP methods as *verbs*. The onl
 * The `User` collection at `GET /users` has an operation `ban`.
 	* To ban all users we'd call `POST /users/@ban`
 	* To ban all users with green hair we'd call `POST /users/@ban?:hair=green`
+
+## Collection metadata
+All `GET` requests on collections include metadata in the headers:
+* `X-Total-Items`: Contains the amount of total items in the collection without a limit
+* `X-Total-Items-No-Filter`: Contains the total amount of items in the collection with no filters applied
+
+All `DELETE` and `PATCH` requests on collections include metadata in the headers:
+* `X-Affected-Items`: Contains the amount of items affected
