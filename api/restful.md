@@ -2,7 +2,7 @@
 SAKo tries to conform to RESTful API design norms and principles, however, due to the complexity of some of the operations exposed through the API, it has been deemed needed to expand upon these.
 
 ## URL length
-Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, SAKo permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests if the value of the header is set to `GET`. In this case, SAKo expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
+Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, SAKo permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, SAKo expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
 ```
 POST /users
@@ -35,65 +35,48 @@ The recognized parameters are as follows:
 
 * `offset`: The location at which to commence the lookup
 
-	Valid in : Collections (`GET`, `DELETE`, operations)
+	Valid in: Collections (`GET`, `DELETE`, operations)
 
 	Must be a positive non-zero integer.
 
 	Example: `?offset=20` to ignore the first 20 items and only return items after them.
 
-* `search`: Limits the collection to items matching a certain search value
+* `order`: The columns to order a collection by
+
+	Valid in: Collections (`GET`)
+
+	Must be a comma separated list of `field.direction`.
+
+	Example: `?order=name.asc,id.desc,age.asc`.
+
+* `filter`: A filter to apply to a collection
 
 	Valid in: Collections (`GET`, `DELETE`, operations)
 
-	* `search.val`: The value to search for
+	Must be a base64 representation of a JSON object containing the filters according to the following spec (loosely inspired by MongoDB's db.collection.find https://docs.mongodb.com/manual/reference/method/db.collection.find/):
 
-		Must be a string
+	The root object must contain fields as keys with their required value as the value, e.g. `{ name: "John Smith", nationality: "US" }` to find all users from the US with the name “John Smith”.
 
-	* `search.in`: The fields to search in
+	Alternatively, the value can be an object with an operator (all prefixed by a dollar sign) as the key, e.g. `{ age: { $lt: 35 } }` to find all users younger than 35.
 
-		Must be a comma-separated list of field names.
+	The full list of comparison operators is:
+	* `$eq`: Exact equality. Value may be a `string`, `number`, `boolean` or `null`.
+	* `$neq`: Like `$eq` but demands a value not equal to the one provided.
+	* `$like`: Filters for values similar to the provided `string`. Performs a SQL query using the provided values wrapped in `%`.
+	* `$gt`: Greater than. Value must be a `number`.
+	* `$gte`: Greater than or equal to. Value must be a `number`.
+	* `$lt`: Lower than. Value must be a `number`.
+	* `$lte`: Lower than or equal to. Value must be a `number`.
+	* `$in`: Must be equal to one of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
+	* `$nin`: Like `$in` but demands a value not in the provided array.
 
-	Example: `?search.val=John Smith&search.in=name,nickname` to find items with a name or nickname similar to “John Smith”.
+	It's also possible to use logical operators, e.g. `{ $or: [ { name: "Zamenhof" }, { age: { $lt: 35 } } ] }` to find all users who are named “Zamenhof” or are under 35.
 
-* `fields`: The fields to return, defaults are defined per resource or collection
-
-	Valid in: Collections, resources (`GET`, operations)
-
-	Must be a comma-separated list of field names.
-
-* `:[field]`: Returns only items matching a set of requirements
-
-	Valid in: Collections (`GET`, `DELETE`, operations)
-
-	If this parameter is defined directly it is treated as `WHERE [field] = [value]` or `WHERE [field] in ([value])`.
-
-	The value of the parameter is always treated as a string unless it's prefixed by `$type`, where `type` is any of:
-
-	* `str`: To treat the value as a string
-	* `num`: To treat the value as a number
-	* `null`: To treat the value as a null value
-
-	In order to search for a string beginning with a dollar symbol, the parameter should be rewritten as `:field=$str$`.
-
-	Examples:
-	* `?:hair=blue` to find all items with blue hair.
-	* `?:hair=$null` to find all items without hair.
-
-	If the value is prefixed by `$type[]` the behavior is similar to that of `$type` except the remaining value is expected to be a comma-separated value of permitted values.
-
-	Examples:
-	* `?:hair=$[]blue,green` to find all items with blue or green hair.
-	* `?:number=$num[]1,2` to find all items with a column number with the value 1 or 2.
-
-	Alteratively, it's possible to leave out this parameter and use only its subparameters:
-
-	* `:[field].in`: The field must be a number with a value within the specified interval
-
-	Must be an interval of the format `[min;max]`, `]min;max[`, `[min;max[` or `]min;max]`, where an inwards-facing bracket indicates an inclusive interval and an outwards-facing bracket indicates an exclusive interval. Either `min` or `max` may be left in order to define only a maximum or minimum value.
-
-	Examples:
-
-	`?:id.in=[0;[` to find all items with a positive id.
+	The full list of logical operators is:
+	* `$and`: Joins expressions with a logical AND. Value must be an array of expressions. This is also possible implicitly by simply listing several expressions in one object.
+	* `$or`: Joins expressions with a logical OR. Value must be an array of expressions.
+	* `$not`: Negates an expression. Value must be an expression.
+	* `$xor`: Joins expressions with a logical XOR.
 
 ## Operations
 SAKo treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are requested using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:

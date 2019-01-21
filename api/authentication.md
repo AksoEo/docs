@@ -11,8 +11,8 @@ All requests and changes made will be logged as resulting from the application a
 For obvious reasons, these requests should never be made from the client side as this would expose the application's API secret.
 
 ## User access (for natural persons)
-Users accessing SAKo through the official interfaces (user or admin) must use session-based authentication. This is done by making a `POST` request to `/auth` with the user's credentials. To end the session a `DELETE` request should be made to `/auth`.
+Users accessing SAKo through the official interfaces (user or admin) must use session-based authentication. This is done by making a `PUT` request to `/auth` with the user's credentials. To end the session a `DELETE` request should be made to `/auth`.
 
-All requests made using this method of authentication must include a CSRF token in a `CSRF-token` or `X-CSRF-token` HTTP header. This token is returned by the original `POST` request to `/auth` and subsequent `GET` requests to `/auth`.
+All requests made using this method of authentication must include a CSRF token in the `X-CSRF-token` HTTP header. This token is returned by the original `POST` request to `/auth` and subsequent `GET` requests to `/auth`.
 
 These requests should always be made from the client side as not to unnecessarily expose the user's credentials to any server.
