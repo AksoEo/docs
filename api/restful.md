@@ -2,6 +2,12 @@
 SAKo tries to conform to RESTful API design norms and principles, however, due to the complexity of some of the operations exposed through the API, it has been deemed needed to expand upon these.
 
 ## Content-Type
+When using `application/vnd.msgpack` binary data must be encoded using the `bin` family. In `application/json` all binary data is encoded using base64 and represented as a string.
+
+### Requests
+All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`.
+
+### Responses
 SAKo attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. SAKo supports the following content types:
 * `application/vnd.msgpack` (recommended)
 * `application/json`
@@ -55,6 +61,12 @@ The recognized parameters are as follows:
 
 	Example: `?order=name.asc,id.desc,age.asc`.
 
+* `fields`: The fields to return, defaults are defined per resource or collection
+
+	Valid in: Collections, resources (`GET`)
+
+	Example: `?fields=id,name,age` to return only the fields `id`, `name` and `age`.
+
 * `filter`: A filter to apply to a collection
 
 	Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
@@ -82,7 +94,7 @@ The recognized parameters are as follows:
 	* `$and`: Joins expressions with a logical AND. Value must be an array of expressions. This is also possible implicitly by simply listing several expressions in one object.
 	* `$or`: Joins expressions with a logical OR. Value must be an array of expressions.
 	* `$not`: Negates an expression. Value must be an expression.
-	* `$xor`: Joins expressions with a logical XOR.
+	* `$xor`: Joins expressions with a logical XOR. Value must be an array of expressions.
 
 ## Operations
 SAKo treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are requested using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
