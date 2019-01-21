@@ -1,5 +1,5 @@
 # SAKo API Documentation
-Clients (users or applications) interact with SAKo through it's RESTful CORS API.
+Clients (users or applications) interact with SAKo through its RESTful CORS API.
 
 SAKo is an acronym for “Sistemo Administra Komuna”.
 
