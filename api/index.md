@@ -9,4 +9,5 @@ SAKo is an acronym for “Sistemo Administra Komuna”.
 * [Internal development patterns](dev_patterns.md)
 * [Client authentication](authentication.md)
 * [Client authorization](authorization.md)
+* [Access logging](logging.md)
 * [Getting started](getting_started.md)
