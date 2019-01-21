@@ -61,7 +61,7 @@ The recognized parameters are as follows:
 
 	Example: `?order=name.asc,id.desc,age.asc`.
 
-* `fields`: The fields to return, defaults are defined per resource or collection
+* `fields`: The fields to return, by default only primary keys are returned
 
 	Valid in: Collections, resources (`GET`)
 
