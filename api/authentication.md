@@ -1,7 +1,7 @@
 # Client authentication
 AKSO utilizes two different methods for client authentication.
 
-CORS is not enabled, meaning that application access must be made from a server, and user access from the same origin.
+CORS is not enabled, meaning that application access must be made from a server, and user access from one of the permitted origins (currently `*.akso.org`, `uea.org`, and `tejo.org`).
 
 ## Application access (for software)
 Applications accessing AKSO's API should use HTTP basic access authentication using their API key as the username and the API secret as the password. This header must be set for each request that requires authentication.
