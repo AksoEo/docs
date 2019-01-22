@@ -87,6 +87,8 @@ The recognized parameters are as follows:
 	* `$lte`: Lower than or equal to. Value must be a `number`.
 	* `$in`: Must be equal to one of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
 	* `$nin`: Like `$in` but demands a value not in the provided array.
+	* `$hasany`: The queried array must contain one or more of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
+	* `$hasnone`: Like `$hasany` except the queried array must not contain any of the provided values.
 
 	It's also possible to use logical operators, e.g. `{ $or: [ { name: "Zamenhof" }, { age: { $lt: 35 } } ] }` to find all users who are named “Zamenhof” or are under 35.
 
