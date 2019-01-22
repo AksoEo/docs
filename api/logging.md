@@ -1,6 +1,6 @@
 # Logging
 ## API calls
-All calls made to the AKSO API are logged and stored for a customizable amount of time. The following information is stored:
+All calls made to the AKSO API are logged and stored for a configurable amount of time. The following information is stored:
 
 | Datum        | Description                                                                                                   |
 | ------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -16,7 +16,7 @@ All calls made to the AKSO API are logged and stored for a customizable amount o
 | `res_status` | The HTTP status of the response.                                                                              |
 
 ## User data
-All changes made to user data are logged. Previous values of all user data are stored for a customizable amount of time. The following information is stored:
+All changes made to user data are logged. Previous values of all user data are stored for a configurable amount of time. The following information is stored:
 
 | Datum       | Description                                                                                           |
 | ----------- | ----------------------------------------------------------------------------------------------------- |
