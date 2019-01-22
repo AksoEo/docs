@@ -24,6 +24,11 @@ For HTTP statuses 4xx and 5xx AKSO will reply with an object of the following fo
 }
 ```
 
+## Timeout
+All `GET` requests have a maximum database execution time (timeout) of 15 seconds. This means that any overly complicated filters should be split into several statements.
+
+Clients may terminate any `GET` requests after 18 seconds, allowing for 3 seconds of server processing time. User-facing applications could display a loading bar with the maximum being 18 seconds, at which point the query will be terminated.
+
 ## URL length
 Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, AKSO permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, AKSO expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
@@ -82,7 +87,7 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`)
 
-    Must be a base64 representation of a JSON object containing the filters according to the following spec (loosely inspired by MongoDB's db.collection.find https://docs.mongodb.com/manual/reference/method/db.collection.find/):
+    Must be a [urlsafe base64](https://docs.python.org/3/library/base64.html#base64.urlsafe_b64encode) representation of a JSON object containing the filters according to the following spec (loosely inspired by [MongoDB's db.collection.find](https://docs.mongodb.com/manual/reference/method/db.collection.find/)):
 
     The root object must contain fields as keys with their required value as the value, e.g. `{ name: "John Smith", nationality: "US" }` to find all users from the US with the name “John Smith”.
 
@@ -117,7 +122,7 @@ AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The onl
     * To ban all users we'd call `POST /users/@ban`
     * To ban all users with green hair we'd call `POST /users/@ban?:hair=green`
 
-## Collection metadata
+## Header metadata
 All `GET` requests on collections include metadata in the headers:
 * `X-Total-Items`: Contains the amount of total items in the collection without a limit
 * `X-Total-Items-No-Filter`: Contains the total amount of items in the collection with no filters applied
