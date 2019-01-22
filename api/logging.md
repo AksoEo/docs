@@ -1,6 +1,6 @@
 # Logging
 ## API calls
-All calls made to the SAKo API are logged and stored for a customizable amount of time. The following information is stored:
+All calls made to the AKSO API are logged and stored for a customizable amount of time. The following information is stored:
 
 | Datum        | Description                                                                                                   |
 | ------------ | ------------------------------------------------------------------------------------------------------------- |

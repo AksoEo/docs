@@ -1,5 +1,5 @@
 # RESTful API design principles
-SAKo tries to conform to RESTful API design norms and principles, however, due to the complexity of some of the operations exposed through the API, it has been deemed needed to expand upon these.
+AKSO tries to conform to RESTful API design norms and principles, however, due to the complexity of some of the operations exposed through the API, it has been deemed needed to expand upon these.
 
 ## Content-Type
 When using `application/vnd.msgpack` binary data must be encoded using the `bin` family. In `application/json` all binary data is encoded using base64 and represented as a string.
@@ -8,13 +8,13 @@ When using `application/vnd.msgpack` binary data must be encoded using the `bin`
 All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`.
 
 ### Responses
-SAKo attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. SAKo supports the following content types:
+AKSO attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. AKSO supports the following content types:
 * `application/vnd.msgpack` (recommended)
 * `application/json`
 * `text/csv` (recommended for user exports only)
 
 ## URL length
-Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, SAKo permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, SAKo expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
+Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, AKSO permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, AKSO expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
 ```
 POST /users
@@ -32,7 +32,7 @@ GET /users?limit=100&offset=20
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
 ## Querying collections and resources
-SAKo utilizes the query string to limit the scope of the data of a collection (`GET`, `DELETE` and `PATCH` only), of an operation performed on a collection (`POST` only) or the returned data of any other type of request. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
+AKSO utilizes the query string to limit the scope of the data of a collection (`GET`, `DELETE` and `PATCH` only), of an operation performed on a collection (`POST` only) or the returned data of any other type of request. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
 
 All query parameters are optional and a request without any query parameters will always be valid.
 
@@ -97,7 +97,7 @@ The recognized parameters are as follows:
 	* `$xor`: Joins expressions with a logical XOR. Value must be an array of expressions.
 
 ## Operations
-SAKo treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are requested using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
+AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are requested using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
 * All `User` resources in the collection `GET /users` have an operation `ban`.
 	* To ban the user with the id `12` we'd call `POST /users/12/@ban`.
 * The `User` collection at `GET /users` has an operation `ban`.
