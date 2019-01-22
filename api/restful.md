@@ -43,14 +43,14 @@ GET /users?limit=100&offset=20
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
 ## Querying collections and resources
-AKSO utilizes the query string to limit the scope of the data of a collection (`GET`, `DELETE` and `PATCH` only), of an operation performed on a collection (`POST` only) or the returned data of any other type of request. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
+AKSO utilizes the query string to filter a collection or the returned fields in resources. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
 
 All query parameters are optional and a request without any query parameters will always be valid.
 
 The recognized parameters are as follows:
 * `limit`: The maximum amount of items in the collection
 
-    Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
+    Valid in: Collections (`GET`)
 
     Must be a positive non-zero integer. The maximum value is defined by the collection.
 
@@ -58,7 +58,7 @@ The recognized parameters are as follows:
 
 * `offset`: The location at which to commence the lookup
 
-    Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
+    Valid in: Collections (`GET`)
 
     Must be a positive non-zero integer.
 
@@ -80,7 +80,7 @@ The recognized parameters are as follows:
 
 * `filter`: A filter to apply to a collection
 
-    Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
+    Valid in: Collections (`GET`)
 
     Must be a base64 representation of a JSON object containing the filters according to the following spec (loosely inspired by MongoDB's db.collection.find https://docs.mongodb.com/manual/reference/method/db.collection.find/):
 
