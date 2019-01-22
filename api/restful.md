@@ -13,10 +13,21 @@ AKSO attempts to reply with a `Content-Type` acceptable by the client according 
 * `application/json`
 * `text/csv` (recommended for user exports only)
 
+If AKSO is unable to reply with the requested media type, the request will fail as HTTP 415 (Unsupported Media Type). In this case the error message will be rendered as `application/json`.
+
+## Errors
+For HTTP statuses 4xx and 5xx AKSO will reply with an object of the following format:
+```javascript
+{
+    status:      int32,  // The HTTP status code
+    description: string  // A semantic description of the error, e.g. "Unknown field 'name'"
+}
+```
+
 ## URL length
 Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, AKSO permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, AKSO expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
-```
+```http
 POST /users
 X-Http-Method-Override: GET
 
@@ -25,7 +36,7 @@ limit=100&offset=20
 
 is functionally equivalent to
 
-```
+```http
 GET /users?limit=100&offset=20
 ```
 
@@ -39,72 +50,72 @@ All query parameters are optional and a request without any query parameters wil
 The recognized parameters are as follows:
 * `limit`: The maximum amount of items in the collection
 
-	Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
+    Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
 
-	Must be a positive non-zero integer. The maximum value is defined by the collection.
+    Must be a positive non-zero integer. The maximum value is defined by the collection.
 
-	Example: `?limit=20` to return a maximum of 20 items.
+    Example: `?limit=20` to return a maximum of 20 items.
 
 * `offset`: The location at which to commence the lookup
 
-	Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
+    Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
 
-	Must be a positive non-zero integer.
+    Must be a positive non-zero integer.
 
-	Example: `?offset=20` to ignore the first 20 items and only return items after them.
+    Example: `?offset=20` to ignore the first 20 items and only return items after them.
 
 * `order`: The columns to order a collection by
 
-	Valid in: Collections (`GET`)
+    Valid in: Collections (`GET`)
 
-	Must be a comma separated list of `field.direction`.
+    Must be a comma separated list of `field.direction`.
 
-	Example: `?order=name.asc,id.desc,age.asc`.
+    Example: `?order=name.asc,id.desc,age.asc`.
 
 * `fields`: The fields to return, by default only primary keys are returned
 
-	Valid in: Collections, resources (`GET`)
+    Valid in: Collections, resources (`GET`)
 
-	Example: `?fields=id,name,age` to return only the fields `id`, `name` and `age`.
+    Example: `?fields=id,name,age` to return only the fields `id`, `name` and `age`.
 
 * `filter`: A filter to apply to a collection
 
-	Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
+    Valid in: Collections (`GET`, `DELETE`, `PATCH`, operations)
 
-	Must be a base64 representation of a JSON object containing the filters according to the following spec (loosely inspired by MongoDB's db.collection.find https://docs.mongodb.com/manual/reference/method/db.collection.find/):
+    Must be a base64 representation of a JSON object containing the filters according to the following spec (loosely inspired by MongoDB's db.collection.find https://docs.mongodb.com/manual/reference/method/db.collection.find/):
 
-	The root object must contain fields as keys with their required value as the value, e.g. `{ name: "John Smith", nationality: "US" }` to find all users from the US with the name “John Smith”.
+    The root object must contain fields as keys with their required value as the value, e.g. `{ name: "John Smith", nationality: "US" }` to find all users from the US with the name “John Smith”.
 
-	Alternatively, the value can be an object with an operator (all prefixed by a dollar sign) as the key, e.g. `{ age: { $lt: 35 } }` to find all users younger than 35.
+    Alternatively, the value can be an object with an operator (all prefixed by a dollar sign) as the key, e.g. `{ age: { $lt: 35 } }` to find all users younger than 35.
 
-	The full list of comparison operators is:
-	* `$eq`: Exact equality. Value may be a `string`, `number`, `boolean` or `null`.
-	* `$neq`: Like `$eq` but demands a value not equal to the one provided.
-	* `$like`: Filters for values similar to the provided `string`. Performs a SQL query using the provided values wrapped in `%`.
-	* `$gt`: Greater than. Value must be a `number`.
-	* `$gte`: Greater than or equal to. Value must be a `number`.
-	* `$lt`: Lower than. Value must be a `number`.
-	* `$lte`: Lower than or equal to. Value must be a `number`.
-	* `$in`: Must be equal to one of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
-	* `$nin`: Like `$in` but demands a value not in the provided array.
-	* `$hasany`: The queried array must contain one or more of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
-	* `$hasnone`: Like `$hasany` except the queried array must not contain any of the provided values.
+    The full list of comparison operators is:
+    * `$eq`: Exact equality. Value may be a `string`, `number`, `boolean` or `null`.
+    * `$neq`: Like `$eq` but demands a value not equal to the one provided.
+    * `$like`: Filters for values similar to the provided `string`. Performs a SQL query using the provided values wrapped in `%`.
+    * `$gt`: Greater than. Value must be a `number`.
+    * `$gte`: Greater than or equal to. Value must be a `number`.
+    * `$lt`: Lower than. Value must be a `number`.
+    * `$lte`: Lower than or equal to. Value must be a `number`.
+    * `$in`: Must be equal to one of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
+    * `$nin`: Like `$in` but demands a value not in the provided array.
+    * `$hasany`: The queried array must contain one or more of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
+    * `$hasnone`: Like `$hasany` except the queried array must not contain any of the provided values.
 
-	It's also possible to use logical operators, e.g. `{ $or: [ { name: "Zamenhof" }, { age: { $lt: 35 } } ] }` to find all users who are named “Zamenhof” or are under 35.
+    It's also possible to use logical operators, e.g. `{ $or: [ { name: "Zamenhof" }, { age: { $lt: 35 } } ] }` to find all users who are named “Zamenhof” or are under 35.
 
-	The full list of logical operators is:
-	* `$and`: Joins expressions with a logical AND. Value must be an array of expressions. This is also possible implicitly by simply listing several expressions in one object.
-	* `$or`: Joins expressions with a logical OR. Value must be an array of expressions.
-	* `$not`: Negates an expression. Value must be an expression.
-	* `$xor`: Joins expressions with a logical XOR. Value must be an array of expressions.
+    The full list of logical operators is:
+    * `$and`: Joins expressions with a logical AND. Value must be an array of expressions. This is also possible implicitly by simply listing several expressions in one object.
+    * `$or`: Joins expressions with a logical OR. Value must be an array of expressions.
+    * `$not`: Negates an expression. Value must be an expression.
+    * `$xor`: Joins expressions with a logical XOR. Value must be an array of expressions.
 
 ## Operations
 AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are requested using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
 * All `User` resources in the collection `GET /users` have an operation `ban`.
-	* To ban the user with the id `12` we'd call `POST /users/12/@ban`.
+    * To ban the user with the id `12` we'd call `POST /users/12/@ban`.
 * The `User` collection at `GET /users` has an operation `ban`.
-	* To ban all users we'd call `POST /users/@ban`
-	* To ban all users with green hair we'd call `POST /users/@ban?:hair=green`
+    * To ban all users we'd call `POST /users/@ban`
+    * To ban all users with green hair we'd call `POST /users/@ban?:hair=green`
 
 ## Collection metadata
 All `GET` requests on collections include metadata in the headers:
