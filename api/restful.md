@@ -87,6 +87,8 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`)
 
+    Must not be any longer than 8kB.
+
     Must be a [urlsafe base64](https://docs.python.org/3/library/base64.html#base64.urlsafe_b64encode) representation of a JSON object containing the filters according to the following spec (loosely inspired by [MongoDB's db.collection.find](https://docs.mongodb.com/manual/reference/method/db.collection.find/)):
 
     The root object must contain fields as keys with their required value as the value, e.g. `{ name: "John Smith", nationality: "US" }` to find all users from the US with the name “John Smith”.
