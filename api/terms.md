@@ -15,3 +15,4 @@ This page serves as an Esperanto-English dictionary for terms used within the AK
 | estraro           | board          | The board of either UEA or TEJO.
 | estrarano         | board member   | A member of the board.
 | revuo             | magazine       | A magazine available online and/or on paper available to certain members only.
+| delegito          | delegate       | A person who represents certain areas of expertise on behalf of UEA.
