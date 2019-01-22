@@ -1,5 +1,5 @@
 # AKSO API Documentation
-Clients (users or applications) interact with AKSO through its RESTful CORS API.
+Clients (users or applications) interact with AKSO through its RESTful API.
 
 AKSO is an acronym for “Administra Komuna Sistemo Organiza”.
 
