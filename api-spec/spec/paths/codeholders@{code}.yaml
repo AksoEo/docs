@@ -1,0 +1,19 @@
+parameters:
+  - name: code
+    in: path
+    required: true
+    description: The code of the codeholder
+    schema:
+      type: string
+
+get:
+  summary: Returns a codeholder by its code
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/HumanCodeholder'
+              - $ref: '#/components/schemas/OrgCodeholder'

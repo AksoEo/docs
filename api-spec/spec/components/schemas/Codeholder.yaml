@@ -1,0 +1,9 @@
+properties:
+  oldCode:
+    type: string
+    nullable: true
+    description: The old four-letter code of the codeholder
+  newCode:
+    type: string
+    description: The new six-letter code of the codeholder
+
