@@ -33,4 +33,4 @@ Permissions are granted to clients using the following protocol:
 
 Unlike usual permission models, AKSO employs a key-value based approach to permission scopes. This means that a client might have the permission `users.read` with the value `true`, meaning that they are allowed to real all data on all users with no limitations.
 
-However, if the value of the `users.create` key is set to `{ age: { $lt: 35 } }`, the user is only able to `GET` users under the age of 35. This permissions value uses the same syntax as is used for query filtering as defined in [RESTful API design principles](restful.md).
+However, if the value of the `users.read` key is set to `{ age: { $lt: 35 } }`, the user is only able to `GET` users under the age of 35. This permissions value uses the same syntax as is used for query filtering as defined in [RESTful API design principles](restful.md).

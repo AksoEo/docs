@@ -85,7 +85,7 @@ The recognized parameters are as follows:
 
 * `filter`: A filter to apply to a collection
 
-    Valid in: Collections (`GET`)
+    Valid in: Collections (`GET`, operations)
 
     Must not be any longer than 8kB.
 
@@ -122,7 +122,6 @@ AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The onl
     * To ban the user with the id `12` we'd call `POST /users/12/@ban`.
 * The `User` collection at `GET /users` has an operation `ban`.
     * To ban all users we'd call `POST /users/@ban`
-    * To ban all users with green hair we'd call `POST /users/@ban?:hair=green`
 
 ## Header metadata
 All `GET` requests on collections include metadata in the headers:
