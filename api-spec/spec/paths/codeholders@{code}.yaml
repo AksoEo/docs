@@ -21,3 +21,12 @@ get:
                 - $ref: '#/components/schemas/OrgCodeholderRevision'
     '404':
       description: Codeholder not found
+
+delete:
+  summary: Deletes a codeholder
+  responses:
+    '204':
+      description: Deleted
+
+    '404':
+      description: Codeholder not found

@@ -24,8 +24,7 @@ properties:
       - $ref: '#/components/schemas/CodeholderModtime'
 
   codeholderType:
-    type: string
-    enum: ['human', 'org']
+    $ref: '#/components/schemas/CodeholderType'
 
   password:
     type: string
@@ -214,3 +213,4 @@ required:
   - newCode
   - country
   - enabled
+  - codeholderType
