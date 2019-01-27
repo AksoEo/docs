@@ -1,4 +1,13 @@
 openapi: 3.0.2
+
+servers:
+  - url: https://api.akso.org/v1
+    description: Production server
+
 info:
   title: AKSO's REST API
   version: 0.1.0
+
+externalDocs:
+  url: https://github.com/AksoEo/docs/tree/master/api
+  description: Full documentation
