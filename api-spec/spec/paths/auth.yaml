@@ -1,0 +1,56 @@
+put:
+  summary: Logs a client in using user-based authentication
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            code:
+              $ref: '#/components/schemas/UEACode'
+
+            password:
+              type: string
+              format: password
+              description: The codeholder's password
+
+          required:
+            - code
+            - password
+
+  responses:
+    '200':
+      description: Logged in
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              csrfToken:
+                $ref: '#/components/schemas/CSRFToken'
+
+    '401':
+      description: Invalid credentials
+
+delete:
+  summary: Logs a client out using user-based authentication
+  responses:
+    '204':
+      description: Logged out
+
+    '404':
+      description: No user-based session found
+
+get:
+  summary: Obtains a new CSRF token for an existing user-based session
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              csrfToken:
+                $ref: '#/components/schemas/CSRFToken'
+
+    '404':
+      description: No user-based session found

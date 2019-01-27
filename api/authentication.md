@@ -13,6 +13,6 @@ For obvious reasons, these requests should never be made from the client side as
 ## User access (for UEA codeholders)
 Users accessing AKSO through the official interfaces (user or admin) must use session-based authentication. This is done by making a `PUT` request to `/auth` with the user's credentials. To end the session a `DELETE` request should be made to `/auth`.
 
-All requests made using this method of authentication must include a CSRF token in the `X-CSRF-token` HTTP header. This token is returned by the original `POST` request to `/auth` and subsequent `GET` requests to `/auth`.
+All requests made using this method of authentication must include a CSRF token in the `X-CSRF-token` HTTP header. This token is returned by the original `PUT` request to `/auth` and subsequent `GET` requests to `/auth`.
 
 These requests should always be made from the client side as not to unnecessarily expose the user's credentials to any server.

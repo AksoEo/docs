@@ -2,14 +2,14 @@ parameters:
   - name: code
     in: path
     required: true
-    description: The code of the codeholder
+    description: The UEA code of the codeholder
     schema:
       $ref: '#/components/schemas/UEACode'
 
   - name: revision
     in: path
     required: true
-    description: The revision of the codeholder
+    description: The id of the codeholder's revision
     schema:
       $ref: '#/components/schemas/CodeholderRevisionId'
 
