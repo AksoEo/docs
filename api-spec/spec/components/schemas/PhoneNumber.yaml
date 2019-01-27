@@ -1,0 +1,6 @@
+type: string
+minLength: 2
+maxLength: 50
+format: tel
+pattern: ^\+[a-zA-Z0-9]+$
+description: A phone number beginning with the + code of the country without dashes or other formatting

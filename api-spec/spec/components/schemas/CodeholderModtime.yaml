@@ -1,0 +1,4 @@
+type: integer
+format: int64
+readOnly: true
+description: The unix epoch at which this codeholder datum was last modified

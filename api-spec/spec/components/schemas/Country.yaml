@@ -1,0 +1,2 @@
+type: string
+description: A country from the list of countries at `/countries`.

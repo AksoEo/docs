@@ -1,0 +1,8 @@
+type: string
+oneOf:
+  - minLength: 4
+    maxLength: 4
+    description: An old UEA code
+  - minLength: 6
+    maxLength: 6
+    description: A new UEA code

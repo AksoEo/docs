@@ -1,0 +1,155 @@
+allOf:
+  - $ref: '#/components/schemas/CodeholderRevision'
+  - type: object
+    properties:
+      firstName:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        description: The codeholder's preferred first name, defaults to `firstNameLegal`
+
+      firstNameModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      firstNameModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      firstNameModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      firstNameLegal:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        description: The codeholder's legal first name
+
+      firstNameLegalModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      firstNameLegalModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      firstNameLegalModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      lastName:
+        type: string
+        pattern: ^[^\n]*$
+        description: The codeholder's preferred last name, defaults to `lastNameLegal`
+
+      lastNameModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      lastNameModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      lastNameModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      lastNameLegal:
+        type: string
+        pattern: ^[^\n]*$
+        description: The codeholder's legal last name
+
+      lastNameLegalModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      lastNameLegalModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      lastNameLegalModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      title:
+        allOf:
+          - $ref: '#/components/schemas/HumanTitle'
+          - description: The codeholder's title
+
+      titleModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      titleModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      titleModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      birthdate:
+        type: string
+        format: date
+        nullable: true
+        description: The codeholder's date of birth
+
+      birthdateModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      birthdateModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      birthdateModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      profession:
+        type: string
+        nullable: true
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        description: The codeholder's profession
+
+      professionModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      professionModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      professionModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      landlinePhone:
+        allOf:
+          - description: The landline phone number of the codeholder
+            nullable: true
+          - $ref: '#/components/schemas/PhoneNumber'
+
+      landlinePhoneModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      landlinePhoneModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      landlinePhoneModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      landlinePhoneFormatted:
+        type: string
+        readOnly: true
+        nullable: true
+        description: The landline phone number of the codeholder formatted according to its country code
+
+      cellphone:
+        allOf:
+          - description: The cellphone number of the codeholder
+            nullable: true
+          - $ref: '#/components/schemas/PhoneNumber'
+
+      cellphoneModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      cellphoneModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      cellphoneModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      cellphoneFormatted:
+        type: string
+        readOnly: true
+        nullable: true
+        description: The cellphone number of the codeholder formatted according to its country code
+
+    required:
+      - firstNameLegal
+      - lastNameLegal

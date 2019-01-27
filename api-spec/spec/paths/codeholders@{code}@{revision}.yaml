@@ -1,0 +1,28 @@
+parameters:
+  - name: code
+    in: path
+    required: true
+    description: The code of the codeholder
+    schema:
+      $ref: '#/components/schemas/UEACode'
+
+  - name: revision
+    in: path
+    required: true
+    description: The revision of the codeholder
+    schema:
+      $ref: '#/components/schemas/CodeholderRevisionId'
+
+get:
+  summary: Returns a specific revision of a codeholder
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/HumanCodeholderRevision'
+              - $ref: '#/components/schemas/OrgCodeholderRevision'
+    '404':
+      description: Codeholder + revision not found

@@ -1,0 +1,13 @@
+get:
+  summary: Returns the latest revision of all codeholders
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+             type: array
+             items:
+              oneOf:
+                - $ref: '#/components/schemas/HumanCodeholderRevision'
+                - $ref: '#/components/schemas/OrgCodeholderRevision'

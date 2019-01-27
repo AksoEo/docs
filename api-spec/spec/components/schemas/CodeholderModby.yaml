@@ -1,0 +1,10 @@
+type: string
+readOnly: true
+description: The user or application who modified the codeholder datum
+examples:
+  user:
+    value: 'user:xxtejo'
+    summary: When a user made the change
+  app:
+    value: 'app:2031847ee1a7bbce'
+    summary: When an app made the change
