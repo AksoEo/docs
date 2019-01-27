@@ -34,9 +34,8 @@ properties:
     description: The codeholder's password, if null the codeholder is not able to login
 
   country:
-    allOf:
-      - description: The codeholder's country of residence. A country from the list of countries at `/countries`.
-      - $ref: '#/components/schemas/Country'
+    type: string
+    description: The codeholder's country of residence. The ISO 3166-1 alpha-2 code of a country from the list of countries at `/countries`.
 
   countryModtime:
     $ref: '#/components/schemas/CodeholderModtime'

@@ -1,0 +1,10 @@
+get:
+  summary: Returns all countries
+  responses:
+    '200':
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Country'

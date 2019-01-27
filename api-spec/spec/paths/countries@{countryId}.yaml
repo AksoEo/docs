@@ -1,0 +1,20 @@
+parameters:
+  - name: countryId
+    in: path
+    required: true
+    description: The ISO 3166-1 alpha-2 code of the country
+    minLength: 2
+    maxLength: 2
+
+get:
+  summary: Returns a specific country
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/Country'
+
+    '404':
+      description: Country not found
