@@ -1,0 +1,57 @@
+get:
+  summary: Get a TOTP key for a user
+  description: The client must already be authenticated using user-based authentication as the first factor.
+  responses:
+    '200':
+      description: 'OK'
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              secret:
+                type: binary
+                description: The secret key used for TOTP
+                minLength: 20
+                maxLength: 20
+              otpUrl:
+                type: string
+                description: The URL to use for setting up TOTP in an authenticator application
+              qr:
+                type: binary
+                description: A PNG QR code of the `otpUrl`
+
+delete:
+  summary: Removes an existing TOTP key for a user
+  responses:
+    '204':
+      description: TOTP removed
+
+    '404':
+      description: TOTP hasn't been set up
+
+post:
+  summary: Logs a client in using TOTP
+  description: The client must already be authenticated using user-based authentication as the first factor.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            totp:
+              type: string
+              minLength: 6
+              maxLength: 12
+              description: The TOTP key as provided by the user
+
+          required:
+            - totp
+  responses:
+    '204':
+      description: Logged in
+
+    '401':
+      description: 'Invalid TOTP'
+
+    '404':
+      description: 'No user-based session found'

@@ -34,7 +34,7 @@ properties:
 
   currency:
     type: string
-    description: The ISO 4217 code of the country's currency
+    description: The ISO 4217 code of the country's currency as used by UEA
 
 required:
   - id

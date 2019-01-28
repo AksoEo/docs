@@ -28,6 +28,14 @@ put:
               csrfToken:
                 $ref: '#/components/schemas/CSRFToken'
 
+              totpSetup:
+                type: boolean
+                description: Whether the user has set up TOTP
+
+              totpUsed:
+                type: boolean
+                description: Whether the user has logged in using TOTP for this session
+
     '401':
       description: Invalid credentials
 
@@ -41,7 +49,7 @@ delete:
       description: No user-based session found
 
 get:
-  summary: Obtains a new CSRF token for an existing user-based session
+  summary: Obtains information on this user-based session
   responses:
     '200':
       description: OK
@@ -51,6 +59,14 @@ get:
             properties:
               csrfToken:
                 $ref: '#/components/schemas/CSRFToken'
+
+              totpSetup:
+                type: boolean
+                description: Whether the user has set up TOTP
+
+              totpUsed:
+                type: boolean
+                description: Whether the user has logged in using TOTP for this session
 
     '404':
       description: No user-based session found
