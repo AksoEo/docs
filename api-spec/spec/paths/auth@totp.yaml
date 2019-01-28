@@ -9,7 +9,8 @@ get:
           schema:
             properties:
               secret:
-                type: binary
+                type: string
+                format: binary
                 description: The secret key used for TOTP
                 minLength: 20
                 maxLength: 20
@@ -17,7 +18,8 @@ get:
                 type: string
                 description: The URL to use for setting up TOTP in an authenticator application
               qr:
-                type: binary
+                type: string
+                format: binary
                 description: A PNG QR code of the `otpUrl`
 
 delete:
