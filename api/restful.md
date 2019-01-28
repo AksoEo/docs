@@ -98,7 +98,7 @@ The recognized parameters are as follows:
     The full list of comparison operators is:
     * `$eq`: Exact equality. Value may be a `string`, `number`, `boolean` or `null`.
     * `$neq`: Like `$eq` but demands a value not equal to the one provided.
-    * `$like`: Filters for values similar to the provided `string`, which must be at least three characters long and only contain word characters (`/[\p{L}\p{N}]/`).
+    * `$like`: Filters for values similar to the provided `string`, which must be at least three characters long and only contain word characters and spaces (`/[\p{L}\p{N}\s]/`).
     * `$gt`: Greater than. Value must be a `number`.
     * `$gte`: Greater than or equal to. Value must be a `number`.
     * `$lt`: Lower than. Value must be a `number`.
