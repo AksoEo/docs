@@ -28,7 +28,7 @@ put:
               csrfToken:
                 $ref: '#/components/schemas/CSRFToken'
 
-              totpSetup:
+              totpSetUp:
                 type: boolean
                 description: Whether the user has set up TOTP
 
@@ -60,7 +60,7 @@ get:
               csrfToken:
                 $ref: '#/components/schemas/CSRFToken'
 
-              totpSetup:
+              totpSetUp:
                 type: boolean
                 description: Whether the user has set up TOTP
 
