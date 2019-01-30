@@ -44,7 +44,7 @@ is functionally equivalent to
 
 ```http
 POST /users
-X-Http-Method-Override
+X-Http-Method-Override: GET
 Content-Type: application/json
 
 {"limit":100,"offset":20,"query":{"name":"John Smith"}}
@@ -56,7 +56,7 @@ which is functionally equivalent to
 GET /users?limit=100&offset=20&query=eyJuYW1lIjoiSm9obiBTbWl0aCJ9
 ```
 
-Naturally `application/vnd.msgpack` may be used as well.
+Naturally `application/vnd.msgpack` may be used as well. When using `application/json` or `application/vnd.msgpack`, object parameters that are usually base64 encoded should be implemented as maps/objects instead.
 
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
