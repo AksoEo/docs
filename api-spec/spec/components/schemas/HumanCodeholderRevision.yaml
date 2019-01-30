@@ -63,18 +63,18 @@ allOf:
       lastNameLegalModcmt:
         $ref: '#/components/schemas/CodeholderModcmt'
 
-      title:
+      honorific:
         allOf:
-          - $ref: '#/components/schemas/HumanTitle'
-          - description: The codeholder's title
+          - $ref: '#/components/schemas/HumanHonorific'
+          - description: The codeholder's honorific
 
-      titleModtime:
+      honorificModtime:
         $ref: '#/components/schemas/CodeholderModtime'
 
-      titleModby:
+      honorificModby:
         $ref: '#/components/schemas/CodeholderModby'
 
-      titleModcmt:
+      honorificModcmt:
         $ref: '#/components/schemas/CodeholderModcmt'
 
       birthdate:
