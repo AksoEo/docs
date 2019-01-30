@@ -5,7 +5,7 @@ AKSO tries to conform to RESTful API design norms and principles, however, due t
 When using `application/vnd.msgpack` binary data must be encoded using the `bin` family. In `application/json` all binary data is encoded using base64 and represented as a string.
 
 ### Requests
-All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`.
+All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`, unless method overriding is used (see [URL length](#url-length)), in which case `application/x-www-form-urlencoded` is permitted as well.
 
 ### Responses
 AKSO attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. AKSO supports the following content types:
@@ -35,15 +35,28 @@ Especially when querying collections, the length of URLs may become noticeably b
 ```http
 POST /users
 X-Http-Method-Override: GET
+Content-Type: application/x-www-form-urlencoded
 
-limit=100&offset=20
+limit=100&offset=20&query=eyJuYW1lIjoiSm9obiBTbWl0aCJ9
 ```
 
 is functionally equivalent to
 
 ```http
-GET /users?limit=100&offset=20
+POST /users
+X-Http-Method-Override
+Content-Type: application/json
+
+{"limit":100,"offset":20,"query":{"name":"John Smith"}}
 ```
+
+which is functionally equivalent to
+
+```http
+GET /users?limit=100&offset=20&query=eyJuYW1lIjoiSm9obiBTbWl0aCJ9
+```
+
+Naturally `application/vnd.msgpack` may be used as well.
 
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
@@ -89,7 +102,7 @@ The recognized parameters are as follows:
 
     Must not be any longer than 8kB.
 
-    Must be a [urlsafe base64](https://docs.python.org/3/library/base64.html#base64.urlsafe_b64encode) representation of a JSON object containing the filters according to the following spec (loosely inspired by [MongoDB's db.collection.find](https://docs.mongodb.com/manual/reference/method/db.collection.find/)):
+    Must be a padding-less base64url representation (according to [RFC 4648 §5]()) of a JSON object containing the filters according to the following spec (loosely inspired by [MongoDB's db.collection.find](https://docs.mongodb.com/manual/reference/method/db.collection.find/)):
 
     The root object must contain fields as keys with their required value as the value, e.g. `{ name: "John Smith", nationality: "US" }` to find all users from the US with the name “John Smith”.
 
