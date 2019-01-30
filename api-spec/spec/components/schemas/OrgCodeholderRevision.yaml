@@ -1,2 +1,35 @@
 allOf:
   - $ref: '#/components/schemas/CodeholderRevision'
+  - properties:
+      fullName:
+        type: string
+        minLength: 1
+        maxLength: 100
+        pattern: ^[^\n]*$
+        description: The organization's full name
+
+      fullNameModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      fullNameModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      fullNameModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'
+
+      nameAbbrev:
+        type: string
+        minLength: 1
+        maxLength: 12
+        pattern: ^[^\n]*$
+        nullable: true
+        description: An abbreviation of the organization's name
+
+      nameAbbrevModtime:
+        $ref: '#/components/schemas/CodeholderModtime'
+
+      nameAbbrevModby:
+        $ref: '#/components/schemas/CodeholderModby'
+
+      nameAbbrevModcmt:
+        $ref: '#/components/schemas/CodeholderModcmt'

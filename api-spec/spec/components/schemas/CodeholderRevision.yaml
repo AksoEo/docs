@@ -35,6 +35,7 @@ properties:
 
   country:
     type: string
+    nullable: true
     description: The codeholder's country of residence. The ISO 3166-1 alpha-2 code of a country from the list of countries at `/countries`.
 
   countryModtime:
@@ -138,16 +139,8 @@ properties:
   address:
     type: string
     readOnly: true
+    nullable: true
     description: The codeholder's full address formatted according to their country
-
-  addressModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
-
-  addressModby:
-    $ref: '#/components/schemas/CodeholderModby'
-
-  addressModcmt:
-    $ref: '#/components/schemas/CodeholderModcmt'
 
   email:
     type: string
@@ -210,6 +203,5 @@ properties:
 
 required:
   - newCode
-  - country
   - enabled
   - codeholderType

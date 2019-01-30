@@ -1,7 +1,6 @@
 allOf:
   - $ref: '#/components/schemas/CodeholderRevision'
-  - type: object
-    properties:
+  - properties:
       firstName:
         type: string
         minLength: 1
@@ -37,6 +36,7 @@ allOf:
       lastName:
         type: string
         pattern: ^[^\n]*$
+        nullable: true
         description: The codeholder's preferred last name, defaults to `lastNameLegal`
 
       lastNameModtime:
@@ -51,6 +51,7 @@ allOf:
       lastNameLegal:
         type: string
         pattern: ^[^\n]*$
+        nullable: true
         description: The codeholder's legal last name
 
       lastNameLegalModtime:
@@ -152,4 +153,3 @@ allOf:
 
     required:
       - firstNameLegal
-      - lastNameLegal
