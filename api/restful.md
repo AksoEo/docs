@@ -111,7 +111,6 @@ The recognized parameters are as follows:
     The full list of comparison operators is:
     * `$eq`: Exact equality. Value may be a `string`, `number`, `boolean` or `null`.
     * `$neq`: Like `$eq` but demands a value not equal to the one provided.
-    * `$like`: Filters for values similar to the provided `string`, which must be at least three characters long and only contain word characters and spaces (`/[\p{L}\p{N}\s]/`).
     * `$gt`: Greater than. Value must be a `number`.
     * `$gte`: Greater than or equal to. Value must be a `number`.
     * `$lt`: Lower than. Value must be a `number`.
@@ -121,6 +120,8 @@ The recognized parameters are as follows:
     * `$hasany`: The queried array must contain one or more of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
     * `$hasnone`: Like `$hasany` except the queried array must not contain any of the provided values.
     * `$hasall`: Like `$hasany` except the queried array must contain all of the provided values.
+
+    As an exception, the key may be `$search` instead of the name of a field in order to perform a search on several fields, e.g. `{ $search: { $val: "john", $in: [ "name", "email" ] } }` to find all users with the string `john` in either their name or their email. The value must be at least three characters long and only contain word characters and spaces (`/[\p{L}\p{N}\s]/`).
 
     It's also possible to use logical operators, e.g. `{ $or: [ { name: "Zamenhof" }, { age: { $lt: 35 } } ] }` to find all users who are named “Zamenhof” or are under 35.
 
