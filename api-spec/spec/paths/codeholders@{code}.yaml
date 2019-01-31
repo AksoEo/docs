@@ -7,26 +7,15 @@ parameters:
       $ref: '#/components/schemas/UEACode'
 
 get:
-  summary: Returns all revisions of a codeholder
+  summary: Returns a specific codeholder
   responses:
     '200':
       description: OK
       content:
         application/vnd.msgpack:
           schema:
-             type: array
-             items:
-              oneOf:
-                - $ref: '#/components/schemas/HumanCodeholderRevision'
-                - $ref: '#/components/schemas/OrgCodeholderRevision'
-    '404':
-      description: Codeholder not found
-
-delete:
-  summary: Deletes a codeholder
-  responses:
-    '204':
-      description: Deleted
-
+            oneOf:
+              - $ref: '#/components/schemas/HumanCodeholder'
+              - $ref: '#/components/schemas/OrgCodeholder'
     '404':
       description: Codeholder not found

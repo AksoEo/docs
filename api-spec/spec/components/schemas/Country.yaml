@@ -4,33 +4,8 @@ properties:
     description: The ISO 3166-1 alpha-2 code of the country
 
   name:
-    type: object
-    description: The country's name in various languages by their ISO 639-3 codes
-    properties:
-      epo:
-        type: string
-        description: The country's name in Esperanto
-      eng:
-        type: string
-        description: The country's name in English
-      fra:
-        type: string
-        description: The country's name in French
-      nld:
-        type: string
-        description: The country's name in Dutch
-      deu:
-        type: string
-        description: The country's name in German
-      spa:
-        type: string
-        description: The country's name in Spanish
-      slk:
-        type: string
-        description: The country's name in Slovak
-      zho:
-        type: string
-        description: The country's name in Chinese
+    type: string
+    description: The country's name in Esperanto
 
   currency:
     type: string

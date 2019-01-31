@@ -86,7 +86,7 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`)
 
-    Must be a comma separated list of `field.direction`.
+    Must be a comma separated list of `field.direction`. The special field `_relevance` may be used when `?search` is used to order according to relevance.
 
     Example: `?order=name.asc,id.desc,age.asc`.
 
@@ -95,6 +95,16 @@ The recognized parameters are as follows:
     Valid in: Collections, resources (`GET`)
 
     Example: `?fields=id,name,age` to return only the fields `id`, `name` and `age`.
+
+* `search`: A string to search for in a collection.
+
+    Valid in: Collections (`GET`)
+
+    Must be a csv containing a string of words to search for as the first column. Each word, separated by spaces, must be made of word characters only (`/[\p{L}\p{N}]/`) and must be at least 3 characters long. The following columns must be the names of the fields to search in. Only string fields may be searched.
+
+    The search is performed using [MySQL boolean full-text search](https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html) and as such certain operators are permitted: `( )`, `+`, `-`, `*` and `"`.
+
+    Example: `?search="john",name,email` to find users with the name "john" in their name or email address.
 
 * `filter`: A filter to apply to a collection
 

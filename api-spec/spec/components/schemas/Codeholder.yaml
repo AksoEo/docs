@@ -1,0 +1,145 @@
+properties:
+  oldCode:
+    type: string
+    nullable: true
+    minLength: 4
+    maxLength: 4
+    readOnly: true
+    pattern: ^[a-z]$
+    description: The old four-letter UEA code of the codeholder
+
+  newCode:
+    type: string
+    minLength: 6
+    maxLength: 6
+    pattern: ^[a-z]$
+    description: The new six-letter UEA code of the codeholder
+
+  newCodeModtime:
+    $ref: '#/components/schemas/CodeholderModtime'
+
+  newCodeModby:
+    $ref: '#/components/schemas/CodeholderModby'
+
+  newCodeModcmt:
+    $ref: '#/components/schemas/CodeholderModcmt'
+
+  codeholderType:
+    $ref: '#/components/schemas/CodeholderType'
+
+  password:
+    type: string
+    format: password
+    writeOnly: true
+    nullable: true
+    description: The codeholder's password, if null the codeholder is not able to login
+
+  passwordModtime:
+    $ref: '#/components/schemas/CodeholderModtime'
+
+  address:
+    allOf:
+      - nullable: true
+        description: The codeholder's normalized postal address
+      - $ref: '#/components/schemas/PostalAddress'
+
+  addressModtime:
+    $ref: '#/components/schemas/CodeholderModtime'
+
+  addressModby:
+    $ref: '#/components/schemas/CodeholderModby'
+
+  addressModcmt:
+    $ref: '#/components/schemas/CodeholderModcmt'
+
+  addressLatin:
+    allOf:
+      - nullable: true
+        readOnly: true
+        description: The codeholder's latinized postal address, for searching
+      - $ref: '#/components/schemas/PostalAddress'
+
+  addressLatinDisplay:
+    type: string
+    nullable: true
+    readOnly: true
+    description: The codeholder's latinized postal address, for display
+
+  addressPostal:
+    type: string
+    nullable: true
+    readOnly: true
+    description: The codeholder's native postal address, for address label
+
+  email:
+    type: string
+    format: email
+    minLength: 3
+    maxLength: 200
+    nullable: true
+    pattern: ^[^\n]*$
+    description: The codeholder's contact and login email address. If undefined, the codeholder may not login.
+
+  emailModtime:
+    $ref: '#/components/schemas/CodeholderModtime'
+
+  emailModby:
+    $ref: '#/components/schemas/CodeholderModby'
+
+  emailModcmt:
+    $ref: '#/components/schemas/CodeholderModcmt'
+
+  enabled:
+    type: boolean
+    default: true
+    description: Whether the codeholder may login
+
+  enabledModtime:
+    $ref: '#/components/schemas/CodeholderModtime'
+
+  enabledModby:
+    $ref: '#/components/schemas/CodeholderModby'
+
+  enabledModcmt:
+    $ref: '#/components/schemas/CodeholderModcmt'
+
+  notes:
+    type: string
+    default: ""
+    maxLength: 10000
+    description: Administrative notes on the codeholder
+
+  notesModtime:
+    $ref: '#/components/schemas/CodeholderModtime'
+
+  notesModby:
+    $ref: '#/components/schemas/CodeholderModby'
+
+  notesModcmt:
+    $ref: '#/components/schemas/CodeholderModcmt'
+
+  officePhone:
+    allOf:
+      - description: The office phone number of the codeholder
+        nullable: true
+      - $ref: '#/components/schemas/PhoneNumber'
+
+  officePhoneModtime:
+    $ref: '#/components/schemas/CodeholderModtime'
+
+  officePhoneModby:
+    $ref: '#/components/schemas/CodeholderModby'
+
+  officePhoneModcmt:
+    $ref: '#/components/schemas/CodeholderModcmt'
+
+  officePhoneFormatted:
+    type: string
+    readOnly: true
+    nullable: true
+    description: The office phone number of the codeholder formatted according to its country code
+
+required:
+  - newCode
+  - enabled
+  - codeholderType

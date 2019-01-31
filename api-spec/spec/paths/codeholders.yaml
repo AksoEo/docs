@@ -1,5 +1,5 @@
 get:
-  summary: Returns the latest revision of all codeholders
+  summary: Returns all codeholders
   responses:
     '200':
       description: OK
@@ -9,5 +9,5 @@ get:
              type: array
              items:
               oneOf:
-                - $ref: '#/components/schemas/HumanCodeholderRevision'
-                - $ref: '#/components/schemas/OrgCodeholderRevision'
+                - $ref: '#/components/schemas/HumanCodeholder'
+                - $ref: '#/components/schemas/OrgCodeholder'

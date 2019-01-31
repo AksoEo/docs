@@ -1,4 +1,0 @@
-type: integer
-format: int32
-readOnly: true
-description: The id of the revision

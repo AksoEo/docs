@@ -1,5 +1,5 @@
 allOf:
-  - $ref: '#/components/schemas/CodeholderRevision'
+  - $ref: '#/components/schemas/Codeholder'
   - properties:
       firstName:
         type: string

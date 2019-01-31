@@ -1,0 +1,49 @@
+type: object
+properties:
+  country:
+    type: string
+    nullable: true
+    minLength: 2
+    maxLength: 2
+    pattern: ^[^\n]*$
+    description: The country. The ISO 3166-1 alpha-2 code of a `Country`.
+
+  countryArea:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 50
+    pattern: ^[^\n]*$
+    description: A designation of a region, province or state.
+
+  city:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 50
+    pattern: ^[^\n]*$
+    description: A city or town name.
+
+  cityArea:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 50
+    pattern: ^[^\n]*$
+    description: A sublocality like a district.
+
+  streetAddress:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 100
+    description: A (possibly multiline) street address.
+
+  postalCode:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 20
+    description: A postal or zip code.
+required:
+  - country
