@@ -11,7 +11,6 @@ All requests must use either `application/vnd.msgpack` (recommended) or `applica
 AKSO attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. AKSO supports the following content types:
 * `application/vnd.msgpack` (recommended)
 * `application/json`
-* `text/csv` (recommended for user exports only)
 
 If AKSO is unable to reply with the requested media type, the request will fail as HTTP 415 (Unsupported Media Type). In this case the error message will be rendered as `application/json`.
 
