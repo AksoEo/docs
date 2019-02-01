@@ -2,9 +2,9 @@ parameters:
   - name: code
     in: path
     required: true
-    description: The UEA code of the codeholder
+    description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/UEACode'
+      $ref: '#/components/schemas/CodeholderId'
 
 get:
   summary: Returns a specific codeholder

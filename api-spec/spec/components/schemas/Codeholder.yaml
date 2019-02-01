@@ -1,4 +1,7 @@
 properties:
+  id:
+    $ref: '#/components/schemas/CodeholderId'
+
   oldCode:
     type: string
     nullable: true
