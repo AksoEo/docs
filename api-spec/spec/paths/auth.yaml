@@ -13,7 +13,7 @@ put:
                   title: email
                   minLength: 1
                   format: email
-                  description: The codeholder's email
+                  description: The codeholder's email address
 
             password:
               type: string

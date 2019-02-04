@@ -3,8 +3,10 @@ parameters:
     in: path
     required: true
     description: The ISO 3166-1 alpha-2 code of the country
-    minLength: 2
-    maxLength: 2
+    schema:
+      type: string
+      minLength: 2
+      maxLength: 2
 
 get:
   summary: Returns a specific country
