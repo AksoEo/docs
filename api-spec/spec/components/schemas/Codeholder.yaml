@@ -18,14 +18,14 @@ properties:
     pattern: ^[a-z]$
     description: The new six-letter UEA code of the codeholder
 
-  newCodeModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
+  newCode_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
 
-  newCodeModby:
-    $ref: '#/components/schemas/CodeholderModby'
+  newCode_modBy:
+    $ref: '#/components/schemas/CodeholderModBy'
 
-  newCodeModcmt:
-    $ref: '#/components/schemas/CodeholderModcmt'
+  newCode_modCmt:
+    $ref: '#/components/schemas/CodeholderModCmt'
 
   codeholderType:
     $ref: '#/components/schemas/CodeholderType'
@@ -37,8 +37,8 @@ properties:
     nullable: true
     description: The codeholder's password, if null the codeholder is not able to login
 
-  passwordModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
+  password_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
 
   address:
     allOf:
@@ -46,14 +46,14 @@ properties:
         description: The codeholder's normalized postal address
       - $ref: '#/components/schemas/PostalAddress'
 
-  addressModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
+  address_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
 
-  addressModby:
-    $ref: '#/components/schemas/CodeholderModby'
+  address_modBy:
+    $ref: '#/components/schemas/CodeholderModBy'
 
-  addressModcmt:
-    $ref: '#/components/schemas/CodeholderModcmt'
+  address_modCmt:
+    $ref: '#/components/schemas/CodeholderModCmt'
 
   addressLatin:
     allOf:
@@ -83,28 +83,28 @@ properties:
     pattern: ^[^\n]*$
     description: The codeholder's contact and login email address. If undefined, the codeholder may not login.
 
-  emailModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
+  email_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
 
-  emailModby:
-    $ref: '#/components/schemas/CodeholderModby'
+  email_modBy:
+    $ref: '#/components/schemas/CodeholderModBy'
 
-  emailModcmt:
-    $ref: '#/components/schemas/CodeholderModcmt'
+  email_modCmt:
+    $ref: '#/components/schemas/CodeholderModCmt'
 
   enabled:
     type: boolean
     default: true
     description: Whether the codeholder may login
 
-  enabledModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
+  enabled_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
 
-  enabledModby:
-    $ref: '#/components/schemas/CodeholderModby'
+  enabled_modBy:
+    $ref: '#/components/schemas/CodeholderModBy'
 
-  enabledModcmt:
-    $ref: '#/components/schemas/CodeholderModcmt'
+  enabled_modCmt:
+    $ref: '#/components/schemas/CodeholderModCmt'
 
   notes:
     type: string
@@ -112,14 +112,14 @@ properties:
     maxLength: 10000
     description: Administrative notes on the codeholder
 
-  notesModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
+  notes_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
 
-  notesModby:
-    $ref: '#/components/schemas/CodeholderModby'
+  notes_modBy:
+    $ref: '#/components/schemas/CodeholderModBy'
 
-  notesModcmt:
-    $ref: '#/components/schemas/CodeholderModcmt'
+  notes_modCmt:
+    $ref: '#/components/schemas/CodeholderModCmt'
 
   officePhone:
     allOf:
@@ -127,14 +127,14 @@ properties:
         nullable: true
       - $ref: '#/components/schemas/PhoneNumber'
 
-  officePhoneModtime:
-    $ref: '#/components/schemas/CodeholderModtime'
+  officePhone_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
 
-  officePhoneModby:
-    $ref: '#/components/schemas/CodeholderModby'
+  officePhone_modBy:
+    $ref: '#/components/schemas/CodeholderModBy'
 
-  officePhoneModcmt:
-    $ref: '#/components/schemas/CodeholderModcmt'
+  officePhone_modCmt:
+    $ref: '#/components/schemas/CodeholderModCmt'
 
   officePhoneFormatted:
     type: string

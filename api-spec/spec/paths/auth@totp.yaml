@@ -22,6 +22,9 @@ get:
                 format: binary
                 description: A PNG QR code of the `otpUrl`
 
+    '401':
+      description: No user-based session found
+
 delete:
   summary: Removes an existing TOTP key for a user
   description: The client must already be authenticated using user-based authentication as the first factor.
@@ -31,6 +34,9 @@ delete:
 
     '404':
       description: TOTP hasn't been set up
+
+    '401':
+      description: No user-based session found
 
 post:
   summary: Logs a client in using TOTP

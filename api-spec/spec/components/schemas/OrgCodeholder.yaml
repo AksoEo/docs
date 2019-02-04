@@ -8,14 +8,14 @@ allOf:
         pattern: ^[^\n]*$
         description: The organization's full name
 
-      fullNameModtime:
-        $ref: '#/components/schemas/CodeholderModtime'
+      fullName_modTime:
+        $ref: '#/components/schemas/CodeholderModTime'
 
-      fullNameModby:
-        $ref: '#/components/schemas/CodeholderModby'
+      fullName_modBy:
+        $ref: '#/components/schemas/CodeholderModBy'
 
-      fullNameModcmt:
-        $ref: '#/components/schemas/CodeholderModcmt'
+      fullName_modCmt:
+        $ref: '#/components/schemas/CodeholderModCmt'
 
       fullNameLocal:
         type: string
@@ -25,14 +25,14 @@ allOf:
         nullable: true
         description: The organization's full name as it's registered locally, for mailing purposes. Defaults to `fullName`.
 
-      fullNameLocalModtime:
-        $ref: '#/components/schemas/CodeholderModtime'
+      fullNameLocal_modTime:
+        $ref: '#/components/schemas/CodeholderModTime'
 
-      fullNameLocalModby:
-        $ref: '#/components/schemas/CodeholderModby'
+      fullNameLocal_modBy:
+        $ref: '#/components/schemas/CodeholderModBy'
 
-      fullNameLocalModcmt:
-        $ref: '#/components/schemas/CodeholderModcmt'
+      fullNameLocal_modCmt:
+        $ref: '#/components/schemas/CodeholderModCmt'
 
       careOf:
         type: string
@@ -50,14 +50,14 @@ allOf:
         nullable: true
         description: An abbreviation of the organization's name
 
-      nameAbbrevModtime:
-        $ref: '#/components/schemas/CodeholderModtime'
+      nameAbbrev_modTime:
+        $ref: '#/components/schemas/CodeholderModTime'
 
-      nameAbbrevModby:
-        $ref: '#/components/schemas/CodeholderModby'
+      nameAbbrev_modBy:
+        $ref: '#/components/schemas/CodeholderModBy'
 
-      nameAbbrevModcmt:
-        $ref: '#/components/schemas/CodeholderModcmt'
+      nameAbbrev_modCmt:
+        $ref: '#/components/schemas/CodeholderModCmt'
 
     required:
       - fullName

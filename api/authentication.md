@@ -16,3 +16,5 @@ Users accessing AKSO through the official interfaces (user or admin) must use se
 All requests made using this method of authentication must include a CSRF token in the `X-CSRF-token` HTTP header. This token is returned by the original `PUT` request to `/auth` and subsequent `GET` requests to `/auth`.
 
 These requests should always be made from the client side as not to unnecessarily expose the user's credentials to any server.
+
+For users accessing the administration panel at admin.akso.org 2FA is required. Certain IPs may be whitelisted, meaning that 2FA is not needed. The client should always check `GET /auth` to see if `totpUsed` is already set to true and only prompt the user to log in using 2FA if required.

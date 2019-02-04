@@ -1,0 +1,4 @@
+DB:
+	* Set innodb_ft_min_token_size to 3
+	* Remove all stopwords
+	* Rebuild FULLTEXT indexes
