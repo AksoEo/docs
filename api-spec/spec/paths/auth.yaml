@@ -6,8 +6,14 @@ put:
       application/vnd.msgpack:
         schema:
           properties:
-            code:
-              $ref: '#/components/schemas/UEACode'
+            login:
+              oneOf:
+                - $ref: '#/components/schemas/UEACode'
+                - type: string
+                  title: email
+                  minLength: 1
+                  format: email
+                  description: The codeholder's email
 
             password:
               type: string
@@ -15,7 +21,7 @@ put:
               description: The codeholder's password
 
           required:
-            - code
+            - login
             - password
 
   responses:
