@@ -7,6 +7,12 @@ servers:
 info:
   title: AKSO's REST API
   version: 0.1.0
+  description:
+    "This documentation uses the following custom properties:<br>
+
+    - `x-queryable`:  (`boolean`, default: `false`) Whether the property may be queried using the `filter` query parameter.
+    
+    - `x-searchable`: (`boolean`, default: `false`) Whether the property may be queried using the `search` query parameter."
 
 externalDocs:
   url: https://github.com/AksoEo/docs/tree/master/api
