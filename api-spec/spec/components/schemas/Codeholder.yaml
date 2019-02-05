@@ -43,7 +43,7 @@ properties:
   address:
     allOf:
       - nullable: true
-        description: The codeholder's normalized postal address
+        description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
       - $ref: '#/components/schemas/PostalAddress'
 
   address_modTime:
@@ -55,11 +55,19 @@ properties:
   address_modCmt:
     $ref: '#/components/schemas/CodeholderModCmt'
 
+  feeCountry:
+    type: string
+    nullable: true
+    minLength: 2
+    maxLength: 2
+    pattern: ^[^\n]*$
+    description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
+
   addressLatin:
     allOf:
       - nullable: true
         readOnly: true
-        description: The codeholder's latinized postal address, for searching
+        description: The codeholder's latinized postal address, for searching.
       - $ref: '#/components/schemas/PostalAddress'
 
   addressLatinDisplay:
@@ -72,7 +80,7 @@ properties:
     type: string
     nullable: true
     readOnly: true
-    description: The codeholder's native postal address, for address label
+    description: The codeholder's native postal address, for shipping labels
 
   email:
     type: string
