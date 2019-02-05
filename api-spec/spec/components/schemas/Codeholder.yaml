@@ -60,7 +60,7 @@ properties:
     nullable: true
     minLength: 2
     maxLength: 2
-    pattern: ^[^\n]*$
+    pattern: ^[a-z]{2}$
     description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
 
   feeCountry_modTime:
