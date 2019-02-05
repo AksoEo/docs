@@ -10,8 +10,8 @@ info:
   description:
     "This documentation uses the following custom properties:<br>
 
-    - `x-queryable`:  (`boolean`, default: `false`) Whether the property may be queried using the `filter` query parameter.
-    
+    - `x-queryable`:  (`boolean`, default: `false`) Whether the property may be queried using the `filter` or `order` query parameters.
+
     - `x-searchable`: (`boolean`, default: `false`) Whether the property may be queried using the `search` query parameter."
 
 externalDocs:
