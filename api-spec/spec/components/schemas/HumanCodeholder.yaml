@@ -92,6 +92,13 @@ allOf:
       birthdate_modCmt:
         $ref: '#/components/schemas/CodeholderModCmt'
 
+      age:
+        type: integer
+        format: int32
+        readOnly: true
+        nullable: true
+        description: The codeholder's age in whole years. `null` if `birthdate` is `null` or `isDead` is true.
+
       profession:
         type: string
         nullable: true

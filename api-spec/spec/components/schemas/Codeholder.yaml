@@ -159,7 +159,22 @@ properties:
     nullable: true
     description: The office phone number of the codeholder formatted according to its country code
 
+  isDead:
+    type: boolean
+    default: false
+    description: Whether the codeholder is dead (`HumanCodeholder`) or has ceased operations (`OrgCodeholder`)
+
+  isDead_modTime:
+    $ref: '#/components/schemas/CodeholderModTime'
+
+  isDead_modBy:
+    $ref: '#/components/schemas/CodeholderModBy'
+
+  isDead_modCmt:
+    $ref: '#/components/schemas/CodeholderModCmt'
+
 required:
   - newCode
   - enabled
   - codeholderType
+  - isDead
