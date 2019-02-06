@@ -2,20 +2,14 @@ properties:
   id:
     type: string
     description: The ISO 3166-1 alpha-2 code of the country
-    x-queryable: true
-    x-searchable: false
 
   name:
     type: string
     description: The country's name in Esperanto
-    x-queryable: true
-    x-searchable: true
 
   currency:
     type: string
     description: The ISO 4217 code of the country's currency as used by UEA
-    x-queryable: true
-    x-searchable: false
 
 required:
   - id

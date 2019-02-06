@@ -6,8 +6,6 @@ properties:
     maxLength: 2
     pattern: ^[a-z]{2}$
     description: The country. The ISO 3166-1 alpha-2 code of a `Country`.
-    x-queryable: true
-    x-searchable: false
 
   countryArea:
     type: string
@@ -16,8 +14,6 @@ properties:
     maxLength: 50
     pattern: ^[^\n]*$
     description: A designation of a region, province or state.
-    x-queryable: true
-    x-searchable: true
 
   city:
     type: string
@@ -26,8 +22,6 @@ properties:
     maxLength: 50
     pattern: ^[^\n]*$
     description: A city or town name.
-    x-queryable: true
-    x-searchable: true
 
   cityArea:
     type: string
@@ -36,8 +30,6 @@ properties:
     maxLength: 50
     pattern: ^[^\n]*$
     description: A sublocality like a district.
-    x-queryable: true
-    x-searchable: true
 
   streetAddress:
     type: string
@@ -45,8 +37,6 @@ properties:
     minLength: 1
     maxLength: 100
     description: A (possibly multiline) street address.
-    x-queryable: true
-    x-searchable: true
 
   postalCode:
     type: string
@@ -54,7 +44,5 @@ properties:
     minLength: 1
     maxLength: 20
     description: A postal or zip code.
-    x-queryable: true
-    x-searchable: true
 required:
   - country

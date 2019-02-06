@@ -1,5 +1,14 @@
 get:
   summary: Returns all countries
+  description: >
+    Filterable properties:
+
+    - `id`, `currency`
+
+
+    Searchable properties:
+
+    - `name`
   responses:
     '200':
       content:

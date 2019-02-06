@@ -1,5 +1,22 @@
 get:
   summary: Returns all codeholders
+  description: >
+    Filterable properties:
+
+    - Codeholder: `oldCode`, `newCode`, `codeholderType`, `feeCountry`, `addressLatin.*`, `email`, `enabled`, `officePhone`, `isDead`
+
+    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `birthdate`, `age`, `landlinePhone`, `cellphone`
+
+    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
+
+
+    Searchable properties:
+
+    - Codeholder: `addressLatin.[* - country]`, `email`, `notes`, `officePhone`
+
+    - HumanCodeholder: `(firstName, firstNameLegal, lastName, lastNameLegal)`, `landlinePhone`, `cellphone`
+
+    - OrgCodeholder: `(fullName, fullNameLocal)`, `careOf`, `nameAbbrev`
   responses:
     '200':
       description: OK

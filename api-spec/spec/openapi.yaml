@@ -8,11 +8,10 @@ info:
   title: AKSO's REST API
   version: 0.1.0
   description:
-    "This documentation uses the following custom properties:<br>
+    Filterable properties are properties allowed in `?order` and `?filter`.
 
-    - `x-queryable`:  (`boolean`, default: `false`) Whether the property may be queried using the `filter` or `order` query parameters.
 
-    - `x-searchable`: (`boolean`, default: `false`) Whether the property may be queried using the `search` query parameter."
+    Searchable properties are properties allowed in `?search`.
 
 externalDocs:
   url: https://github.com/AksoEo/docs/tree/master/api

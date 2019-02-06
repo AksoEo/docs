@@ -10,8 +10,6 @@ properties:
     readOnly: true
     pattern: ^[a-z]$
     description: The old four-letter UEA code of the codeholder
-    x-queryable: true
-    x-searchable: false
 
   newCode:
     type: string
@@ -19,8 +17,6 @@ properties:
     maxLength: 6
     pattern: ^[a-z]$
     description: The new six-letter UEA code of the codeholder
-    x-queryable: true
-    x-searchable: false
 
   newCode_modTime:
     $ref: '#/components/schemas/CodeholderModTime'
@@ -32,10 +28,7 @@ properties:
     $ref: '#/components/schemas/CodeholderModCmt'
 
   codeholderType:
-    allOf:
-      - $ref: '#/components/schemas/CodeholderType'
-      - x-queryable: true
-        x-searchable: false
+    $ref: '#/components/schemas/CodeholderType'
 
   password:
     type: string
@@ -69,8 +62,6 @@ properties:
     maxLength: 2
     pattern: ^[a-z]{2}$
     description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
-    x-queryable: true
-    x-searchable: false
 
   feeCountry_modTime:
     $ref: '#/components/schemas/CodeholderModTime'
@@ -109,8 +100,6 @@ properties:
     nullable: true
     pattern: ^[^\n]*$
     description: The codeholder's contact and login email address. If undefined, the codeholder may not login.
-    x-queryable: true
-    x-searchable: true
 
   email_modTime:
     $ref: '#/components/schemas/CodeholderModTime'
@@ -125,8 +114,6 @@ properties:
     type: boolean
     default: true
     description: Whether the codeholder may login
-    x-queryable: true
-    x-searchable: false
 
   enabled_modTime:
     $ref: '#/components/schemas/CodeholderModTime'
@@ -142,8 +129,6 @@ properties:
     default: ""
     maxLength: 10000
     description: Administrative notes on the codeholder
-    x-queryable: true
-    x-searchable: true
 
   notes_modTime:
     $ref: '#/components/schemas/CodeholderModTime'
@@ -158,8 +143,6 @@ properties:
     allOf:
       - description: The office phone number of the codeholder
         nullable: true
-        x-queryable: true
-        x-searchable: true
       - $ref: '#/components/schemas/PhoneNumber'
 
   officePhone_modTime:
@@ -181,8 +164,6 @@ properties:
     type: boolean
     default: false
     description: Whether the codeholder is dead (`HumanCodeholder`) or has ceased operations (`OrgCodeholder`)
-    x-queryable: true
-    x-searchable: false
 
   isDead_modTime:
     $ref: '#/components/schemas/CodeholderModTime'

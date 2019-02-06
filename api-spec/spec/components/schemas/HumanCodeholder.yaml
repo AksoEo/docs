@@ -8,8 +8,6 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The codeholder's preferred first name, must always be used unless you're 100% sure the legal name is needed. If `null`, `firstNameLegal` should be used.
-        x-queryable: true
-        x-searchable: true
 
       firstName_modTime:
         $ref: '#/components/schemas/CodeholderModTime'
@@ -26,8 +24,6 @@ allOf:
         maxLength: 50
         pattern: ^[^\n]*$
         description: The codeholder's legal first name
-        x-queryable: true
-        x-searchable: true
 
       firstNameLegal_modTime:
         $ref: '#/components/schemas/CodeholderModTime'
@@ -45,8 +41,6 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The codeholder's preferred last name, must always be used unless you're 100% sure the legal name is needed. If `null`, `lastNameLegal` should be used.
-        x-queryable: true
-        x-searchable: true
 
       lastName_modTime:
         $ref: '#/components/schemas/CodeholderModTime'
@@ -64,8 +58,6 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The codeholder's legal last name
-        x-queryable: true
-        x-searchable: true
 
       lastNameLegal_modTime:
         $ref: '#/components/schemas/CodeholderModTime'
@@ -95,8 +87,6 @@ allOf:
         format: date
         nullable: true
         description: The codeholder's date of birth
-        x-queryable: true
-        x-searchable: false
 
       birthdate_modTime:
         $ref: '#/components/schemas/CodeholderModTime'
@@ -113,8 +103,6 @@ allOf:
         readOnly: true
         nullable: true
         description: The codeholder's age in whole years. `null` if `birthdate` is `null` or `isDead` is true.
-        x-queryable: true
-        x-searchable: false
 
       profession:
         type: string
@@ -123,8 +111,6 @@ allOf:
         maxLength: 50
         pattern: ^[^\n]*$
         description: The codeholder's profession
-        x-queryable: false
-        x-searchable: false
 
       profession_modTime:
         $ref: '#/components/schemas/CodeholderModTime'
@@ -139,8 +125,6 @@ allOf:
         allOf:
           - nullable: true
             description: The landline phone number of the codeholder
-            x-queryable: true
-            x-searchable: true
           - $ref: '#/components/schemas/PhoneNumber'
 
       landlinePhone_modTime:
@@ -162,8 +146,6 @@ allOf:
         allOf:
           - nullable: true
             description: The cellphone number of the codeholder
-            x-queryable: true
-            x-searchable: true
           - $ref: '#/components/schemas/PhoneNumber'
 
       cellphone_modTime:
