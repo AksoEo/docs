@@ -3,15 +3,56 @@ properties:
     type: string
     description: The ISO 3166-1 alpha-2 code of the country
 
-  name:
-    type: string
-    description: The country's name in Esperanto
-
   currency:
     type: string
     description: The ISO 4217 code of the country's currency as used by UEA
 
+  name_eo:
+    type: string
+    description: The country's name in Esperanto
+
+  name_en:
+    type: string
+    description: The country's name in English
+
+  name_fr:
+    type: string
+    description: The country's name in French
+
+  name_es:
+    type: string
+    description: The country's name in Spanish
+
+  name_nl:
+    type: string
+    description: The country's name in Dutch
+
+  name_pt:
+    type: string
+    description: The country's name in Portuguese
+
+  name_sk:
+    type: string
+    description: The country's name in Slovak
+
+  name_zh:
+    type: string
+    description: The country's name in Chinese
+
+  name_de:
+    type: string
+    description: The country's name in German
+
 required:
   - id
-  - name
   - currency
+  - name_eo
+  - name_en
+  - name_fr
+  - name_es
+  - name_nl
+  - name_pt
+  - name_sk
+  - name_zh
+  - name_de
+
