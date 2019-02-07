@@ -1,0 +1,45 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+  - name: language
+    in: path
+    required: true
+    description: The language to display the name in. See `GET /countries` for a list of supported languages.
+    schema:
+      type: string
+      minLength: 2
+      maxLength: 2
+
+  - name: formatAs
+    in: query
+    description: The way to format the address.
+    schema:
+      type: string
+      default: displayLatin
+      enum:
+        - display
+        - displayLatin
+        - postal
+        - postalLatin
+
+get:
+  summary: Returns a specific codeholder's formatted address
+  description: No query parameters allowed
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              address:
+                type: string
+                nullable: true
+                description: The codeholder's formatted address. `null` if no address was found.
+    '404':
+      description: Codeholder not found

@@ -79,19 +79,6 @@ properties:
         description: The codeholder's latinized postal address, for searching.
       - $ref: '#/components/schemas/PostalAddress'
 
-  addressLatinDisplay:
-    type: string
-    nullable: true
-    readOnly: true
-    description: The codeholder's latinized postal address, for display
-
-
-  addressPostal:
-    type: string
-    nullable: true
-    readOnly: true
-    description: The codeholder's native postal address, for shipping labels
-
   email:
     type: string
     format: email

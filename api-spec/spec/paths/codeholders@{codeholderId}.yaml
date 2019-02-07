@@ -1,5 +1,5 @@
 parameters:
-  - name: code
+  - name: codeholderId
     in: path
     required: true
     description: The codeholder's internal id
