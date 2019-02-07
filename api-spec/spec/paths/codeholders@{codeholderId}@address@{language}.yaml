@@ -42,4 +42,4 @@ get:
                 nullable: true
                 description: The codeholder's formatted address. `null` if no address was found.
     '404':
-      description: Codeholder not found
+      description: Codeholder or language not found
