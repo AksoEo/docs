@@ -1,6 +1,10 @@
 get:
   summary: Get a TOTP key for a user
-  description: The client must already be authenticated using user-based authentication as the first factor.
+  description: >
+    The client must already be authenticated using user-based authentication as the first factor.
+
+
+    No query parameters allowed.
   responses:
     '200':
       description: 'OK'
@@ -27,7 +31,11 @@ get:
 
 delete:
   summary: Removes an existing TOTP key for a user
-  description: The client must already be authenticated using user-based authentication as the first factor.
+  description: >
+    The client must already be authenticated using user-based authentication as the first factor.
+
+
+    No query parameters allowed.
   responses:
     '204':
       description: TOTP removed
@@ -40,7 +48,11 @@ delete:
 
 post:
   summary: Logs a client in using TOTP
-  description: The client must already be authenticated using user-based authentication as the first factor.
+  description: >
+    The client must already be authenticated using user-based authentication as the first factor.
+
+
+    No query parameters allowed.
   requestBody:
     required: true
     content:

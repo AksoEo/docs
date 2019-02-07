@@ -1,5 +1,6 @@
 put:
   summary: Logs a client in using user-based authentication
+  description: No query parameters allowed
   requestBody:
     required: true
     content:
@@ -47,6 +48,7 @@ put:
 
 delete:
   summary: Logs a client out using user-based authentication
+  description: No query parameters allowed
   responses:
     '204':
       description: Logged out
@@ -56,6 +58,7 @@ delete:
 
 get:
   summary: Obtains information on this user-based session
+  description: No query parameters allowed
   responses:
     '200':
       description: OK
