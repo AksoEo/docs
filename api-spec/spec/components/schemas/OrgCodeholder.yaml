@@ -7,6 +7,7 @@ allOf:
         maxLength: 100
         pattern: ^[^\n]*$
         description: The organization's full name
+        x-hasHist: true
 
       fullNameLocal:
         type: string
@@ -15,6 +16,7 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The organization's full name as it's registered locally, for mailing purposes. Defaults to `fullName`.
+        x-hasHist: true
 
       careOf:
         type: string
@@ -23,6 +25,7 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The name of a person whose name should be included of addressing labels (useful when the address of the organization is a private mailing address).
+        x-hasHist: true
 
       nameAbbrev:
         type: string
@@ -31,6 +34,7 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: An abbreviation of the organization's name
+        x-hasHist: true
 
     required:
       - fullName

@@ -42,4 +42,4 @@ get:
                   $ref: '#/components/schemas/CodeholderModCmt'
     
     '404':
-      description: Codeholder not found
+      description: Codeholder or datum not found

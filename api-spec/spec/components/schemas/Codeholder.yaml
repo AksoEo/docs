@@ -1,6 +1,8 @@
 properties:
   id:
-    $ref: '#/components/schemas/CodeholderId'
+    allOf:
+      - $ref: '#/components/schemas/CodeholderId'
+      - x-hasHist: false
 
   oldCode:
     type: string
@@ -10,6 +12,7 @@ properties:
     readOnly: true
     pattern: ^[a-z]$
     description: The old four-letter UEA code of the codeholder
+    x-hasHist: false
 
   newCode:
     type: string
@@ -17,9 +20,12 @@ properties:
     maxLength: 6
     pattern: ^[a-z]$
     description: The new six-letter UEA code of the codeholder
+    x-hasHist: true
 
   codeholderType:
-    $ref: '#/components/schemas/CodeholderType'
+    allOf:
+      - $ref: '#/components/schemas/CodeholderType'
+      - x-hasHist: false
 
   password:
     type: string
@@ -27,11 +33,13 @@ properties:
     writeOnly: true
     nullable: true
     description: The codeholder's password, if null the codeholder is not able to login
+    x-hasHist: true
 
   address:
     allOf:
       - nullable: true
         description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
+        x-hasHist: true
       - $ref: '#/components/schemas/PostalAddress'
 
   feeCountry:
@@ -41,12 +49,14 @@ properties:
     maxLength: 2
     pattern: ^[a-z]{2}$
     description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
+    x-hasHist: true
 
   addressLatin:
     allOf:
       - nullable: true
         readOnly: true
         description: The codeholder's latinized postal address, for searching.
+        x-hasHist: true
       - $ref: '#/components/schemas/PostalAddress'
 
   email:
@@ -57,22 +67,26 @@ properties:
     nullable: true
     pattern: ^[^\n]*$
     description: The codeholder's contact and login email address. If undefined, the codeholder may not login.
+    x-hasHist: true
 
   enabled:
     type: boolean
     default: true
     description: Whether the codeholder may login
+    x-hasHist: true
 
   notes:
     type: string
     default: ""
     maxLength: 10000
     description: Administrative notes on the codeholder
+    x-hasHist: true
 
   officePhone:
     allOf:
-      - description: The office phone number of the codeholder
-        nullable: true
+      - nullable: true
+        description: The office phone number of the codeholder
+        x-hasHist: true
       - $ref: '#/components/schemas/PhoneNumber'
 
   officePhoneFormatted:
@@ -80,11 +94,13 @@ properties:
     readOnly: true
     nullable: true
     description: The office phone number of the codeholder formatted according to its country code
+    x-hasHist: true
 
   isDead:
     type: boolean
     default: false
     description: Whether the codeholder is dead (`HumanCodeholder`) or has ceased operations (`OrgCodeholder`)
+    x-hasHist: true
 
 required:
   - newCode
