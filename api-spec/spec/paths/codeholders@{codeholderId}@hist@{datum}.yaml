@@ -1,0 +1,45 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+  - name: datum
+    in: path
+    required: true
+    description: The name of the codeholder datum
+    schema:
+      type: string
+      minLength: 1
+
+get:
+  summary: Returns the history of a specific codeholder datum
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                val:
+                  description: The value of the codeholder datum at the specified time
+
+                modId:
+                  $ref: '#/components/schemas/CodeholderModId'
+
+                modTime:
+                  $ref: '#/components/schemas/CodeholderModTime'
+
+                modBy:
+                  $ref: '#/components/schemas/CodeholderModBy'
+
+                modCmt:
+                  $ref: '#/components/schemas/CodeholderModCmt'
+    
+    '404':
+      description: Codeholder not found

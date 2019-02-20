@@ -18,15 +18,6 @@ properties:
     pattern: ^[a-z]$
     description: The new six-letter UEA code of the codeholder
 
-  newCode_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  newCode_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  newCode_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
-
   codeholderType:
     $ref: '#/components/schemas/CodeholderType'
 
@@ -37,23 +28,11 @@ properties:
     nullable: true
     description: The codeholder's password, if null the codeholder is not able to login
 
-  password_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
   address:
     allOf:
       - nullable: true
         description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
       - $ref: '#/components/schemas/PostalAddress'
-
-  address_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  address_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  address_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
 
   feeCountry:
     type: string
@@ -62,15 +41,6 @@ properties:
     maxLength: 2
     pattern: ^[a-z]{2}$
     description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
-
-  feeCountry_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  feeCountry_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  feeCountry_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
 
   addressLatin:
     allOf:
@@ -88,28 +58,10 @@ properties:
     pattern: ^[^\n]*$
     description: The codeholder's contact and login email address. If undefined, the codeholder may not login.
 
-  email_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  email_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  email_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
-
   enabled:
     type: boolean
     default: true
     description: Whether the codeholder may login
-
-  enabled_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  enabled_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  enabled_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
 
   notes:
     type: string
@@ -117,29 +69,11 @@ properties:
     maxLength: 10000
     description: Administrative notes on the codeholder
 
-  notes_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  notes_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  notes_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
-
   officePhone:
     allOf:
       - description: The office phone number of the codeholder
         nullable: true
       - $ref: '#/components/schemas/PhoneNumber'
-
-  officePhone_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  officePhone_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  officePhone_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
 
   officePhoneFormatted:
     type: string
@@ -151,15 +85,6 @@ properties:
     type: boolean
     default: false
     description: Whether the codeholder is dead (`HumanCodeholder`) or has ceased operations (`OrgCodeholder`)
-
-  isDead_modTime:
-    $ref: '#/components/schemas/CodeholderModTime'
-
-  isDead_modBy:
-    $ref: '#/components/schemas/CodeholderModBy'
-
-  isDead_modCmt:
-    $ref: '#/components/schemas/CodeholderModCmt'
 
 required:
   - newCode

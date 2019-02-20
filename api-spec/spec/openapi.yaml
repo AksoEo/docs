@@ -8,10 +8,13 @@ info:
   title: AKSO's REST API
   version: 0.1.0
   description:
-    Filterable properties are properties allowed in `?order` and `?filter`.
+    Filterable properties are properties allowed in `?order` and `?filter` (collections only).
 
 
-    Searchable properties are properties allowed in `?search`.
+    Searchable properties are properties allowed in `?search` (collections only).
+
+
+    All query parameters are allowed unless otherwise specified for a specific path.
 
 externalDocs:
   url: https://github.com/AksoEo/docs/tree/master/api

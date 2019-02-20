@@ -9,30 +9,12 @@ allOf:
         nullable: true
         description: The codeholder's preferred first name, must always be used unless you're 100% sure the legal name is needed. If `null`, `firstNameLegal` should be used.
 
-      firstName_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      firstName_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      firstName_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
-
       firstNameLegal:
         type: string
         minLength: 1
         maxLength: 50
         pattern: ^[^\n]*$
         description: The codeholder's legal first name
-
-      firstNameLegal_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      firstNameLegal_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      firstNameLegal_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
 
       lastName:
         type: string
@@ -42,15 +24,6 @@ allOf:
         nullable: true
         description: The codeholder's preferred last name, must always be used unless you're 100% sure the legal name is needed. If `null`, `lastNameLegal` should be used.
 
-      lastName_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      lastName_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      lastName_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
-
       lastNameLegal:
         type: string
         minLength: 50
@@ -59,43 +32,16 @@ allOf:
         nullable: true
         description: The codeholder's legal last name
 
-      lastNameLegal_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      lastNameLegal_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      lastNameLegal_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
-
       honorific:
         allOf:
           - $ref: '#/components/schemas/HumanHonorific'
           - description: The codeholder's honorific
-
-      honorific_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      honorific_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      honorific_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
 
       birthdate:
         type: string
         format: date
         nullable: true
         description: The codeholder's date of birth
-
-      birthdate_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      birthdate_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      birthdate_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
 
       age:
         type: integer
@@ -112,29 +58,11 @@ allOf:
         pattern: ^[^\n]*$
         description: The codeholder's profession
 
-      profession_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      profession_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      profession_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
-
       landlinePhone:
         allOf:
           - nullable: true
             description: The landline phone number of the codeholder
           - $ref: '#/components/schemas/PhoneNumber'
-
-      landlinePhone_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      landlinePhone_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      landlinePhone_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
 
       landlinePhoneFormatted:
         type: string
@@ -147,15 +75,6 @@ allOf:
           - nullable: true
             description: The cellphone number of the codeholder
           - $ref: '#/components/schemas/PhoneNumber'
-
-      cellphone_modTime:
-        $ref: '#/components/schemas/CodeholderModTime'
-
-      cellphone_modBy:
-        $ref: '#/components/schemas/CodeholderModBy'
-
-      cellphone_modCmt:
-        $ref: '#/components/schemas/CodeholderModCmt'
 
       cellphoneFormatted:
         type: string

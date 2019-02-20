@@ -1,0 +1,4 @@
+type: integer
+format: int32
+readOnly: true
+description: The unique id of this codeholder datum modification
