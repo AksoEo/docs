@@ -62,7 +62,7 @@ post:
             totp:
               type: string
               minLength: 6
-              maxLength: 12
+              maxLength: 6
               description: The TOTP key as provided by the user
 
           required:
