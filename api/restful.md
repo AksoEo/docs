@@ -7,12 +7,14 @@ When using `application/vnd.msgpack` binary data must be encoded using the `bin`
 ### Requests
 All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`, unless method overriding is used (see [URL length](#url-length)), in which case `application/x-www-form-urlencoded` is permitted as well.
 
+If AKSO is unable to understand the client's content type, the request will fail as HTTP 415 (Unsupported media type).
+
 ### Responses
 AKSO attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. AKSO supports the following content types:
 * `application/vnd.msgpack` (recommended)
 * `application/json`
 
-If AKSO is unable to reply with the requested media type, the request will fail as HTTP 415 (Unsupported Media Type). In this case the error message will be rendered as `application/json`.
+If AKSO is unable to reply with the requested media type, the request will fail as HTTP 406 (Unacceptable). In this case the error message will be rendered as `application/json`.
 
 ## Errors
 For HTTP statuses 4xx and 5xx AKSO will reply with an object of the following format:
