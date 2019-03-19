@@ -5,25 +5,20 @@ AKSO tries to conform to RESTful API design norms and principles, however, due t
 When using `application/vnd.msgpack` binary data must be encoded using the `bin` family. In `application/json` all binary data is encoded using base64 and represented as a string.
 
 ### Requests
-All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`, unless method overriding is used (see [URL length](#url-length)), in which case `application/x-www-form-urlencoded` is permitted as well.
+All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`, unless method overriding is used (see [URL length](#url-length)), in which case `text/plain` must be used.
 
 If AKSO is unable to understand the client's content type, the request will fail as HTTP 415 (Unsupported media type).
+
+There's a hard limit of 1MB for each request body.
 
 ### Responses
 AKSO attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. AKSO supports the following content types:
 * `application/vnd.msgpack` (recommended)
 * `application/json`
 
-If AKSO is unable to reply with the requested media type, the request will fail as HTTP 406 (Unacceptable). In this case the error message will be rendered as `application/json`.
+If AKSO is unable to reply with the requested media type, the request will fail as HTTP 406 (Unacceptable).
 
-## Errors
-For HTTP statuses 4xx and 5xx AKSO will reply with an object of the following format:
-```javascript
-{
-    status:      int32,  // The HTTP status code
-    description: string  // A semantic description of the error, e.g. "Unknown field 'name'"
-}
-```
+Errors are always `text/plain`.
 
 ## Timeout
 All `GET` requests have a maximum database execution time (timeout) of 15 seconds. This means that any overly complicated filters should be split into several statements.
