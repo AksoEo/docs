@@ -5,7 +5,7 @@ AKSO tries to conform to RESTful API design norms and principles, however, due t
 When using `application/vnd.msgpack` binary data must be encoded using the `bin` family. In `application/json` all binary data is encoded using base64 and represented as a string.
 
 ### Requests
-All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`, unless method overriding is used (see [URL length](#url-length)), in which case `text/plain` must be used.
+All requests must use either `application/vnd.msgpack` (recommended) or `application/json` as their `Content-Type`, unless method overriding is used (see [URL length](#url-length)), in which case `application/x-www-form-urlencoded` may be used.
 
 If AKSO is unable to understand the client's content type, the request will fail as HTTP 415 (Unsupported media type).
 
@@ -33,7 +33,7 @@ POST /users
 X-Http-Method-Override: GET
 Content-Type: application/x-www-form-urlencoded
 
-limit=100&offset=20&query=eyJuYW1lIjoiSm9obiBTbWl0aCJ9
+limit=100&offset=20&filter=eyJuYW1lIjoiSm9obiBTbWl0aCJ9
 ```
 
 is functionally equivalent to
@@ -43,18 +43,20 @@ POST /users
 X-Http-Method-Override: GET
 Content-Type: application/json
 
-{"limit":100,"offset":20,"query":{"name":"John Smith"}}
+{"limit":100,"offset":20,"filter":{"name":"John Smith"}}
 ```
 
 which is functionally equivalent to
 
 ```http
-GET /users?limit=100&offset=20&query=eyJuYW1lIjoiSm9obiBTbWl0aCJ9
+GET /users?limit=100&offset=20&filter=eyJuYW1lIjoiSm9obiBTbWl0aCJ9
 ```
 
 Naturally `application/vnd.msgpack` may be used as well. When using `application/json` or `application/vnd.msgpack`, object parameters that are usually base64 encoded should be implemented as maps/objects instead.
 
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
+
+When using method overriding the query string must not exceed 1MB.
 
 ## Querying collections and resources
 AKSO utilizes the query string to filter a collection or the returned fields in resources. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
