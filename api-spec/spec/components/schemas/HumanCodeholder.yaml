@@ -51,7 +51,7 @@ allOf:
 
       age:
         type: integer
-        format: int32
+        format: uint8
         readOnly: true
         nullable: true
         description: The codeholder's age in whole years. `null` if `birthdate` is `null` or `isDead` is true.
