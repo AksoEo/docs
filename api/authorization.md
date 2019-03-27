@@ -25,8 +25,4 @@ Permissions are granted to clients using the following protocol:
 
 3. Per client additions
 
-	Clients may be granted specific permissions on a per client basis.
-
-4. Per client exclusions
-
-	Clients may be denied specific permissions overriding previously granted permissions on a per client basis.
+	Specific permissions may be granted on a per client basis.
