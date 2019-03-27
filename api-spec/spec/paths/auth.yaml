@@ -43,6 +43,10 @@ put:
                 type: boolean
                 description: Whether the user has logged in using TOTP for this session
 
+              isAdmin:
+                type: boolean
+                description: Whether the user is an admin and may access the admin panel at akso.org
+
     '401':
       description: Invalid credentials
 
@@ -76,6 +80,10 @@ get:
               totpUsed:
                 type: boolean
                 description: Whether the user has logged in using TOTP for this session
+
+              isAdmin:
+                type: boolean
+                description: Whether the user is an admin and may access the admin panel at akso.org
 
     '404':
       description: No user-based session found
