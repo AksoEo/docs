@@ -1,0 +1,67 @@
+get:
+  summary: Returns a log of all http requests
+  description: >
+    Filterable properties:
+    `id`, `time`, `codeholderId`, `apiKey`, `ip`, `origin`, `method`, `path`, `resStatus`
+
+
+    Searchable properties:
+    `userAgent`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              properties:
+                id:
+                  type: integer
+                  format: uint64
+                  description: The unique id of this log entry
+                time:
+                  type: integer
+                  format: uint64
+                  description: The unix epoch time of the request
+                codeholderId:
+                  allOf:
+                    - nullable: true
+                      description: The id of the codeholder who made the request, if user authentication was used
+                    - $ref: '#/components/schemas/CodeholderId'
+                apiKey:
+                  allOf:
+                    - nullable: true
+                      description: The api key of the application that made the request, if application authentication was used 
+                    - $ref: '#/components/schemas/APIKey'
+                ip:
+                  type: string
+                  format: binary
+                  minLength: 16
+                  maxLength: 16
+                  description: The IP address of the client. IPv4 addresses are mapped to IPv6.
+                origin:
+                  type: string
+                  maxLength: 300
+                  nullable: true
+                  description: The origin of the request as set by the client
+                userAgent:
+                  type: string
+                  maxLength: 500
+                  nullable: true
+                  description: The user agent of the client
+                method:
+                  type: string
+                  maxLength: 15
+                  description: The HTTP method of the request
+                path:
+                  type: string
+                  maxLength: 300
+                  description: The requested path
+                query:
+                  type: object
+                  description: A key:value mapping of the query parameters passed to the request
+                resStatus:
+                  type: integer
+                  format: int8
+                  description: The HTTP response code

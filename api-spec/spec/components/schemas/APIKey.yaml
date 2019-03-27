@@ -1,0 +1,4 @@
+type: string
+format: binary
+minLength: 16
+maxLength: 16
