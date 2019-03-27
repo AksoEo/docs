@@ -6,7 +6,7 @@ The checklist to ensure that your API call is legal is:
 2. Ensure that the fields used in the query string (e.g. `fields` and `filter`) are allowed
 3. Ensure that the request doesn't apply other access control restrictions based on the concerning resource.
 
-	An example of this could be that your client is only permitted to access `User` resources with an age of 13+.
+	An example of this could be that your client is only permitted to access `HumanCodeholder` resources with an age of 13+.
 
 4. Ensure that no other special permissions are required to perform the request
 
@@ -17,7 +17,7 @@ If a client attempts to make an unauthorized API call, the server will respond w
 Permissions are granted to clients using the following protocol:
 1. Hardcoded business logic
 
-	E.g. clients using user access as their authentication method are always allowed to modify certain fields in their own `User` resource.
+	E.g. clients using user access as their authentication method are always allowed to modify certain fields in their own `Codeholder` resource.
 
 2. Role-based permissions
 
@@ -30,9 +30,3 @@ Permissions are granted to clients using the following protocol:
 4. Per client exclusions
 
 	Clients may be denied specific permissions overriding previously granted permissions on a per client basis.
-
-Unlike usual permission models, AKSO employs a key-value based approach to permission scopes. This means that a client might have the permission `members.read` with the value `true`, meaning that they are allowed to read all data on all users with no limitations.
-
-However, if the value of the `members.read` key is set to `{ age: { $lt: 35 } }`, the user is only able to `GET` users under the age of 35. This permissions value uses the same syntax as is used for query filtering as defined in [RESTful API design principles](restful.md).
-
-Please note, that permissions with values other than `true` (and missing = `false`) are not used for anything other than permissions relating to members.
