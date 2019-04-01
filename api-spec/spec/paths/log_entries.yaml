@@ -36,10 +36,7 @@ get:
                     - $ref: '#/components/schemas/APIKey'
                 ip:
                   type: string
-                  format: binary
-                  minLength: 16
-                  maxLength: 16
-                  description: The IP address of the client. IPv4 addresses are mapped to IPv6.
+                  description: The IP address of the client
                 origin:
                   type: string
                   maxLength: 300
