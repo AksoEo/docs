@@ -148,7 +148,7 @@ AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The onl
 
 ## Header metadata
 All requests include metadata in the headers:
-* `X-Time-Taken`: Contains the amount of time the server used to process the request in milliseconds
+* `X-Response-Time`: Contains the amount of time the server used to process the request in milliseconds
 
 All `GET` requests on collections include metadata in the headers:
 * `X-Total-Items`: Contains the amount of total items in the collection without a limit
