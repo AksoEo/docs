@@ -2,7 +2,7 @@ get:
   summary: Returns a log of all http requests
   description: >
     Filterable properties:
-    `id`, `time`, `codeholderId`, `apiKey`, `ip`, `origin`, `method`, `path`, `resStatus`
+    `id`, `time`, `codeholderId`, `apiKey`, `ip`, `origin`, `method`, `path`, `resStatus`, `resTime`
 
 
     Searchable properties:
@@ -62,3 +62,6 @@ get:
                   type: integer
                   format: int8
                   description: The HTTP response code
+                resTime:
+                  type: number
+                  description: The response time in milliseconds
