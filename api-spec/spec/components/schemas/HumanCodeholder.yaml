@@ -57,6 +57,14 @@ allOf:
         description: The codeholder's age in whole years. `null` if `birthdate` is `null` or `isDead` is true.
         x-hasHist: false
 
+      agePrimo:
+        type: integer
+        format: uint8
+        readOnly: true
+        nullable: true
+        description: The codeholder's age in whole years at the beginning of the year. `null` if `birthdate` is `null` or `isDead` is true.
+        x-hasHist: false
+
       profession:
         type: string
         nullable: true
