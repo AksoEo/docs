@@ -11,6 +11,8 @@ If AKSO is unable to understand the client's content type, the request will fail
 
 There's a hard limit of 1MB for each request body.
 
+When using JSON any property described in the API spec as a binary string must be encoded in base64.
+
 ### Responses
 AKSO attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. AKSO supports the following content types:
 * `application/vnd.msgpack` (recommended)

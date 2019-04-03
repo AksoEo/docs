@@ -1,36 +1,5 @@
-get:
-  summary: Get a TOTP key for a user
-  description: >
-    The client must already be authenticated using user-based authentication as the first factor.
-
-
-    No query parameters allowed.
-  responses:
-    '200':
-      description: 'OK'
-      content:
-        application/vnd.msgpack:
-          schema:
-            properties:
-              secret:
-                type: string
-                format: binary
-                description: The secret key used for TOTP
-                minLength: 20
-                maxLength: 20
-              otpUrl:
-                type: string
-                description: The URL to use for setting up TOTP in an authenticator application
-              qr:
-                type: string
-                format: binary
-                description: A PNG QR code of the `otpUrl`
-
-    '401':
-      description: No user-based session found
-
 delete:
-  summary: Removes an existing TOTP key for a user
+  summary: Disables TOTP for the user
   description: >
     The client must already be authenticated using user-based authentication as the first factor.
 
@@ -41,7 +10,7 @@ delete:
       description: TOTP removed
 
     '404':
-      description: TOTP hasn't been set up
+      description: TOTP hasn't been set up, or the user hasn't signed in using totp
 
     '401':
       description: No user-based session found
@@ -50,6 +19,9 @@ post:
   summary: Logs a client in using TOTP
   description: >
     The client must already be authenticated using user-based authentication as the first factor.
+
+
+    This method sets up TOTP if the user has not already done so. The period must always be set to 30 seconds.
 
 
     No query parameters allowed.
@@ -65,6 +37,13 @@ post:
               maxLength: 6
               description: The TOTP key as provided by the user
 
+            secret:
+              type: string
+              format: binary
+              minLength: 20
+              maxLength: 20
+              description: The TOTP secret if performing TOTP setup
+
           required:
             - totp
   responses:
@@ -73,6 +52,9 @@ post:
 
     '401':
       description: 'Invalid TOTP'
+
+    '403':
+      description: The user has already signed in using TOTP, or TOTP has already been set up
 
     '404':
       description: 'No user-based session found'
