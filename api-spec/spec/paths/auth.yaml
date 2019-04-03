@@ -26,26 +26,8 @@ put:
             - password
 
   responses:
-    '200':
+    '204':
       description: Logged in
-      content:
-        application/vnd.msgpack:
-          schema:
-            properties:
-              csrfToken:
-                $ref: '#/components/schemas/CSRFToken'
-
-              totpSetUp:
-                type: boolean
-                description: Whether the user has set up TOTP
-
-              totpUsed:
-                type: boolean
-                description: Whether the user has logged in using TOTP for this session
-
-              isAdmin:
-                type: boolean
-                description: Whether the user is an admin and may access the admin panel at akso.org
 
     '401':
       description: Invalid credentials

@@ -20,6 +20,9 @@ If AKSO is unable to reply with the requested media type, the request will fail 
 
 Errors are always `text/plain`.
 
+## CSRF protection
+When performing a request using user based authentication, the `X-CSRF-Token` header must be set to contain a CSRF token as provided by `GET /auth`. The verbs `GET`, `HEAD` and `OPTIONS` are excluded from the CSRF token requirement.
+
 ## Timeout
 All `GET` requests have a maximum database execution time (timeout) of 15 seconds. This means that any overly complicated filters should be split into several statements.
 
