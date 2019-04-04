@@ -1,0 +1,28 @@
+get:
+  summary: Obtains the current permissions of the client
+  description: No query parameters allowed
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              permissions:
+                type: array
+                items:
+                  type: string
+                description: The raw permissions of the client
+
+              memberFields:
+                nullable: true
+                properties:
+                  '[field]':
+                    type: string
+                    enum: [ 'r', 'w', 'rw', 'ra' ] 
+                    description: A field and whether it's readable, writable, both or the special `ra` which means that it's writable but the change will only go through after it's been approved
+                description: The fields in `/codeholders` the client is allowed to access. If `null`, all fields are allowed.
+
+              memberFilter:
+                type: object
+                description: The filter applied to all requests to `/codeholders`

@@ -1,0 +1,8 @@
+admin # Allows access to the admin panel and requires totp
+
+codeholders:
+	create
+	read
+	update
+	delete
+	others # Allows access to other codeholders than the user themself

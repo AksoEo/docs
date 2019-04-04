@@ -10,7 +10,7 @@ The checklist to ensure that your API call is legal is:
 
 4. Ensure that no other special permissions are required to perform the request
 
-If you're unsure which permissions your client has, a `GET` request to `/auth/permissions` may be made.
+If you're unsure which permissions your client has, a `GET` request to `/perms` may be made.
 
 If a client attempts to make an unauthorized API call, the server will respond with an HTTP 401 Unauthorized status.
 
