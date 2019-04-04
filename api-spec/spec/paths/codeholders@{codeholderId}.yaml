@@ -8,6 +8,8 @@ parameters:
 
 get:
   summary: Returns a specific codeholder
+  description: >
+    Requires permission: `codeholders.read`
   responses:
     '200':
       description: OK

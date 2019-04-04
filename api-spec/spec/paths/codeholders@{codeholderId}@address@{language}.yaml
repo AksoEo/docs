@@ -29,7 +29,11 @@ parameters:
 
 get:
   summary: Returns a specific codeholder's formatted address
-  description: No query parameters allowed
+  description: >
+    No query parameters allowed
+
+
+    Requires permission: `codeholders.read`
   responses:
     '200':
       description: OK

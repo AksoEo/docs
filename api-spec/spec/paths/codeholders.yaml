@@ -1,6 +1,9 @@
 get:
   summary: Returns all codeholders
   description: >
+    Requires permission: `codeholders.read`
+
+
     Filterable properties:
 
     - Codeholder: `oldCode`, `newCode`, `codeholderType`, `feeCountry`, `addressLatin.*`, `email`, `enabled`, `officePhone`, `isDead`
