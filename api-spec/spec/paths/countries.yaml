@@ -3,12 +3,15 @@ get:
   description: >
     Filterable properties:
 
-    - `id`, `currency`
+    - `code`, `currency`
 
 
     Searchable properties:
 
     - `name_eo`
+
+
+    Max limit: 300
   responses:
     '200':
       content:

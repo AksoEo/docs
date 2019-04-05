@@ -73,7 +73,7 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`)
 
-    Must be a positive non-zero integer. The maximum value is defined by the collection.
+    Must be a positive non-zero integer lower than or equal to 100 unless the collection sets a different limit.
 
     Example: `?limit=20` to return a maximum of 20 items.
 
@@ -81,7 +81,7 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`)
 
-    Must be a positive non-zero integer.
+    Must be a non-negative integer.
 
     Example: `?offset=20` to ignore the first 20 items and only return items after them.
 
@@ -103,9 +103,9 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`)
 
-    Must be a csv containing a string of words to search for as the first column. Each word, separated by spaces, must be made of word characters only (`/[\p{L}\p{N}]/`) and must be at least 3 characters long. The following columns must be the names of the fields to search in. Only string fields may be searched.
+    Must be a csv containing a string of words to search for as the first column. Each word, separated by spaces, must be made of word characters only (`/[\p{L}\p{N}]/`) and must be at least 3 characters long, except when the word is followed by the wildcard character `*`. The following columns must be the names of the fields to search in. Only string fields may be searched.
 
-    The search is performed using [MySQL boolean full-text search](https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html) and as such certain operators are permitted: `( )`, `+`, `-`, `*` and `"`.
+    The search is performed using [InnoDB MySQL boolean full-text search](https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html) and as such certain operators are permitted: `+`, `-`, `*` and `"`.
 
     Example: `?search="john",name,email` to find users with the name "john" in their name or email address.
 
@@ -115,7 +115,9 @@ The recognized parameters are as follows:
 
     Must not be any longer than 8kB.
 
-    Must be a padding-less base64url representation (according to [RFC 4648 §5]()) of a JSON object containing the filters according to the following spec (loosely inspired by [MongoDB's db.collection.find](https://docs.mongodb.com/manual/reference/method/db.collection.find/)):
+    May be encoded using padding-less base64url (according to [RFC 4648 §5]()).
+
+    A JSON object containing the filters according to the following spec (loosely inspired by [MongoDB's db.collection.find](https://docs.mongodb.com/manual/reference/method/db.collection.find/)):
 
     The root object must contain fields as keys with their required value as the value, e.g. `{ name: "John Smith", nationality: "US" }` to find all users from the US with the name “John Smith”.
 

@@ -1,5 +1,5 @@
 properties:
-  id:
+  code:
     type: string
     description: The ISO 3166-1 alpha-2 code of the country
 
