@@ -1,5 +1,5 @@
 parameters:
-  - name: countryId
+  - name: countryCode
     in: path
     required: true
     description: The ISO 3166-1 alpha-2 code of the country
