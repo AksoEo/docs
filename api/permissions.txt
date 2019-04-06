@@ -6,3 +6,6 @@ codeholders:
 	update
 	delete
 	others # Allows access to other codeholders than the user themself
+
+log:
+	read
