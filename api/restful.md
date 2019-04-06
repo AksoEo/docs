@@ -113,8 +113,6 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`, operations)
 
-    Must not be any longer than 8kB.
-
     May be encoded using padding-less base64url (according to [RFC 4648 §5]()).
 
     A JSON object containing the filters according to the following spec (loosely inspired by [MongoDB's db.collection.find](https://docs.mongodb.com/manual/reference/method/db.collection.find/)):
@@ -136,15 +134,12 @@ The recognized parameters are as follows:
     * `$hasnone`: Like `$hasany` except the queried array must not contain any of the provided values.
     * `$hasall`: Like `$hasany` except the queried array must contain all of the provided values.
 
-    As an exception, the key may be `$search` instead of the name of a field in order to perform a search on several fields, e.g. `{ $search: { $val: "john", $in: [ "name", "email" ] } }` to find all users with the string `john` in either their name or their email. The value must be at least three characters long and only contain word characters and spaces (`/[\p{L}\p{N}\s]/`).
-
     It's also possible to use logical operators, e.g. `{ $or: [ { name: "Zamenhof" }, { age: { $lt: 35 } } ] }` to find all users who are named “Zamenhof” or are under 35.
 
     The full list of logical operators is:
     * `$and`: Joins expressions with a logical AND. Value must be an array of expressions. This is also possible implicitly by simply listing several expressions in one object.
     * `$or`: Joins expressions with a logical OR. Value must be an array of expressions.
     * `$not`: Negates an expression. Value must be an expression.
-    * `$xor`: Joins expressions with a logical XOR. Value must be an array of expressions.
 
 ## Operations
 AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are requested using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
