@@ -25,11 +25,6 @@ Errors are always `text/plain`.
 ## CSRF protection
 When performing a request using user based authentication, the `X-CSRF-Token` header must be set to contain a CSRF token as provided by `GET /auth`. The verbs `GET`, `HEAD` and `OPTIONS` are excluded from the CSRF token requirement.
 
-## Timeout
-All `GET` requests have a maximum database execution time (timeout) of 15 seconds. This means that any overly complicated filters should be split into several statements.
-
-Clients may terminate any `GET` requests after 18 seconds, allowing for 3 seconds of server processing time. User-facing applications could display a loading bar with the maximum being 18 seconds, at which point the query will be terminated.
-
 ## URL length
 Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, AKSO permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, AKSO expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
@@ -142,7 +137,7 @@ The recognized parameters are as follows:
     * `$not`: Negates an expression. Value must be an expression.
 
 ## Operations
-AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are requested using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
+AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are performed using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
 * All `User` resources in the collection `GET /users` have an operation `ban`.
     * To ban the user with the id `12` we'd call `POST /users/12/@ban`.
 * The `User` collection at `GET /users` has an operation `ban`.
