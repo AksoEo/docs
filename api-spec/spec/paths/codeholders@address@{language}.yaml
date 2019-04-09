@@ -1,11 +1,4 @@
 parameters:
-  - name: codeholderId
-    in: path
-    required: true
-    description: The codeholder's internal id
-    schema:
-      $ref: '#/components/schemas/CodeholderId'
-
   - name: language
     in: path
     required: true
@@ -28,22 +21,29 @@ parameters:
         - postalLatin
 
 get:
-  summary: Returns a specific codeholder's formatted address
+  summary: Returns all codeholders' formatted address
   description: >
+    Requires permission: `codeholders.read`
+
+
     Only `formatAs` allowed in query.
 
 
-    Requires permission: `codeholders.read`
+    Filterable properties: `id`
   responses:
     '200':
       description: OK
       content:
         application/vnd.msgpack:
           schema:
-            properties:
-              address:
-                type: string
-                nullable: true
-                description: The codeholder's formatted address. `null` if no address was found.
+            type: array
+            items:
+              properties:
+                id:
+                  $ref: '#/components/schemas/CodeholderId'
+                address:
+                  type: string
+                  nullable: true
+                  description: The codeholder's formatted address. `null` if no address was found.
     '404':
-      description: Codeholder or language not found
+      description: Language not found

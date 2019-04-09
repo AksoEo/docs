@@ -6,7 +6,7 @@ get:
 
     Filterable properties:
 
-    - Codeholder: `oldCode`, `newCode`, `codeholderType`, `feeCountry`, `addressLatin.*`, `email`, `enabled`, `officePhone`, `isDead`
+    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `feeCountry`, `addressLatin.*`, `email`, `enabled`, `officePhone`, `isDead`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `birthdate`, `age`, `landlinePhone`, `cellphone`
 
