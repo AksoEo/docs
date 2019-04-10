@@ -21,7 +21,7 @@ parameters:
         - postalLatin
 
 get:
-  summary: Returns all codeholders' formatted address
+  summary: Returns all codeholders' formatted addresses
   description: >
     Requires permission: `codeholders.read`
 
