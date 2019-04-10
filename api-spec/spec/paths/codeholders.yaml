@@ -6,9 +6,9 @@ get:
 
     Filterable properties:
 
-    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `feeCountry`, `addressLatin.*`, `email`, `enabled`, `officePhone`, `isDead`
+    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `feeCountry`, `addressLatin.*`, `email`, `enabled`, `isDead`
 
-    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `birthdate`, `age`, `landlinePhone`, `cellphone`
+    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `birthdate`, `age`, `agePrimo`,
 
     - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
 
@@ -19,7 +19,7 @@ get:
 
     - HumanCodeholder: `(firstName, firstNameLegal, lastName, lastNameLegal)`, `landlinePhone`, `cellphone`
 
-    - OrgCodeholder: `(fullName, fullNameLocal)`, `careOf`, `nameAbbrev`
+    - OrgCodeholder: `(fullName, fullNameLocal, nameAbbrev)`, `careOf`
   responses:
     '200':
       description: OK

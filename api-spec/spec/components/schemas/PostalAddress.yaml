@@ -44,5 +44,13 @@ properties:
     minLength: 1
     maxLength: 20
     description: A postal or zip code.
+
+  sortingCode:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 20
+    description: A sorting code
+
 required:
   - country
