@@ -25,6 +25,13 @@ Errors are always `text/plain`.
 ## CSRF protection
 When performing a request using user based authentication, the `X-CSRF-Token` header must be set to contain a CSRF token as provided by `GET /auth`. The verbs `GET`, `HEAD` and `OPTIONS` are excluded from the CSRF token requirement.
 
+## Rate limiting
+There's a rate limit of 300 requests/3 minutes. For signed in clients this is per client, otherwise it's per ip. When the rate limit is reached any subsequent requests will fail as HTTP 429. The response contains the header `Retry-After` containing the amount of seconds to wait before the rate limit if refilled.
+
+Clients with the permission `ratelimit.disable` are exempt from rate limiting.
+
+Requests to `/auth` will be slowed down after excessive requests.
+
 ## URL length
 Especially when querying collections, the length of URLs may become noticeably big. If the length of a URL exceed 2000 characters, it may cease to function on all stacks. For this reason, AKSO permits the use of the HTTP `X-Http-Method-Override` header on `POST` requests. In the case of `GET` and `DELETE` requests, AKSO expects the request body to contain the query string without the first question mark. Let's look at a fictional example putting this to use:
 
@@ -146,6 +153,8 @@ AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The onl
 ## Header metadata
 All requests include metadata in the headers:
 * `X-Response-Time`: Contains the amount of time the server used to process the request in milliseconds
+* `X-RateLimit-Limit`: Contains the rate limit maximum (left out for clients exempt from rate limiting)
+* `X-RateLimit-Remaining`: Contains the amount of requests left before the rate limit is reached (left out for clients exempt from rate limiting)
 
 All `GET` requests on collections include metadata in the headers:
 * `X-Total-Items`: Contains the amount of total items in the collection without a limit

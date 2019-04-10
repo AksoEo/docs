@@ -9,3 +9,6 @@ codeholders:
 
 log:
 	read
+
+ratelimit:
+	disable # Disables the rate limit for the client
