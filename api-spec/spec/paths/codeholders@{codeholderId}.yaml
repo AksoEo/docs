@@ -7,7 +7,7 @@ parameters:
       $ref: '#/components/schemas/CodeholderId'
 
 get:
-  summary: Returns a specific codeholder
+  summary: Returns a codeholder
   description: >
     Requires permission: `codeholders.read`
   responses:
@@ -19,5 +19,15 @@ get:
             oneOf:
               - $ref: '#/components/schemas/HumanCodeholder'
               - $ref: '#/components/schemas/OrgCodeholder'
+    '404':
+      description: Codeholder not found
+
+delete:
+  summary: Deletes a codeholder
+  description: >
+    Requires permission: `codeholders.delete`
+  responses:
+    '204':
+      description: Deleted
     '404':
       description: Codeholder not found
