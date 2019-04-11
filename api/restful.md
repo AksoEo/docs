@@ -144,11 +144,11 @@ The recognized parameters are as follows:
     * `$not`: Negates an expression. Value must be an expression.
 
 ## Operations
-AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an at-symbol (@). All operations are performed using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
+AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The only exception to this is the addition of operations prefixed by an exclamation mark (!). All operations are performed using the `POST` verb. Some operations may be called only on resources, others on entire collections. Let's look at a fictional example:
 * All `User` resources in the collection `GET /users` have an operation `ban`.
-    * To ban the user with the id `12` we'd call `POST /users/12/@ban`.
+    * To ban the user with the id `12` we'd call `POST /users/12/!ban`.
 * The `User` collection at `GET /users` has an operation `ban`.
-    * To ban all users we'd call `POST /users/@ban`
+    * To ban all users we'd call `POST /users/!ban`
 
 ## Header metadata
 All requests include metadata in the headers:

@@ -32,6 +32,9 @@ put:
     '401':
       description: Invalid credentials
 
+    '409':
+      description: User has no password, see `POST /codeholders/{email}/@create_password`
+
 delete:
   summary: Logs a client out using user-based authentication
   description: No query parameters allowed
