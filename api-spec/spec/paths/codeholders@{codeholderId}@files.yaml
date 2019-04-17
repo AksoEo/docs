@@ -1,0 +1,64 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+get:
+  summary: Returns a list of a codeholder's attached files
+  description: >
+    Has history.
+
+
+    Requires permission: `codeholders.read`
+
+
+    Filterable properties: `id`, `time`, `addedBy`, `mime`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              properties:
+                id:
+                  type: number
+                  format: uint32
+                  description: The unique file id
+
+                time:
+                  type: number
+                  format: uint64
+                  description: The unix epoch time at which the file was added
+
+                addedBy:
+                  allOf:
+                    - description: The id of the codeholder who added the file, null if added by an application
+                    - nullable: true
+                    - $ref: '#/components/schemas/CodeholderId'
+
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 80
+                  description: The humanly readable file name
+
+                description:
+                  type: string
+                  maxLength: 300
+                  nullable: true
+                  description: A humanly readable description of the file
+
+                mime:
+                  type: string
+                  description: The file's mime type
+
+    '404':
+      description: Codeholder not found

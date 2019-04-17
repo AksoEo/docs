@@ -27,6 +27,9 @@ get:
     Has history.
 
 
+    No query parameters allowed.
+
+
     Requires permission: `codeholders.read`
   responses:
     '200':

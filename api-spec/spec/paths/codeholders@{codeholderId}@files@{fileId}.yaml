@@ -1,0 +1,34 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+  - name: fileId
+    in: path
+    required: true
+    description: The file's id
+    schema:
+      type: number
+      format: uint32
+
+get:
+  summary: Returns an attached file from a codeholder
+  description: >
+    Has history.
+
+
+    Requires permission: `codeholders.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        '[mimeType]':
+          schema:
+            type: string
+            format: binary
+
+    '404':
+      description: Codeholder or file not found
