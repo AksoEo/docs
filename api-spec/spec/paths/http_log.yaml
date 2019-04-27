@@ -7,6 +7,9 @@ get:
 
     Searchable properties:
     `userAgent`
+
+
+    Permission required: `log.read`
   responses:
     '200':
       description: OK
