@@ -13,6 +13,9 @@ There's a hard limit of 1MB for each request body.
 
 When using JSON any property described in the API spec as a binary string must be encoded in base64.
 
+#### Multipart
+When using `multipart/form-data` requests make sure to honor the size limit for each multipart bit. The general msgpack/json properties, if any, will be in the property named `req`.
+
 ### Responses
 AKSO attempts to reply with a `Content-Type` acceptable by the client according to its `Accept` header. AKSO supports the following content types:
 * `application/vnd.msgpack` (recommended)
