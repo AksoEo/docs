@@ -107,6 +107,14 @@ properties:
     description: Whether the codeholder is dead (`HumanCodeholder`) or has ceased operations (`OrgCodeholder`)
     x-hasHist: true
 
+  deathdate:
+    type: string
+    format: date
+    nullable: true
+    default: null
+    description: The date at which the codeholder died (`HumanCodeholder`) or ceased operations (`OrgCodeholder`)
+    x-hasHist: true
+
 required:
   - newCode
   - enabled
