@@ -12,13 +12,13 @@ get:
     Has history.
 
 
-    Requires permission: `codeholders.read`
-
-
     Filterable properties: `id`, `time`, `addedBy`, `mime`
 
 
     Searchable properties: `name`, `description`
+
+
+    Requires permission: `codeholders.read`
   responses:
     '200':
       description: OK
@@ -59,6 +59,47 @@ get:
                 mime:
                   type: string
                   description: The file's mime type
+
+    '404':
+      description: Codeholder not found
+
+post:
+  summary: Attaches a new file to a codeholder
+  description: >
+    Has history
+
+
+    Requires permission: `codeholders.update`
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            req:
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 80
+                  description: The humanly readable file name
+
+                description:
+                  type: string
+                  maxLength: 300
+                  nullable: true
+                  description: A humanly readable description of the file
+
+            file:
+              type: string
+              format: binary
+              description: The `Content-Type` header of the file will be set as the mime type of the file.
+
+          required: [ req, file ]
+
+  responses:
+    '201':
+      description: File attached
 
     '404':
       description: Codeholder not found

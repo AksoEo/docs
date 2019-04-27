@@ -32,3 +32,18 @@ get:
 
     '404':
       description: Codeholder or file not found
+
+delete:
+  summary: Removes an attached file from a codeholder
+  description: >
+    Has history
+
+
+
+    Requires permissions: `codeholders.update`
+  responses:
+    '204':
+      description: File removed
+
+    '404':
+      description: Codeholder or file not found
