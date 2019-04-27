@@ -3,7 +3,7 @@ get:
   description: >
     Filterable properties:
 
-    - `code`, `currency`
+    - `code`
 
 
     Searchable properties:
