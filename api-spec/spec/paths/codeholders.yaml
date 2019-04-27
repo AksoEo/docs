@@ -20,6 +20,10 @@ get:
     - HumanCodeholder: `(firstName, firstNameLegal, lastName, lastNameLegal)`, `landlinePhone`, `cellphone`
 
     - OrgCodeholder: `(fullName, fullNameLocal, nameAbbrev)`, `careOf`
+
+    - Special:
+
+      - `name`: Uses `(firstName, firstNameLegal, lastName, lastNameLegal)` for humans and `(fullName, fullNameLocal, nameAbbrev)` for orgs.
   responses:
     '200':
       description: OK
