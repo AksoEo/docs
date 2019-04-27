@@ -59,6 +59,11 @@ properties:
         x-hasHist: true
       - $ref: '#/components/schemas/PostalAddress'
 
+  searchAddress:
+    type: string
+    maxLength: 2000
+    description: The codeholder's full formatted latin postal address for search purposes.
+
   email:
     type: string
     format: email

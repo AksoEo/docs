@@ -15,7 +15,7 @@ get:
 
     Searchable properties:
 
-    - Codeholder: `addressLatin.[* - country]`, `email`, `notes`, `officePhone`
+    - Codeholder: `addressLatin.[* - country]`, `searchAddress`, `email`, `notes`, `officePhone`
 
     - HumanCodeholder: `(firstName, firstNameLegal, lastName, lastNameLegal)`, `landlinePhone`, `cellphone`
 
