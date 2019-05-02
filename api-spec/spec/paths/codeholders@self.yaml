@@ -1,0 +1,18 @@
+get:
+  summary: Returns the logged in codeholder
+  description: >
+    Must be logged in using user auth.
+
+
+    Field restrictions: See [perms.js](https://github.com/AksoEo/API/blob/master/src/perms.js#L9)
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/HumanCodeholder'
+              - $ref: '#/components/schemas/OrgCodeholder'
+    '404':
+      description: No user using user auth found
