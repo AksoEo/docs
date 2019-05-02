@@ -68,3 +68,8 @@ get:
                 resTime:
                   type: number
                   description: The response time in milliseconds
+                resLocation:
+                  type: string
+                  maxLength: 300
+                  nullable: true
+                  description: The path of the resulting resource if a `Location` header was included in the response
