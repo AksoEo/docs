@@ -19,10 +19,18 @@ get:
                 properties:
                   '[field]':
                     type: string
-                    enum: [ 'r', 'w', 'rw', 'ra' ] 
-                    description: A field and whether it's readable, writable, both or the special `ra` which means that it's writable but the change will only go through after it's been approved
+                    enum: [ 'r', 'w', 'rw' ] 
+                    description: A field and whether it's readable, writable or both
                 description: The fields in `/codeholders` the client is allowed to access. If `null`, all fields are allowed.
 
               memberFilter:
                 type: object
                 description: The filter applied to all requests to `/codeholders`
+
+              ownMemberFields:
+                properties:
+                  '[field]':
+                    type: string
+                    enum: [ 'r', 'w', 'rw', 'ra' ]
+                    description: A field and whether it's readable, writable, both or the special `ra` which means that it's writable but the change will only go through after it's been approved
+                description: Like `memberFields` but applied to requests to `/codeholders/self`
