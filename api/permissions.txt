@@ -12,3 +12,8 @@ log:
 
 ratelimit:
 	disable # Disables the rate limit for the client
+
+country_groups:
+	create
+	update
+	delete

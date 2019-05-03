@@ -3,7 +3,7 @@ properties:
     type: string
     minLength: 3
     maxLength: 3
-    pattern: x[a-z]{2}
+    pattern: x[a-z0-9]{2}
     description: The unique identifier for the country group
 
   name:
