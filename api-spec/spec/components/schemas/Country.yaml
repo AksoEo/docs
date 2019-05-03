@@ -3,6 +3,10 @@ properties:
     type: string
     description: The ISO 3166-1 alpha-2 code of the country
 
+  enabled:
+    type: boolean
+    description: Whether the country currently exists
+
   name_eo:
     type: string
     description: The country's name in Esperanto

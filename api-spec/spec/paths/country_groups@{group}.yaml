@@ -1,0 +1,51 @@
+parameters:
+  - name: group
+    in: path
+    description: The code of the country group
+    schema:
+      type: string
+      minLength: 3
+      maxLength: 3
+
+get:
+  summary: Returns a country group
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CountryGroup'
+    '404':
+      description: Country group not found
+
+delete:
+  summary: Deletes a country group
+  description: >
+    Required permission: `country_groups.delete`
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Country group not found
+
+patch:
+  summary: Updates a country group
+  description: >
+    Required permission: `country_groups.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            name:
+              type: string
+              maxLength: 150
+              pattern: '[^\n]+'
+              description: The humanly readable name of the country group
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Country group not found

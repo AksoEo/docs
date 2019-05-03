@@ -1,0 +1,34 @@
+get:
+  summary: Returns all country groups
+  description: >
+    Filterable properties:
+
+    - `code`, `name`
+
+
+    Searchable properties:
+
+    - `name`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CountryGroup'
+
+post:
+  summary: Creates a new country group
+  description: >
+    Required permission: `country_groups.create`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/CountryGroup'
+  responses:
+    '201':
+      description: Created

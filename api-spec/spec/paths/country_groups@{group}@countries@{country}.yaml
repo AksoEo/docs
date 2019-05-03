@@ -1,0 +1,36 @@
+parameters:
+  - name: group
+    in: path
+    description: The code of the country group
+    schema:
+      type: string
+      minLength: 3
+      maxLength: 3
+
+  - name: country
+    in: path
+    description: The code of the country as given in `GET /countries`
+    schema:
+      type: string
+      minLength: 2
+      maxLength: 2
+
+put:
+  summary: Adds a country to a country group
+  description: >
+    Required permission: `country_groups.update`
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Country group not found
+
+delete:
+  summary: Removes a country from a country group
+  description: >
+    Required permission: `country_groups.update`
+  responses:
+    '204':
+      description: Removed
+    '404':
+      description: Country not found in country group
