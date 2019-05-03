@@ -23,7 +23,7 @@ put:
     '204':
       description: OK
     '404':
-      description: Country group not found
+      description: Country or country group not found
 
 delete:
   summary: Removes a country from a country group

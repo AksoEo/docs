@@ -44,6 +44,7 @@ patch:
               maxLength: 150
               pattern: '[^\n]+'
               description: The humanly readable name of the country group
+          minProperties: 1
   responses:
     '204':
       description: OK

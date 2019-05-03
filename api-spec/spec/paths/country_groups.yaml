@@ -32,3 +32,5 @@ post:
   responses:
     '201':
       description: Created
+    '409':
+      description: Code already in use
