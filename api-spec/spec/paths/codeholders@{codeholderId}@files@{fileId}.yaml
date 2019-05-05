@@ -17,10 +17,10 @@ parameters:
 get:
   summary: Returns an attached file from a codeholder
   description: >
-    Has history.
-
-
     Requires permission: `codeholders.read`
+
+
+    No query parameters allowed.
   responses:
     '200':
       description: OK
@@ -36,10 +36,6 @@ get:
 delete:
   summary: Removes an attached file from a codeholder
   description: >
-    Has history
-
-
-
     Requires permissions: `codeholders.update`
   responses:
     '204':

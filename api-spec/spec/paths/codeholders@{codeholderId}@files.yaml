@@ -9,9 +9,6 @@ parameters:
 get:
   summary: Returns a list of a codeholder's attached files
   description: >
-    Has history.
-
-
     Filterable properties: `id`, `time`, `addedBy`, `name`
 
 
@@ -52,6 +49,7 @@ get:
 
                 description:
                   type: string
+                  minLength: 1
                   maxLength: 300
                   nullable: true
                   description: A humanly readable description of the file
@@ -66,9 +64,6 @@ get:
 post:
   summary: Attaches a new file to a codeholder
   description: >
-    Has history
-
-
     Requires permission: `codeholders.update`
   requestBody:
     required: true
@@ -87,8 +82,8 @@ post:
 
                 description:
                   type: string
+                  minLength: 1
                   maxLength: 300
-                  nullable: true
                   description: A humanly readable description of the file
 
               required: [ name ]
@@ -96,7 +91,7 @@ post:
             file:
               type: string
               format: binary
-              description: The `Content-Type` header of the file will be set as the mime type of the file.
+              description: 'Max size: 6MB. The `Content-Type` header of the file will be set as the mime type of the file.'
 
           required: [ req, file ]
 
