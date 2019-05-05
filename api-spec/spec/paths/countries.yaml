@@ -3,7 +3,7 @@ get:
   description: >
     Filterable properties:
 
-    - `code`
+    - `code`, `enabled`, `name_eo`
 
 
     Searchable properties:
