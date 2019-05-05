@@ -12,7 +12,7 @@ get:
     Has history.
 
 
-    Filterable properties: `id`, `time`, `addedBy`, `mime`
+    Filterable properties: `id`, `time`, `addedBy`, `name`
 
 
     Searchable properties: `name`, `description`
