@@ -82,6 +82,7 @@ post:
                   type: string
                   minLength: 1
                   maxLength: 80
+                  pattern: ^[^n]+$
                   description: The humanly readable file name
 
                 description:
@@ -89,6 +90,8 @@ post:
                   maxLength: 300
                   nullable: true
                   description: A humanly readable description of the file
+
+              required: [ name ]
 
             file:
               type: string
