@@ -115,8 +115,13 @@ properties:
     description: The date at which the codeholder died (`HumanCodeholder`) or ceased operations (`OrgCodeholder`)
     x-hasHist: true
 
+  hasProfilePicture:
+    type: boolean
+    default: false
+    readOnly: true
+    description: Whether the codeholder has a profile picture
+    x-hasHist: true
+
 required:
   - newCode
-  - enabled
   - codeholderType
-  - isDead

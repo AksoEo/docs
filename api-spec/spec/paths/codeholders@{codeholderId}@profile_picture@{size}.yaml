@@ -5,6 +5,7 @@ parameters:
     description: The codeholder's internal id
     schema:
       $ref: '#/components/schemas/CodeholderId'
+      
   - name: size
     in: path
     required: true
@@ -44,6 +45,4 @@ get:
             type: string
             format: binary
     '404':
-      description: Codeholder not found
-    '204':
-      description: Codeholder has no picture
+      description: Codeholder not found or codeholder has no picture

@@ -1,0 +1,56 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+  - in: query
+    name: modCmt
+    schema:
+      $ref: '#/components/schemas/CodeholderModCmt'
+
+put:
+  summary: Sets a codeholder's profile picture
+  description: >
+    Has history.
+
+
+    Only `modCmt` allowed in query.
+
+
+    Requires permission: `codeholders.update`
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            picture:
+              type: string
+              format: binary
+              description: 'Max size: 2MB. Must either be `image/jpeg` or `image/png`. Should be cropped to a square on the client-side. Otherwise the server will do it centering the picture. Will be scaled down to 512px by the server.'
+          required: [ picture ]
+
+  responses:
+    '204':
+      description: Profile picture updated
+    '404':
+      description: Codeholder not found
+
+delete:
+  summary: Removes a codeholder's profile picture
+  description: >
+    Has history.
+
+
+    Only `modCmt` allowed in query.
+
+
+    Requires permission: `codeholders.update`
+  responses:
+    '204':
+      description: Profile picture removed
+    '404':
+      description: Codeholder not found or codeholder already has no picture

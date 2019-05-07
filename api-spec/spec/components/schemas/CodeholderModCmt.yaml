@@ -1,3 +1,5 @@
 type: string
 nullable: true
+minLength: 1
+maxLength: 500
 description: An optional comment on why the codeholder datum was modified
