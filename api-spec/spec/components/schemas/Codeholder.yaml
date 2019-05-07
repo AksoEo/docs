@@ -62,6 +62,7 @@ properties:
   searchAddress:
     type: string
     maxLength: 2000
+    x-hasHist: false
     description: The codeholder's full formatted latin postal address for search purposes.
 
   email:
