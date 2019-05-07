@@ -18,6 +18,16 @@ get:
   summary: Returns the history of a specific codeholder datum
   description: >
     Requires permission: `codeholders_hist.read`
+
+
+    Properties with history:
+
+
+    - Codeholder: `newCode`, `address`, `feeCountry`, `addressLatin`, `email`, `enabled`, `notes`, `officePhone`, `officePhoneFormatted`, `isDead`, `deathdate`, `hasProfilePicture`
+
+    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `honorific`, `birthdate`, `landlinePhone`, `landlinePhoneFormatted`, `cellphone`, `cellphoneFormatted`
+
+    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
   responses:
     '200':
       description: OK
