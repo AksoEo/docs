@@ -17,7 +17,7 @@ parameters:
 get:
   summary: Returns the history of a specific codeholder datum
   description: >
-    Requires permission: `codeholders.read`
+    Requires permission: `codeholders_hist.read`
   responses:
     '200':
       description: OK

@@ -7,6 +7,15 @@ codeholders:
 	delete
 	others # Allows access to other codeholders than the user themself
 
+codeholders_hist:
+	read
+
+queries:
+	create
+	read
+	update
+	delete
+
 log:
 	read
 

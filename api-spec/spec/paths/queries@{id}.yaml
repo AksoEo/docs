@@ -1,0 +1,77 @@
+parameters:
+  - name: id
+    in: path
+    description: A query id
+    required: true
+    schema:
+      type: number
+      format: uint32
+
+get:
+  summary: Gets a saved query filter
+  description: >
+    Requires permission: `queries.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/SavedQuery'
+    '404':
+      description: Query filter not found
+
+delete:
+  summary: Removes a saved query filter
+  description: >
+    Requires permission: `queries.delete`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Query filter not found
+
+patch:
+  summary: Updates a query filter
+  description: >
+    Required permission: `queries.update`
+
+
+    No query parameters allowed.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            category:
+              type: string
+              minLength: 1
+              maxLength: 15
+              pattern: ^[^\n]+$
+              description: The category of the query
+
+            name:
+              type: string
+              minLength: 1
+              maxLength: 100
+              pattern: ^[^\n]+$
+              description: The name of the query
+
+            description:
+              type: string
+              minLength: 1
+              maxLength: 1000
+              nullable: true
+              description: An optional text describing the query
+
+            query:
+              type: object
+              description: The query filter
+          minProperties: 1
+
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Query filter not found

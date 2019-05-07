@@ -1,0 +1,36 @@
+get:
+  summary: Gets all saved query filters
+  description: >
+    Requires permission: `queries.read`
+
+
+    Filterable properties: `id`, `category`, `name`
+
+
+    Searchable properties: `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/SavedQuery'
+
+post:
+  summary: Saves a new query filter
+  description: >
+    Required permission: `queries.create`
+
+
+    No query parameters allowed.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/SavedQuery'
+  responses:
+    '201':
+      description: Created
