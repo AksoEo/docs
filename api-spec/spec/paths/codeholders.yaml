@@ -6,11 +6,15 @@ get:
 
     Filterable properties:
 
-    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `feeCountry`, `addressLatin.*`, `email`, `enabled`, `isDead`, `deathdate`, `hasProfilePicture`
+    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `addressCountryGroups`, `feeCountry`, `feeCountryGroups`, `addressLatin.*`, `email`, `enabled`, `isDead`, `deathdate`, `hasProfilePicture`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `birthdate`, `age`, `agePrimo`,
 
     - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
+
+    - Special:
+
+      - `addressCountryGroups`, `feeCountryGroups`: May use `$hasAny`.
 
 
     Searchable properties:

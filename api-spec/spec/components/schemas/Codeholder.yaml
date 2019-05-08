@@ -42,6 +42,14 @@ properties:
         x-hasHist: true
       - $ref: '#/components/schemas/PostalAddress'
 
+  addressCountryGroups:
+    type: array
+    readOnly: true
+    items:
+      type: string
+    description: The country groups the address country belongs to
+    x-hasHist: false
+
   feeCountry:
     type: string
     nullable: true
@@ -50,6 +58,14 @@ properties:
     pattern: ^[a-z]{2}$
     description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
     x-hasHist: true
+
+  feeCountryGroups:
+    type: array
+    readOnly: true
+    items:
+      type: string
+    description: The country groups the fee country belongs to
+    x-hasHist: false
 
   addressLatin:
     allOf:

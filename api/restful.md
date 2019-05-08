@@ -136,6 +136,8 @@ The recognized parameters are as follows:
     * `$in`: Must be equal to one of the provided values. Value must be an array of optionally mixed types allowing any of `string`, `number`, `boolean` or `null`.
     * `$nin`: Like `$in` but demands a value not in the provided array.
 
+    Additionally there's a special `$hasAny` operator which checks if an array contains any value (`string`, `number`, `boolean` or `null`) from a provided array. This operator isn't implemented for all arrays. Check the API spec to see if it's implemented for a specific property on a specific collection.
+
     It's also possible to use logical operators, e.g. `{ $or: [ { name: "Zamenhof" }, { age: { $lt: 35 } } ] }` to find all users who are named “Zamenhof” or are under 35.
 
     The full list of logical operators is:
