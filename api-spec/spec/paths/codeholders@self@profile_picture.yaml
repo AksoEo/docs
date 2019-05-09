@@ -1,0 +1,37 @@
+put:
+  summary: Sets the logged in codeholder's profile picture
+  description: >
+    Has history.
+
+
+    Must be logged in using user auth.
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            picture:
+              type: string
+              format: binary
+              description: 'Max size: 2MB. Must either be `image/jpeg` or `image/png`. Should be cropped to a square on the client-side. Otherwise the server will do it centering the picture. Will be scaled down to 512px by the server.'
+          required: [ picture ]
+
+  responses:
+    '204':
+      description: Profile picture updated
+    '404':
+      description: No user session found
+
+delete:
+  summary: Removes the logged in codeholder's profile picture
+  description: >
+    Has history.
+
+
+    Must be logged in using user auth.
+  responses:
+    '204':
+      description: Profile picture removed
+    '404':
+      description: No user session found or codeholder already has no picture

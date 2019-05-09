@@ -1,11 +1,4 @@
 parameters:
-  - name: codeholderId
-    in: path
-    required: true
-    description: The codeholder's internal id
-    schema:
-      $ref: '#/components/schemas/CodeholderId'
-      
   - name: size
     in: path
     required: true
@@ -20,15 +13,12 @@ parameters:
         - 512px
 
 get:
-  summary: Returns a codeholder's profile picture
+  summary: Returns the logged in codeholder's profile picture
   description: >
     The content type of the picture is either `image/jpeg` or `image/png` depending on the original picture uploaded by the codeholder.
 
 
     No query parameters allowed.
-
-
-    Requires permission: `codeholders.read`
   responses:
     '200':
       description: OK
@@ -42,4 +32,4 @@ get:
             type: string
             format: binary
     '404':
-      description: Codeholder not found or codeholder has no picture
+      description: No user session found or codeholder has no picture
