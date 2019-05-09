@@ -2,11 +2,11 @@ get:
   summary: Returns a log of all http requests
   description: >
     Filterable properties:
-    `id`, `time`, `codeholderId`, `apiKey`, `ip`, `origin`, `method`, `path`, `resStatus`, `resTime`
+    `id`, `time`, `codeholderId`, `apiKey`, `ip`, `origin`, `method`, `path`, `resStatus`, `resTime`,
 
 
     Searchable properties:
-    `userAgent`
+    `userAgent`, `userAgentParsed`
 
 
     Permission required: `log.read`
@@ -50,6 +50,11 @@ get:
                   maxLength: 500
                   nullable: true
                   description: The user agent of the client
+                userAgentParsed:
+                  type: string
+                  maxLength: 500
+                  nullable: true
+                  description: The parsed user agent of the client
                 method:
                   type: string
                   maxLength: 15
