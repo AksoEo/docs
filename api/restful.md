@@ -66,7 +66,7 @@ Naturally `application/vnd.msgpack` may be used as well. When using `application
 
 This use of method overriding should only be used when the URL length exceeds 2000 characters unless extra care is taken to ensure proper client-side caching. The cache headers returned when using method overriding are equivalent to those of a native request.
 
-When using method overriding the query string must not exceed 1MB.
+When using method overriding the query string must not exceed 4kB.
 
 ## Querying collections and resources
 AKSO utilizes the query string to filter a collection or the returned fields in resources. Let's start out by looking at a fictional example: `GET /users?limit=20` will return only 20 users.
