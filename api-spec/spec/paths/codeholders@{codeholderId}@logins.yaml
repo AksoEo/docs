@@ -1,0 +1,27 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+get:
+  summary: Returns the login history of a codeholder
+  description: >
+    Requires permission: `codeholders.read`
+
+
+    Filterable properties: `id`, `time`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderLogin'
+
+    '404':
+      description: Codeholder not found

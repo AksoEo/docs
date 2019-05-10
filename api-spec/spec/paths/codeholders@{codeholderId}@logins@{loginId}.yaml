@@ -1,0 +1,30 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+  - name: loginId
+    in: path
+    required: true
+    description: The login id
+    schema:
+      type: number
+      format: uint64
+
+get:
+  summary: Returns a specific login entry of a codeholder
+  description: >
+    Requires permission: `codeholders.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CodeholderLogin'
+
+    '404':
+      description: Codeholder or login entry not found

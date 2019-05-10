@@ -1,0 +1,65 @@
+properties:
+  id:
+    type: number
+    format: uint64
+    description: The unique id of this login
+
+  time:
+    type: number
+    format: uint64
+    description: The unix time of the login
+
+  timezone:
+    type: string
+    maxLength: 32
+    description: The IANA timezone identifier of the login guessed based on the ip
+
+  ip:
+    type: string
+    description: The ip address the login was made from
+
+  userAgent:
+    type: string
+    maxLength: 500
+    nullable: true
+    description: The user agent of the client
+
+  userAgentParsed:
+    type: string
+    maxLength: 500
+    nullable: true
+    description: The parsed user agent of the client
+
+  ll:
+    type: array
+    minProperties: 2
+    maxProperties: 2
+    items:
+      type: number
+      format: integer
+    description: The lat lon coordinates of the login based on geoip data
+
+  area:
+    type: number
+    format: uint16
+    description: The accuracy of the coordinates in kilometers
+
+  country:
+    type: string
+    minLength: 2
+    maxLength: 2
+    nullable: true
+    description: The ISO 3166-1 alpha-2 country code
+
+  region:
+    type: string
+    minLength: 2
+    maxLength: 3
+    nullable: true
+    description: The ISO 3166-2 subdivision code
+
+  city:
+    type: string
+    maxLength: 150
+    nullable: true
+    description: The name of the city
