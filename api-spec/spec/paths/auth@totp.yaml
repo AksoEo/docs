@@ -44,6 +44,11 @@ post:
               maxLength: 20
               description: The TOTP secret if performing TOTP setup
 
+            remember:
+              type: boolean
+              default: false
+              description: Whether to remember this device and not ask for TOTP for 60 days
+
           required:
             - totp
   responses:
