@@ -1,0 +1,19 @@
+get:
+  summary: Returns the login history of the logged in codeholder
+  description: >
+    Requires user auth.
+
+
+    Filterable properties: `id`, `time`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderLogin'
+
+    '404':
+      description: No active user auth session found

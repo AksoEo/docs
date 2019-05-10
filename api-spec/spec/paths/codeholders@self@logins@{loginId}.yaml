@@ -1,0 +1,23 @@
+parameters:
+  - name: loginId
+    in: path
+    required: true
+    description: The login id
+    schema:
+      type: number
+      format: uint64
+
+get:
+  summary: Returns a specific login entry of the logged in codeholder
+  description: >
+    Requires user auth.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CodeholderLogin'
+
+    '404':
+      description: User auth session or login entry not found
