@@ -81,6 +81,31 @@ properties:
     x-hasHist: false
     description: The codeholder's full formatted latin postal address for search purposes.
 
+  membership:
+    type: array
+    description: A summary of the codeholder's membership containing the two most relevant (latest) membership entries
+    items:
+      properties:
+        categoryId:
+          type: number
+          format: uint32
+          description: The membership category identifier
+
+        year:
+          type: number
+          format: uint16
+          description: The year of the membership. Contains the start year for lifetime memberships
+
+        nameAbbrev:
+          type: string
+          maxLength: 6
+          description: The abbreviation of the membership category
+
+        name:
+          type: string
+          maxLength: 50
+          description: The full name of the membership category
+
   email:
     type: string
     format: email
@@ -134,7 +159,6 @@ properties:
 
   hasProfilePicture:
     type: boolean
-    default: false
     readOnly: true
     description: Whether the codeholder has a profile picture
     x-hasHist: true

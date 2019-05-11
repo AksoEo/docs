@@ -28,6 +28,11 @@ get:
     - Special:
 
       - `name`: Uses `(firstName, firstNameLegal, lastName, lastNameLegal)` for humans and `(fullName, fullNameLocal, nameAbbrev)` for orgs.
+
+
+    Special logic operators:
+
+    - `$membership`: Takes a filter object and returns only codeholders matching the membership filter. May use the following properties: `categoryId`, `givesMembership`, `lifetime`, `year`
   responses:
     '200':
       description: OK
