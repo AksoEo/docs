@@ -1,0 +1,61 @@
+properties:
+  id:
+    type: number
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this membership entry
+
+  categoryId:
+    type: number
+    format: uint32
+    description: The membership category identifier
+
+  year:
+    type: number
+    format: year
+    description: The year of the membership. For lifetime memberships this is the year the lifetime membership started.
+
+  nameAbbrev:
+    type: string
+    maxLength: 6
+    readOnly: true
+    description: The abbreviated name of the membership category
+
+  name:
+    type: string
+    maxLength: 50
+    readOnly: true
+    description: The full name of the membership category
+
+  description:
+    type: string
+    format: markdown
+    maxLength: 2000
+    readOnly: true
+    description: A humanly readable description of the membership category
+
+  givesMembership:
+    type: boolean
+    readOnly: true
+    description: Whether this membership category provides membership
+
+  lifetime:
+    type: boolean
+    readOnly: true
+    description: True if the category provided lifelong membership, false if it's valid for a year
+
+  availableFrom:
+    type: number
+    format: year
+    nullable: true
+    readOnly: true
+    description: The year the membership category started being orderable, null if always
+
+  availableTo:
+    type: number
+    format: year
+    nullable: true
+    readOnly: true
+    description: The last year the membership category is orderable, null for no limit
+
+required: [ categoryId, year ]

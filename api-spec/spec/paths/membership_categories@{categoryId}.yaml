@@ -1,0 +1,86 @@
+parameters:
+  - name: categoryId
+    in: path
+    required: true
+    description: The membership category id
+    schema:
+      type: number
+      format: uint32
+
+get:
+  summary: Returns a membership category
+  description: >
+    Requires permission: `membership_categories.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/MembershipCategory'
+    '404':
+      description: Membership category not found
+
+delete:
+  summary: Removes a membership category
+  description: >
+    Requires permission: `membership_categories.delete`
+
+
+    Warning: This permanently removes the category from codeholders' membership history
+  responses:
+    '204':
+      description: Removed
+    '404':
+      description: Membership category not found
+
+patch:
+  summary: Updates a membership category
+  description: >
+    Requires permission: `membership_categories.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            nameAbbrev:
+              type: string
+              maxLength: 6
+              description: The abbreviated name of the membership category
+
+            name:
+              type: string
+              maxLength: 50
+              description: The full name of the membership category
+
+            description:
+              type: string
+              format: markdown
+              maxLength: 2000
+              description: A humanly readable description of the membership category
+
+            givesMembership:
+              type: boolean
+              description: Whether this membership category provides membership
+
+            lifetime:
+              type: boolean
+              description: True if the category provided lifelong membership, false if it's valid for a year
+
+            availableFrom:
+              type: number
+              format: integer
+              nullable: true
+              description: The year the membership category started being orderable, null if always
+
+            availableTo:
+              type: number
+              format: integer
+              nullable: true
+              description: The last year the membership category is orderable, null for no limit
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Membership category not found

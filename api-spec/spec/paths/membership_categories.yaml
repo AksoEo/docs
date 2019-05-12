@@ -1,0 +1,30 @@
+get:
+  summary: Returns all membership categories
+  description: >
+    Requires permission: `membership_categories.read`
+
+
+    Filterable properties: `id`, `nameAbbrev`, `name`, `givesMembership`, `lifetime`, `availableFrom`, `availableTo`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/MembershipCategory'
+
+post:
+  summary: Creates a new membership category
+  description: >
+    Requires permission: `membership_categories.create`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/MembershipCategory'
+  responses:
+    '201':
+      description: Created

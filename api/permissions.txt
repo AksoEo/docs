@@ -10,6 +10,12 @@ codeholders:
 codeholders_hist:
 	read
 
+membership_categories:
+	create
+	read
+	update
+	delete
+
 queries:
 	create
 	read

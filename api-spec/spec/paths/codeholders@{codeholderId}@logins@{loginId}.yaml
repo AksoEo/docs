@@ -15,7 +15,7 @@ parameters:
       format: uint64
 
 get:
-  summary: Returns a specific login entry of a codeholder
+  summary: Returns a specific entry from a codeholder's login history
   description: >
     Requires permission: `codeholders.read`
   responses:
