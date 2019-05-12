@@ -32,7 +32,7 @@ get:
 
     Special logic operators:
 
-    - `$membership`: Takes a filter object and returns only codeholders matching the membership filter. May use the following properties: `categoryId`, `givesMembership`, `lifetime`, `year`
+    - `$membership`: Takes a filter object and returns only codeholders matching the membership filter. May use the following properties from `GET /codeholder/{codeholderId}/membership`: `categoryId`, `givesMembership`, `lifetime`, `year`
   responses:
     '200':
       description: OK
