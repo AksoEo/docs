@@ -33,8 +33,13 @@ properties:
     format: password
     writeOnly: true
     nullable: true
-    description: The codeholder's password, if null the codeholder is not able to login
+    description: The codeholder's password, if null the codeholder is not able to log in
     x-hasHist: true
+
+  hasPassword:
+    type: boolean
+    readOnly: true
+    description: Whether the codeholder has set a password, enabling them to log in
 
   address:
     allOf:
