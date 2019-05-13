@@ -1,8 +1,6 @@
 properties:
   id:
-    allOf:
-      - $ref: '#/components/schemas/CodeholderId'
-      - x-hasHist: false
+    $ref: '#/components/schemas/CodeholderId'
 
   oldCode:
     type: string
@@ -12,7 +10,6 @@ properties:
     readOnly: true
     pattern: ^[a-z]$
     description: The old four-letter UEA code of the codeholder
-    x-hasHist: false
 
   newCode:
     type: string
@@ -20,13 +17,11 @@ properties:
     maxLength: 6
     pattern: ^[a-z]$
     description: The new six-letter UEA code of the codeholder
-    x-hasHist: true
 
   codeholderType:
     allOf:
       - $ref: '#/components/schemas/CodeholderType'
-      - x-hasHist: false
-        readOnly: true
+      - readOnly: true
 
   password:
     type: string
@@ -34,7 +29,6 @@ properties:
     writeOnly: true
     nullable: true
     description: The codeholder's password, if null the codeholder is not able to log in
-    x-hasHist: true
 
   hasPassword:
     type: boolean
@@ -44,7 +38,6 @@ properties:
   address:
     allOf:
       - description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
-        x-hasHist: true
       - $ref: '#/components/schemas/PostalAddress'
 
   addressCountryGroups:
@@ -53,7 +46,6 @@ properties:
     items:
       type: string
     description: The country groups the address country belongs to
-    x-hasHist: false
 
   feeCountry:
     type: string
@@ -62,7 +54,6 @@ properties:
     maxLength: 2
     pattern: ^[a-z]{2}$
     description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
-    x-hasHist: true
 
   feeCountryGroups:
     type: array
@@ -70,20 +61,17 @@ properties:
     items:
       type: string
     description: The country groups the fee country belongs to
-    x-hasHist: false
 
   addressLatin:
     allOf:
       - nullable: true
         readOnly: true
         description: The codeholder's latinized postal address, for searching.
-        x-hasHist: true
       - $ref: '#/components/schemas/PostalAddress'
 
   searchAddress:
     type: string
     maxLength: 2000
-    x-hasHist: false
     readOnly: true
     description: The codeholder's full formatted latin postal address for search purposes.
 
@@ -124,27 +112,23 @@ properties:
     maxLength: 200
     nullable: true
     pattern: ^[^\n]*$
-    description: The codeholder's contact and login email address. If undefined, the codeholder may not login.
-    x-hasHist: true
+    description: The codeholder's contact and login email address
 
   enabled:
     type: boolean
     default: true
     description: Whether the codeholder may login
-    x-hasHist: true
 
   notes:
     type: string
     default: ""
     maxLength: 10000
     description: Administrative notes on the codeholder
-    x-hasHist: true
 
   officePhone:
     allOf:
       - nullable: true
         description: The office phone number of the codeholder
-        x-hasHist: true
       - $ref: '#/components/schemas/PhoneNumber'
 
   officePhoneFormatted:
@@ -152,13 +136,11 @@ properties:
     readOnly: true
     nullable: true
     description: The office phone number of the codeholder formatted according to its country code
-    x-hasHist: true
 
   isDead:
     type: boolean
     default: false
     description: Whether the codeholder is dead (`HumanCodeholder`) or has ceased operations (`OrgCodeholder`)
-    x-hasHist: true
 
   deathdate:
     type: string
@@ -166,13 +148,11 @@ properties:
     nullable: true
     default: null
     description: The date at which the codeholder died (`HumanCodeholder`) or ceased operations (`OrgCodeholder`)
-    x-hasHist: true
 
   hasProfilePicture:
     type: boolean
     readOnly: true
     description: Whether the codeholder has a profile picture
-    x-hasHist: true
 
 required:
   - newCode

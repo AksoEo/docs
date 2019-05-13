@@ -23,9 +23,9 @@ get:
     Properties with history:
 
 
-    - Codeholder: `newCode`, `address`, `feeCountry`, `addressLatin`, `email`, `enabled`, `notes`, `officePhone`, `officePhoneFormatted`, `isDead`, `deathdate`, `hasProfilePicture`
+    - Codeholder: `newCode`, `password`, `address`, `feeCountry`, `address`, `addressLatin`, `email`, `enabled`, `notes`, `officePhone`, `isDead`, `deathdate`, `hasProfilePicture`
 
-    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `honorific`, `birthdate`, `landlinePhone`, `landlinePhoneFormatted`, `cellphone`, `cellphoneFormatted`
+    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `honorific`, `birthdate`, `landlinePhone`, `cellphone`
 
     - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
   responses:
@@ -39,7 +39,9 @@ get:
               type: object
               properties:
                 val:
-                  description: The value of the codeholder datum at the specified time
+                  properties:
+                    '[datum]':
+                      description: The value of the codeholder datum at the specified time
 
                 modId:
                   $ref: '#/components/schemas/CodeholderModId'

@@ -8,7 +8,6 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The codeholder's preferred first name, must always be used unless you're 100% sure the legal name is needed. If `null`, `firstNameLegal` should be used.
-        x-hasHist: true
 
       firstNameLegal:
         type: string
@@ -16,7 +15,6 @@ allOf:
         maxLength: 50
         pattern: ^[^\n]*$
         description: The codeholder's legal first name
-        x-hasHist: true
 
       lastName:
         type: string
@@ -25,7 +23,6 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The codeholder's preferred last name, must always be used unless you're 100% sure the legal name is needed. If `null`, `lastNameLegal` should be used.
-        x-hasHist: true
 
       lastNameLegal:
         type: string
@@ -34,20 +31,17 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: The codeholder's legal last name
-        x-hasHist: true
 
       honorific:
         allOf:
           - $ref: '#/components/schemas/HumanHonorific'
           - description: The codeholder's honorific
-            x-hasHist: true
 
       birthdate:
         type: string
         format: date
         nullable: true
         description: The codeholder's date of birth
-        x-hasHist: true
 
       age:
         type: integer
@@ -55,7 +49,6 @@ allOf:
         readOnly: true
         nullable: true
         description: The codeholder's age in whole years. `null` if `birthdate` is `null` or `isDead` is true.
-        x-hasHist: false
 
       agePrimo:
         type: integer
@@ -63,7 +56,6 @@ allOf:
         readOnly: true
         nullable: true
         description: The codeholder's age in whole years at the beginning of the year. `null` if `birthdate` is `null` or `isDead` is true.
-        x-hasHist: false
 
       profession:
         type: string
@@ -72,13 +64,11 @@ allOf:
         maxLength: 50
         pattern: ^[^\n]*$
         description: The codeholder's profession
-        x-hasHist: true
 
       landlinePhone:
         allOf:
           - nullable: true
             description: The landline phone number of the codeholder
-            x-hasHist: true
           - $ref: '#/components/schemas/PhoneNumber'
 
       landlinePhoneFormatted:
@@ -86,13 +76,11 @@ allOf:
         readOnly: true
         nullable: true
         description: The landline phone number of the codeholder formatted according to its country code
-        x-hasHist: true
 
       cellphone:
         allOf:
           - nullable: true
             description: The cellphone number of the codeholder
-            x-hasHist: true
           - $ref: '#/components/schemas/PhoneNumber'
 
       cellphoneFormatted:
@@ -100,7 +88,6 @@ allOf:
         readOnly: true
         nullable: true
         description: The cellphone number of the codeholder formatted according to its country code
-        x-hasHist: true
 
     required:
       - firstNameLegal
