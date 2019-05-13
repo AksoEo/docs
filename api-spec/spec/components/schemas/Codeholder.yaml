@@ -26,6 +26,7 @@ properties:
     allOf:
       - $ref: '#/components/schemas/CodeholderType'
       - x-hasHist: false
+        readOnly: true
 
   password:
     type: string
@@ -37,8 +38,7 @@ properties:
 
   address:
     allOf:
-      - nullable: true
-        description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
+      - description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
         x-hasHist: true
       - $ref: '#/components/schemas/PostalAddress'
 
@@ -79,10 +79,12 @@ properties:
     type: string
     maxLength: 2000
     x-hasHist: false
+    readOnly: true
     description: The codeholder's full formatted latin postal address for search purposes.
 
   membership:
     type: array
+    readOnly: true
     description: A summary of the codeholder's membership containing the two most relevant (latest) membership entries
     items:
       properties:

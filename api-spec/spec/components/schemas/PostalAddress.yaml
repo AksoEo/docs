@@ -43,6 +43,7 @@ properties:
     nullable: true
     minLength: 1
     maxLength: 20
+    pattern: ^[^\n]*$
     description: A postal or zip code.
 
   sortingCode:
@@ -50,6 +51,7 @@ properties:
     nullable: true
     minLength: 1
     maxLength: 20
+    pattern: ^[^\n]*$
     description: A sorting code
 
 required:

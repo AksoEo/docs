@@ -44,3 +44,23 @@ get:
               oneOf:
                 - $ref: '#/components/schemas/HumanCodeholder'
                 - $ref: '#/components/schemas/OrgCodeholder'
+
+post:
+  summary: Creates a new codeholder
+  description: >
+    Requires permission: `codeholders.create`
+
+
+    The created codeholder must pass the member filter and member field restrictions.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/HumanCodeholderCreation'
+              - $ref: '#/components/schemas/OrgCodeholderCreation'
+  responses:
+    '201':
+      description: Created
