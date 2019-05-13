@@ -1,0 +1,15 @@
+get:
+  summary: Returns the logged in codeholder's membership history
+  description: >
+    Properties: See `GET /codeholders/{codeholderId}/membership`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderMembership'
+    '404':
+      description: No user auth session found
