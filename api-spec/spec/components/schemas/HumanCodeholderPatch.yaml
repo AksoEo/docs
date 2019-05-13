@@ -1,0 +1,64 @@
+allOf:
+  - $ref: '#/components/schemas/CodeholderPatch'
+  - properties:
+      firstName:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        nullable: true
+        description: The codeholder's preferred first name, must always be used unless you're 100% sure the legal name is needed. If `null`, `firstNameLegal` should be used.
+
+      firstNameLegal:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        description: The codeholder's legal first name
+
+      lastName:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        nullable: true
+        description: The codeholder's preferred last name, must always be used unless you're 100% sure the legal name is needed. If `null`, `lastNameLegal` should be used.
+
+      lastNameLegal:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        nullable: true
+        description: The codeholder's legal last name
+
+      honorific:
+        allOf:
+          - $ref: '#/components/schemas/HumanHonorific'
+          - description: The codeholder's honorific
+
+      birthdate:
+        type: string
+        format: date
+        nullable: true
+        description: The codeholder's date of birth
+
+      profession:
+        type: string
+        nullable: true
+        minLength: 1
+        maxLength: 50
+        pattern: ^[^\n]*$
+        description: The codeholder's profession
+
+      landlinePhone:
+        allOf:
+          - nullable: true
+            description: The landline phone number of the codeholder
+          - $ref: '#/components/schemas/PhoneNumber'
+
+      cellphone:
+        allOf:
+          - nullable: true
+            description: The cellphone number of the codeholder
+          - $ref: '#/components/schemas/PhoneNumber'

@@ -1,0 +1,33 @@
+allOf:
+  - $ref: '#/components/schemas/CodeholderPatch'
+  - properties:
+      fullName:
+        type: string
+        minLength: 1
+        maxLength: 100
+        pattern: ^[^\n]*$
+        description: The organization's full name
+
+      fullNameLocal:
+        type: string
+        minLength: 1
+        maxLength: 100
+        pattern: ^[^\n]*$
+        nullable: true
+        description: The organization's full name as it's registered locally, for mailing purposes.
+
+      careOf:
+        type: string
+        minLength: 1
+        maxLength: 100
+        pattern: ^[^\n]*$
+        nullable: true
+        description: The name of a person whose name should be included of addressing labels (useful when the address of the organization is a private mailing address).
+
+      nameAbbrev:
+        type: string
+        minLength: 1
+        maxLength: 12
+        pattern: ^[^\n]*$
+        nullable: true
+        description: An abbreviation of the organization's name

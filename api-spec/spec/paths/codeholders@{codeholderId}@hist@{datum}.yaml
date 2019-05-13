@@ -23,7 +23,7 @@ get:
     Properties with history:
 
 
-    - Codeholder: `newCode`, `password`, `address`, `feeCountry`, `address`, `addressLatin`, `email`, `enabled`, `notes`, `officePhone`, `isDead`, `deathdate`, `hasProfilePicture`
+    - Codeholder: `newCode`, `password`, `address`, `feeCountry`, `address`, `email`, `enabled`, `notes`, `officePhone`, `isDead`, `deathdate`, `hasProfilePicture`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `honorific`, `birthdate`, `landlinePhone`, `cellphone`
 
@@ -41,7 +41,7 @@ get:
                 val:
                   properties:
                     '[datum]':
-                      description: The value of the codeholder datum at the specified time
+                      description: The previous value of the codeholder datum until the specified time
 
                 modId:
                   $ref: '#/components/schemas/CodeholderModId'

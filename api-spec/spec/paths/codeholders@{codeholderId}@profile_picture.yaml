@@ -14,9 +14,6 @@ parameters:
 put:
   summary: Sets a codeholder's profile picture
   description: >
-    Has history.
-
-
     Only `modCmt` allowed in query.
 
 
@@ -42,9 +39,6 @@ put:
 delete:
   summary: Removes a codeholder's profile picture
   description: >
-    Has history.
-
-
     Only `modCmt` allowed in query.
 
 

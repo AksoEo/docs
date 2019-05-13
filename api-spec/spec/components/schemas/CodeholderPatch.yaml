@@ -1,0 +1,57 @@
+properties:
+  newCode:
+    type: string
+    minLength: 6
+    maxLength: 6
+    pattern: ^[a-z]$
+    description: The new six-letter UEA code of the codeholder
+
+  address:
+    allOf:
+      - description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
+      - $ref: '#/components/schemas/PostalAddress'
+  feeCountry:
+    type: string
+    nullable: true
+    minLength: 2
+    maxLength: 2
+    pattern: ^[a-z]{2}$
+    description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address, if defined. If not defined, the codeholder may not renew their membership without first setting their address.
+
+  email:
+    type: string
+    format: email
+    minLength: 3
+    maxLength: 200
+    nullable: true
+    pattern: ^[^\n]*$
+    description: The codeholder's contact and login email address
+
+  enabled:
+    type: boolean
+    default: true
+    description: Whether the codeholder may login
+
+  notes:
+    type: string
+    default: ""
+    maxLength: 10000
+    description: Administrative notes on the codeholder
+
+  officePhone:
+    allOf:
+      - nullable: true
+        description: The office phone number of the codeholder
+      - $ref: '#/components/schemas/PhoneNumber'
+
+  isDead:
+    type: boolean
+    default: false
+    description: Whether the codeholder is dead (`HumanCodeholder`) or has ceased operations (`OrgCodeholder`)
+
+  deathdate:
+    type: string
+    format: date
+    nullable: true
+    default: null
+    description: The date at which the codeholder died (`HumanCodeholder`) or ceased operations (`OrgCodeholder`)

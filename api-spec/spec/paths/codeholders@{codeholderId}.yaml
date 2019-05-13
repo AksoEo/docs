@@ -31,3 +31,29 @@ delete:
       description: Deleted
     '404':
       description: Codeholder not found
+
+patch:
+  summary: Updates a codeholder
+  description: >
+    Requires permission: `codeholders.update`
+
+
+    Only `modCmt` allowed in query.
+  parameters:
+    - in: query
+      name: modCmt
+      schema:
+        $ref: '#/components/schemas/CodeholderModCmt'
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          oneOf:
+            - $ref: '#/components/schemas/HumanCodeholderPatch'
+            - $ref: '#/components/schemas/OrgCodeholderPatch'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Codeholder not found
