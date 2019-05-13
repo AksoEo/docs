@@ -5,7 +5,6 @@ codeholders:
 	read
 	update
 	delete
-	others # Allows access to other codeholders than the user themself
 
 codeholders_hist:
 	read
