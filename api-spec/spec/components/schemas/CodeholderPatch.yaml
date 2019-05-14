@@ -12,7 +12,6 @@ properties:
       - $ref: '#/components/schemas/PostalAddress'
   feeCountry:
     type: string
-    nullable: true
     minLength: 2
     maxLength: 2
     pattern: ^[a-z]{2}$
