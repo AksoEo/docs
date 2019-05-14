@@ -48,14 +48,14 @@ allOf:
         format: uint8
         readOnly: true
         nullable: true
-        description: The codeholder's age in whole years. `null` if `birthdate` is `null` or `isDead` is true.
+        description: The codeholder's age in whole years. `null` if `birthdate` is `null`. Clamped to `deathdate` (if not null) if `isDead` is true.
 
       agePrimo:
         type: integer
         format: uint8
         readOnly: true
         nullable: true
-        description: The codeholder's age in whole years at the beginning of the year. `null` if `birthdate` is `null` or `isDead` is true.
+        description: The codeholder's age in whole years at the beginning of the year. `null` if `birthdate` is `null`. Clamped to `deathdate` (if not null) if `isDead` is true.
 
       profession:
         type: string
