@@ -11,7 +11,10 @@ properties:
 
   address:
     allOf:
-      - description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
+      - description: >
+          The codeholder's normalized postal address.
+          The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
+          The required fields change depending on the country according to `ValidationRules.required_fields` in https://github.com/mirumee/google-i18n-address
       - $ref: '#/components/schemas/PostalAddress'
 
   feeCountry:
