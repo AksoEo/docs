@@ -154,6 +154,11 @@ properties:
     readOnly: true
     description: Whether the codeholder has a profile picture
 
+  isActiveMember:
+    type: boolean
+    readOnly: true
+    description: Whether the codeholder is a member in the current year.
+
 required:
   - newCode
   - codeholderType
