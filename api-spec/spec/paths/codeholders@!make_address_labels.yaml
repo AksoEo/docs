@@ -1,0 +1,112 @@
+post:
+  summary: Generates codeholder address labels
+  description: >
+    Requires permission: `codeholders.read`
+
+
+    All filter and search properties from `GET /codeholders` are available.
+
+
+    `?limit`, `?offset` and `?fields` are not allowed.
+
+
+    All codeholders without an address will be excluded.
+
+
+    The codeholder will receive a notification with a downloadable pdf.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            email:
+              type: string
+              format: email
+              description: The email address to send the labels to, only required if not using user auth
+
+            language:
+              type: string
+              minLength: 2
+              maxLength: 2
+              description: The language to display the name in. See `GET /countries` for a list of supported languages.
+
+            latin:
+              type: boolean
+              default: false
+              description: Whether to latinize the addresses
+
+            includeCode:
+              type: boolean
+              default: true
+              description: Whether to include each codeholder's UEA code in the top right corner of their label
+
+            paper:
+              type: string
+              default: A4
+              enum: [ 'A3', 'A4', 'A5', 'LETTER', 'FOLIO', 'LEGAL', 'EXECUTIVE' ]
+              description: The paper size to use
+
+            margins:
+              description: The margins of the document, in points. Defaults to 1 inch on all sides
+              properties:
+                top:
+                  type: number
+                  format: uint16
+                bottom:
+                  type: number
+                  format: uint16
+                left:
+                  type: number
+                  format: uint16
+                right:
+                  type: number
+                  format: uint16
+              required: [ top, bottom, left, right ]
+
+            cols:
+              type: integer
+              minimum: 1
+              maximum: 20
+              description: The number of columns on a page
+
+            rows:
+              type: integer
+              minimum: 1
+              maximum: 50
+              description: The number of rows on a page
+
+            colGap:
+              type: number
+              format: uint16
+              description: The gap between columns in points
+
+            rowGap:
+              type: number
+              format: uint16
+              description: The gap between rows in points
+
+            cellPadding:
+              type: number
+              format: uint16
+              default: 8
+              description: The padding in points in each cell
+
+            fontSize:
+              type: integer
+              minimum: 8
+              maximum: 30
+              default: 12
+              description: The font size in points
+
+            drawOutline:
+              type: boolean
+              default: false
+              description: Whether to draw a line outline around the cells, useful for checking whether the cells are aligned right
+
+          required: [ language, cols, rows, colGap, rowGap ]
+  responses:
+    '202':
+      description: Accepted
+    '423':
+      description: Already submitted, wait for first request to finish processing
