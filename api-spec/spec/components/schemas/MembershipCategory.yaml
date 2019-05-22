@@ -24,7 +24,11 @@ properties:
     format: markdown
     maxLength: 2000
     default: ''
-    description: A humanly readable description of the membership category
+    description: >
+        A humanly readable description of the membership category
+
+
+        Markdown rules enabled: `emphasis`, `strikethrough`
 
   givesMembership:
     type: boolean

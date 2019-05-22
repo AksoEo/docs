@@ -58,7 +58,11 @@ patch:
               type: string
               format: markdown
               maxLength: 2000
-              description: A humanly readable description of the membership category
+              description: >
+                A humanly readable description of the membership category
+
+
+                Markdown rules enabled: `emphasis`, `strikethrough`
 
             givesMembership:
               type: boolean
