@@ -62,7 +62,7 @@ patch:
                 A humanly readable description of the membership category
 
 
-                Markdown rules enabled: `emphasis`, `strikethrough`
+                Markdown rules enabled: `emphasis`, `strikethrough`, `link`
 
             givesMembership:
               type: boolean
