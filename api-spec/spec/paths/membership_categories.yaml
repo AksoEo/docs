@@ -5,6 +5,9 @@ get:
 
 
     Filterable properties: `id`, `nameAbbrev`, `name`, `givesMembership`, `lifetime`, `availableFrom`, `availableTo`
+
+
+    License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
   responses:
     '200':
       description: OK

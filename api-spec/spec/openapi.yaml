@@ -19,6 +19,9 @@ info:
 
     Fields marked as `string <markdown>` will be parsed using a CommonMark parser, optionally with only the rules mentioned in the field's description enabled.
 
+
+    All data obtained from the AKSO API are the property of UEA and/or TEJO unless the collection states a different license. Licenses applied to a certain endpoint are inherited by child endpoints unless overriden.
+
 externalDocs:
   url: https://github.com/AksoEo/docs/tree/master/api
   description: Full documentation
