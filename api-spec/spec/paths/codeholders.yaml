@@ -6,7 +6,7 @@ get:
 
     Filterable properties:
 
-    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `addressCountryGroups`, `feeCountry`, `feeCountryGroups`, `addressLatin.*`, `email`, `enabled`, `isDead`, `deathdate`, `hasProfilePicture`, `hasPassword`, `isActiveMember`
+    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `creationTime`, `addressCountryGroups`, `feeCountry`, `feeCountryGroups`, `addressLatin.*`, `email`, `enabled`, `isDead`, `deathdate`, `hasProfilePicture`, `hasPassword`, `isActiveMember`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `birthdate`, `age`, `agePrimo`,
 

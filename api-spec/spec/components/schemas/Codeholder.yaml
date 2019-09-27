@@ -23,6 +23,12 @@ properties:
       - $ref: '#/components/schemas/CodeholderType'
       - readOnly: true
 
+  creationTime:
+    type: integer
+    format: uint64
+    readOnly: true
+    description: The unix epoch time at which the account was created
+
   password:
     type: string
     format: password
