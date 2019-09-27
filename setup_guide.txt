@@ -1,6 +1,6 @@
 DB:
 	* Use MySQL 5.7.15 or higher
-	* Set innodb_ft_min_token_size = 3
-	* Set group_concat_max_len = 1000000
+	* Set innodb_ft_min_token_size = 3 in my.cnf
+	* Set group_concat_max_len = 1000000 in my.cnf
 	* Rebuild FULLTEXT indexes
-	* Turn on event scheduler globally
+	* Turn on event scheduler globally (event_scheduler = on in my.cnf)
