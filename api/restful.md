@@ -127,8 +127,9 @@ The recognized parameters are as follows:
     Alternatively, the value can be an object with an operator (all prefixed by a dollar sign) as the key, e.g. `{ age: { $lt: 35 } }` to find all users younger than 35.
 
     The full list of comparison operators is:
-    * `$eq`: Exact equality. Value may be a `string`, `number`, `boolean` or `null`.
+    * `$eq`: Exact equality. Value must be a `string`, `number`, `boolean` or `null`.
     * `$neq`: Like `$eq` but demands a value not equal to the one provided.
+    * `$pre`: Must begin with the provided value. Value must be a `string`.
     * `$gt`: Greater than. Value must be a `number`.
     * `$gte`: Greater than or equal to. Value must be a `number`.
     * `$lt`: Lower than. Value must be a `number`.
