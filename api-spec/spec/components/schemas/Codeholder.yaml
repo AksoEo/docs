@@ -111,6 +111,10 @@ properties:
           type: boolean
           description: Whether this is a lifetime membership entry
 
+        givesMembership:
+          type: boolean
+          whether: Whether this membership entry provides membership
+
   email:
     type: string
     format: email
