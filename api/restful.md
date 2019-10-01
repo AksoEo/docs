@@ -74,6 +74,8 @@ AKSO utilizes the query string to filter a collection or the returned fields in 
 All query parameters are optional and a request without any query parameters will always be valid.
 
 The recognized parameters are as follows:
+* `noop`: Does nothing. Can be used to forcefully invalidate the cache.
+
 * `limit`: The maximum amount of items in the collection
 
     Valid in: Collections (`GET`)
