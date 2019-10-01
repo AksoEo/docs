@@ -6,7 +6,7 @@ get:
 
     Filterable properties:
 
-    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `creationTime`, `addressCountryGroups`, `feeCountry`, `feeCountryGroups`, `addressLatin.*`, `email`, `enabled`, `isDead`, `deathdate`, `profilePictureHash`, `hasPassword`, `isActiveMember`
+    - Codeholder: `id`, `oldCode`, `newCode`, `codeholderType`, `creationTime`, `addressCountryGroups`, `searchName`, `feeCountry`, `feeCountryGroups`, `addressLatin.*`, `email`, `enabled`, `isDead`, `deathdate`, `profilePictureHash`, `hasPassword`, `isActiveMember`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `birthdate`, `age`, `agePrimo`,
 
@@ -19,15 +19,11 @@ get:
 
     Searchable properties:
 
-    - Codeholder: `addressLatin.[* - country]`, `searchAddress`, `email`, `notes`, `officePhone`
+    - Codeholder: `addressLatin.[* - country]`, `searchAddress`, `searchName`, `email`, `notes`, `officePhone`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `landlinePhone`, `cellphone`
 
     - OrgCodeholder: `fullName`, `fullNameLocal`, `nameAbbrev`, `careOf`
-
-    - Special:
-
-      - `name`: Searches a human or org's complete name.
 
 
     Special logic operators:

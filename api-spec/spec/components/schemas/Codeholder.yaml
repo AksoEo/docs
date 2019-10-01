@@ -81,6 +81,11 @@ properties:
     readOnly: true
     description: The codeholder's full formatted latin postal address for search purposes.
 
+  searchName:
+    type: string
+    readOnly: true
+    description: The codeholder's name for searching and ordering purposes
+
   membership:
     type: array
     readOnly: true
