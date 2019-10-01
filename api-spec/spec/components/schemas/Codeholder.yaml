@@ -159,10 +159,12 @@ properties:
     default: null
     description: The date at which the codeholder died (`HumanCodeholder`) or ceased operations (`OrgCodeholder`)
 
-  hasProfilePicture:
-    type: boolean
+  profilePictureHash:
+    type: string
+    format: binary
+    nullable: true
     readOnly: true
-    description: Whether the codeholder has a profile picture
+    description: The hash of the codeholder's profile picture, null if the codeholder has no profile picture
 
   isActiveMember:
     type: boolean
