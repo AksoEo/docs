@@ -23,7 +23,7 @@ get:
     Properties with history:
 
 
-    - Codeholder: `newCode`, `password`, `address`, `feeCountry`, `email`, `enabled`, `notes`, `officePhone`, `isDead`, `deathdate`, `hasProfilePicture`
+    - Codeholder: `newCode`, `password`, `address`, `feeCountry`, `email`, `enabled`, `notes`, `officePhone`, `isDead`, `deathdate`, `profilePictureHash`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `honorific`, `birthdate`, `landlinePhone`, `cellphone`
 
