@@ -130,6 +130,7 @@ The recognized parameters are as follows:
     * `$eq`: Exact equality. Value must be a `string`, `number`, `boolean` or `null`.
     * `$neq`: Like `$eq` but demands a value not equal to the one provided.
     * `$pre`: Must begin with the provided value. Value must be a `string`.
+    * `$range`: Must be within the provided range (inclusive). Value must be an array with exactly two items that are one of: `string` (for dates in `yyyy-mm-dd`), `number`, `boolean` or `null`.
     * `$gt`: Greater than. Value must be a `number`.
     * `$gte`: Greater than or equal to. Value must be a `number`.
     * `$lt`: Lower than. Value must be a `number`.
