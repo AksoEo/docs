@@ -70,5 +70,13 @@ get:
                 type: boolean
                 description: Whether the user is an admin and may access the admin panel at akso.org
 
+              newCode:
+                type: string
+                description: The user's six-letter UEA code
+
+              id:
+                type: uint32
+                description: The user's internal id
+
     '404':
       description: No user-based session found
