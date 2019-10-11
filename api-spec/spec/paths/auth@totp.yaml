@@ -59,7 +59,7 @@ post:
       description: 'Invalid TOTP'
 
     '403':
-      description: The user has already signed in using TOTP, or TOTP has already been set up
+      description: The user has already signed in using TOTP, TOTP has already been set up, or the user is trying to sign in without a secret without having set up TOTP
 
     '404':
       description: 'No user-based session found'
