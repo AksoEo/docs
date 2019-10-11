@@ -17,7 +17,7 @@ parameters:
 get:
   summary: Returns the history of a specific codeholder datum
   description: >
-    Requires permission: `codeholders_hist.read`
+    Requires permission: `codeholders.hist.read`
 
 
     Properties with history:
@@ -27,7 +27,10 @@ get:
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `honorific`, `birthdate`, `landlinePhone`, `cellphone`
 
-    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
+    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`, `website`
+
+
+    Filterable properties: `modId`
   responses:
     '200':
       description: OK
