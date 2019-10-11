@@ -1,0 +1,58 @@
+get:
+  summary: Returns all API clients
+  description: >
+    Requires permission: `clients.read`
+    
+
+    Filterable properties:
+
+    - `apiKey`, `name`, `ownerName`, `ownerEmail`
+
+
+    Searchable properties:
+
+    - `name`, `ownerName`, `ownerEmail`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/APIClient'
+
+post:
+  summary: Creates a new API client
+  description: >
+    Requires permission: `clients.create`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/APIClient'
+            - required:
+              - name
+              - ownerName
+              - ownerEmail
+  responses:
+    '201':
+      description: Created
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              apiKey:
+                type: string
+                format: binary
+                minLength: 16
+                maxLength: 16
+                description: The API key of the client
+              apiSecret:
+                type: string
+                format: binary
+                minLength: 32
+                maxLength: 32
+                description: The secret key of the API client. This value can never be reobtained

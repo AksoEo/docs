@@ -1,0 +1,51 @@
+parameters:
+  - name: apiKey
+    in: path
+    required: true
+    description: The client's hex-ified API key
+    schema:
+      type: string
+      minLength: 32
+      maxLength: 32
+
+get:
+  summary: Returns an API client
+  description: >
+    Requires permission: `clients.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/APIClient'
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes an API client
+  description: >
+    Requires permission: `clients.delete`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates an API client
+  description: >
+    Requires permission: `clients.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/APIClient'
+            - minProperties: 1
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found

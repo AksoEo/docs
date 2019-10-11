@@ -5,9 +5,8 @@ codeholders:
 	read
 	update
 	delete
-
-codeholders_hist:
-	read
+	hist
+		read
 
 membership_categories:
 	create
@@ -29,5 +28,11 @@ ratelimit:
 
 country_groups:
 	create
+	update
+	delete
+
+clients:
+	create
+	read
 	update
 	delete

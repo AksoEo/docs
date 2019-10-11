@@ -2,3 +2,4 @@ type: string
 format: binary
 minLength: 16
 maxLength: 16
+description: The public API key of a client

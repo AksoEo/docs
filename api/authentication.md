@@ -9,7 +9,7 @@ CORS is not enabled, meaning that application access must be made from a server,
 - `tejo.org`
 
 ## Application access (for software)
-Applications accessing AKSO's API should use HTTP basic access authentication using their API key as the username and the API secret as the password. This header must be set for each request that requires authentication.
+Applications accessing AKSO's API should use HTTP basic access authentication using their API key as the username and the API secret (in hex form) as the password. This header must be set for each request that requires authentication.
 
 All requests and changes made will be logged as resulting from the application and not any particular user.
 

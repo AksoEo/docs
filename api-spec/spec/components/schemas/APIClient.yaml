@@ -1,0 +1,25 @@
+type: object
+properties:
+  apiKey:
+    allOf:
+      - $ref: '#/components/schemas/APIKey'
+      - readOnly: true
+
+  name:
+    type: string
+    minLength: 1
+    maxLength: 200
+    description: A humanly readable description of the purpose of the API client
+
+  ownerName:
+    type: string
+    minLength: 1
+    maxLength: 200
+    description: The name of the physical entity responsible for the client
+
+  ownerEmail:
+    type: string
+    format: email
+    minLength: 1
+    maxLength: 200
+    description: The contact email address of the physical entity responsible for the client
