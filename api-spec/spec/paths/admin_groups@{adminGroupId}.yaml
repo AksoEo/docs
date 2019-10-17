@@ -1,0 +1,50 @@
+parameters:
+  - name: adminGroupId
+    in: path
+    required: true
+    description: The id of the admin group
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns an admin group
+  description: >
+    Requires permission: `admin_groups.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/AdminGroup'
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes an admin group
+  description: >
+    Requires permission: `admin_groups.delete`
+  responses:
+    '204':
+      description: Deleted
+
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates an admin group
+  description: >
+    Requires permission: `admin_groups.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/AdminGroup'
+  responses:
+    '204':
+      description: Updated
+
+    '404':
+      description: Not found

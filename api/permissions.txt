@@ -36,3 +36,9 @@ clients:
 	read
 	update
 	delete
+
+admin_groups:
+	create
+	read
+	update
+	delete

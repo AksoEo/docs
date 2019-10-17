@@ -1,0 +1,40 @@
+get:
+  summary: Returns all admin groups
+  description: >
+    Requires permission: `admin_groups.read`
+    
+
+    Filterable properties:
+
+    - `id`, `name`
+
+
+    Searchable properties:
+
+    - `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdminGroup'
+
+post:
+  summary: Creates a new admin group
+  description: >
+    Requires permission: `admin_groups.create`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/AdminGroup'
+            - required:
+              - name
+  responses:
+    '201':
+      description: Created
