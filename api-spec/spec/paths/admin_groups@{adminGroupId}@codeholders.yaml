@@ -1,0 +1,29 @@
+parameters:
+  - name: adminGroupId
+    in: path
+    required: true
+    description: The id of the admin group
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns all codeholders pertaining to an admin group
+  description: >
+    Requires permissions: `admin_groups.read`, `codeholders.read`
+
+
+    Query params allowed: See `GET /codeholders`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: '#/components/schemas/HumanCodeholder'
+                - $ref: '#/components/schemas/OrgCodeholder'
+    '404':
+      description: Not found

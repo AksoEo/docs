@@ -1,0 +1,37 @@
+parameters:
+  - name: adminGroupId
+    in: path
+    required: true
+    description: The id of the admin group
+    schema:
+      type: integer
+      format: uint32
+
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+put:
+  summary: Adds a codeholder to an admin group
+  description: >
+    Requires permissions: `admin_groups.update`, `codeholders.read`
+  responses:
+    '204':
+      description: Added
+     
+    '404':
+      description: Admin group or codeholder not found
+
+delete:
+  summary: Removes a codeholder from an admin group
+  description: >
+    Requires permissions: `admin_groups.update`, `codeholders.read`
+  responses:
+    '204':
+      description: Removed
+     
+    '404':
+      description: Admin group or codeholder not found
