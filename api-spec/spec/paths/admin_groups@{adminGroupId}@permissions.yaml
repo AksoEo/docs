@@ -1,0 +1,29 @@
+parameters:
+  - name: adminGroupId
+    in: path
+    required: true
+    description: The id of the admin group
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns all permissions granted to an admin group
+  description: >
+    Requires permission: `admin_groups.read`
+
+
+    Filterable properties: `permission`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              properties:
+                permission:
+                  $ref: '#/components/schemas/Permission'
+    '404':
+      description: Not found

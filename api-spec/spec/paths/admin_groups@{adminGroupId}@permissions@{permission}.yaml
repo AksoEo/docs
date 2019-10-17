@@ -1,0 +1,37 @@
+parameters:
+  - name: adminGroupId
+    in: path
+    required: true
+    description: The id of the admin group
+    schema:
+      type: integer
+      format: uint32
+
+  - name: permission
+    in: path
+    required: true
+    description: A permission string
+    schema:
+      $ref: '#/components/schemas/Permission'
+
+put:
+  summary: Grants a permission to an admin group
+  description: >
+    Requires permission: `admin_groups.update`
+  responses:
+    '204':
+      description: Added
+     
+    '404':
+      description: Not found
+
+delete:
+  summary: Removes a granted permission from an admin group
+  description: >
+    Requires permission: `admin_groups.update`
+  responses:
+    '204':
+      description: Removed
+     
+    '404':
+      description: Not found

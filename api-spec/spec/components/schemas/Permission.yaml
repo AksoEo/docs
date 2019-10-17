@@ -1,0 +1,5 @@
+type: string
+minLength: 1
+maxLength: 255
+pattern: '^(\w+(\.\w+)*(\.\*)?)|\*$'
+description: A permission
