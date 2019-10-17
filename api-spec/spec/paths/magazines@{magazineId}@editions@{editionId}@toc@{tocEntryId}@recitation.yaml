@@ -1,0 +1,52 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: tocEntryId
+    required: true
+    description: The id of the ToC entry
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns metadata on the recitation of a ToC entry
+  description: >
+    Permissions required: `magazines.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              properties:
+                format:
+                  $ref: '#/components/schemas/MagazineRecitationFormat'
+
+                downloads:
+                  type: integer
+                  format: uint32
+                  description: The number of downloads for this file
+
+                size:
+                  type: integer
+                  format: uint32
+                  description: The size of the file in bytes
+    '404':
+      description: Not found

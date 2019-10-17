@@ -1,0 +1,34 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of the magazine
+
+  org:
+    $ref: '#/components/schemas/AKSOOrganization'
+
+  name:
+    type: string
+    minLength: 1
+    maxLength: 50
+    pattern: '^[^\n]+$'
+    description: The name of the magazine
+
+  description:
+    type: string
+    format: markdown
+    minLength: 1
+    maxLength: 5000
+    nullable: true
+    description: >
+      A description of the magazine
+
+
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+
+  issn:
+    type: string
+    format: issn
+    nullable: true
+    description: The ISSN number of the magazine

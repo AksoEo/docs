@@ -1,0 +1,64 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: tocEntryId
+    required: true
+    description: The id of the ToC entry
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns a ToC entry of a magazine edition
+  description: >
+    Permissions required: `magazines.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/MagazineEditionToCEntry'
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a ToC entry
+  description: >
+    Permissions required: `magazines.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/MagazineEditionToCEntry'
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a ToC entry
+  description: >
+    Permissions required: `magazines.update.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found

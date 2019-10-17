@@ -1,0 +1,49 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+put:
+  summary: Updates the thumbnail of a magazine edition
+  description: >
+    Permission required: `magazines.update.<org>`
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            thumbnail:
+              type: string
+              format: binary
+              description: 'Max size: 2MB. Must either be `image/jpeg` or `image/png`. The largest dimension will be scaled down to 512px by the server.'
+          required: [ thumbnail ]
+  responses:
+    '204':
+      description: Updated
+
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes the thumbnail of a magazine edition
+  description: >
+    Permission required: `magazines.update.<org>`
+  responses:
+    '204':
+      description: Deleted
+
+    '404':
+      description: Not found

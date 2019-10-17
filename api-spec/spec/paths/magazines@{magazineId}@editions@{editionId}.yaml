@@ -1,0 +1,57 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns an edition of a magazine
+  description: >
+    Requires permission: `magazines.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/MagazineEdition'
+
+    '404':
+      description: Magazine or edition not found
+
+delete:
+  summary: Deletes an edition of a magazine
+  description: >
+    Requires permission: `magazines.update.<org>`
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Magazine or edition not found
+
+patch:
+  summary: Updates an edition of a magazine
+  description: >
+    Requires permission: `magazines.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/MagazineEdition'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Magazine or edition not found

@@ -1,0 +1,46 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns all editions of a magazine
+  description: >
+    Requires permission: `magazines.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/MagazineEdition'
+
+    '404':
+      description: Not found
+
+post:
+  summary: Creates a new magazine edition
+  description: >
+    Requires permission: `magazines.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/MagazineEdition'
+            - required:
+              - id
+              - date
+  responses:
+    '201':
+      description: Created
+
+    '409':
+      description: Edition id already taken

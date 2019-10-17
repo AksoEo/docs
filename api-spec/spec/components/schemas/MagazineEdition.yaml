@@ -1,0 +1,30 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    description: The identifier of this edition unique to the magazine it belongs to
+
+  idHuman:
+    type: string
+    minLength: 1
+    maxLength: 50
+    pattern: '^[^\n]+$'
+    nullable: true
+    description: The identifier of this edition presented to humans, if different from `id`
+
+  date:
+    type: string
+    format: date
+    description: The publication date of the edition
+
+  description:
+    type: string
+    format: markdown
+    minLength: 1
+    maxLength: 5000
+    nullable: true
+    description: >
+      A description of the edition
+
+
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`

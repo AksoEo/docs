@@ -1,0 +1,29 @@
+get:
+  summary: Returns all magazines
+  description: >
+    Requires permission: `magazines.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/Magazine'
+
+post:
+  summary: Creates a new magazine
+  description: >
+    Requires permission: `magazines.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/Magazine'
+            - required:
+              - org
+              - name
+  responses:
+    '201':
+      description: Created

@@ -1,0 +1,3 @@
+type: string
+enum: [ pdf, epub ]
+description: The format of the file

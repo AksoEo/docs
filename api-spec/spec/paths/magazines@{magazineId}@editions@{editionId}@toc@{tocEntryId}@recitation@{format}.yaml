@@ -1,0 +1,71 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: tocEntryId
+    required: true
+    description: The id of the ToC entry
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: format
+    required: true
+    description: The format of the recitation file
+    schema:
+      $ref: '#/components/schemas/MagazineRecitationFormat'
+
+get:
+  summary: Returns a recitation of a ToC entry
+  description: >
+    Permissions required: `magazines.read.<org>`
+  responses:
+    '200':
+      description: OK
+    '404':
+      description: Not found
+
+delete:
+  summary: Removes a recitation of a ToC entry
+  description: >
+    Permissions required: `magazines.recitations.delete.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+put:
+  summary: Updates a recitation of a ToC entry
+  description: >
+    Permissions required: `magazines.recitations.update.<org>`
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            file:
+              type: string
+              format: binary
+              description: 'Max size: 25MB'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found

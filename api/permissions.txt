@@ -5,7 +5,7 @@ codeholders:
 	read
 	update
 	delete
-	hist
+	hist:
 		read
 
 membership_categories:
@@ -45,3 +45,23 @@ admin_groups:
 	read
 	update
 	delete
+
+magazines:
+	create:
+		<org>
+	read:
+		<org>
+	update:
+		<org>
+	delete:
+		<org>
+	files:
+		update:
+			<org>
+		delete:
+			<org>
+	recitations:
+		update:
+			<org>
+		delete:
+			<org>

@@ -1,0 +1,48 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    description: The unique identifier of this ToC entry
+    readOnly: true
+
+  page:
+    type: integer
+    format: uint32
+    description: The page number of the entry
+
+  title:
+    type: string
+    format: markdown
+    minLength: 1
+    maxLength: 500
+    pattern: '^[^\n]+$'
+    description: >
+      The title of the ToC entry
+
+
+      Markdown rules enabled: `emphasis`, `strikethrough`
+
+  author:
+    type: string
+    minLength: 1
+    maxLength: 100
+    pattern: '^[^\n]+$'
+    nullable: true
+    description: The author(s) of the ToC entry
+
+  text:
+    type: string
+    format: markdown
+    minLength: 1
+    maxLength: 100000
+    nullable: true
+    description: >
+      The text of the ToC entry
+
+
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`, `image`
+
+  highlighted:
+    type: boolean
+    default: false
+    description: Whether this ToC entry is highlighted
