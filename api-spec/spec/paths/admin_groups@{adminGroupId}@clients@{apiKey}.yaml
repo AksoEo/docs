@@ -1,0 +1,39 @@
+parameters:
+  - name: adminGroupId
+    in: path
+    required: true
+    description: The id of the admin group
+    schema:
+      type: integer
+      format: uint32
+
+  - name: apiKey
+    in: path
+    required: true
+    description: The client's hex-ified API key
+    schema:
+      type: string
+      minLength: 32
+      maxLength: 32
+
+put:
+  summary: Adds a client to an admin group
+  description: >
+    Requires permissions: `admin_groups.update`, `clients.read`
+  responses:
+    '204':
+      description: Added
+     
+    '404':
+      description: Admin group or client not found
+
+delete:
+  summary: Removes a client from an admin group
+  description: >
+    Requires permissions: `admin_groups.update`, `clients.read`
+  responses:
+    '204':
+      description: Removed
+     
+    '404':
+      description: Admin group or client not found

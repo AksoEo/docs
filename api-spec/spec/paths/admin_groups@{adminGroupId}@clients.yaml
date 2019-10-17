@@ -1,0 +1,27 @@
+parameters:
+  - name: adminGroupId
+    in: path
+    required: true
+    description: The id of the admin group
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns all clients pertaining to an admin group
+  description: >
+    Requires permissions: `admin_groups.read`, `clients.read`
+
+
+    Query params allowed: See `GET /clients`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/APIClient'
+    '404':
+      description: Not found
