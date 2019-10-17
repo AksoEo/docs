@@ -46,12 +46,16 @@ patch:
           properties:
             nameAbbrev:
               type: string
+              minLength: 1
               maxLength: 6
+              pattern: ^[^\n]+$
               description: The abbreviated name of the membership category
 
             name:
               type: string
+              minLength: 1
               maxLength: 50
+              pattern: ^[^\n]+$
               description: The full name of the membership category
 
             description:
