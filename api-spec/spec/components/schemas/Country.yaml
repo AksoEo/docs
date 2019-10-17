@@ -2,6 +2,7 @@ properties:
   code:
     type: string
     description: The ISO 3166-1 alpha-2 code of the country
+    readOnly: true
 
   enabled:
     type: boolean
@@ -9,50 +10,63 @@ properties:
 
   name_eo:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in Esperanto
 
   name_en:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in English
 
   name_fr:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in French
 
   name_es:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in Spanish
 
   name_nl:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in Dutch
 
   name_pt:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in Portuguese
 
   name_sk:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in Slovak
 
   name_zh:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in Chinese
 
   name_de:
     type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
     description: The country's name in German
-
-required:
-  - id
-  - currency
-  - name_eo
-  - name_en
-  - name_fr
-  - name_es
-  - name_nl
-  - name_pt
-  - name_sk
-  - name_zh
-  - name_de
-

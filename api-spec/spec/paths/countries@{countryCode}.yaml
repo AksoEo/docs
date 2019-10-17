@@ -9,7 +9,7 @@ parameters:
       maxLength: 2
 
 get:
-  summary: Returns a specific country
+  summary: Returns a country
   responses:
     '200':
       description: OK
@@ -19,4 +19,19 @@ get:
             $ref: '#/components/schemas/Country'
 
     '404':
-      description: Country not found
+      description: Not found
+
+patch:
+  summary: Updates a country
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/Country'
+  responses:
+    '204':
+      description: Updated
+
+    '404':
+      description: Not found
