@@ -34,3 +34,7 @@ get:
                     enum: [ 'r', 'w', 'rw', 'ra' ]
                     description: A field and whether it's readable, writable, both or the special `ra` which means that it's writable but the change will only go through after it's been approved
                 description: Like `memberFields` but applied to requests to `/codeholders/self`
+
+              isActiveMember:
+                type: boolean
+                description: Whether the client is an active member in the current year
