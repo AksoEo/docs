@@ -6,7 +6,7 @@ properties:
     description: The unique identifier of the magazine
 
   org:
-    $ref: '#/components/schemas/AKSOOrganization'
+    $ref: '#/components/schemas/AKSOExclusiveOrganization'
 
   name:
     type: string
@@ -29,6 +29,8 @@ properties:
 
   issn:
     type: string
-    format: issn
+    minLength: 8
+    maxLength: 8
+    pattern: ^\d+$
     nullable: true
     description: The ISSN number of the magazine

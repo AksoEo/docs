@@ -27,6 +27,7 @@ parameters:
         - 128px
         - 256px
         - 512px
+        - 1024px
 
 get:
   summary: Returns the thumbnail of a magazine edition
@@ -35,9 +36,6 @@ get:
 
 
     No query parameters allowed.
-
-    
-    Permission required: `magazines.read.<org>`
   responses:
     '200':
       description: OK

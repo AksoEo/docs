@@ -17,8 +17,6 @@ parameters:
 
 get:
   summary: Returns an edition of a magazine
-  description: >
-    Requires permission: `magazines.read.<org>`
   responses:
     '200':
       description: OK
@@ -55,3 +53,5 @@ patch:
       description: Updated
     '404':
       description: Magazine or edition not found
+    '409':
+      description: Edition id taken

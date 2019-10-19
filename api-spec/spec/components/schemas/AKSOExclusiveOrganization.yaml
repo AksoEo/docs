@@ -1,0 +1,5 @@
+type: string
+enum:
+  - tejo
+  - uea
+description: An organization using AKSO that's not AKSO itself

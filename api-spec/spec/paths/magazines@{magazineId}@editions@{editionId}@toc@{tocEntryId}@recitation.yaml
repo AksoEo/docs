@@ -26,7 +26,7 @@ parameters:
 get:
   summary: Returns metadata on the recitation of a ToC entry
   description: >
-    Permissions required: `magazines.read.<org>`
+    Filterable properties: `format`, `downloads`
   responses:
     '200':
       description: OK

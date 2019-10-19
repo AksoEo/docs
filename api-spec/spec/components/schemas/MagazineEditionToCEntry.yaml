@@ -30,6 +30,14 @@ properties:
     nullable: true
     description: The author(s) of the ToC entry
 
+  recitationAuthor:
+    type: string
+    minLength: 1
+    maxLength: 100
+    pattern: '^[^\n]+$'
+    nullable: true
+    description: The author(s) of the ToC entry recitation (if relevant)
+
   text:
     type: string
     format: markdown

@@ -18,7 +18,7 @@ parameters:
 get:
   summary: Returns metadata on the files attached to a magazine edition
   description: >
-    Permissions required: `magazines.read.<org>`
+    Filterable properties: `format`, `downloads`
   responses:
     '200':
       description: OK

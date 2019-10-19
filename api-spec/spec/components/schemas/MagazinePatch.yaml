@@ -26,6 +26,8 @@ properties:
 
   issn:
     type: string
-    format: issn
+    minLength: 8
+    maxLength: 8
+    pattern: ^\d+$
     nullable: true
     description: The ISSN number of the magazine

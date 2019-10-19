@@ -10,7 +10,10 @@ parameters:
 get:
   summary: Returns all editions of a magazine
   description: >
-    Requires permission: `magazines.read.<org>`
+    Filterable properties: `id`, `date`
+
+
+    Searchable properties: `idHuman`, `description`
   responses:
     '200':
       description: OK
@@ -41,6 +44,9 @@ post:
   responses:
     '201':
       description: Created
+
+    '404':
+      description: Magazine not found
 
     '409':
       description: Edition id already taken
