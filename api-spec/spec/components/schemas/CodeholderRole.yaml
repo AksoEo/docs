@@ -1,0 +1,20 @@
+properties:
+  id:
+    type: number
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this codeholder role
+
+  name:
+    type: string
+    minLength: 1
+    maxLength: 100
+    pattern: '^[^\n]+$'
+    description: The name of the codeholder role
+
+  description:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    nullable: true
+    description: A description of the purpose of the codeholder role

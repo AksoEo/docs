@@ -8,6 +8,12 @@ codeholders:
 	hist:
 		read
 
+codeholder_roles:
+	create
+	read
+	update
+	delete
+
 membership_categories:
 	create
 	read

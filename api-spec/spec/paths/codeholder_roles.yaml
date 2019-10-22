@@ -1,0 +1,33 @@
+get:
+  summary: Returns all codeholder roles
+  description: >
+    Requires permission: `codeholder_roles.read`
+
+
+    Filterable properties: `id`, `name`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderRole'
+
+post:
+  summary: Creates a new codeholder role
+  description: >
+    Requires permission: `codeholder_roles.create`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/CodeholderRole'
+  responses:
+    '201':
+      description: Created

@@ -1,0 +1,51 @@
+parameters:
+  - name: roleId
+    in: path
+    required: true
+    description: The codeholder role id
+    schema:
+      type: number
+      format: uint32
+
+get:
+  summary: Returns a codeholder role
+  description: >
+    Requires permission: `codeholder_roles.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CodeholderRole'
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a codeholder role
+  description: >
+    Requires permission: `codeholder_roles.delete`
+
+
+    Warning: This permanently removes the codeholder role entry from all codeholders
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a codeholder role
+  description: >
+    Requires permission: `codeholder_roles.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/CodeholderRole'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
