@@ -1,0 +1,24 @@
+get:
+  summary: Returns metadata on newCode availability
+  description: >
+    Requires permission: `codeholders.read`
+
+
+    Query params allowed:
+
+
+    - `codes` (required)
+
+      The `newCode`s to check for availability in csv format, e.g. `xxtejo,xxxxxx`. No more than 100 codes
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+             properties:
+              '[code]':
+                properties:
+                  available:
+                    type: boolean
+                    description: Whether the code is available
