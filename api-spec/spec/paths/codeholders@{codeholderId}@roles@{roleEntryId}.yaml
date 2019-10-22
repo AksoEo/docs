@@ -1,0 +1,52 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+  - name: roleEntryId
+    in: path
+    required: true
+    description: The codeholder role entry id
+
+get:
+  summary: Returns a codeholder role entry
+  description: >
+    Requires permissions: `codeholders.read`, `codeholder_roles.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CodeholderRoleEntry'
+    '404':
+      description: Not found
+
+delete:
+  summary: Removes a codeholder role entry
+  description: >
+    Requires permissions: `codeholders.update`, `codeholder_roles.read`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a codeholder role entry
+  description: >
+    Requires permissions: `codeholders.update`, `codeholder_roles.read`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/CodeholderRoleEntry'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found

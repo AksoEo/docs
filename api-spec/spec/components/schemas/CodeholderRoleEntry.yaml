@@ -1,0 +1,36 @@
+properties:
+  id:
+    type: number
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this codeholder role entry
+
+  durationFrom:
+    type: number
+    format: uint64
+    nullable: true
+    description: The unix epoch timestamp of the beginning of the entry's validity
+
+  durationTo:
+    type: number
+    format: uint64
+    nullable: true
+    description: The unix epoch timestamp of the expiration of this entry. If null, never expires.
+
+  isActive:
+    type: boolean
+    readOnly: true
+    description: Whether the entry is currently active based on the duration timestamps
+
+  roleId:
+    type: number
+    format: uint32
+    writeOnly: true
+    description: The unique identifier of the codeholder role
+
+  role:
+    allOf:
+      - description: The codeholder's role
+        readOnly: true
+      - $ref: '#/components/schemas/CodeholderRole'
+

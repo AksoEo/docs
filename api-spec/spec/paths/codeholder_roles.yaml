@@ -27,7 +27,10 @@ post:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/CodeholderRole'
+          allOf:
+            - $ref: '#/components/schemas/CodeholderRole'
+            - required:
+              - name
   responses:
     '201':
       description: Created
