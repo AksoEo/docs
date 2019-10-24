@@ -1,0 +1,52 @@
+parameters:
+  - name: voteId
+    in: path
+    description: The vote's identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns a vote
+  description: >
+    Requires permission: `votes.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/Vote'
+
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a vote
+  description: >
+    Requires permission: `votes.delete.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a vote
+  description: >
+    Requires permission: `votes.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - properties:
+                org: null
+            - $ref: '#/components/schemas/Vote'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found

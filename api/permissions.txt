@@ -71,3 +71,13 @@ magazines:
 			<org>
 		delete:
 			<org>
+
+votes:
+	create:
+		<org>
+	read:
+		<org>
+	update:
+		<org>
+	delete:
+		<org>

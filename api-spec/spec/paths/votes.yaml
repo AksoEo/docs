@@ -1,0 +1,41 @@
+get:
+  summary: Returns all votes
+  description: >
+    Requires permission: `votes.read.<org>`
+
+
+    Filterable properties: `id`, `org`, `name`, `timeStart`, `timeEnd`, `hasStarted`, `hasEnded`, `isActive`, `type`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Vote'
+
+post:
+  summary: Creates a vote
+  description: >
+    Requires permission: `votes.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/Vote'
+            - required:
+                - name
+                - voterCodeholders
+                - timeStart
+                - timeEnd
+                - type
+                - options
+  responses:
+    '201':
+      description: Created

@@ -1,0 +1,11 @@
+oneOf:
+  - type: number
+    format: float
+    minimum: 0
+    maximum: 1
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      type: integer
+      format: uint8

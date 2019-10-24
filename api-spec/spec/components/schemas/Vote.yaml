@@ -1,0 +1,288 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    description: The unique identifier of this vote
+    readOnly: true
+
+  org:
+    allOf:
+      - description: The organization this vote belongs to
+        readOnly: true
+      - $ref: '#/components/schemas/AKSOExclusiveOrganization'
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 100
+    description: The name of this vote
+
+  description:
+    type: string
+    format: markdown
+    minLength: 1
+    maxLength: 10000
+    nullable: true
+    description: >
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`, `image`
+
+  voterCodeholders:
+    type: object
+    description: The codeholder filter determining which codeholders can vote
+
+  viewerCodeholders:
+    type: object
+    nullable: true
+    description: The codeholder filter determining which codeholders can see the vote. If null, defaults to `voterCodeholders`.
+
+  timeStart:
+    type: integer
+    format: uint64
+    description: >
+      The unix epoch time at which the vote starts
+
+
+      Can only be changed if `hasStarted` is false.
+
+  timeEnd:
+    type: integer
+    format: uint64
+    description: >
+      The unix epoch time at which the vote ends
+
+
+      Can only be changed if `hasEnded` is false.
+
+  hasStarted:
+    type: boolean
+    readOnly: true
+    description: Whether the vote has already started
+
+  hasEnded:
+    type: boolean
+    readOnly: true
+    description: Whether the vote has already ended
+
+  isActive:
+    type: boolean
+    readOnly: true
+    description: Whether the vote is ongoing
+
+  ballotsSecret:
+    type: boolean
+    default: true
+    description: Whether the vote is anonymous; i.e. whether the owner of each ballot can be determined.
+
+  type:
+    type: string
+    enum:
+      - yn
+      - ynb
+      - rp
+      - stv
+      - tm
+    description: >
+      The voting system in use
+
+
+      - `yn` means yes/no. The option with the most votes wins.
+
+      - `ynb` means yes/no/blank. The yes/no option with the most votes wins as long as the blank votes are within a specified threshold.
+
+      - `rp` means TEJO Ranked Pairs. See [Wikipedia](https://en.wikipedia.org/wiki/Ranked_pairs).
+
+      - `stv` means TEJO Single Transferable Vote. See [Wikipedia](https://en.wikipedia.org/wiki/Single_transferable_vote).
+
+      - `tm` means UEA Threshold Majority (Unuvica plurnoma majoritata balotsistemo).
+
+  blankBallotsLimit:
+    allOf:
+      - $ref: '#/components/schemas/OneNumberOrFraction'
+      - nullable: true
+        description: >
+          Only for `ynb`, `rp`, `stv`, `tm`.
+
+
+          The maximum percentile of ballots that may blank for the vote not to fail.
+
+  blankBallotsLimitInclusive:
+    type: boolean
+    default: true
+    description: >
+      Only for `ynb`, `rp`, `stv`, `tm`.
+
+
+      Whether `blankBallotsLimit` is inclusive (i.e. it must be exceeded to fail) or exclusive (i.e. it must be reached to fail).
+
+  quorum:
+    allOf:
+      - $ref: '#/components/schemas/OneNumberOrFraction'
+      - default: 0
+        description: The minimum percentile of voters/permitted voters needed for the vote not to fail.
+
+  quorumInclusive:
+    type: boolean
+    default: true
+    description: Whether `quorum` is inclusive (i.e. it must be reached to succeed) or exclusive (i.e. it must be exceeded to succeed).
+
+  majorityBallots:
+    allOf:
+      - $ref: '#/components/schemas/OneNumberOrFraction'
+      - default: 0
+        description: >
+          Only for `yn`, `ynb`.
+
+
+          The minimum percentile of ballots that must say yes for the vote to pass.
+
+  majorityBallotsInclusive:
+    type: boolean
+    default: true
+    description: >
+      Only for `yn`, `ynb`.
+
+      Whether `majorityBallots` is inclusive (i.e. it must be reached to pass) or exclusive (i.e. it must be exceeded to pass).
+
+  majorityVoters:
+    allOf:
+      - $ref: '#/components/schemas/OneNumberOrFraction'
+      - default: 0
+        description: >
+          Only for `yn`, `ynb`.
+
+
+          The minimum percentile of allowed voters that must say yes for the vote to pass.
+
+
+          Unlike `majorityBallots`, this sets a threshold on the proportion of positive votes to codeholder eligible of voting, even if they didn't vote.
+
+  majorityVotersInclusive:
+    type: boolean
+    default: true
+    description: >
+      Only for `yn`, `ynb`.
+
+
+      Whether `majorityVoters` is inclusive (i.e. it must be reached to pass) or exclusive (i.e. it must be exceeded to pass).
+
+  majorityMustReachBoth:
+    type: boolean
+    default: true
+    description: >
+      Only for `yn`, `ynb`.
+
+
+      Whether both `majorityBallots` and `majorityVoters` must pass, or only one of them must pass.
+
+  numChosenOptions:
+    type: integer
+    format: uint8
+    default: 1
+    description: >
+      Only for `rp`, `stv` and `tm`
+
+
+      The number of options to be chosen. Must not be greater than or equal to the number of options.
+
+
+      For `rp` and `tm` this is the maximum number of options chosen, as some options may be eliminated in the process.
+
+  mentionThreshold:
+    allOf:
+      - $ref: '#/components/schemas/OneNumberOrFraction'
+      - default: 0
+        description: >
+          Only for `tm`.
+
+
+          The minimum percentile of ballots that must mention an option for it to be considered.
+
+  mentionThresholdInclusive:
+    type: boolean
+    default: true
+    description: >
+      Only for `tm`.
+
+
+      Whether `mentionThreshold` is inclusive (i.e. it must be reached to be considered) or exclusive (i.e. it must be exceeded to be considered).
+
+  maxOptionsPerBallot:
+    type: integer
+    format: uint8
+    nullable: true
+    description: >
+      Only for `tm`.
+
+
+      The maximum number of chosen options per ballot. If `null` all options may be chosen.
+
+  tieBreakerCodeholder:
+    allOf:
+      - nullable: true
+        description: >
+          Only for `rp` and `stv`.
+
+
+          The codeholder responsible for breaking a tie in case one appears.
+      - $ref: '#/components/schemas/CodeholderId'
+
+  publishVoters:
+    type: boolean
+    default: false
+    description: Whether it is publicly visible which voters have voted so far and which haven't.
+
+  publishPreliminary:
+    type: boolean
+    default: false
+    description: Whether preliminary statistics will be generated.
+
+  publishVotersPercentage:
+    type: boolean
+    default: true
+    description: Whether the percentage of eligible voters who have voted is public.
+
+  options:
+    type: array
+    minItems: 2
+    maxItems: 255
+    description: >
+      Only for `rp`, `stv`, `tm`.
+
+
+      The options on the ballots.
+    items:
+      allOf:
+        - oneOf:
+          - properties:
+              type:
+                enum: [ 'codeholder' ]
+
+              id:
+                $ref: '#/components/schemas/CodeholderId'
+
+            required:
+              - type
+              - id
+          - properties:
+              type:
+                enum: [ 'simple' ]
+
+              name:
+                type: string
+                minLength: 1
+                maxLength: 100
+                pattern: '^[^\n]+$'
+                description: The name of the option
+            required:
+              - type
+              - name
+        - properties:
+            description:
+              type: string
+              format: markdown
+              nullable: true
+              minLength: 1
+              maxLength: 2000
+              description: >
+                Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`
