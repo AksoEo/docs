@@ -1,0 +1,50 @@
+properties:
+  time:
+    type: integer
+    format: uint64
+    description: The unix epoch time the ballot was submitted at
+
+  ballot:
+    oneOf:
+      - description: >
+          Only for `yn`.
+
+
+          The submitted ballot
+        type: string
+        enum: [ 'y', 'n' ]
+      - description: >
+          Only for `ynb`.
+
+
+          The submitted ballot
+        type: string
+        enum: [ 'y', 'n', 'b' ]
+      - description: >
+          Only for `rp`.
+
+
+          Vote options may not be reused. Each array item is an array of equal options weighed higher than the array following it.
+        type: array
+        minItems: 0
+        maxItems: 255
+        items:
+          type: array
+          items:
+            type: integer
+            format: uint6
+            minItems: 1
+            maxItems: 255
+            description: The vote option index
+      - description: >
+          Only for `stv`.
+
+
+          Vote options may not be reused. Each array item is a vote option weighed higher than the ones following it.
+        type: array
+        minItems: 0
+        maxItems: 255
+        items:
+          type: integer
+          format: uint6
+          description: The vote option index

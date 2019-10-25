@@ -1,0 +1,21 @@
+get:
+  summary: Returns all votes visible to the logged in codeholder
+  description: >
+    Must be logged in using user auth.
+
+
+    Filterable properties: `id`, `org`, `name`, `timeStart`, `timeEnd`, `hasStarted`, `hasEnded`, `isActive`, `type`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderVote'
+    '404':
+      description: No user using user auth found

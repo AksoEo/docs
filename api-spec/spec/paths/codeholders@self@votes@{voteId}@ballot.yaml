@@ -1,0 +1,25 @@
+parameters:
+  - name: voteId
+    in: path
+    description: The vote's identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the codeholder's ballot in a vote
+  description: >
+    Must be logged in using user auth.
+  responses:
+    '204':
+      description: User has voted, but the ballots are secret
+
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/VoteBallot'
+    '404':
+      description: Not found

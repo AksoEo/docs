@@ -1,0 +1,9 @@
+allOf:
+  - properties:
+      voterCodeholders:
+        readOnly: true
+        writeOnly: true
+      viewerCodeholders:
+        readOnly: true
+        writeOnly: true
+  - $ref: '#/components/schemas/Vote'
