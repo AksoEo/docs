@@ -241,12 +241,11 @@ properties:
   publishVoters:
     type: boolean
     default: false
-    description: Whether it is publicly visible which voters have voted so far and which haven't.
+    description: >
+      Whether it is visible which voters have voted so far and which haven't.
 
-  publishPreliminary:
-    type: boolean
-    default: false
-    description: Whether preliminary statistics will be generated.
+
+      May not be changed when `isActive`.
 
   publishVotersPercentage:
     type: boolean

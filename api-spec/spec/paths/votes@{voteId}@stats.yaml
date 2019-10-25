@@ -1,0 +1,35 @@
+parameters:
+  - name: voteId
+    in: path
+    description: The vote's identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns statistics on a vote
+  description: >
+    Requires permission: `votes.read.<org>`
+
+
+    No query parameters allowed.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              numBallots:
+                type: integer
+                format: uint32
+                description: The amount of ballots submitted
+
+              numVoters:
+                type: integer
+                format: uint32
+                description: The amount of permitted voters
+
+    '404':
+      description: Not found

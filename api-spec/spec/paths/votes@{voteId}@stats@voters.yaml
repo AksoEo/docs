@@ -1,0 +1,40 @@
+parameters:
+  - name: voteId
+    in: path
+    description: The vote's identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns which codeholders have voted in a vote
+  description: >
+    Requires permissions: `votes.read.<org>`, `codeholders.read`
+
+
+    Filterable properties: `id`, `hasVoted`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              allOf:
+                - properties:
+                    codeholderId:
+                      $ref: '#/components/schemas/CodeholderId'
+                    hasVoted:
+                      type: boolean
+                      description: Whether the codeholder has voted
+                    time:
+                      nullable: true
+                - $ref: '#/components/schemas/VoteBallot'
+
+    '404':
+      description: Not found
+
+    '409':
+      description: The vote doesn't have `publishVoters`
