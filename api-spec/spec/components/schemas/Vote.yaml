@@ -190,7 +190,7 @@ properties:
       Only for `rp`, `stv` and `tm`
 
 
-      The number of options to be chosen. Must not be greater than or equal to the number of options.
+      The number of options to be chosen. Must not be greater than the number of options.
 
 
       For `rp` and `tm` this is the maximum number of options chosen, as some options may be eliminated in the process.
