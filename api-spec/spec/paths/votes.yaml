@@ -35,7 +35,6 @@ post:
                 - timeStart
                 - timeEnd
                 - type
-                - options
   responses:
     '201':
       description: Created

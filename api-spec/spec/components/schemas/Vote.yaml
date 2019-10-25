@@ -108,6 +108,7 @@ properties:
     allOf:
       - $ref: '#/components/schemas/OneNumberOrFraction'
       - nullable: true
+        default: 0.5
         description: >
           Only for `ynb`, `rp`, `stv`, `tm`.
 
@@ -256,6 +257,7 @@ properties:
     type: array
     minItems: 2
     maxItems: 255
+    nullable: true
     description: >
       Only for `rp`, `stv`, `tm`.
 
