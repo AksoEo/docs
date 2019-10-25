@@ -106,7 +106,7 @@ properties:
   blankBallotsLimit:
     allOf:
       - $ref: '#/components/schemas/OneNumberOrFraction'
-      - default: 0.5
+      - default: 1
         description: >
           Only for `ynb`, `rp`, `stv`, `tm`.
 
