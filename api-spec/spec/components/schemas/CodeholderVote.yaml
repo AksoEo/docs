@@ -6,6 +6,11 @@ allOf:
       hasVoted:
         type: boolean
         description: Whether the codeholder has voted
+      percentageVoted:
+        type: number
+        format: float
+        nullable: true
+        description: The proportion of eligible voters that have voted so far. `null` if the vote doesn't have `publishVotersPercentage`.
       voterCodeholders:
         readOnly: true
         writeOnly: true
