@@ -14,6 +14,9 @@ get:
 
 
     Filterable properties: `id`, `hasVoted`
+
+
+    Ballots are `null` if the vote is secret or it hasn't ended yet.
   responses:
     '200':
       description: OK
