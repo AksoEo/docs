@@ -8,7 +8,6 @@ properties:
   org:
     allOf:
       - description: The organization this vote belongs to
-        readOnly: true
       - $ref: '#/components/schemas/AKSOExclusiveOrganization'
 
   name:

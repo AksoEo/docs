@@ -31,6 +31,7 @@ post:
             - $ref: '#/components/schemas/Vote'
             - required:
                 - name
+                - org
                 - voterCodeholders
                 - timeStart
                 - timeEnd
