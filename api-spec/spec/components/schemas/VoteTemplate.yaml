@@ -1,0 +1,50 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this vote template
+
+  org:
+    allOf:
+      - $ref: '#/components/schemas/AKSOExclusiveOrganization'
+      - description: The organization this vote template belongs to
+
+  name:
+    type: string
+    minLength: 1
+    maxLength: 100
+    pattern: '^[^\n]+$'
+
+  description:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    nullable: true
+
+  vote:
+    allOf:
+      - description: The template vote
+        properties:
+          id:
+            writeOnly: true
+            readOnly: true
+          org:
+            writeOnly: true
+            readOnly: true
+          timeStart:
+            writeOnly: true
+            readOnly: true
+          timeEnd:
+            writeOnly: true
+            readOnly: true
+          hasStarted:
+            writeOnly: true
+            readOnly: true
+          hasEnded:
+            writeOnly: true
+            readOnly: true
+          isActive:
+            writeOnly: true
+            readOnly: true
+      - $ref: '#/components/schemas/Vote'

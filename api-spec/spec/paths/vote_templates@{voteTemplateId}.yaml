@@ -1,14 +1,14 @@
 parameters:
-  - name: voteId
+  - name: voteTemplateId
     in: path
-    description: The vote's identifier
+    description: The vote template's identifier
     required: true
     schema:
       type: integer
       format: uint32
 
 get:
-  summary: Returns a vote
+  summary: Returns a vote template
   description: >
     Requires permission: `votes.read.<org>`
   responses:
@@ -17,13 +17,13 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/Vote'
+            $ref: '#/components/schemas/VoteTemplate'
 
     '404':
       description: Not found
 
 delete:
-  summary: Deletes a vote
+  summary: Deletes a vote template
   description: >
     Requires permission: `votes.delete.<org>`
   responses:
@@ -33,7 +33,7 @@ delete:
       description: Not found
 
 patch:
-  summary: Updates a vote
+  summary: Updates a vote template
   description: >
     Requires permission: `votes.update.<org>`
   requestBody:
@@ -45,7 +45,7 @@ patch:
             - properties:
                 org:
                   readOnly: true
-            - $ref: '#/components/schemas/Vote'
+            - $ref: '#/components/schemas/VoteTemplate'
   responses:
     '204':
       description: Updated

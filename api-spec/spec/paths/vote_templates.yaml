@@ -1,0 +1,32 @@
+get:
+  summary: Returns all vote templates
+  description: >
+    Requires permission: `votes.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/VoteTemplate'
+
+post:
+  summary: Creates a vote template
+  description: >
+    Requires permission: `votes.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - required:
+                - org
+                - name
+                - vote
+            - $ref: '#/components/schemas/VoteTemplate'
+  responses:
+    '201':
+      description: Created
