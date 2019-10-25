@@ -4,7 +4,7 @@ get:
     Must be logged in using user auth.
 
 
-    Filterable properties: `id`, `org`, `name`, `timeStart`, `timeEnd`, `hasStarted`, `hasEnded`, `isActive`, `type`
+    Filterable properties: `mayVote`, `hasVoted`, `id`, `org`, `name`, `timeStart`, `timeEnd`, `hasStarted`, `hasEnded`, `isActive`, `type`
 
 
     Searchable properties: `name`, `description`

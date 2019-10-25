@@ -1,5 +1,11 @@
 allOf:
   - properties:
+      mayVote:
+        type: boolean
+        description: Whether the codeholder may vote
+      hasVoted:
+        type: boolean
+        description: Whether the codeholder has voted
       voterCodeholders:
         readOnly: true
         writeOnly: true
