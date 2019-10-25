@@ -12,9 +12,6 @@ get:
   description: >
     Must be logged in using user auth.
   responses:
-    '204':
-      description: User has voted, but the ballots are secret
-
     '200':
       description: OK
       content:
@@ -23,3 +20,21 @@ get:
             $ref: '#/components/schemas/VoteBallot'
     '404':
       description: Not found
+
+put:
+  summary: Submits a ballot in a vote
+  description: >
+    Must be logged in user user auth. A ballot can only be resubmitted in non-secret votes.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/VoteBallot'
+  responses:
+    '204':
+      description: Ballot (re)submitted
+    '404':
+      description: Vote not found
+    '409':
+      description: A ballot has already been submitted and the vote is secret

@@ -2,10 +2,13 @@ properties:
   time:
     type: integer
     format: uint64
+    readOnly: true
     description: The unix epoch time the ballot was submitted at
 
   ballot:
     oneOf:
+      - type: null
+        description: The vote is secret
       - description: >
           Only for `yn`.
 
