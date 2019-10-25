@@ -230,6 +230,7 @@ properties:
   tieBreakerCodeholder:
     allOf:
       - nullable: true
+        readOnly: false
         description: >
           Only for `rp` and `stv`.
 
