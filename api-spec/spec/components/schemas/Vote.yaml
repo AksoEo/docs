@@ -200,7 +200,7 @@ properties:
       - $ref: '#/components/schemas/OneNumberOrFraction'
       - default: 0
         description: >
-          Only for `tm`.
+          Only for `rp`, `tm`.
 
 
           The minimum percentile of ballots that must mention an option for it to be considered.
@@ -209,7 +209,7 @@ properties:
     type: boolean
     default: true
     description: >
-      Only for `tm`.
+      Only for `rp`, `tm`.
 
 
       Whether `mentionThreshold` is inclusive (i.e. it must be reached to be considered) or exclusive (i.e. it must be exceeded to be considered).
