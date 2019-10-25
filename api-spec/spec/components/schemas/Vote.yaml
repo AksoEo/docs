@@ -29,7 +29,11 @@ properties:
 
   voterCodeholders:
     type: object
-    description: The codeholder filter determining which codeholders can vote
+    description: >
+      The codeholder filter determining which codeholders can vote
+
+
+      May not be changed when `isActive`.
 
   viewerCodeholders:
     type: object
@@ -43,16 +47,13 @@ properties:
       The unix epoch time at which the vote starts
 
 
-      Can only be changed if `hasStarted` is false.
+      May not be changed when `isActive`.
 
   timeEnd:
     type: integer
     format: uint64
     description: >
       The unix epoch time at which the vote ends
-
-
-      Can only be changed if `hasEnded` is false.
 
   hasStarted:
     type: boolean
@@ -72,7 +73,11 @@ properties:
   ballotsSecret:
     type: boolean
     default: true
-    description: Whether the vote is anonymous; i.e. whether the owner of each ballot can be determined.
+    description: >
+      Whether the vote is anonymous; i.e. whether the owner of each ballot can be determined.
+
+
+      May not be changed when `isActive`.
 
   type:
     type: string
@@ -84,6 +89,9 @@ properties:
       - tm
     description: >
       The voting system in use
+
+
+      May not be changed when `isActive`.
 
 
       - `yn` means yes/no. The option with the most votes wins.
@@ -217,6 +225,9 @@ properties:
 
       The maximum number of chosen options per ballot. If `null` all options may be chosen.
 
+
+      May not be changed when `isActive`.
+
   tieBreakerCodeholder:
     allOf:
       - nullable: true
@@ -251,6 +262,9 @@ properties:
 
 
       The options on the ballots.
+
+
+      May not be changed when `isActive`.
     items:
       allOf:
         - oneOf:

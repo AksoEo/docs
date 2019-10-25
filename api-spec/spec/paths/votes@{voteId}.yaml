@@ -51,3 +51,5 @@ patch:
       description: Updated
     '404':
       description: Not found
+    '409':
+      description: The vote has ended and may not be updated
