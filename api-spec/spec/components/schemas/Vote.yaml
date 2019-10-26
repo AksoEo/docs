@@ -49,7 +49,7 @@ properties:
     type: integer
     format: uint64
     description: >
-      The unix epoch time at which the vote starts
+      The unix epoch time at which the vote starts. Must not be lower than the current unix time.
 
 
       May not be changed when `isActive`.
@@ -58,7 +58,7 @@ properties:
     type: integer
     format: uint64
     description: >
-      The unix epoch time at which the vote ends
+      The unix epoch time at which the vote ends. Must not be lower than `timeStart`.
 
   hasStarted:
     type: boolean
@@ -191,12 +191,13 @@ properties:
   numChosenOptions:
     type: integer
     format: uint8
+    minimum: 1
     default: 1
     description: >
       Only for `rp`, `stv` and `tm`
 
 
-      The number of options to be chosen. Must not be greater than the number of options.
+      The number of options to be chosen. Must not be greater than the amount of options.
 
 
       For `rp` and `tm` this is the maximum number of options chosen, as some options may be eliminated in the process.
@@ -223,12 +224,13 @@ properties:
   maxOptionsPerBallot:
     type: integer
     format: uint8
+    minimum: 1
     nullable: true
     description: >
       Only for `tm`.
 
 
-      The maximum number of chosen options per ballot. If `null` all options may be chosen.
+      The maximum number of chosen options per ballot. If `null` all options may be chosen. Must not be greater than the number of options.
 
 
       May not be changed when `isActive`.
@@ -264,7 +266,7 @@ properties:
     maxItems: 255
     nullable: true
     description: >
-      Only for `rp`, `stv`, `tm`.
+      Required for `rp`, `stv`, `tm`. Otherwise not allowed.
 
 
       The options on the ballots.
@@ -278,8 +280,10 @@ properties:
               type:
                 enum: [ 'codeholder' ]
 
-              id:
-                $ref: '#/components/schemas/CodeholderId'
+              codeholderId:
+                allOf:
+                  - readOnly: false
+                  - $ref: '#/components/schemas/CodeholderId'
 
             required:
               - type

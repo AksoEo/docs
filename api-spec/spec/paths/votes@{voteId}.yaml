@@ -45,6 +45,8 @@ patch:
             - properties:
                 org:
                   readOnly: true
+                type:
+                  readOnly: true
             - $ref: '#/components/schemas/Vote'
   responses:
     '204':
