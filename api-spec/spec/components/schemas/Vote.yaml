@@ -29,7 +29,10 @@ properties:
   voterCodeholders:
     type: object
     description: >
-      The codeholder filter determining which codeholders can vote
+      The codeholder filter determining which codeholders can vote.
+
+
+      This will be merged with the `memberFilter` from `GET /perms`.
 
 
       May not be changed when `isActive`.
@@ -37,8 +40,11 @@ properties:
   viewerCodeholders:
     type: object
     nullable: true
-    description: The codeholder filter determining which codeholders can see the vote. If null, defaults to `voterCodeholders`.
+    description: >
+      The codeholder filter determining which codeholders can see the vote. If null, defaults to `voterCodeholders`.
 
+
+      This will be merged with the `memberFilter` from `GET /perms`.
   timeStart:
     type: integer
     format: uint64
