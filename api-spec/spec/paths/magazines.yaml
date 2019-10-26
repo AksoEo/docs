@@ -1,9 +1,6 @@
 get:
   summary: Returns all magazines
   description: >
-    Requires permission: `magazines.read.<org>`
-
-
     Filterable properties: `id`, `org`, `name`
 
 
