@@ -35,6 +35,8 @@ put:
     '204':
       description: Ballot (re)submitted
     '404':
-      description: Vote not found
+      description: Vote not found or user may not vote
     '409':
       description: A ballot has already been submitted and the vote is secret
+    '423':
+      description: The vote has ended
