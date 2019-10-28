@@ -108,5 +108,3 @@ post:
   responses:
     '202':
       description: Accepted
-    '423':
-      description: Already submitted, wait for first request to finish processing
