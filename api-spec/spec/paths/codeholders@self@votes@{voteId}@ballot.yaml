@@ -30,7 +30,9 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/VoteBallot'
+          allOf:
+            - required: [ ballot ]
+            - $ref: '#/components/schemas/VoteBallot'
   responses:
     '204':
       description: Ballot (re)submitted

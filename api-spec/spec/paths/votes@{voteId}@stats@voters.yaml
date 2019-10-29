@@ -13,10 +13,10 @@ get:
     Requires permissions: `votes.read.<org>`, `codeholders.read`
 
 
-    Filterable properties: `id`, `hasVoted`
+    Filterable properties: `codeholderId`, `hasVoted`, `time`
 
 
-    Ballots are `null` if the vote is secret or it hasn't ended yet.
+    Ballots are `null` if the vote is secret or hasn't ended yet.
   responses:
     '200':
       description: OK

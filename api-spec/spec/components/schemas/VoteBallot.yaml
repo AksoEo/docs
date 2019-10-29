@@ -8,7 +8,7 @@ properties:
   ballot:
     oneOf:
       - type: null
-        description: The vote is secret
+        description: The vote is secret. Only valid when reading
       - description: >
           Only for `yn`.
 
@@ -33,21 +33,27 @@ properties:
         maxItems: 255
         items:
           type: array
+          minItems: 1
+          maxItems: 255
           items:
             type: integer
-            format: uint6
-            minItems: 1
-            maxItems: 255
+            format: uint8
             description: The vote option index
       - description: >
-          Only for `stv`.
+          Only for `stv` and `tm`.
 
 
-          Vote options may not be reused. Each array item is a vote option weighed higher than the ones following it.
+          Vote options may not be reused.
+
+
+          `stv`: Each array item is a vote option weighed higher than the ones following it.
+
+
+          `tm`: Each array item is a vote option weighed equally with the ones following it.
         type: array
         minItems: 0
         maxItems: 255
         items:
           type: integer
-          format: uint6
+          format: uint8
           description: The vote option index
