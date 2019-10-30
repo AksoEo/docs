@@ -155,6 +155,7 @@ properties:
     description: >
       Only for `yn`, `ynb`.
 
+
       Whether `majorityBallots` is inclusive (i.e. it must be reached to pass) or exclusive (i.e. it must be exceeded to pass).
 
   majorityVoters:
