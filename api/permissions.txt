@@ -7,6 +7,7 @@ codeholders:
 	delete
 	hist:
 		read
+	disable_totp
 
 codeholder_roles:
 	create

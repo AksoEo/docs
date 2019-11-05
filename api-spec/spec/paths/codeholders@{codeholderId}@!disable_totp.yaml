@@ -1,0 +1,18 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+post:
+  summary: Disables TOTP 2FA for a codeholder
+  description: >
+    Requires permission: `codeholders.disable_totp`
+  responses:
+    '204':
+      description: OK
+
+    '404':
+      description: Codeholder not found or codeholder does not have TOTP set up
