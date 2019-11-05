@@ -1,0 +1,25 @@
+parameters:
+  - name: voteId
+    in: path
+    description: The vote's identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the result of a vote
+  description: >
+    Must be logged in using user auth.
+
+
+    No query parameters allowed.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/VoteResult'
+    '404':
+      description: Vote result not found
