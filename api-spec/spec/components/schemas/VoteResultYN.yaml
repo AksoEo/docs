@@ -1,0 +1,42 @@
+properties:
+  numVoters:
+    type: integer
+    description: The number of voters eligible to vote
+
+  numBallots:
+    type: integer
+    description: The number of eligible voters who voted
+
+  result:
+    type: string
+    description: >
+      - `NO_QUORUM`: The vote's quorum has not been reached
+
+
+      - `MAJORITY`: The vote passed
+
+
+      - `NO_MAJORITY`: The vote didn't pass
+
+  tally:
+    type: object
+    properties:
+      'y':
+        type: integer
+        description: The number of ballots saying yes
+
+      'n':
+        type: integer
+        description: The number of ballots saying no
+
+  majorityBallotsOkay:
+    type: boolean
+    description: Whether `majorityBallots` was passed
+
+  majorityVotersOkay:
+    type: boolean
+    description: Whether `majorityVoters` was passed
+
+  majorityOkay:
+    type: boolean
+    description: Whether `majorityBallotsOkay` and/or `majorityVotersOkay` are true

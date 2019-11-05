@@ -17,6 +17,15 @@ properties:
     maxLength: 100
     description: The name of this vote
 
+  hasResults:
+    type: boolean
+    readOnly: true
+    description: >
+      Whether results are ready for this vote.
+
+
+      Note that even though `timeEnd` may have been passed, the results may not be ready yet.
+
   description:
     type: string
     format: markdown

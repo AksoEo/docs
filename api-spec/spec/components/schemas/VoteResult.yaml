@@ -1,0 +1,6 @@
+oneOf:
+  - $ref: '#/components/schemas/VoteResultRP'
+  - $ref: '#/components/schemas/VoteResultSTV'
+  - $ref: '#/components/schemas/VoteResultTM'
+  - $ref: '#/components/schemas/VoteResultYNB'
+  - $ref: '#/components/schemas/VoteResultYN'
