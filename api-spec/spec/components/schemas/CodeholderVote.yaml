@@ -3,17 +3,25 @@ allOf:
       mayVote:
         type: boolean
         description: Whether the codeholder may vote
+
       hasVoted:
         type: boolean
         description: Whether the codeholder has voted
+
       percentageVoted:
         type: number
         format: float
         nullable: true
         description: The proportion of eligible voters that have voted so far. `null` if the vote doesn't have `publishVotersPercentage`.
+      
+      isTieBreaker:
+        type: boolean
+        description: Whether the vote is a tie and the codeholder is the tie breaking codeholder
+
       voterCodeholders:
         readOnly: true
         writeOnly: true
+
       viewerCodeholders:
         readOnly: true
         writeOnly: true

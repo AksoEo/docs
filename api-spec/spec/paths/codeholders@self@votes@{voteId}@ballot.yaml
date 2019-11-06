@@ -25,6 +25,9 @@ put:
   summary: Submits a ballot in a vote
   description: >
     Must be logged in user user auth. A ballot can only be resubmitted in non-secret votes.
+
+
+    This method is also used for submitting tie breaker ballots.
   requestBody:
     required: true
     content:

@@ -26,6 +26,12 @@ properties:
 
       Note that even though `timeEnd` may have been passed, the results may not be ready yet.
 
+  usedTieBreaker:
+    type: boolean
+    readOnly: true
+    description: >
+      Whether the result was achieved using a tie breaker
+
   description:
     type: string
     format: markdown
