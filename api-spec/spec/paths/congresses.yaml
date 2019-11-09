@@ -1,0 +1,31 @@
+get:
+  summary: Returns all congresses
+  description: >
+    Requires permission: `congresses.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Congress'
+
+post:
+  summary: Creates a congress
+  description: >
+    Requires permission: `congresses.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/Congress'
+            - required:
+                - name
+                - org
+  responses:
+    '201':
+      description: Created

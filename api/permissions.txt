@@ -82,3 +82,13 @@ votes:
 		<org>
 	delete:
 		<org>
+
+congresses:
+	create:
+		<org>
+	read:
+		<org>
+	update:
+		<org>
+	delete:
+		<org>

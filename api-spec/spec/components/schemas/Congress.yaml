@@ -1,0 +1,26 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this congress
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 100
+    description: The name of this congress
+
+  abbrev:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 15
+    nullable: true
+    description: The abbreviated name of this congress
+
+  org:
+    allOf:
+      - description: The organization this congress belongs to
+      - $ref: '#/components/schemas/AKSOExclusiveOrganization'
