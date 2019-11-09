@@ -1,0 +1,59 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the program tags of a congress instance
+  description: >
+    Requires permission: `congress_instances.read.<org>`
+
+
+    Filterable properties: `id`, `name`
+
+
+    Searchable properties: `name`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CongressInstanceProgramTag'
+
+    '404':
+      description: Not found
+
+post:
+  summary: Adds a program tag to a congress instance
+  description: >
+    Requires permission: `congress_instances.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - required:
+                - name
+            - $ref: '#/components/schemas/CongressInstanceProgramTag'
+
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Not found
