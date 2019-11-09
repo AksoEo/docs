@@ -1,0 +1,55 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: locationId
+    in: path
+    description: The id of the location
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+put:
+  summary: Updates the thumbnail of a congress instance location
+  description: >
+    Permission required: `congress_instances.update.<org>`
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            thumbnail:
+              type: string
+              format: binary
+              description: 'Max size: 5MB. Must either be `image/jpeg` or `image/png`. The largest dimension will be scaled down to 1024px by the server.'
+          required: [ thumbnail ]
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes the thumbnail of a congress instance location
+  description: >
+    Permission required: `congress_instances.update.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
