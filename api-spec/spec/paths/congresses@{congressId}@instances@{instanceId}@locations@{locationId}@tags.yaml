@@ -1,0 +1,47 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: locationId
+    in: path
+    description: The id of the location
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the tags of a location from a congress instance
+  description: >
+    Requires permission: `congress_instances.read.<org>`
+
+
+    Filterable properties: `id`, `name`
+
+
+    Searchable properties: `name`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CongressInstanceLocationTag'
+
+    '404':
+      description: Not found

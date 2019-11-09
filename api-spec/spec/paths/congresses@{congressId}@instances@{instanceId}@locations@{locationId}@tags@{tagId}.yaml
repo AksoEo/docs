@@ -1,0 +1,52 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: locationId
+    in: path
+    description: The id of the location
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: tagId
+    in: path
+    description: The id of the location tag
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+put:
+  summary: Adds a tag to a location from a congress instance
+  description: >
+    Requires permission: `congress_instances.update.<org>`
+  responses:
+    '204':
+      description: Added
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a tag from a location of a congress instance
+  description: >
+    Requires permission: `congress_instances.update.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
