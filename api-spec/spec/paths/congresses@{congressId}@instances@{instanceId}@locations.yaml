@@ -1,0 +1,67 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the locations of a congress instance
+  description: >
+    Requires permission: `congress_instances.read.<org>`
+
+
+    Filterable properties: `id`, `type`, `name`, `ll`, `rating.rating`, `externalLoc`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: '#/components/schemas/CongressInstanceLocationExternal'
+                - $ref: '#/components/schemas/CongressInstanceLocationInternal'
+
+    '404':
+      description: Not found
+
+post:
+  summary: Adds a location to a congress instance
+  description: >
+    Requires permission: `congress_instances.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - required:
+                - name
+                - type
+            - oneOf:
+              - allOf:
+                - $ref: '#/components/schemas/CongressInstanceLocationExternal'
+                - required:
+                    - ll
+              - $ref: '#/components/schemas/CongressInstanceLocationInternal'
+
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Not found

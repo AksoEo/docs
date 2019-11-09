@@ -1,0 +1,40 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns metadata on the map of a congress instance
+  description: >
+    Requires permission: `congress_instances.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              boundSW:
+                allOf:
+                  - description: The south-west bound of the map
+                  - $ref: '#/components/schemas/LatLon'
+
+              boundNE:
+                allOf:
+                  - description: The north-east bound of the map
+                  - $ref: '#/components/schemas/LatLon'
+
+    '404':
+      description: Congress instance not found, or no locations found

@@ -1,0 +1,87 @@
+allOf:
+  - properties:
+      type:
+        enum: [ 'external' ]
+  - $ref: '#/components/schemas/CongressInstanceLocation'
+  - properties:
+      address:
+        type: string
+        minLength: 1
+        maxLength: 500
+        nullable: true
+        description: The location's geographical address
+
+      ll:
+        allOf:
+          - description: The coordinates of the location
+          - $ref: '#/components/schemas/LatLon'
+
+      rating:
+        type: object
+        nullable: true
+        description: The rating of this location
+        properties:
+          rating:
+            type: number
+            format: float
+            minimum: 0
+            description: The rating of this location. Must not be greater than `max`.
+
+          max:
+            type: integer
+            format: uint8
+            minimum: 1
+            description: The maximum possible rating of the location
+
+          type:
+            type: string
+            enum:
+              - hearts
+              - stars
+            description: The icon used for the rating
+        required:
+          - rating
+          - max
+          - type
+
+      icon:
+        type: string
+        description: The icon used for this location
+        default: GENERIC
+        enum:
+          - GENERIC
+          - STAR
+          - BUS
+          - TRAIN
+          - AIRPORT
+          - TAXI
+          - METRO
+          - TRAM
+          - FERRY
+          - BIKE_RENTAL
+          - PARKING
+          - GAS_STATION
+          - ATM
+          - HOSPITAL
+          - PHARMACY
+          - PRINT_SHOP
+          - MALL
+          - LAUNDY_SERVICE
+          - POST_OFFICE
+          - TOURIST_INFORMATION
+          - POLICE
+          - RESTAURANT
+          - FAST_FOOD
+          - CAFE
+          - BAR
+          - GROCERY_STORE
+          - CONVENIENCE_STORE
+          - STORE
+          - MUSEUM
+          - MOVIE_THEATER
+          - THEATER
+          - CULTURAL_CENTER
+          - LIBRARY
+          - POINT_OF_INTEREST
+          - HOTEL
+          - HOSTEL

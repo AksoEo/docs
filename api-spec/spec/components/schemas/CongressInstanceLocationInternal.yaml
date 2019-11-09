@@ -1,0 +1,11 @@
+allOf:
+  - properties:
+      type:
+        enum: [ 'internal' ]
+  - $ref: '#/components/schemas/CongressInstanceLocation'
+  - properties:
+      externalLoc:
+        type: integer
+        format: uint32
+        nullable: true
+        description: The external location this internal location is situated within

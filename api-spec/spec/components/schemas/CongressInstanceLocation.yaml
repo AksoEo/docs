@@ -1,0 +1,32 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this location
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 50
+    description: The name of this location
+
+  description:
+    type: string
+    format: markdown
+    minLength: 1
+    maxLength: 200
+    nullable: true
+    description: >
+      A description of the location
+
+
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+
+  type:
+    type: string
+    enum:
+      - internal
+      - external
+    description: Whether this location is internal of external
