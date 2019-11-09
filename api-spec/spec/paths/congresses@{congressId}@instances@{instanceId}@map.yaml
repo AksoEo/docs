@@ -19,6 +19,9 @@ get:
   summary: Returns metadata on the map of a congress instance
   description: >
     Requires permission: `congress_instances.read.<org>`
+
+
+    May use the same filterable and searchable properties as for locations to limit the scope of the locations included in the map.
   responses:
     '200':
       description: OK
