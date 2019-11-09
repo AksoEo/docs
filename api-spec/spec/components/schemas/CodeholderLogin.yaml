@@ -31,13 +31,9 @@ properties:
     description: The parsed user agent of the client
 
   ll:
-    type: array
-    minProperties: 2
-    maxProperties: 2
-    items:
-      type: number
-      format: integer
-    description: The lat lon coordinates of the login based on geoip data
+    allOf:
+      - description: The lat lon coordinates of the login based on geoip data
+      - $ref: '#/components/schemas/LatLon'
 
   area:
     type: number

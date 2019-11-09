@@ -1,0 +1,63 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this congress instance
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 100
+    description: The name of this congress instance
+
+  humanId:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 20
+    description: The human-readable identifier of this congress instance, unique to the congress
+
+  dateFrom:
+    type: date
+    description: The start date of this congress instance
+
+  dateTo:
+    type: date
+    description: The end date of this congress instance. Must be greater than or equal to `dateFrom`.
+
+  locationName:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 100
+    nullable: true
+    description: The name of the location of the congress instance, written in Esperanto
+
+  locationNameLocal:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 100
+    nullable: true
+    description: The name of the location of the congress instance, written in the native language
+
+  locationCoords:
+    allOf:
+      - description: The coordinates of the congress instance
+        nullable: true
+      - $ref: '#/components/schemas/LatLon'
+
+  locationAddress:
+    type: string
+    minLength: 1
+    maxLength: 500
+    nullable: true
+    description: The geographical address of the congress instance
+
+  tz:
+    type: string
+    format: tz
+    nullable: true
+    description: The IANA timezone of the congress instance

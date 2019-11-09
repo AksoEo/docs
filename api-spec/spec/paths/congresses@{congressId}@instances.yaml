@@ -1,0 +1,37 @@
+get:
+  summary: Returns all instances of a congress
+  description: >
+    Requires permission: `congress_instances.read.<org>`
+
+
+    Filterable properties: `id`, `name`, `humanId`, `dateFrom`, `dateTo`
+
+
+    Searchable properties: `name`, `locationName`, `locationNameLocal`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CongressInstance'
+
+post:
+  summary: Creates a congress instance
+  description: >
+    Requires permission: `congress_instances.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/CongressInstance'
+            - required:
+                - name
+                - org
+  responses:
+    '201':
+      description: Created

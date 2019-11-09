@@ -92,3 +92,13 @@ congresses:
 		<org>
 	delete:
 		<org>
+
+congress_instances:
+	create:
+		<org>
+	read:
+		<org>
+	update:
+		<org>
+	delete:
+		<org>

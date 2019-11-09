@@ -2,6 +2,12 @@ get:
   summary: Returns all congresses
   description: >
     Requires permission: `congresses.read.<org>`
+
+
+    Filterable properties: `id`, `name`, `abbrev`, `org`
+
+
+    Searchable properties: `name`, `abbrev`
   responses:
     '200':
       description: OK
