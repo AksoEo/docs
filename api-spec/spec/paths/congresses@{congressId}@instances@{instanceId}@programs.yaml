@@ -21,10 +21,10 @@ get:
     Requires permission: `congress_instances.read.<org>`
 
 
-    Filterable properties: `id`, `name`
+    Filterable properties: `id`, `title`, `timeFrom`, `timeTo`, `location`
 
 
-    Searchable properties: `name`
+    Searchable properties: `title`, `description`
   responses:
     '200':
       description: OK
