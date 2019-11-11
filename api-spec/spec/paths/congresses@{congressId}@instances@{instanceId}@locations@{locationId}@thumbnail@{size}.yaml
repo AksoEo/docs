@@ -36,6 +36,7 @@ parameters:
         - 256px
         - 512px
         - 1024px
+        - 2048px
 
 get:
   summary: Returns the thumbnail of a congress instance location

@@ -36,7 +36,7 @@ put:
             thumbnail:
               type: string
               format: binary
-              description: 'Max size: 5MB. Must either be `image/jpeg` or `image/png`. The largest dimension will be scaled down to 1024px by the server.'
+              description: 'Max size: 12MB. Must either be `image/jpeg` or `image/png`. The largest dimension will be scaled down to 1024px by the server.'
           required: [ thumbnail ]
   responses:
     '204':
