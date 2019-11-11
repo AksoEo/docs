@@ -33,7 +33,9 @@ post:
             - $ref: '#/components/schemas/CongressInstance'
             - required:
                 - name
-                - org
+                - humanId
+                - dateFrom
+                - dateTo
   responses:
     '201':
       description: Created

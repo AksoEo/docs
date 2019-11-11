@@ -3,4 +3,4 @@ minProperties: 2
 maxProperties: 2
 items:
   type: number
-  format: integer
+  format: float

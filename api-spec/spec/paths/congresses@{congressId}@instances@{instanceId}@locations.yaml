@@ -21,7 +21,7 @@ get:
     Requires permission: `congress_instances.read.<org>`
 
 
-    Filterable properties: `id`, `type`, `name`,  `rating.rating`, `externalLoc`
+    Filterable properties: `id`, `type`, `name`, `externalLoc`
 
 
     Searchable properties: `name`, `description`
