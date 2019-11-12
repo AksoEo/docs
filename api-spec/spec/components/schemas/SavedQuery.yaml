@@ -28,6 +28,6 @@ properties:
 
   query:
     type: object
-    description: The query filter
+    description: The query filter. See `api/saved_queries.md` for details.
 
 required: [ id, category, name, query ]
