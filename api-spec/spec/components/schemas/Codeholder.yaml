@@ -46,6 +46,11 @@ properties:
       - description: The codeholder's normalized postal address. The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
       - $ref: '#/components/schemas/PostalAddress'
 
+  addressPublicity:
+    description: The publicity of the codeholder's address in lists
+    enum: [ private, public, members ]
+    default: private
+
   addressCountryGroups:
     type: array
     readOnly: true
@@ -129,6 +134,11 @@ properties:
     pattern: ^[^\n]*$
     description: The codeholder's contact and login email address
 
+  emailPublicity:
+    description: The publicity of the codeholder's email address in lists
+    enum: [ private, public, members ]
+    default: private
+
   enabled:
     type: boolean
     default: true
@@ -152,6 +162,11 @@ properties:
     nullable: true
     description: The office phone number of the codeholder formatted according to its country code
 
+  officePhonePublicity:
+    description: The publicity of the codeholder's office phone number in lists
+    enum: [ private, public, members ]
+    default: private
+
   isDead:
     type: boolean
     default: false
@@ -171,10 +186,29 @@ properties:
     readOnly: true
     description: The hash of the codeholder's profile picture, null if the codeholder has no profile picture
 
+  profilePicturePublicity:
+    description: The publicity of the codeholder's profile picture in lists
+    enum: [ public, members ]
+    default: public
+
   isActiveMember:
     type: boolean
     readOnly: true
     description: Whether the codeholder is a member in the current year.
+
+  website:
+    type: string
+    format: uri
+    maxLength: 50
+    nullable: true
+    description: The codeholder's website. This field is always public in lists.
+
+  biography:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    nullable: true
+    description: A description of the codeholder. This field is always public in lists.
 
 required:
   - newCode

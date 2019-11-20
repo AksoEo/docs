@@ -23,11 +23,17 @@ get:
     Properties with history:
 
 
-    - Codeholder: `newCode`, `password`, `address`, `feeCountry`, `email`, `enabled`, `notes`, `officePhone`, `isDead`, `deathdate`, `profilePictureHash`
+    - Codeholder: `newCode`, `password`, `address`, `addressPublicity`,
+      `feeCountry`, `email`, `emailPublicity`, `enabled`, `notes`,
+      `officePhone`, `officePhonePublicity`, `isDead`, `deathdate`,
+      `profilePictureHash`, `profilePicturePublicity`, `website`, `biography`
 
-    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`, `lastNameLegal`, `honorific`, `birthdate`, `landlinePhone`, `cellphone`
+    - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`,
+      `lastNameLegal`, `lastNamePublicity`, `honorific`, `birthdate`,
+      `landlinePhone`, `landlinePhonePublicity`, `cellphone`,
+      `cellphonePublicity`
 
-    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`, `website`
+    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
 
 
     Filterable properties: `modId`

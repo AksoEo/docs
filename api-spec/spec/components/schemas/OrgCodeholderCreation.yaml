@@ -29,11 +29,5 @@ allOf:
         pattern: ^[^\n]*$
         description: An abbreviation of the organization's name
 
-      website:
-        type: string
-        format: uri
-        maxLength: 50
-        description: The organization's website
-
     required:
       - fullName

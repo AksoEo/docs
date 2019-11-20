@@ -31,10 +31,3 @@ allOf:
         pattern: ^[^\n]*$
         nullable: true
         description: An abbreviation of the organization's name
-
-      website:
-        type: string
-        format: uri
-        maxLength: 50
-        nullable: true
-        description: The organization's website

@@ -32,6 +32,11 @@ allOf:
         nullable: true
         description: The codeholder's legal last name
 
+      lastNamePublicity:
+        description: Whether the codeholder's last name is public in lists
+        default: public
+        enum: [ private, public, members ]
+
       honorific:
         allOf:
           - $ref: '#/components/schemas/HumanHonorific'
@@ -63,7 +68,7 @@ allOf:
         minLength: 1
         maxLength: 50
         pattern: ^[^\n]*$
-        description: The codeholder's profession
+        description: The codeholder's profession. This field is always public in lists.
 
       landlinePhone:
         allOf:
@@ -77,6 +82,11 @@ allOf:
         nullable: true
         description: The landline phone number of the codeholder formatted according to its country code
 
+      landlinePhonePublicity:
+        description: The publicity of the codeholder's landline phone number in lists
+        enum: [ private, public, members ]
+        default: private
+
       cellphone:
         allOf:
           - nullable: true
@@ -88,6 +98,11 @@ allOf:
         readOnly: true
         nullable: true
         description: The cellphone number of the codeholder formatted according to its country code
+
+      cellphonePublicity:
+        description: The publicity of the codeholder's cellphone number in lists
+        enum: [ private, public, members ]
+        default: private
 
     required:
       - firstNameLegal

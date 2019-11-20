@@ -17,6 +17,11 @@ properties:
           The required fields change depending on the country according to `ValidationRules.required_fields` in https://github.com/mirumee/google-i18n-address
       - $ref: '#/components/schemas/PostalAddress'
 
+  addressPublicity:
+    description: The publicity of the codeholder's address in lists
+    enum: [ private, public, members ]
+    default: private
+
   feeCountry:
     type: string
     minLength: 2
@@ -31,6 +36,11 @@ properties:
     maxLength: 200
     pattern: ^[^\n]*$
     description: The codeholder's contact and login email address. If undefined, the codeholder may not login.
+
+  emailPublicity:
+    description: The publicity of the codeholder's email address in lists
+    enum: [ private, public, members ]
+    default: private
 
   enabled:
     type: boolean
@@ -47,6 +57,30 @@ properties:
     allOf:
       - description: The office phone number of the codeholder
       - $ref: '#/components/schemas/PhoneNumber'
+
+  officePhonePublicity:
+    description: The publicity of the codeholder's office phone number in lists
+    enum: [ private, public, members ]
+    default: private
+
+  profilePicturePublicity:
+    description: The publicity of the codeholder's profile picture in lists
+    enum: [ public, members ]
+    default: public
+
+  website:
+    type: string
+    format: uri
+    maxLength: 50
+    nullable: true
+    description: The codeholder's website. This field is always public in lists.
+
+  biography:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    nullable: true
+    description: A description of the codeholder. This field is always public in lists.
 
 required:
   - newCode
