@@ -1,0 +1,40 @@
+get:
+  summary: Gets all lists
+  description: >
+    Requires permission: `lists.read`
+
+
+    Filterable properties: `id`, `name`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/List'
+
+post:
+  summary: Creates a list
+  description: >
+    Required permissions: `lists.create`, `codeholders.read`
+
+
+    No query parameters allowed.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - required:
+                - name
+                - filters
+            - $ref: '#/components/schemas/List'
+  responses:
+    '201':
+      description: Created

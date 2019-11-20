@@ -1,0 +1,24 @@
+parameters:
+  - name: id
+    in: path
+    description: The id of the list
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Gets all codeholders from a list
+  description: >
+    Query parameters allowed: `?fields`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ListCodeholder'
+    '404':
+      description: Not found

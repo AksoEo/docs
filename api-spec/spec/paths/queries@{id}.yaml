@@ -4,7 +4,7 @@ parameters:
     description: A query id
     required: true
     schema:
-      type: number
+      type: integer
       format: uint32
 
 get:

@@ -7,14 +7,14 @@ allOf:
         maxLength: 50
         pattern: ^[^\n]*$
         nullable: true
-        description: The codeholder's preferred first name, must always be used unless you're 100% sure the legal name is needed. If `null`, `firstNameLegal` should be used.
+        description: The codeholder's preferred first name, must always be used unless you're 100% sure the legal name is needed. If `null`, `firstNameLegal` should be used. This field is always public in lists.
 
       firstNameLegal:
         type: string
         minLength: 1
         maxLength: 50
         pattern: ^[^\n]*$
-        description: The codeholder's legal first name
+        description: The codeholder's legal first name. This field is always public in lists unless overridden by `firstName`.
 
       lastName:
         type: string
@@ -33,14 +33,14 @@ allOf:
         description: The codeholder's legal last name
 
       lastNamePublicity:
-        description: Whether the codeholder's last name is public in lists
+        description: Whether the codeholder's (legal) last name is public in lists
         default: public
         enum: [ private, public, members ]
 
       honorific:
         allOf:
           - $ref: '#/components/schemas/HumanHonorific'
-          - description: The codeholder's honorific
+          - description: The codeholder's honorific. This field is always public in lists.
 
       birthdate:
         type: string

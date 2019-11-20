@@ -1,0 +1,24 @@
+parameters:
+  - name: id
+    in: path
+    description: The id of the list
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Gets public metadata from a list
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            allOf:
+              - properties:
+                  filters:
+                    writeOnly: true
+              - $ref: '#/components/schemas/List'
+    '404':
+      description: Not found

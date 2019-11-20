@@ -1,0 +1,52 @@
+parameters:
+  - name: id
+    in: path
+    description: The id of the list
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Gets a list
+  description: >
+    Requires permission: `lists.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/List'
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a list
+  description: >
+    Requires permission: `lists.delete`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a list
+  description: >
+    Required permissions: `lists.update`, `codeholders.read`
+
+
+    No query parameters allowed.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/List'
+
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Not found

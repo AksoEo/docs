@@ -6,14 +6,14 @@ allOf:
         minLength: 1
         maxLength: 100
         pattern: ^[^\n]*$
-        description: The organization's full name
+        description: The organization's full name. This field is always public in lists.
 
       fullNameLocal:
         type: string
         minLength: 1
         maxLength: 100
         pattern: ^[^\n]*$
-        description: The organization's full name as it's registered locally, for mailing purposes.
+        description: The organization's full name as it's registered locally, for mailing purposes. This field is always public in lists.
 
       careOf:
         type: string
@@ -27,7 +27,7 @@ allOf:
         minLength: 1
         maxLength: 12
         pattern: ^[^\n]*$
-        description: An abbreviation of the organization's name
+        description: An abbreviation of the organization's name. This field is always public in lists.
 
     required:
       - fullName

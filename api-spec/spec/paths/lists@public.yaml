@@ -1,0 +1,20 @@
+get:
+  summary: Gets all public list metadata
+  description: >
+    Filterable properties: `name`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              allOf:
+                - properties:
+                    filters:
+                      writeOnly: true
+                - $ref: '#/components/schemas/List'

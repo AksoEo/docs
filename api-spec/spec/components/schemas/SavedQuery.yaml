@@ -1,6 +1,6 @@
 properties:
   id:
-    type: number
+    type: integer
     format: uint32
     readOnly: true
     description: The unique identifier of the query

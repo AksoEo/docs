@@ -1,0 +1,65 @@
+properties:
+  id:
+    $ref: '#/components/schemas/CodeholderId'
+
+  name:
+    type: string
+    description: The codeholder's name
+
+  email:
+    type: string
+    nullable: true
+    description: The codeholder's email address
+
+  address:
+    type: string
+    nullable: true
+    description: The codeholder's formatted postal address
+
+  officePhone:
+    type: string
+    nullable: true
+    description: The codeholder's raw office phone number
+
+  officePhoneFormatted:
+    type: string
+    nullable: true
+    description: The codeholder's formatted office phone number
+
+  landlinePhone:
+    type: string
+    nullable: true
+    description: The codeholder's raw landline phone number
+
+  landlinePhoneFormatted:
+    type: string
+    nullable: true
+    description: The codeholder's formatted landline phone number
+
+  cellphone:
+    type: string
+    nullable: true
+    description: The codeholder's raw cellphone number
+
+  cellphoneFormatted:
+    type: string
+    nullable: true
+    description: The codeholder's formatted cellphone number
+
+  biography:
+    type: string
+    nullable: true
+    description: The codeholder's biography
+
+  website:
+    type: string
+    format: uri
+    nullable: true
+    description: The codeholder's website
+
+  profilePictureHash:
+    type: string
+    format: binary
+    nullable: true
+    readOnly: true
+    description: The hash of the codeholder's profile picture, null if the codeholder has no profile picture

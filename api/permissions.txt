@@ -102,3 +102,9 @@ congress_instances:
 		<org>
 	delete:
 		<org>
+
+lists:
+	create
+	read
+	update
+	delete
