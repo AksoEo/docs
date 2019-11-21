@@ -7,7 +7,7 @@ get:
     Filterable properties: `id`, `name`
 
 
-    Searchable properties: `description`
+    Searchable properties: `name`
   responses:
     '200':
       description: OK
