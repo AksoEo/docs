@@ -1,0 +1,76 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this address label template
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 50
+    description: The name of this template
+
+  paper:
+    type: string
+    default: A4
+    enum: [ 'A3', 'A4', 'A5', 'LETTER', 'FOLIO', 'LEGAL', 'EXECUTIVE' ]
+    description: The paper size to use
+
+  margins:
+    description: The margins of the document, in points. Defaults to 1 inch on all sides
+    properties:
+      top:
+        type: number
+        format: uint16
+      bottom:
+        type: number
+        format: uint16
+      left:
+        type: number
+        format: uint16
+      right:
+        type: number
+        format: uint16
+    required: [ top, bottom, left, right ]
+
+  cols:
+    type: integer
+    minimum: 1
+    maximum: 20
+    description: The number of columns on a page
+
+  rows:
+    type: integer
+    minimum: 1
+    maximum: 50
+    description: The number of rows on a page
+
+  colGap:
+    type: number
+    format: uint16
+    description: The gap between columns in points
+
+  rowGap:
+    type: number
+    format: uint16
+    description: The gap between rows in points
+
+  cellPadding:
+    type: number
+    format: uint16
+    default: 8
+    description: The padding in points in each cell
+
+  fontSize:
+    type: integer
+    minimum: 8
+    maximum: 30
+    default: 12
+    description: The font size in points
+
+  drawOutline:
+    type: boolean
+    default: false
+    description: Whether to draw a line outline around the cells, useful for checking whether the cells are aligned right

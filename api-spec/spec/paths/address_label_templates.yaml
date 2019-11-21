@@ -1,0 +1,43 @@
+get:
+  summary: Gets all address label templates
+  description: >
+    Requires permission: `address_label_templates.read`
+
+
+    Filterable properties: `id`, `name`
+
+
+    Searchable properties: `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AddressLabelTemplate'
+
+post:
+  summary: Creates an address label template
+  description: >
+    Required permission: `address_label_templates.create`
+
+
+    No query parameters allowed.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - required:
+                - name
+                - cols
+                - rows
+                - colGap
+                - rowGap
+            - $ref: '#/components/schemas/AddressLabelTemplate'
+  responses:
+    '201':
+      description: Created

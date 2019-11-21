@@ -108,3 +108,9 @@ lists:
 	read
 	update
 	delete
+
+address_label_templates:
+	create
+	read
+	update
+	delete

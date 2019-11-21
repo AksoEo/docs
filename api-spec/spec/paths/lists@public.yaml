@@ -1,7 +1,7 @@
 get:
   summary: Gets all public list metadata
   description: >
-    Filterable properties: `name`
+    Filterable properties: `id`, `name`
 
 
     Searchable properties: `name`, `description`
@@ -16,5 +16,7 @@ get:
               allOf:
                 - properties:
                     filters:
+                      writeOnly: true
+                    memberFilter:
                       writeOnly: true
                 - $ref: '#/components/schemas/List'

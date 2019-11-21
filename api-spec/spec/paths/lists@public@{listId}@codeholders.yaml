@@ -10,7 +10,7 @@ parameters:
 get:
   summary: Gets all codeholders from a list
   description: >
-    Query parameters allowed: `?fields`
+    Query parameters allowed: `?fields`, `?limit`, `?offset`
   responses:
     '200':
       description: OK

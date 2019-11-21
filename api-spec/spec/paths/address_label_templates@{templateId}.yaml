@@ -1,0 +1,52 @@
+parameters:
+  - name: id
+    in: path
+    description: An address label template identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Gets an address label template
+  description: >
+    Requires permission: `address_label_templates.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/AddressLabelTemplate'
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes an address label template
+  description: >
+    Requires permission: `address_label_templates.delete`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates an address label template
+  description: >
+    Required permission: `address_label_templates.update`
+
+
+    No query parameters allowed.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/AddressLabelTemplate'
+
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Not found

@@ -19,6 +19,8 @@ get:
               - properties:
                   filters:
                     writeOnly: true
+                  memberFilter:
+                    writeOnly: true
               - $ref: '#/components/schemas/List'
     '404':
       description: Not found
