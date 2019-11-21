@@ -58,6 +58,10 @@ get:
                   type: string
                   description: The file's mime type
 
+                size:
+                  type: integer
+                  description: The file's size in bytes
+
     '404':
       description: Codeholder not found
 
