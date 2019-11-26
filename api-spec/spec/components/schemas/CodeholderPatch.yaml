@@ -72,7 +72,7 @@ properties:
     format: date
     nullable: true
     default: null
-    description: The date at which the codeholder died (`HumanCodeholder`) or ceased operations (`OrgCodeholder`)
+    description: The date at which the codeholder died (`HumanCodeholder`) or ceased operations (`OrgCodeholder`). Must not be greater than the current date.
 
   profilePicturePublicity:
     description: The publicity of the codeholder's profile picture in lists
