@@ -26,7 +26,8 @@ get:
     - Codeholder: `newCode`, `password`, `address`, `addressPublicity`,
       `feeCountry`, `email`, `emailPublicity`, `enabled`, `notes`,
       `officePhone`, `officePhonePublicity`, `isDead`, `deathdate`,
-      `profilePictureHash`, `profilePicturePublicity`, `website`, `biography`
+      `profilePictureHash`, `profilePicturePublicity`, `website`, `biography`,
+      `profession`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`,
       `lastNameLegal`, `lastNamePublicity`, `honorific`, `birthdate`,
