@@ -18,6 +18,9 @@ parameters:
 get:
   summary: Returns all ToC entries of a magazine edition
   description: >
+    Permissions required: `magazines.read.<org>`
+
+    
     Filterable properties: `id`, `page`, `title`, `author`, `recitationAuthor`, `highlighted`
 
 

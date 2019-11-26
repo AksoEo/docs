@@ -25,6 +25,8 @@ parameters:
 
 get:
   summary: Returns a ToC entry of a magazine edition
+  description: >
+    Permissions required: `magazines.read.<org>`
   responses:
     '200':
       description: OK
