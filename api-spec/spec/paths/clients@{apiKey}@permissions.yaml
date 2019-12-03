@@ -1,0 +1,30 @@
+parameters:
+  - name: apiKey
+    in: path
+    required: true
+    description: The client's hex-ified API key
+    schema:
+      type: string
+      minLength: 32
+      maxLength: 32
+
+get:
+  summary: Returns all permissions granted to a client
+  description: >
+    Requires permissions: `clients.read`, `clients.perms.read`
+
+
+    Filterable properties: `permission`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              properties:
+                permission:
+                  $ref: '#/components/schemas/Permission'
+    '404':
+      description: Not found

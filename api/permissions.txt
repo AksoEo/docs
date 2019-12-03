@@ -49,6 +49,9 @@ clients:
 	read
 	update
 	delete
+	perms:
+		read
+		update
 
 admin_groups:
 	create
