@@ -7,6 +7,9 @@ codeholders:
 	delete
 	hist:
 		read
+	perms:
+		read
+		update
 	disable_totp
 
 codeholder_roles:

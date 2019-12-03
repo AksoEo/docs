@@ -1,16 +1,15 @@
 parameters:
-  - name: adminGroupId
+  - name: codeholderId
     in: path
     required: true
-    description: The id of the admin group
+    description: The codeholder's internal id
     schema:
-      type: integer
-      format: uint32
+      $ref: '#/components/schemas/CodeholderId'
 
 get:
-  summary: Returns all permissions granted to an admin group
+  summary: Returns all permissions granted to a codeholder
   description: >
-    Requires permission: `admin_groups.read`
+    Requires permission: `codeholders.read`, `codeholders.perms.read`
 
 
     Filterable properties: `permission`
