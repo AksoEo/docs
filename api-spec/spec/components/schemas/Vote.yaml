@@ -52,6 +52,12 @@ properties:
 
       May not be changed when `isActive`.
 
+  voterCodeholdersMemberFilter:
+    type: object
+    readOnly: true
+    description: >
+      The `memberFilter` of the user who last set `voterCodeholders`.
+
   viewerCodeholders:
     type: object
     nullable: true
@@ -60,6 +66,14 @@ properties:
 
 
       This will be merged with the `memberFilter` from `GET /perms`.
+
+  viewerCodeholdersMemberFilter:
+    type: object
+    readOnly: true
+    nullable: true
+    description: >
+      The `memberFilter` of the user who last set `viewerCodeholders`.
+
   timeStart:
     type: integer
     format: uint64
