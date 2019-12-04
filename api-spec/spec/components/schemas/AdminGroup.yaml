@@ -4,15 +4,43 @@ properties:
     format: uint32
     description: The unique identifier of the admin group
     readOnly: true
+
   name:
     type: string
     minLength: 1
     maxLength: 255
     pattern: '^[^\n]+$'
     description: The name of the admin group
+
   description:
     type: string
     minLength: 1
     maxLength: 1000
     nullable: true
     description: A humanly readable description
+
+  memberRestrictions:
+    type: object
+    nullable: true
+    description: >
+      The member restrictions applicable to members of the admin group. If `null` this group doesn't impose any restrictions.
+
+
+      The restrictions in this object are _not_ merged with the user's own member restrictions.
+    properties:
+      filter:
+        type: object
+        description: The member filter
+
+      fields:
+        type: object
+        nullable: true
+        description: The member field whitelist. `null` gives `rw` access to all fields.
+        properties:
+          '[field]':
+            type: string
+            pattern: '^r?w?$'
+            description: The `r`ead/`w`rite access level
+    required:
+      - filter
+      - fields
