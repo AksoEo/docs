@@ -1,0 +1,37 @@
+parameters:
+  - name: voteId
+    in: path
+    description: The vote's identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the codeholder options of a vote (if any)
+  description: >
+    Requires permission: `votes.read.<org>`
+
+
+    Query parameters allowed: `?fields`, `?limit`, `?offset`
+
+
+    Max query limit: 300
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              allOf:
+                - properties:
+                    optId:
+                      type: integer
+                      format: uint8
+                      description: The index of the option this codeholder partains to
+                - $ref: '#/components/schemas/ListCodeholder'
+
+    '404':
+      description: Vote not found
