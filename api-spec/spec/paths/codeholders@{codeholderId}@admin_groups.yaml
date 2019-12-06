@@ -1,0 +1,34 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+get:
+  summary: Returns the admin groups a codeholder belongs to
+  description: >
+    Requires permission: `codeholders.read`, `admin_groups.read`
+
+
+    Filterable properties:
+
+    - `id`, `name`
+
+
+    Searchable properties:
+
+    - `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdminGroup'
+
+    '404':
+      description: Codeholder not found
