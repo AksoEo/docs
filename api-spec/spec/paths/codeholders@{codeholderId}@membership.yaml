@@ -40,3 +40,5 @@ post:
       description: Created
     '404':
       description: Codeholder or membership category not found
+    '409':
+      description: Entry already exists
