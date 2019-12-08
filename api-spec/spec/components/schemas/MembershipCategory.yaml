@@ -45,7 +45,7 @@ properties:
     format: year
     nullable: true
     default: null
-    description: The year the membership category started being orderable, null if always
+    description: The year the membership category started being orderable, null if always available
 
   availableTo:
     type: number

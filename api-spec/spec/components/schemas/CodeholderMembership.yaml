@@ -13,7 +13,10 @@ properties:
   year:
     type: number
     format: year
-    description: The year of the membership. For lifetime memberships this is the year the lifetime membership started.
+    description: >
+      The year of the membership. For lifetime memberships this is the year the lifetime membership started.
+
+      Must be within the bounds of `availabeFrom` and `availableTo` of the membership category.
 
   nameAbbrev:
     type: string
