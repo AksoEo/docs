@@ -1,0 +1,11 @@
+oneOf:
+  - $ref: '#/components/schemas/FormEntryInputBoolean'
+  - $ref: '#/components/schemas/FormEntryInputNumber'
+  - $ref: '#/components/schemas/FormEntryInputText'
+  - $ref: '#/components/schemas/FormEntryInputMoney'
+  - $ref: '#/components/schemas/FormEntryInputEnum'
+  - $ref: '#/components/schemas/FormEntryInputCountry'
+  - $ref: '#/components/schemas/FormEntryInputDate'
+  - $ref: '#/components/schemas/FormEntryInputTime'
+  - $ref: '#/components/schemas/FormEntryInputDatetime'
+  - $ref: '#/components/schemas/FormEntryInputBooleanTable'

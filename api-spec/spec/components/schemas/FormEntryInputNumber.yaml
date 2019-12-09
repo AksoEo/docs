@@ -1,0 +1,41 @@
+allOf:
+  - $ref: '#/components/schemas/FormEntryInputGeneric'
+  - properties:
+      type:
+        type: string
+        enum: [ number ]
+
+      placeholder:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: '^[^\n]+$'
+        nullable: true
+        description: A placeholder for the input
+
+      step:
+        type: number
+        format: float
+        exclusiveMinimum: 0
+        nullable: true
+        description: The valid incremental values
+
+      min:
+        type: number
+        format: float
+        nullable: true
+        description: The minimum allowed value
+
+      max:
+        type: number
+        format: float
+        nullable: true
+        description: The maximum allowed value
+
+      variant:
+        type: string
+        enum: [ input, slider ]
+        description: The variant of the input to show to the end-user
+
+    required:
+      - variant

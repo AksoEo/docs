@@ -1,0 +1,51 @@
+allOf:
+  - $ref: '#/components/schemas/FormEntryInputGeneric'
+  - properties:
+      type:
+        type: string
+        enum: [ text ]
+
+      placeholder:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: '^[^\n]+$'
+        nullable: true
+        description: A placeholder for the input
+
+      pattern:
+        type: string
+        minLength: 1
+        maxLength: 150
+        nullable: true
+        description: A regex pattern to validate the form entry value against
+
+      patternError:
+        type: string
+        minLength: 1
+        maxLength: 200
+        nullable: true
+        description: An error message to display when the pattern doesn't match
+
+      minLength:
+        type: integer
+        nullable: true
+        description: The minimum required length of the input
+
+      maxLength:
+        type: integer
+        nullable: true
+        description: The maximum required length of the input
+
+      variant:
+        type: string
+        enum:
+          - text
+          - textarea
+          - email
+          - tel
+          - uri
+        description: The variant of the input to show to the end-user
+
+    required:
+      - variant

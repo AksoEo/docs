@@ -1,0 +1,43 @@
+allOf:
+  - $ref: '#/components/schemas/FormEntryInputGeneric'
+  - properties:
+      type:
+        type: string
+        enum: [ country ]
+
+      minSelect:
+        type: integer
+        format: uint8
+        minimum: 0
+        nullable: true
+        description: The minimum amount of options that must be selected
+
+      maxSelect:
+        type: integer
+        format: uint8
+        minimum: 1
+        nullable: true
+        description: The maximum amount of options that must be selected
+
+      add:
+        type: array
+        maxItems: 100
+        description: The additional countries that can be selected
+        items:
+          properties:
+            name:
+              type: string
+              pattern: '^[^\n]+$'
+              description: The name of the country
+
+            code:
+              type: string
+              pattern: '^[a-z]{2,3}$'
+              description: The code of the country
+
+      exclude:
+        type: array
+        maxItems: 300
+        description: Countries by code from `GET /countries` to exclude
+        items:
+          type: string

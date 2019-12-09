@@ -1,0 +1,57 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the registration form of a congress instance
+  description: >
+    Requires permission: `congress_instances.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CongressInstanceRegistrationForm'
+
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes the registration form of a congress instance
+  description: >
+    Requires permission: `congress_instances.update.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+put:
+  summary: Sets the registration form of a congress instance
+  description: >
+    Requires permission: `congress_instances.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/CongressInstanceRegistrationForm'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found

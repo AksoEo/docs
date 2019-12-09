@@ -1,0 +1,73 @@
+allOf:
+  - $ref: '#/components/schemas/FormEntryInputGeneric'
+  - properties:
+      type:
+        type: string
+        enum: [ boolean-table ]
+
+      cols:
+        type: integer
+        format: uint8
+        maximum: 20
+        description: The number of columns in the table
+
+      rows:
+        type: integer
+        format: uint8
+        maximum: 20
+        description: The number of rows in the table
+
+      minSelect:
+        type: integer
+        format: uint8
+        minimum: 0
+        nullable: true
+        description: The minimum amount of options that must be selected
+
+      maxSelect:
+        type: integer
+        format: uint8
+        minimum: 1
+        nullable: true
+        description: The maximum amount of options that must be selected
+
+      headerTop:
+        type: array
+        nullable: true
+        description: The top header of the table. Must have the same amount of items as `cols`.
+        items:
+          type: string
+          pattern: '^[^\n]+$'
+          minLength: 1
+          maxLength: 20
+          nullable: true
+
+      headerLeft:
+        type: array
+        nullable: true
+        description: The left header of the table. Must have the same amount of items as `rows`.
+        items:
+          type: string
+          pattern: '^[^\n]+$'
+          minLength: 1
+          maxLength: 20
+          nullable: true
+
+      excludeCells:
+        type: array
+        nullable: true
+        maxItems: 400
+        description: Cells that will not contain a checkbox defined as an array of arrays of the x,y coordinates
+        items:
+          type: array
+          minItems: 2
+          maxItems: 2
+          description: The x,y coordinate of the cell
+          items:
+            type: integer
+            minimum: 0
+            maximum: 19
+
+    required:
+      - cols
+      - rows

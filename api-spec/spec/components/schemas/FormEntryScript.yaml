@@ -1,0 +1,11 @@
+properties:
+  el:
+    type: string
+    enum: [ script ]
+
+  script:
+    type: object
+    description: An AKSO Script to run
+
+required:
+  - script

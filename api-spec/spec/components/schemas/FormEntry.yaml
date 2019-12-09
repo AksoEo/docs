@@ -1,0 +1,4 @@
+oneOf:
+  - $ref: '#/components/schemas/FormEntryInput'
+  - $ref: '#/components/schemas/FormEntryText'
+  - $ref: '#/components/schemas/FormEntryScript'

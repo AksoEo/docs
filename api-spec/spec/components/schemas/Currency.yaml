@@ -1,0 +1,19 @@
+type: string
+description: The three-letter ISO code of a currency supported by AKSO
+enum:
+  - AUD
+  - CAD
+  - CHF
+  - DKK
+  - EUR
+  - GBP
+  - HKD
+  - JPY
+  - MXN
+  - MYR
+  - NOK
+  - NZD
+  - PLN
+  - SEK
+  - SGD
+  - USD

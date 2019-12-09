@@ -1,0 +1,24 @@
+allOf:
+  - $ref: '#/components/schemas/FormEntryInputGeneric'
+  - properties:
+      type:
+        type: string
+        enum: [ datetime ]
+
+      tz:
+        type: string
+        format: tz
+        nullable: true
+        description: The IANA timezone to use, if `null` it tries to guess the end user's timezone
+
+      min:
+        type: integer
+        format: uint64
+        nullable: true
+        description: The first allowed unix timestamp
+
+      max:
+        type: integer
+        format: uint64
+        nullable: true
+        description: The last allowed unix timestamp

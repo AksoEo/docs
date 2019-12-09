@@ -1,0 +1,21 @@
+allOf:
+  - $ref: '#/components/schemas/FormEntryInputGeneric'
+  - properties:
+      type:
+        type: string
+        enum: [ date ]
+
+      min:
+        type: string
+        format: date
+        nullable: true
+        description: The first allowed date
+
+      max:
+        type: string
+        format: date
+        nullable: true
+        description: The last allowed date
+
+      currency:
+        $ref: '#/components/schemas/Currency'

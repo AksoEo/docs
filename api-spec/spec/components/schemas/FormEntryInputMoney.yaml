@@ -1,0 +1,33 @@
+allOf:
+  - $ref: '#/components/schemas/FormEntryInputGeneric'
+  - properties:
+      type:
+        type: string
+        enum: [ money ]
+
+      placeholder:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: '^[^\n]+$'
+        nullable: true
+        description: A placeholder for the input
+
+      step:
+        type: integer
+        minimum: 1
+        nullable: true
+        description: The valid incremental values
+
+      min:
+        type: integer
+        nullable: true
+        description: The minimum allowed value
+
+      max:
+        type: integer
+        nullable: true
+        description: The maximum allowed value
+
+      currency:
+        $ref: '#/components/schemas/Currency'

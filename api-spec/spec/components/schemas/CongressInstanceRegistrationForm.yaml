@@ -1,0 +1,43 @@
+properties:
+  allowUse:
+    type: boolean
+    default: true
+    description: Whether the form is enabled and registrations are open
+
+  allowGuests:
+    type: boolean
+    default: false
+    description: Whether guests can sign up (turning them into a codeholder)
+
+  price:
+    type: object
+    nullable: true
+    description: The price settings for this form. `null` to disable pricing, making sign ups free
+    properties:
+      currency:
+        $ref: '#/components/schemas/Currency'
+
+      var:
+        type: string
+        description: The name of the AKSOScript variable containing the price of the registration in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal).
+
+      minUpfront:
+        type: integer
+        minimum: 0
+        default: null
+        nullable: true
+        description: >
+          The minimum necessary upfront payment to validate a registration.
+
+          Set to 0 for all registrations to be valid, null to require the full amount to be paid for the registration to be valid.
+
+          If a registered participant's price is lower than this value, the registration will be considered valid once the full amount has been paid.
+
+  form:
+    type: array
+    maxItems: 256
+    items:
+      $ref: '#/components/schemas/FormEntry'
+
+required:
+  - form
