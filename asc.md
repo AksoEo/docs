@@ -144,8 +144,8 @@ Convenience functions:
 - `sum a`: returns the sum of a
 - `min a`: returns the minimum value of a
 - `max a`: returns the maximum value of a
-- `average a`: returns the arithmetic mean of a
-- `median a`: returns the median of a
+- `avg a`: returns the arithmetic mean of a
+- `med a`: returns the median of a
 
 #### Date and Time
 - `date_sub t a b`: returns the signed difference between a and b interpreted as RFC3339 date strings, or null. a determines the type of difference; may be one of 'days', 'weeks', 'months', 'years'
@@ -156,7 +156,7 @@ Convenience functions:
 - `datetime_fmt a`: formats epoch timestamp a
 
 #### Miscellaneous
-- `format_currency a b`: returns b (in cents, if applicable) formatted in currency a, where a is a string like 'USD'
+- `format_currency a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
 - `id a`: returns a
 
 ### Panics
