@@ -99,33 +99,65 @@ evaluate({ ...stdlib, ...definitions }, 'something');
 ```
 
 ### Standard Library of Functions
-- `+`/`-`/`*`/`/`/`^`/`mod`/`floor`/`ceil`/`round`/`trunc`/`sign`/`abs`: basic arithmetic and math
-    + `mod` refers to actual mod and not `%`
+#### Math
+All operations in this section will return null if an argument is not a number.
+
+- `+`/`-`/`*`/`/`/`^` (on two arguments): basic arithmetic
     + division by 0 is 0
     + 0^0 is 0
-- `==`/`!=`/`>`/`<`/`>=`/`<=`: comparison
+- `mod a b`: modulo. Will flip the sign if b is negative. Will return 0 if b is 0.
+- `floor a`: rounds to the closest integer in the -Infinity direction
+- `ceil a`: rounds to the closest integer in the +Infinity direction
+- `round a`: rounds to the closest integer
+- `trunc a`: rounds to the closest integer towards 0
+- `sign a`: returns the sign, either -1, 0, or 1
+- `abs a`: returns the magnitude of the argument
+
+#### Logic
+- `==`/`!=`/`>`/`<`/`>=`/`<=` (on two arguments): comparison operators
     + using ordered comparison on non-numerical types always evaluates to false
-- `and`/`or`/`not`/`xor`: boolean logic
-    + using these on non-bool types always evaluates to false
-- `cat`: concatenates all arguments
+    + comparing two different types always evaluates to false
+- `and`/`or`/`not`/`xor` (on two arguments): boolean logic
+    + if one argument is not a boolean, always evaluates to false
+
+#### Strings and Lists
+Some functions will also work with types that are not strings or arrays (such as `sum`, which will simply act like the identity in that case, or `map f a` which will simply return `length a` times `f` if `f` is not a function).
+
+- `cat ...`: concatenates all arguments
     + if the arguments are not all arrays or not all strings, will cast everything to string
-- `if`: if argument 1, then argument 2, else argument 3
-    + if argument 1 is not a bool, will always pick argument 3
-- `map`: maps argument 2 with function in argument 1
-- `flat_map`: maps argument 2 with function in argument 1 and returns a flattened array
-- `fold`: right-folds argument 2 with function in argument 1, and uses argument 3 as the initial value. If argument 3 is not given, will use first item.
-- `filter`: filters argument 2 with function in argument 1
-- `index`: indexes possibly multidimensional argument 1 with the rest of the arguments
-- `length`: returns length of argument 1
-    + will return 0 if argument 1 is not a string or array
-- `contains`: returns if argument 1 contains argument 2
-    + will return false if argument 1 is not a string or array
-- `sum`: returns the sum of argument 1
-- `min`: returns the minimum value of argument 1
-- `max`: returns the maximum value of argument 1
-- `average`: returns the arithmetic mean of argument 1
-- `median`: returns the median of argument 1
-- `format_currency`: formats a number as currency and returns a string
+- `if a b c`: if a then b else c
+    + if a is not a bool, will always pick c
+- `map f a`: maps f over a
+- `flat_map f a`: maps f over a and concatenates the results.
+- `fold f a r`: left-folds a with f, and uses r as the initial value. If r is not given, will use first item.
+- `filter f a`: filters a with f.
+- `index a ...`: indexes possibly multidimensional a with the rest of the arguments
+    + will return null if the index is out of bounds
+    + will return null if the indexing is too deep
+- `length a`: returns length of a
+    + will return 0 if a is not a string or array
+- `contains a b`: returns if a contains b
+    + will return false if a is not a string or array
+
+Convenience functions:
+
+- `sum a`: returns the sum of a
+- `min a`: returns the minimum value of a
+- `max a`: returns the maximum value of a
+- `average a`: returns the arithmetic mean of a
+- `median a`: returns the median of a
+
+#### Date and Time
+- `date_sub t a b`: returns the signed difference between a and b interpreted as RFC3339 date strings, or null. a determines the type of difference; may be one of 'days', 'weeks', 'months', 'years'
+- `date_add t a b`: interprets a as an RFC3339 date string, or returns null. Adds b of t, and returns the resulting date string. t may be one of 'days', 'weeks', 'months', 'years'
+- `date_today`: returns the current date
+- `date_fmt a`: returns the formatted version of a interpreted as a RFC3339 date string, or null
+- `time_now`: current epoch timestamp
+- `datetime_fmt a`: formats epoch timestamp a
+
+#### Miscellaneous
+- `format_currency a b`: returns b (in cents, if applicable) formatted in currency a, where a is a string like 'USD'
+- `id a`: returns a
 
 ### Panics
 Script evaluation may panic in which case an error dialog should be shown to the user. These errors can be identified via simple static analysis.
