@@ -19,11 +19,13 @@ properties:
 
       var:
         type: string
+        minLength: 1
+        maxLength: 40
         description: The name of the AKSO Script variable containing the price of the registration in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal).
 
       minUpfront:
         type: integer
-        minimum: 0
+        format: uint32
         default: null
         nullable: true
         description: >
@@ -32,6 +34,10 @@ properties:
           Set to 0 for all registrations to be valid, null to require the full amount to be paid for the registration to be valid.
 
           If a registered participant's price is lower than this value, the registration will be considered valid once the full amount has been paid.
+
+    required:
+      - currency
+      - var
 
   form:
     type: array
