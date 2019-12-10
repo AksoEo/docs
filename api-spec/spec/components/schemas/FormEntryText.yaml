@@ -4,6 +4,8 @@ properties:
     enum: [ text ]
 
   text:
+    minLength: 1
+    maxLength: 5000
     description: >
       Either a markdown string to display or an AKSO Script expression resolving to a markdown string.
 
@@ -11,4 +13,5 @@ properties:
       Markdown rules enabled: `blockquote`, `code`, `heading`, `hr`, `table`, `emphasis`, `image`, `link`, `list`, `strikethrough`
 
 required:
+  - el
   - text

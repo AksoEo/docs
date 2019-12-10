@@ -31,3 +31,6 @@ allOf:
 
       currency:
         $ref: '#/components/schemas/Currency'
+
+    required:
+      - currency

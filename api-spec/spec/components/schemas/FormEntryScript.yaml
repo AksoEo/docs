@@ -8,4 +8,5 @@ properties:
     description: An AKSO Script to run
 
 required:
+  - el
   - script

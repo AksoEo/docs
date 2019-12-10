@@ -19,3 +19,11 @@ allOf:
 
       currency:
         $ref: '#/components/schemas/Currency'
+
+      chAutofill:
+        type: string
+        nullable: true
+        enum:
+          - birthdate
+        description: >
+          Autofills the form entry with the codeholder field of this name instead of `default` if the form is being filled out by a signed in codeholder who has a non-null value for this field on record.
