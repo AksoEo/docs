@@ -43,6 +43,14 @@ Additional key `value`, contains the value this definition will evaluate to (exc
 #### Semantics
 These definitions associate the definition name with the value, i.e. define a constant. These can be thought of as zero-argument functions.
 
+### Type `list`
+Constructs a list. Additional keys:
+
+- `items`: list of definition names to be used as list contents
+
+#### Semantics
+This creates a possibly heterogenous list consisting of the contents of the referenced definitions.
+
 ### Type `call`
 Calls a definition. Additional keys:
 
@@ -142,7 +150,10 @@ function evaluate (definitions, id) {
 
         // return c with initial state
         return c({}, 0);
-    } else if (item.type == 'number' || item.type == ...etc...) {
+    } else if (item.type === 'list') {
+        // construct a list
+        return item.items.map(name => evaluate(definitions, name));
+    } else if (item.type === 'number' || item.type === ...etc...) {
         // constant types should be obvious
         return item.value;
     } else {
