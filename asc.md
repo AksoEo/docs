@@ -19,10 +19,10 @@ Scripts are represented as a Javascript object containing all definitions.
 
 ```javascript
 {
-    _a: { type: 'number', value: 5 },
-    _c: { type: 'call', f: '+', args: ['_a', '@input-key-name'] },
-    _e: { type: 'matrix', data: [[1, 2, 3], [4, 5, 6]] },
-    something: { type: 'call', f: 'index', args: ['_e', '@other-input-name', '_a'] },
+    _a: { t: 'n', v: 5 },
+    _c: { t: 'c', f: '+', a: ['_a', '@input-key-name'] },
+    _e: { t: 'm', v: [[1, 2, 3], [4, 5, 6]] },
+    something: { t: 'c', f: 'index', a: ['_e', '@other-input-name', '_a'] },
 }
 ```
 
@@ -34,43 +34,43 @@ Identifiers may be prefixed:
 The `=` identifier is special and indicates a function’s return value.
 
 ## Definitions
-### Type `number`, `string`, `matrix`, `bool`, `null`
-Additional key `value`, contains the value this definition will evaluate to (except `null`, which does not have this key).
+### Type `n` (number), `s` (string), `m` (matrix), `b` (bool), `u` (null)
+Additional key `value`, contains the value this definition will evaluate to (except `u`, which does not have this key).
 
-- `number` is always real and never `NaN` or `Infinity`.
-- `matrix` values are n-dimensional arrays.
+- `n` is always real and never `NaN` or `Infinity`.
+- `m` values are n-dimensional arrays.
 
 #### Semantics
 These definitions associate the definition name with the value, i.e. define a constant. These can be thought of as zero-argument functions.
 
-### Type `list`
+### Type `l`
 Constructs a list. Additional keys:
 
-- `items`: list of definition names to be used as list contents
+- `v`: list of definition names to be used as list contents
 
 #### Semantics
 This creates a possibly heterogenous list consisting of the contents of the referenced definitions.
 
-### Type `call`
+### Type `c`
 Calls a definition. Additional keys:
 
 - `f`: definition name
-- `args`: optional list of definition names to be used as function arguments
+- `a`: optional list of definition names to be used as function arguments
 
 #### Semantics
 These can be thought of as function calls. Calling a definition that is not explicitly a function simply copies its value. Calling a function applies each argument to the result in sequence. Excess arguments (i.e. arguments given to non-function values) will be ignored. See `fn` for more details.
 
-### Type `fn`
+### Type `f`
 Defines a function. Additional keys:
 
-- `params`: list of parameter names
-- `body`: a nested definitions object, with a `=` key.
+- `p`: list of parameter names
+- `b`: function body. a nested definitions object, with a `=` key.
 
 #### Semantics
 Functions capture the scope in which they were defined. Definitions may be shadowed by the body or parameters. The priority when resolving names is as follows:
 
 1. Parameters
-2. Body
+2. Function body
 3. Parent scopes wrt. definition (starting with the closest)
 
 Functions are curried, meaning a function `f a b = a + b` (with params a and b) resolves to the equivalent of the Javascript expression `a => b => a + b`.
