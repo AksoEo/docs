@@ -12,100 +12,172 @@ High-level design features:
 - small runtime
 - no mutability
 
-### Representation
+## Representation
 Scripts are composed of “definitions” at the top level. Each definition can be thought of as a function taking zero or more arguments, though they will often act like variables.
 
 Scripts are represented as a Javascript object containing all definitions.
 
 ```javascript
 {
-    _a: { type: 'number', value: 5 },
-    _c: { type: 'call', f: '+', args: ['_a', '@input-key-name'] },
-    _e: { type: 'matrix', data: [[1, 2, 3], [4, 5, 6]] },
-    something: { type: 'call', f: 'index', args: ['_e', '@other-input-name', '_a'] },
+    _a: { t: 'n', v: 5 },
+    _c: { t: 'c', f: '+', a: ['_a', '@input-key-name'] },
+    _e: { t: 'm', v: [[1, 2, 3], [4, 5, 6]] },
+    something: { t: 'c', f: 'index', a: ['_e', '@other-input-name', '_a'] },
 }
 ```
 
-Definition identifiers may be prefixed:
+Identifiers may be prefixed:
 
-- `@` to indicate that this references the value of a form field. This may be `null`.
+- `@` to indicate that this references the value of a form field. This may be `null`. Hence definitions may not start with this letter.
 - `_` to indicate that this is a script-local variable and is not visible in other scripts of the form
 
 The `=` identifier is special and indicates a function’s return value.
 
-### Definitions
-##### Type `number`, `string`, `matrix`, `bool`, `null`
-Additional key `value`, contains the value this definition will evaluate to (except `null`, whch does not have this key).
+## Definitions
+### Type `n` (number), `s` (string), `m` (matrix), `b` (bool), `u` (null)
+Additional key `value`, contains the value this definition will evaluate to (except `u`, which does not have this key).
 
-- `number` is always real and never `NaN` or `Infinity`.
-- `matrix` values are an n-dimensional array. All sub-arrays should have the same size in each dimension.
+- `n` is always real and never `NaN` or `Infinity`.
+- `m` values are n-dimensional arrays.
 
-##### Type `input`
-Additional key `key`, contains the name of a form field. Evaluates to the form field value.
+#### Semantics
+These definitions associate the definition name with the value, i.e. define a constant. These can be thought of as zero-argument functions.
 
-##### Type `call`
-Calls a function or copies a value. Additional keys:
+### Type `l`
+Constructs a list. Additional keys:
+
+- `v`: list of definition names to be used as list contents
+
+#### Semantics
+This creates a possibly heterogenous list consisting of the contents of the referenced definitions.
+
+### Type `c`
+Calls a definition. Additional keys:
 
 - `f`: definition name
-- `args`: list of definition names to be used as function arguments.
+- `a`: optional list of definition names to be used as function arguments
 
-##### Type `fn`
+#### Semantics
+These can be thought of as function calls. Calling a definition that is not explicitly a function simply copies its value. Calling a function applies each argument to the result in sequence. Excess arguments (i.e. arguments given to non-function values) will be ignored. See `fn` for more details.
+
+### Type `f`
 Defines a function. Additional keys:
 
-- `params`: list of parameter names
-- `body`: a definitions object, with a `=` key. Has access to all definitions in scope above (unless they were shadowed by definitions in the body or params)
+- `p`: list of parameter names
+- `b`: function body. a nested definitions object, with a `=` key.
 
-### Suggested Interpretation
+#### Semantics
+Functions capture the scope in which they were defined. Definitions may be shadowed by the body or parameters. The priority when resolving names is as follows:
+
+1. Parameters
+2. Function body
+3. Parent scopes wrt. definition (starting with the closest)
+
+Functions are curried, meaning a function `f a b = a + b` (with params a and b) resolves to the equivalent of the Javascript expression `a => b => a + b`.
+
+Functions with no parameters act the same way as constant definitions.
+
+## Suggested Interpretation
+(Pseudocode)
+
 ```javascript
-/// A definitions object, see above.
-const definitions = { ... };
-/// Standard library of functions.
 const stdlib = { ... };
-/// Interpreter.
-/// Takes definitions, the name of the definition to evaluate, and a list of function arguments.
-/// List of function arguments is for recursive calls.
-const evaluate = (definitions, id, args = []) => {
-    if (id.startsWith('@')) return ...; // form field value
 
+// To evaluate a definition named `id`
+function evaluate (definitions, id) {
     const item = definitions[id];
-    if (item.type === 'call') {
-        // Call a function (or copy a value)
-        const functionName = item.f;
-        // Evaluate function arguments.
-        const args = item.args.map(k => evaluate(definitions, k));
-        // Run function body.
-        return evaluate(definitions, functionName, args);
-    } else if (item.type === 'fn') {
-        // Run a function.
-        if (typeof item.body === 'function') {
-            // allow standard library functions to be defined in javascript
-            return ...;
-        }
-        // Create a local scope with definitions from the scope above...
-        const localScope = { ...definitions };
-        // ...the definitions from the function scope...
-        Object.assign(localScope, item.body);
-        // ...and function arguments
-        Object.assign(localScope, Object.fromEntries(item.params.map((n, i) => [n, args[i]])));
-        // (namespace clashes should be warned about in the ui)
-        return evaluate(localScope, '=');
-    } else {
-        // static types like number and input should be obvious
-        return ...;
-    }
-};
+    if (!item) panicSomehow(); // unknown item
 
-evaluate({ ...stdlib, ...definitions }, 'something');
+    if (item.type === 'call') {
+        // call a declaration
+
+        let value;
+        if (item.f.startsWith('@')) {
+            // this is a form variable
+            value = getFormValueSomehow(item.f);
+        } else {
+            // resolve it from definitions otherwise
+            value = evaluate(definitions, item.f);
+        }
+
+        // apply arguments
+        for (let i = 0; i < item.args.length; i++) {
+            if (typeof value === 'function') {
+                const argumentName = item.args[i];
+                const argument = evaluate(definitions, argumentName);
+                value = value(argument);
+            } else {
+                // too many arguments
+                warnAboutThisMaybe();
+                break;
+            }
+        }
+
+        return value;
+    } else if (item.type === 'fn') {
+        // define a function
+
+        // define an inner function that contains the body
+        let f = (params) => {
+            const functionScope = {
+                ...definitions, // definitions from the parent scope
+                ...item.body, // function body
+                ...params, // and the parameters
+            };
+            return evaluate(functionScope, '=');
+        };
+
+        if (item.params.length === 0) {
+            // a function with no parameters is the same as a constant
+            return f({});
+        }
+
+        // curried function construction.
+        // we use (params, index) as state and a as the next parameter.
+        // params is a definitions object containing only the parameters.
+        // index is the index in the item.params array.
+        const c = (params, index) => a => {
+            const paramName = item.params[index];
+            const newParams = { ...params, [paramName]: a };
+
+            // we’ve got enough arguments to call f here
+            if (index + 1 === item.params.length) return f(newParams);
+
+            // otherwise just return a “partially applied function”
+            // and wait to collect more arguments
+            return c(newParams, index + 1);
+        };
+
+        // return c with initial state
+        return c({}, 0);
+    } else if (item.type === 'list') {
+        // construct a list
+        return item.items.map(name => evaluate(definitions, name));
+    } else if (item.type === 'number' || item.type === ...etc...) {
+        // constant types should be obvious
+        return item.value;
+    } else {
+        // unknown definition type
+        panicSomehow();
+    }
+}
+
+const script = { ...definitions go here... };
+
+const topScope = { ...stdlib, ...script };
+evaluate(topScope, 'something');
 ```
 
-### Standard Library of Functions
-#### Math
+## Standard Library of Functions
+These functions are available in the global scope. All functions (except comparison and logic operators) will return null if an input is null.
+
+### Math
 All operations in this section will return null if an argument is not a number.
 
 - `+`/`-`/`*`/`/`/`^` (on two arguments): basic arithmetic
     + division by 0 is 0
-    + 0^0 is 0
-- `mod a b`: modulo. Will flip the sign if b is negative. Will return 0 if b is 0.
+    + 0^0 is 1
+- `mod a b`: modulo. Will flip the monoid if b is negative. Will return 0 if b is 0.
 - `floor a`: rounds to the closest integer in the -Infinity direction
 - `ceil a`: rounds to the closest integer in the +Infinity direction
 - `round a`: rounds to the closest integer
@@ -113,31 +185,34 @@ All operations in this section will return null if an argument is not a number.
 - `sign a`: returns the sign, either -1, 0, or 1
 - `abs a`: returns the magnitude of the argument
 
-#### Logic
+### Comparison and Logic
 - `==`/`!=`/`>`/`<`/`>=`/`<=` (on two arguments): comparison operators
-    + using ordered comparison on non-numerical types always evaluates to false
+    + using ordered comparison on types that are not a number or string always evaluates to false
+    + using ordered comparison on two different types always evaluates to false
     + comparing two different types always evaluates to false
 - `and`/`or`/`not`/`xor` (on two arguments): boolean logic
     + if one argument is not a boolean, always evaluates to false
 
-#### Strings and Lists
-Some functions will also work with types that are not strings or arrays (such as `sum`, which will simply act like the identity in that case, or `map f a` which will simply return `length a` times `f` if `f` is not a function).
+### Strings and Lists
+Some functions will also work with types that are not strings or arrays (such as `map f a` which will simply return `length a` times `f` if `f` is not a function).
 
-- `cat ...`: concatenates all arguments
-    + if the arguments are not all arrays or not all strings, will cast everything to string
-- `if a b c`: if a then b else c
-    + if a is not a bool, will always pick c
+- `cat a`: concatenates all items in a
+    + if the arguments are not all arrays or not all strings, will cast everything to strings. The exact format is implementation-defined
 - `map f a`: maps f over a
-- `flat_map f a`: maps f over a and concatenates the results.
-- `fold f a r`: left-folds a with f, and uses r as the initial value. If r is not given, will use first item.
-- `filter f a`: filters a with f.
-- `index a ...`: indexes possibly multidimensional a with the rest of the arguments
+- `flat_map f a`: maps f over a and concatenates the results
+- `fold f r a`: left-folds a with f, and uses r as the initial value
+- `fold1 f a`: like fold, but uses first item as initial value
+    + will return null if a is empty or not a string or array
+- `filter f a`: filters a with f
+    + will return null if a is not a string or array
+- `index a b`: returns the item at index b inside a
     + will return null if the index is out of bounds
-    + will return null if the indexing is too deep
+    + will return null if b is not an integer
 - `length a`: returns length of a
-    + will return 0 if a is not a string or array
+    + will return null if a is not a string or array
 - `contains a b`: returns if a contains b
     + will return false if a is not a string or array
+    + will return false if a is a string and b is not
 
 Convenience functions:
 
@@ -146,21 +221,27 @@ Convenience functions:
 - `max a`: returns the maximum value of a
 - `avg a`: returns the arithmetic mean of a
 - `med a`: returns the median of a
+- `sort a`: returns a sorted version of a, or null
 
-#### Date and Time
+### Date and Time
 - `date_sub t a b`: returns the signed difference between a and b interpreted as RFC3339 date strings, or null. a determines the type of difference; may be one of 'days', 'weeks', 'months', 'years'
 - `date_add t a b`: interprets a as an RFC3339 date string, or returns null. Adds b of t, and returns the resulting date string. t may be one of 'days', 'weeks', 'months', 'years'
 - `date_today`: returns the current date
 - `date_fmt a`: returns the formatted version of a interpreted as a RFC3339 date string, or null
-- `time_now`: current epoch timestamp
+- `time_now`: current epoch timestamp in seconds
 - `datetime_fmt a`: formats epoch timestamp a
 
-#### Miscellaneous
+### Miscellaneous
+- `if a b c`: if a then b else c
+    + if a is not a bool, will always pick c
 - `format_currency a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
 - `id a`: returns a
 
-### Panics
+## Panics
 Script evaluation may panic in which case an error dialog should be shown to the user. These errors can be identified via simple static analysis.
 
+Causes:
+
 - referencing an unknown declaration
-- calling a function with too few arguments
+- naming a definition with a leading `@`
+- unknown types of definitions
