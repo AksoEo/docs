@@ -35,10 +35,10 @@ The `=` identifier is special and indicates a function’s return value.
 
 ## Definitions
 ### Type `number`, `string`, `matrix`, `bool`, `null`
-Additional key `value`, contains the value this definition will evaluate to (except `null`, whch does not have this key).
+Additional key `value`, contains the value this definition will evaluate to (except `null`, which does not have this key).
 
 - `number` is always real and never `NaN` or `Infinity`.
-- `matrix` values are an n-dimensional array. All sub-arrays should have the same size in each dimension. Empty values should be contain null.
+- `matrix` values are n-dimensional arrays.
 
 #### Semantics
 These definitions associate the definition name with the value, i.e. define a constant. These can be thought of as zero-argument functions.
@@ -169,15 +169,15 @@ evaluate(topScope, 'something');
 ```
 
 ## Standard Library of Functions
-These functions are available in the global scope. All functions will return null if an input is null.
+These functions are available in the global scope. All functions (except comparison and logic operators) will return null if an input is null.
 
 ### Math
 All operations in this section will return null if an argument is not a number.
 
 - `+`/`-`/`*`/`/`/`^` (on two arguments): basic arithmetic
     + division by 0 is 0
-    + 0^0 is 0
-- `mod a b`: modulo. Will flip the sign if b is negative. Will return 0 if b is 0.
+    + 0^0 is 1
+- `mod a b`: modulo. Will flip the monoid if b is negative. Will return 0 if b is 0.
 - `floor a`: rounds to the closest integer in the -Infinity direction
 - `ceil a`: rounds to the closest integer in the +Infinity direction
 - `round a`: rounds to the closest integer
@@ -185,9 +185,10 @@ All operations in this section will return null if an argument is not a number.
 - `sign a`: returns the sign, either -1, 0, or 1
 - `abs a`: returns the magnitude of the argument
 
-### Logic
+### Comparison and Logic
 - `==`/`!=`/`>`/`<`/`>=`/`<=` (on two arguments): comparison operators
-    + using ordered comparison on non-numerical types always evaluates to false
+    + using ordered comparison on types that are not a number or string always evaluates to false
+    + using ordered comparison on two different types always evaluates to false
     + comparing two different types always evaluates to false
 - `and`/`or`/`not`/`xor` (on two arguments): boolean logic
     + if one argument is not a boolean, always evaluates to false
@@ -195,21 +196,23 @@ All operations in this section will return null if an argument is not a number.
 ### Strings and Lists
 Some functions will also work with types that are not strings or arrays (such as `sum`, which will simply act like the identity in that case, or `map f a` which will simply return `length a` times `f` if `f` is not a function).
 
-- `cat a b`: concatenates a and b
-    + if the arguments are not both arrays or not both strings, will cast everything to strings
-- `if a b c`: if a then b else c
-    + if a is not a bool, will always pick c
+- `cat a`: concatenates all items in a
+    + if the arguments are not all arrays or not all strings, will cast everything to strings. The exact format is implementation-defined
 - `map f a`: maps f over a
-- `flat_map f a`: maps f over a and concatenates the results.
+- `flat_map f a`: maps f over a and concatenates the results
 - `fold f r a`: left-folds a with f, and uses r as the initial value
 - `fold1 f a`: like fold, but uses first item as initial value
-- `filter f a`: filters a with f.
+    + will return null if a is empty or not a string or array
+- `filter f a`: filters a with f
+    + will return null if a is not a string or array
 - `index a b`: returns the item at index b inside a
     + will return null if the index is out of bounds
+    + will return null if b is not an integer
 - `length a`: returns length of a
     + will return null if a is not a string or array
 - `contains a b`: returns if a contains b
     + will return false if a is not a string or array
+    + will return false if a is a string and b is not
 
 Convenience functions:
 
@@ -218,6 +221,7 @@ Convenience functions:
 - `max a`: returns the maximum value of a
 - `avg a`: returns the arithmetic mean of a
 - `med a`: returns the median of a
+- `sort a`: returns a sorted version of a, or null
 
 ### Date and Time
 - `date_sub t a b`: returns the signed difference between a and b interpreted as RFC3339 date strings, or null. a determines the type of difference; may be one of 'days', 'weeks', 'months', 'years'
@@ -228,6 +232,8 @@ Convenience functions:
 - `datetime_fmt a`: formats epoch timestamp a
 
 ### Miscellaneous
+- `if a b c`: if a then b else c
+    + if a is not a bool, will always pick c
 - `format_currency a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
 - `id a`: returns a
 
