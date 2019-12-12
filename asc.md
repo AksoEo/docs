@@ -194,7 +194,7 @@ All operations in this section will return null if an argument is not a number.
     + if one argument is not a boolean, always evaluates to false
 
 ### Strings and Lists
-Some functions will also work with types that are not strings or arrays (such as `sum`, which will simply act like the identity in that case, or `map f a` which will simply return `length a` times `f` if `f` is not a function).
+Some functions will also work with types that are not strings or arrays (such as `map f a` which will simply return `length a` times `f` if `f` is not a function).
 
 - `cat a`: concatenates all items in a
     + if the arguments are not all arrays or not all strings, will cast everything to strings. The exact format is implementation-defined
