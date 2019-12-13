@@ -28,12 +28,18 @@ allOf:
             name:
               type: string
               pattern: '^[^\n]+$'
+              minLength: 1
+              maxLength: 50
               description: The name of the country
 
             code:
               type: string
-              pattern: '^[a-z]{2,3}$'
+              pattern: '^_[a-z]{1,2}$'
               description: The code of the country
+
+          required:
+            - name
+            - code
 
       exclude:
         type: array

@@ -16,6 +16,3 @@ allOf:
         format: time
         nullable: true
         description: The last allowed time
-
-      currency:
-        $ref: '#/components/schemas/Currency'

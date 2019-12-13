@@ -17,9 +17,6 @@ allOf:
         nullable: true
         description: The last allowed date
 
-      currency:
-        $ref: '#/components/schemas/Currency'
-
       chAutofill:
         type: string
         nullable: true
