@@ -9,6 +9,21 @@ properties:
     default: false
     description: Whether guests can sign up (turning them into a codeholder)
 
+  editable:
+    type: boolean
+    default: true
+    description: Whether participants can go back and edit their registration
+
+  cancellable:
+    type: boolean
+    default: true
+    description: Whether participants can cancel their registration
+
+  manualApproval:
+    type: boolean
+    default: false
+    description: Whether registrations must be manually approved by an admin before they are valid
+
   price:
     type: object
     nullable: true

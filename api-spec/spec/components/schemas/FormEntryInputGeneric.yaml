@@ -45,6 +45,11 @@ properties:
     default: false
     description: Whether the form entry is disabled. Must be a boolean or an AKSO Script expression
 
+  editable:
+    type: boolean
+    default: true
+    description: Whether the form entry can be edited by the user after the form has been filled out
+
 required:
   - el
   - name
