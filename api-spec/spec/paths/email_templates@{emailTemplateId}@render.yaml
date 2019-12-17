@@ -1,0 +1,22 @@
+parameters:
+  - name: emailTemplateId
+    in: path
+    description: The id of the email template
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns a preview of an email template using garbage data
+  description: >
+    Requires permission: `email_templates.read.<org>`
+  responses:
+    '404':
+      description: Not found
+    '200':
+      description: OK
+      content:
+        text/html:
+          schema:
+            type: string
