@@ -157,14 +157,18 @@ AKSO treats paths as *resource identifiers* and HTTP methods as *verbs*. The onl
     * To ban all users we'd call `POST /users/!ban`
 
 ## Header metadata
-All requests include metadata in the headers:
+All requests include metadata in the response headers:
 * `X-Response-Time`: Contains the amount of time the server used to process the request in milliseconds
 * `X-RateLimit-Limit`: Contains the rate limit maximum (left out for clients exempt from rate limiting)
 * `X-RateLimit-Remaining`: Contains the amount of requests left before the rate limit is reached (left out for clients exempt from rate limiting)
 
-All `GET` requests on collections include metadata in the headers:
+All `GET` requests on collections include metadata in the response headers:
 * `X-Total-Items`: Contains the amount of total items in the collection without a limit
 * `X-Total-Items-No-Filter`: Contains the total amount of items in the collection with no filters applied
 
-All `DELETE` and `PATCH` requests on collections include metadata in the headers:
+All `DELETE` and `PATCH` requests on collections include metadata in the response headers:
 * `X-Affected-Items`: Contains the amount of items affected
+
+All `POST` requests on collections include metadata in the response headers:
+* `Location`: Contains the URL of the resulting resource
+* `X-Identifier`: Contains the identifier of the resulting resource
