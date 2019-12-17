@@ -1,0 +1,17 @@
+allOf:
+  - $ref: '#/components/schemas/EmailTemplateGeneric'
+  - properties:
+      base:
+        enum: [ raw ]
+
+      html:
+        type: string
+        minLength: 1
+        maxLength: 100000
+        description: The raw HTML of the email optionally with AKSO email templating (see docs)
+
+      text:
+        type: string
+        minLength: 1
+        maxLength: 10000
+        description: The plaintext email fallback optionally with AKSO email templating (see docs)

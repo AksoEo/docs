@@ -1,5 +1,5 @@
 parameters:
-  - name: id
+  - name: listId
     in: path
     description: The id of the list
     required: true

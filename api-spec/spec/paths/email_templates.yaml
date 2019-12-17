@@ -1,0 +1,36 @@
+get:
+  summary: Returns all email templates
+  description: >
+    Requires permission: `email_templates.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EmailTemplate'
+
+post:
+  summary: Creates an email template
+  description: >
+    Requires permission: `email_templates.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/EmailTemplate'
+            - required:
+                - base
+                - name
+                - intent
+                - subject
+                - html
+                - text
+                - modules
+  responses:
+    '201':
+      description: Created

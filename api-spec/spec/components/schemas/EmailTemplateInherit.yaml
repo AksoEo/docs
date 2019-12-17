@@ -1,0 +1,78 @@
+allOf:
+  - $ref: '#/components/schemas/EmailTemplateGeneric'
+  - properties:
+      base:
+        enum: [ inherit ]
+
+      modules:
+        type: array
+        minItems: 1
+        maxItems: 16
+        description: The modular content of the email
+        items:
+          oneOf:
+            - properties:
+                type:
+                  type: string
+                  enum: [ image ]
+
+                url:
+                  type: string
+                  format: uri
+                  maxLength: 200
+                  description: The URL of the full-width image optionally with AKSO email templating (see docs). Should be about 1200x600px
+                
+                alt:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  nullable: true
+                  description: The alt text of the image optionally with AKSO email templating (see docs)
+
+              required:
+                - type
+                - url
+
+            - properties:
+                type:
+                  type: string
+                  enum: [ text ]
+
+                columns:
+                  type: array
+                  minItems: 1
+                  maxItems: 2
+                  nullable: true
+                  description: >
+                    Columns of text optionally with AKSO email templating (see docs).
+
+
+                    Markdown rules enabled: `blockquote`, `heading`, `emphasis`, `strikethrough`, `link`, `list`, `table`, `image`
+                  items:
+                    type: string
+                    format: markdown
+                    minLength: 1
+                    maxLength: 5000
+
+                button:
+                  type: object
+                  nullable: true
+                  properties:
+                    href:
+                      type: string
+                      format: uri
+                      maxLength: 200
+                      description: The href of the button optionally with AKSO email templating (see docs)
+
+                    text:
+                      type: string
+                      minLength: 1
+                      maxLength: 200
+                      description: The text on the button optionally with AKSO email templating (see docs)
+                  required:
+                    - href
+                    - text
+                  description: A button
+
+              required:
+                - type

@@ -1,0 +1,43 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of the email template
+
+  base:
+    type: string
+
+  org:
+    $ref: '#/components/schemas/AKSOExclusiveOrganization'
+
+  name:
+    type: string
+    minLength: 1
+    maxLength: 150
+    pattern: '^[^\n]+$'
+    description: The name of the email template
+
+  description:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    nullable: true
+    description: A description of the email template
+
+  intent:
+    type: string
+    description: The purpose of the email template. See docs/email_templates.md for a detailed explanation of each intent
+    enum:
+      - codeholder
+
+  script:
+    type: object
+    nullable: true
+    description: An AKSO Script script to evaluate before rendering the template
+
+  subject:
+    type: string
+    minLength: 1
+    maxLength: 255
+    description: The subject line of the email optionally with AKSO email templating (see docs). Should not exceed 78 chars when rendered according to RFC 2822 §2.1.1

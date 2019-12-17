@@ -1,0 +1,38 @@
+parameters:
+  - name: emailTemplateId
+    in: path
+    description: The id of the email template
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns an email template
+  description: >
+    Requires permission: `email_templates.read.<org>`
+  responses:
+    '404':
+      description: Not found
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/EmailTemplate'
+
+patch:
+  summary: Updates an email template
+  description: >
+    Requires permission: `email_templates.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/EmailTemplate'
+  responses:
+    '404':
+      description: Not found
+    '204':
+      description: Updated
