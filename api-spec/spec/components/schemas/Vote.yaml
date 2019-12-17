@@ -270,7 +270,7 @@ properties:
       - nullable: true
         readOnly: false
         description: >
-          Only for `rp` and `stv`.
+          Required for `rp` and `stv`. Otherwise not allowed.
 
 
           The codeholder responsible for breaking a tie in case one appears.
