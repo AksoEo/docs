@@ -1,0 +1,19 @@
+get:
+  summary: Returns all email template domains
+  description: >
+    Requires permission: `email_templates.read.<org>`
+
+
+    No query parameters allowed.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              '[org]':
+                type: array
+                description: An array of permitted email domain names
+                items:
+                  type: string

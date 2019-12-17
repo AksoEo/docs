@@ -41,3 +41,18 @@ properties:
     minLength: 1
     maxLength: 255
     description: The subject line of the email optionally with AKSO email templating (see docs). Should not exceed 78 chars when rendered according to RFC 2822 §2.1.1
+
+  from:
+    type: string
+    format: email
+    minLength: 1
+    maxLength: 255
+    description: The email address to send the email from. Must be at a domain permitted for this org in `GET domains`
+
+  replyTo:
+    type: string
+    format: email
+    minLength: 1
+    maxLength: 255
+    nullable: true
+    description: The reply-to email address if any
