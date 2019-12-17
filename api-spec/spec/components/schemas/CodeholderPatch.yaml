@@ -47,8 +47,9 @@ properties:
 
   notes:
     type: string
-    default: ""
+    minLength: 1
     maxLength: 10000
+    nullable: true
     description: Administrative notes on the codeholder
 
   officePhone:
