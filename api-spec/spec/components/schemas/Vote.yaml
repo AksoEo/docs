@@ -267,8 +267,7 @@ properties:
 
   tieBreakerCodeholder:
     allOf:
-      - nullable: true
-        readOnly: false
+      - readOnly: false
         description: >
           Required for `rp` and `stv`. Otherwise not allowed.
 
