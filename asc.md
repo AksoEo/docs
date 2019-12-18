@@ -35,7 +35,7 @@ The `=` identifier is special and indicates a function’s return value.
 
 ## Definitions
 ### Type `n` (number), `s` (string), `m` (matrix), `b` (bool), `u` (null)
-Additional key `value`, contains the value this definition will evaluate to (except `u`, which does not have this key).
+Additional key `v`, contains the value this definition will evaluate to (except `u`, which does not have this key).
 
 - `n` is always real and never `NaN` or `Infinity`.
 - `m` values are n-dimensional arrays.
