@@ -44,6 +44,14 @@ put:
   summary: Sets the registration form of a congress instance
   description: >
     Requires permission: `congress_instances.update.<org>`
+
+
+    Besides the form values, the following additional form metadata may be used:
+
+
+    - `@@registration_time`: The unix timestamp at which the user registered (if editing), otherwise `null`.
+
+    - `@@upfront_time`: The unix timestamp at which the user reached the minimum upfront payment (if editing), otherwise `null`.
   requestBody:
     required: true
     content:
