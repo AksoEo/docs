@@ -48,18 +48,12 @@ This is used to send simple multi-purpose emails to codeholders. The following c
 			postalCode
 			sortingCode
 		}
-		addressCountryName // The codeholder's address country's full name
 		feeCountry // The codeholder's fee country
-		feeCountryName // The codeholder's fee country name formatted
 		email
 		birthdate // The codeholder's birthdate as yyyy-mm-dd
-		birthdateFormatted
 		cellphone
-		cellphoneFormatted
 		officePhone
-		officePhoneFormatted
 		landlinePhone
-		landlinePhoneFormatted
 		age
 		agePrimo // The codeholder's age in whole years at the beginning of hte year
 	}

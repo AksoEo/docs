@@ -20,14 +20,15 @@ allOf:
                   type: string
                   format: uri
                   maxLength: 200
-                  description: The URL of the full-width image optionally with AKSO email templating (see docs). Should be about 1200x600px
+                  description: The URL of the full-width image optionally with AKSO email templating (see docs/email_templating.md). Should be about 1200x600px
                 
                 alt:
                   type: string
                   minLength: 1
                   maxLength: 200
+                  pattern: '^[^\n]+$'
                   nullable: true
-                  description: The alt text of the image optionally with AKSO email templating (see docs)
+                  description: The alt text of the image optionally with AKSO email templating (see docs/email_templating.md)
 
               required:
                 - type
@@ -44,7 +45,7 @@ allOf:
                   maxItems: 2
                   nullable: true
                   description: >
-                    Columns of text optionally with AKSO email templating (see docs).
+                    Columns of text optionally with AKSO email templating (see docs/email_templating.md).
 
 
                     Markdown rules enabled: `blockquote`, `heading`, `emphasis`, `strikethrough`, `link`, `list`, `table`, `image`
@@ -62,13 +63,15 @@ allOf:
                       type: string
                       format: uri
                       maxLength: 200
-                      description: The href of the button optionally with AKSO email templating (see docs)
+                      pattern: '^[^\n]+$'
+                      description: The href of the button optionally with AKSO email templating (see docs/email_templating.md)
 
                     text:
                       type: string
                       minLength: 1
                       maxLength: 200
-                      description: The text on the button optionally with AKSO email templating (see docs)
+                      pattern: '^[^\n]+$'
+                      description: The text on the button optionally with AKSO email templating (see docs/email_templating.md)
                   required:
                     - href
                     - text

@@ -21,6 +21,16 @@ get:
           schema:
             $ref: '#/components/schemas/EmailTemplate'
 
+delete:
+  summary: Deletes an email template
+  description: >
+    Requires permission: `email_templates.delete.<org>`
+  responses:
+    '404':
+      description: Not found
+    '204':
+      description: Deleted
+
 patch:
   summary: Updates an email template
   description: >
@@ -30,7 +40,17 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/EmailTemplate'
+          allOf:
+            - $ref: '#/components/schemas/EmailTemplate'
+            - properties:
+                base:
+                  readOnly: true
+
+                org:
+                  readOnly: true
+
+                intent:
+                  readOnly: true
   responses:
     '404':
       description: Not found

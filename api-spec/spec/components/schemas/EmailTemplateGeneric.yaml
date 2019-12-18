@@ -27,7 +27,7 @@ properties:
 
   intent:
     type: string
-    description: The purpose of the email template. See docs/email_templates.md for a detailed explanation of each intent
+    description: The purpose of the email template. See docs/email_templating.md for a detailed explanation of each intent
     enum:
       - codeholder
 
@@ -40,7 +40,8 @@ properties:
     type: string
     minLength: 1
     maxLength: 255
-    description: The subject line of the email optionally with AKSO email templating (see docs). Should not exceed 78 chars when rendered according to RFC 2822 §2.1.1
+    pattern: '^[^\n]+$'
+    description: The subject line of the email optionally with AKSO email templating (see docs/email_templating.md). Should not exceed 78 chars when rendered according to RFC 2822 §2.1.1
 
   from:
     type: string
@@ -48,6 +49,14 @@ properties:
     minLength: 1
     maxLength: 255
     description: The email address to send the email from. Must be at a domain permitted for this org in `GET domains`
+
+  fromName:
+    type: string
+    minLength: 1
+    maxLength: 50
+    nullable: true
+    pattern: '^[^\n]+$'
+    description: The name of the owner of the from address
 
   replyTo:
     type: string

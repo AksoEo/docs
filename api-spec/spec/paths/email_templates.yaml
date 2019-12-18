@@ -2,6 +2,12 @@ get:
   summary: Returns all email templates
   description: >
     Requires permission: `email_templates.read.<org>`
+
+
+    Filterable properties: `id`, `base`, `org`, `name`, `intent`, `subject`, `from`, `fromName`
+
+
+    Searchable properties: `name`, `description`, `subject`
   responses:
     '200':
       description: OK
@@ -25,6 +31,7 @@ post:
             - $ref: '#/components/schemas/EmailTemplate'
             - required:
                 - base
+                - org
                 - name
                 - intent
                 - subject

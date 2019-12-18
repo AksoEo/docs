@@ -8,10 +8,10 @@ allOf:
         type: string
         minLength: 1
         maxLength: 100000
-        description: The raw HTML of the email optionally with AKSO email templating (see docs)
+        description: The raw HTML of the email optionally with AKSO email templating (see docs/email_templating.md)
 
       text:
         type: string
         minLength: 1
         maxLength: 10000
-        description: The plaintext email fallback optionally with AKSO email templating (see docs)
+        description: The plaintext email fallback optionally with AKSO email templating (see docs/email_templating.md)
