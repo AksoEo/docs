@@ -11,12 +11,21 @@ get:
   summary: Returns a preview of an email template using garbage data
   description: >
     Requires permission: `email_templates.read.<org>`
+
+
+    No query parameters allowed.
   responses:
     '404':
       description: Not found
     '200':
       description: OK
       content:
-        text/html:
+        application/vnd.msgpack:
           schema:
-            type: string
+            properties:
+              html:
+                type: string
+                description: The rendered html
+              text:
+                type: string
+                description: The rendered plaintext fallback
