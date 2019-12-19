@@ -27,3 +27,5 @@ post:
   responses:
     '202':
       description: Accepted
+    '404':
+      description: Not found
