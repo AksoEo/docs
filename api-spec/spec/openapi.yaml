@@ -17,7 +17,7 @@ info:
     All query parameters are allowed unless otherwise specified for a specific path.
 
 
-    Fields marked as `string <markdown>` will be parsed using a CommonMark parser, with only the rules mentioned in the field's description enabled.
+    Fields marked as `string <markdown>` will be parsed using a CommonMark parser (like `markdown-it`), with only the rules mentioned in the field's description enabled + `newline`.
 
 
     All data obtained from the AKSO API are the property of UEA and/or TEJO unless the collection states a different license. Licenses applied to a certain endpoint are inherited by child endpoints unless overriden.

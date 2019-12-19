@@ -1,0 +1,29 @@
+post:
+  summary: Sends an email from an email template to codeholders by filter
+  description: >
+    Requires permissions: `codeholders.read`, `codeholders.send_email`, `email_templates.read.<org>`
+
+
+    All filter and search properties from `GET /codeholders` are available.
+
+
+    `?limit`, `?offset` and `?fields` are not allowed.
+
+
+    All codeholders without an email address will be excluded.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            emailTemplateId:
+              type: integer
+              format: uint32
+              description: The id of an email template with the intent `codeholder`
+
+          required:
+            - emailTemplateId
+  responses:
+    '202':
+      description: Accepted

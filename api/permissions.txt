@@ -11,6 +11,7 @@ codeholders:
 		read
 		update
 	disable_totp
+	send_email
 
 codeholder_roles:
 	create
