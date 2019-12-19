@@ -234,7 +234,8 @@ Convenience functions:
 ### Miscellaneous
 - `if a b c`: if a then b else c
     + if a is not a bool, will always pick c
-- `format_currency a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
+- `currency_fmt a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
+- `country_fmt a`: if a is an ISO 639-1 country code (case insensitive), returns the country name. Otherwise null
 - `id a`: returns a
 
 ## Panics
