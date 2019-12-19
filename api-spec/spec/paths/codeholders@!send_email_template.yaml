@@ -22,6 +22,15 @@ post:
               format: uint32
               description: The id of an email template with the intent `codeholder`
 
+            deleteTemplateOnComplete:
+              type: boolean
+              default: false
+              description: >
+                Whether to delete the email template once all the codeholder emails have been sent. This is useful for single-use templates.
+
+
+                If true, the permission `email_templates.delete.<org>` is required.
+
           required:
             - emailTemplateId
   responses:
