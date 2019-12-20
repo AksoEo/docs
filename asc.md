@@ -88,7 +88,7 @@ function evaluate (definitions, id) {
     const item = definitions[id];
     if (!item) panicSomehow(); // unknown item
 
-    if (item.type === 'call') {
+    if (item.type === 'c') {
         // call a declaration
 
         let value;
@@ -101,9 +101,9 @@ function evaluate (definitions, id) {
         }
 
         // apply arguments
-        for (let i = 0; i < item.args.length; i++) {
+        for (let i = 0; i < item.a.length; i++) {
             if (typeof value === 'function') {
-                const argumentName = item.args[i];
+                const argumentName = item.a[i];
                 const argument = evaluate(definitions, argumentName);
                 value = value(argument);
             } else {
@@ -114,20 +114,20 @@ function evaluate (definitions, id) {
         }
 
         return value;
-    } else if (item.type === 'fn') {
+    } else if (item.type === 'f') {
         // define a function
 
         // define an inner function that contains the body
         let f = (params) => {
             const functionScope = {
                 ...definitions, // definitions from the parent scope
-                ...item.body, // function body
+                ...item.b, // function body
                 ...params, // and the parameters
             };
             return evaluate(functionScope, '=');
         };
 
-        if (item.params.length === 0) {
+        if (item.p.length === 0) {
             // a function with no parameters is the same as a constant
             return f({});
         }
@@ -137,11 +137,11 @@ function evaluate (definitions, id) {
         // params is a definitions object containing only the parameters.
         // index is the index in the item.params array.
         const c = (params, index) => a => {
-            const paramName = item.params[index];
+            const paramName = item.p[index];
             const newParams = { ...params, [paramName]: a };
 
             // we’ve got enough arguments to call f here
-            if (index + 1 === item.params.length) return f(newParams);
+            if (index + 1 === item.p.length) return f(newParams);
 
             // otherwise just return a “partially applied function”
             // and wait to collect more arguments
@@ -150,10 +150,10 @@ function evaluate (definitions, id) {
 
         // return c with initial state
         return c({}, 0);
-    } else if (item.type === 'list') {
+    } else if (item.type === 'l') {
         // construct a list
         return item.items.map(name => evaluate(definitions, name));
-    } else if (item.type === 'number' || item.type === ...etc...) {
+    } else if (item.type === 'n' || item.type === ...etc...) {
         // constant types should be obvious
         return item.value;
     } else {
@@ -236,6 +236,7 @@ Convenience functions:
     + if a is not a bool, will always pick c
 - `currency_fmt a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
 - `country_fmt a`: if a is an ISO 639-1 country code (case insensitive), returns the country name. Otherwise null
+- `phone_fmt a`: if a is a phone number string, then returns a formatted version. Otherwise null
 - `id a`: returns a
 
 ## Panics
