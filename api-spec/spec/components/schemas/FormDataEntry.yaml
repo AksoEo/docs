@@ -20,6 +20,12 @@ properties:
     nullable: true
     description: The unix timestamp at which this form data entry was last edited, null if never
 
+  allowInvalidData:
+    writeOnly: true
+    type: boolean
+    default: false
+    description: Whether to allow data that doesn't conform to the user restrictions applied to the FormEntryInput's. Useful for admin form data editing, must not be `true` when using untrusted data.
+
   data:
     type: object
     description: The data of this form data entry

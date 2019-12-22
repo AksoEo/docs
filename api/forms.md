@@ -26,10 +26,10 @@ finite `number` or `null`
 `string` or `null`
 
 #### `variant=[text,email,tel,uri]`
-Max length: 2048 chars, no newlines allowed.
+Min length: 1 char, Max length: 2048 chars, no newlines allowed.
 
 #### `variant=textarea`
-Max length: 8192 chars.
+Min length: 1 char, Max length: 8192 chars.
 
 ### FormEntryInputMoney
 `number <uint32>` or `null`
@@ -38,7 +38,7 @@ Max length: 8192 chars.
 `string` (must be a valid enum option) or `null`
 
 ### FormEntryInputCountry
-`string` (msut be a valid country) or `null`
+`string` (msmustut be a valid country) or `null`
 
 ### FormEntryInputDate
 `string <date>` or `null`

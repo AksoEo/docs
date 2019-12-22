@@ -37,3 +37,25 @@ get:
 
     '404':
       description: Not found
+
+post:
+  summary: Registers a participant of a congress instance
+  description: >
+    Requires permissions: `codeholders.read`, `congress_instances.participants.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/CongressInstanceParticipant'
+            - required:
+                - codeholderId
+                - data
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Not found
+    '409':
+      description: Codeholder already registered

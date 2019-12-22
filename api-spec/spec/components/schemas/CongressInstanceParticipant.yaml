@@ -3,7 +3,6 @@ allOf:
       codeholderId:
         type: integer
         format: uint32
-        readOnly: true
         description: The codeholder id of the participants
 
       approved:
