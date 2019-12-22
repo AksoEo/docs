@@ -33,10 +33,11 @@ allOf:
               description: The name of the option shown to the user
 
             value:
-              oneOf:
-                - type: string
-                - type: number
-                - type: boolean
+              type: string
+              pattern: '^[^\n]+$'
+              minLength: 1
+              maxLength: 255
+              description: The value of the option
 
             disabled:
               enum: [ true, false, onlyExisting ]

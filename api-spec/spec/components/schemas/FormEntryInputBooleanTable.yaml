@@ -3,7 +3,7 @@ allOf:
   - properties:
       type:
         type: string
-        enum: [ boolean-table ]
+        enum: [ boolean_table ]
 
       cols:
         type: integer
