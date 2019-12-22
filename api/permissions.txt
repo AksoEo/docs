@@ -110,6 +110,16 @@ congress_instances:
 	delete:
 		<org>
 
+	participants:
+		create:
+			<org>
+		read:
+			<org>
+		update:
+			<org>
+		delete:
+			<org>
+
 lists:
 	create
 	read

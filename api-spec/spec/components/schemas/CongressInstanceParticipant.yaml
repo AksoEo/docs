@@ -1,0 +1,28 @@
+allOf:
+  - properties:
+      codeholderId:
+        type: integer
+        format: uint32
+        readOnly: true
+        description: The codeholder id of the participants
+
+      approved:
+        type: boolean
+        default: false
+        description: Whether this congress participant has been approved, only used if `manualApproval` is set to true in the congress registration form.
+      
+      notes:
+        type: string
+        minLength: 1
+        maxLength: 10000
+        nullable: true
+        description: Internal notes on this congress participant
+
+      price:
+        readOnly: true
+        type: integer
+        format: uint32
+        nullable: true
+        description: The price of this participant's registration
+
+  - $ref: '#/components/schemas/FormDataEntry'

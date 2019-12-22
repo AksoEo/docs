@@ -1,0 +1,39 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns the participants of a congress instance
+  description: >
+    Requires permission: `congress_instances.participants.read.<org>`
+
+
+    Filterable properties: `codeholderId`, `approved`, `createdTime`, `editedTime`, `data.[fieldName]` (except for `type=[text,boolean_table]`)
+
+
+    Searchable properties: `notes`, `data.[fieldName]` (only for `type=text`)
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CongressInstanceParticipant'
+
+    '404':
+      description: Not found

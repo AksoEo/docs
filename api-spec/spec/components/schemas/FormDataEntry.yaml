@@ -1,0 +1,30 @@
+properties:
+  dataId:
+    type: string
+    format: binary
+    minLength: 12
+    maxLength: 12
+    readOnly: true
+    description: The unique identifier of this form data entry
+
+  createdTime:
+    readOnly: true
+    type: integer
+    format: uint64
+    description: The unix timestamp at which this form data entry was created
+
+  editedTime:
+    readOnly: true
+    type: integer
+    format: uint64
+    nullable: true
+    description: The unix timestamp at which this form data entry was last edited, null if never
+
+  data:
+    type: object
+    description: The data of this form data entry
+    properties:
+      '[fieldName]':
+        type: any
+        nullable: true
+        description: The value of the form entry
