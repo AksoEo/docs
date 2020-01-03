@@ -5,20 +5,6 @@ allOf:
         type: string
         enum: [ enum ]
 
-      minSelect:
-        type: integer
-        format: uint8
-        minimum: 0
-        nullable: true
-        description: The minimum amount of options that must be selected
-
-      maxSelect:
-        type: integer
-        format: uint8
-        minimum: 1
-        nullable: true
-        description: The maximum amount of options that must be selected
-
       options:
         type: array
         minItems: 1
