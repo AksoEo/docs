@@ -7,7 +7,7 @@ properties:
   allowGuests:
     type: boolean
     default: false
-    description: Whether guests can sign up (turning them into a codeholder)
+    description: Whether guests can sign up
 
   editable:
     type: boolean

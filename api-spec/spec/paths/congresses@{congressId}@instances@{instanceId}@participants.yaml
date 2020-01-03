@@ -50,7 +50,6 @@ post:
           allOf:
             - $ref: '#/components/schemas/CongressInstanceParticipant'
             - required:
-                - codeholderId
                 - data
   responses:
     '201':

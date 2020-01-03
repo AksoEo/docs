@@ -3,7 +3,10 @@ allOf:
       codeholderId:
         type: integer
         format: uint32
-        description: The codeholder id of the participants
+        description: >
+          The codeholder id of the participants
+
+          If `allowGuests` if false in the registration form, this field is required.
 
       approved:
         type: boolean
