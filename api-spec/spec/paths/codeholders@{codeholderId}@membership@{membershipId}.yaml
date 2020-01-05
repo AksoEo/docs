@@ -18,6 +18,9 @@ get:
   summary: Returns an entry from a codeholder's membership history
   description: >
     Requires permission: `codeholders.read`
+
+
+    Required member fields `r`: `membership`
   responses:
     '200':
       description: OK
@@ -32,6 +35,9 @@ delete:
   summary: Removes an entry from a codeholder's membership history
   description: >
     Requires permission: `codeholders.update`
+
+
+    Required member fields `w`: `membership`
   responses:
     '204':
       description: Removed

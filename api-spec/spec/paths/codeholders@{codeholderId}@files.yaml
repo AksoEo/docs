@@ -9,13 +9,16 @@ parameters:
 get:
   summary: Returns a list of a codeholder's attached files
   description: >
+    Requires permission: `codeholders.read`
+
+
+    Required member fields (`r`): `files`
+
+
     Filterable properties: `id`, `time`, `addedBy`, `name`
 
 
     Searchable properties: `name`, `description`
-
-
-    Requires permission: `codeholders.read`
   responses:
     '200':
       description: OK
@@ -69,6 +72,9 @@ post:
   summary: Attaches a new file to a codeholder
   description: >
     Requires permission: `codeholders.update`
+
+
+    Required member fields (`w`): `files`
   requestBody:
     required: true
     content:

@@ -12,6 +12,9 @@ get:
     Requires permission: `codeholders.read`
 
 
+    Required member fields `r`: `logins`
+
+
     Filterable properties: `id`, `time`
   responses:
     '200':

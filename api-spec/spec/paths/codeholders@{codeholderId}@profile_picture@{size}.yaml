@@ -25,6 +25,9 @@ get:
     The content type of the picture is either `image/jpeg` or `image/png` depending on the original picture uploaded by the codeholder.
 
 
+    Required member fields (`r`): `profilePicture`
+
+
     No query parameters allowed.
 
 

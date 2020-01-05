@@ -4,6 +4,9 @@ post:
     Requires permission: `codeholders.read`
 
 
+    Required member fields (`r`): `address`, `honorific`, `firstNameLegal`, `lastNameLegal`, `fullName`, `fullNameLocal`, `careOf`
+
+
     All filter and search properties from `GET /codeholders` are available.
 
 

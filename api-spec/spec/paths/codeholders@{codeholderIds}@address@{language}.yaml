@@ -30,10 +30,13 @@ parameters:
 get:
   summary: Returns codeholders' formatted addresses
   description: >
-    Only `formatAs` allowed in query.
-
-
     Requires permission: `codeholders.read`
+
+
+    Required member fields (`r`): `address`, `honorific`, `firstNameLegal`, `lastNameLegal`, `fullName`, `fullNameLocal`, `careOf`
+
+
+    Only `formatAs` allowed in query.
   responses:
     '200':
       description: OK

@@ -17,6 +17,9 @@ put:
     Only `modCmt` allowed in query.
 
 
+    Required member fields (`w`): `profilePicture`
+
+
     Requires permission: `codeholders.update`
   requestBody:
     required: true
@@ -40,6 +43,9 @@ delete:
   summary: Removes a codeholder's profile picture
   description: >
     Only `modCmt` allowed in query.
+
+
+    Required member fields (`w`): `profilePicture`
 
 
     Requires permission: `codeholders.update`

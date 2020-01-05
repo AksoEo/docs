@@ -15,6 +15,9 @@ get:
   summary: Returns a codeholder role entry
   description: >
     Requires permissions: `codeholders.read`, `codeholder_roles.read`
+
+
+    Required member fields (`r`): `roles`
   responses:
     '200':
       description: OK
@@ -29,6 +32,9 @@ delete:
   summary: Removes a codeholder role entry
   description: >
     Requires permissions: `codeholders.update`, `codeholder_roles.read`
+
+
+    Required member fields (`w`): `roles`
   responses:
     '204':
       description: Deleted
@@ -39,6 +45,9 @@ patch:
   summary: Updates a codeholder role entry
   description: >
     Requires permissions: `codeholders.update`, `codeholder_roles.read`
+
+
+    Required member fields (`w`): `roles`
   requestBody:
     required: true
     content:

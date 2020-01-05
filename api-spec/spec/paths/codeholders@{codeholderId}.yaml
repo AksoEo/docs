@@ -38,6 +38,9 @@ patch:
     Requires permission: `codeholders.update`
 
 
+    The created codeholder must pass the member filter and member field restrictions.
+
+
     Only `modCmt` allowed in query.
   parameters:
     - in: query

@@ -20,6 +20,9 @@ get:
     Requires permission: `codeholders.read`
 
 
+    Required member fields (`r`): `files`
+
+
     No query parameters allowed.
   responses:
     '200':
@@ -37,6 +40,9 @@ delete:
   summary: Removes an attached file from a codeholder
   description: >
     Requires permissions: `codeholders.update`
+
+
+    Required member fields (`w`): `files`
   responses:
     '204':
       description: File removed

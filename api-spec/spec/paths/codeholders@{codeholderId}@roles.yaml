@@ -12,6 +12,9 @@ get:
     Requires permissions: `codeholders.read`, `codeholder_roles.read`
 
 
+    Required member fields (`r`): `roles`
+
+
     Filterable properties: `id`, `durationFrom`, `durationTo`, `isActive`, `role.id`, `role.name`
 
 
@@ -32,6 +35,9 @@ post:
   summary: Adds a new role to a codeholder
   description: >
     Requires permissions: `codeholders.update`, `codeholder_roles.read`
+
+
+    Required member fields (`w`): `roles`
   requestBody:
     required: true
     content:

@@ -18,6 +18,9 @@ get:
   summary: Returns a specific entry from a codeholder's login history
   description: >
     Requires permission: `codeholders.read`
+
+
+    Required member fields `r`: `logins`
   responses:
     '200':
       description: OK

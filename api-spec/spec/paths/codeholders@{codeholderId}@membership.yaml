@@ -12,6 +12,9 @@ get:
     Requires permission: `codeholders.read`
 
 
+    Required member fields `r`: `membership`
+
+
     Filterable properties: `id`, `categoryId`, `year`, `nameAbbrev`, `name`, `givesMembership`, `lifetime`, `availableFrom`, `availableTo`
   responses:
     '200':
@@ -29,6 +32,9 @@ post:
   summary: Adds a new entry to a codeholder's membership history
   description: >
     Requires permission: `codeholders.update`
+
+
+    Required member fields `w`: `membership`
   requestBody:
     required: true
     content:

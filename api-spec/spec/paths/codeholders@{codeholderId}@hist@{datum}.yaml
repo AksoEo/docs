@@ -20,6 +20,9 @@ get:
     Requires permission: `codeholders.hist.read`
 
 
+    Requires access to `r` member field `{datum}`
+
+
     Properties with history:
 
 
