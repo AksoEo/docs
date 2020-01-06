@@ -10,22 +10,9 @@ allOf:
         maxItems: 100
         description: The additional countries that can be selected
         items:
-          properties:
-            name:
-              type: string
-              pattern: '^[^\n]+$'
-              minLength: 1
-              maxLength: 50
-              description: The name of the country
-
-            code:
-              type: string
-              pattern: '^_[a-z]{1,2}$'
-              description: The code of the country
-
-          required:
-            - name
-            - code
+          type: string
+            pattern: '^_[a-z]{1,2}$'
+            description: The code of the country
 
       exclude:
         type: array
