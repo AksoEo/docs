@@ -11,8 +11,8 @@ allOf:
         description: The additional countries that can be selected
         items:
           type: string
-            pattern: '^_[a-z]{1,2}$'
-            description: The code of the country
+          pattern: '^_[a-z]{1,2}$'
+          description: The code of the country
 
       exclude:
         type: array
