@@ -1,7 +1,7 @@
 get:
-  summary: Returns all email template domains
+  summary: Returns all notif template email domains
   description: >
-    Requires permission: `email_templates.read.<org>`
+    Requires permission: `notif_templates.read.<org>`
 
 
     No query parameters allowed.

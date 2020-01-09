@@ -11,7 +11,7 @@ codeholders:
 		read
 		update
 	disable_totp
-	send_email
+	send_notif
 
 codeholder_roles:
 	create
@@ -132,7 +132,7 @@ address_label_templates:
 	update
 	delete
 
-email_templates:
+notif_templates:
 	create:
 		<org>
 	read:

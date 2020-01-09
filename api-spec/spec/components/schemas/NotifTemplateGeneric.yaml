@@ -3,7 +3,7 @@ properties:
     type: integer
     format: uint32
     readOnly: true
-    description: The unique identifier of the email template
+    description: The unique identifier of the notif template
 
   base:
     type: string
@@ -16,18 +16,18 @@ properties:
     minLength: 1
     maxLength: 150
     pattern: '^[^\n]+$'
-    description: The name of the email template
+    description: The name of the notif template
 
   description:
     type: string
     minLength: 1
     maxLength: 2000
     nullable: true
-    description: A description of the email template
+    description: A description of the notif template
 
   intent:
     type: string
-    description: The purpose of the email template. See docs/email_templating.md for a detailed explanation of each intent
+    description: The purpose of the notif template. See docs/notif_templating.md for a detailed explanation of each intent
     enum:
       - codeholder
 
@@ -41,14 +41,14 @@ properties:
     minLength: 1
     maxLength: 255
     pattern: '^[^\n]+$'
-    description: The subject line of the email optionally with AKSO email templating (see docs/email_templating.md). Should not exceed 78 chars when rendered according to RFC 2822 §2.1.1
+    description: The subject line of the notif when sent as an email optionally with AKSO notif templating (see docs/notif_templating.md). Should not exceed 78 chars when rendered according to RFC 2822 §2.1.1
 
   from:
     type: string
     format: email
     minLength: 1
     maxLength: 255
-    description: The email address to send the email from. Must be at a domain permitted for this org in `GET domains`
+    description: The email address to send the notif from. Must be at a domain permitted for this org in `GET domains`
 
   fromName:
     type: string
@@ -56,7 +56,7 @@ properties:
     maxLength: 50
     nullable: true
     pattern: '^[^\n]+$'
-    description: The name of the owner of the from address
+    description: The name of the owner of the from address when sent as an email
 
   replyTo:
     type: string

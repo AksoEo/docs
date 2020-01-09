@@ -1,16 +1,16 @@
 parameters:
-  - name: emailTemplateId
+  - name: notifTemplateId
     in: path
-    description: The id of the email template
+    description: The id of the notif template
     required: true
     schema:
       type: integer
       format: uint32
 
 get:
-  summary: Returns an email template
+  summary: Returns a notif template
   description: >
-    Requires permission: `email_templates.read.<org>`
+    Requires permission: `notif_templates.read.<org>`
   responses:
     '404':
       description: Not found
@@ -19,12 +19,12 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/EmailTemplate'
+            $ref: '#/components/schemas/NotifTemplate'
 
 delete:
-  summary: Deletes an email template
+  summary: Deletes a notif template
   description: >
-    Requires permission: `email_templates.delete.<org>`
+    Requires permission: `notif_templates.delete.<org>`
   responses:
     '404':
       description: Not found
@@ -32,23 +32,21 @@ delete:
       description: Deleted
 
 patch:
-  summary: Updates an email template
+  summary: Updates a notif template
   description: >
-    Requires permission: `email_templates.update.<org>`
+    Requires permission: `notif_templates.update.<org>`
   requestBody:
     required: true
     content:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/EmailTemplate'
+            - $ref: '#/components/schemas/NotifTemplate'
             - properties:
                 base:
                   readOnly: true
-
                 org:
                   readOnly: true
-
                 intent:
                   readOnly: true
   responses:

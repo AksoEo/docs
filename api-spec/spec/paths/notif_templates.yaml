@@ -1,7 +1,7 @@
 get:
-  summary: Returns all email templates
+  summary: Returns all notif templates
   description: >
-    Requires permission: `email_templates.read.<org>`
+    Requires permission: `notif_templates.read.<org>`
 
 
     Filterable properties: `id`, `base`, `org`, `name`, `intent`, `subject`, `from`, `fromName`
@@ -16,19 +16,19 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/EmailTemplate'
+              $ref: '#/components/schemas/NotifTemplate'
 
 post:
-  summary: Creates an email template
+  summary: Creates a notif template
   description: >
-    Requires permission: `email_templates.create.<org>`
+    Requires permission: `notif_templates.create.<org>`
   requestBody:
     required: true
     content:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/EmailTemplate'
+            - $ref: '#/components/schemas/NotifTemplate'
             - required:
                 - base
                 - org

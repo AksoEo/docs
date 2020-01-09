@@ -1,16 +1,16 @@
 parameters:
-  - name: emailTemplateId
+  - name: notifTemplateId
     in: path
-    description: The id of the email template
+    description: The id of the notif template
     required: true
     schema:
       type: integer
       format: uint32
 
 get:
-  summary: Returns a preview of an email template using garbage data
+  summary: Returns a preview of a notif template using fake data
   description: >
-    Requires permission: `email_templates.read.<org>`
+    Requires permission: `notif_templates.read.<org>`
 
 
     No query parameters allowed.
@@ -25,7 +25,7 @@ get:
             properties:
               html:
                 type: string
-                description: The rendered html
+                description: The rendered html version
               text:
                 type: string
-                description: The rendered plaintext fallback
+                description: The rendered plaintext version

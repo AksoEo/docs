@@ -1,0 +1,17 @@
+allOf:
+  - $ref: '#/components/schemas/NotifTemplateGeneric'
+  - properties:
+      base:
+        enum: [ raw ]
+
+      html:
+        type: string
+        minLength: 1
+        maxLength: 100000
+        description: The raw HTML of the email optionally with AKSO notif templating (see docs/notif_templating.md)
+
+      text:
+        type: string
+        minLength: 1
+        maxLength: 10000
+        description: The plaintext version of the notification optionally with AKSO notif templating (see docs/notif_templating.md)

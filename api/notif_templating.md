@@ -1,5 +1,5 @@
-# AKSO email templating
-Email templating in AKSO takes a template string such as the below:
+# AKSO notif templating
+Notif templating in AKSO takes a template string such as the below:
 
 ```
 Hello, {{name}}
@@ -27,7 +27,7 @@ Additionally it's possible to create conditional blocks using booleans (that are
 The following intents are implemented at this time:
 
 ## `codeholder`
-This is used to send simple multi-purpose emails to codeholders. The following context fields are available:
+This is used to send simple multi-purpose notifications to codeholders. The following context fields are available:
 
 ```js
 {
