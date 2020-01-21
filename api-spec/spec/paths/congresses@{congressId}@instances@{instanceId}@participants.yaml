@@ -21,7 +21,7 @@ get:
     Requires permission: `congress_instances.participants.read.<org>`
 
 
-    Filterable properties: `codeholderId`, `approved`, `createdTime`, `editedTime`, `data.[fieldName]` (except for `type=[text,boolean_table]`)
+    Filterable properties: `codeholderId`, `approved`, `createdTime`, `editedTime`, `price`, `dataId`, `data.[fieldName]` (except for `type=[text,boolean_table]`)
 
 
     Searchable properties: `notes`, `data.[fieldName]` (only for `type=text`)
