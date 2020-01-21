@@ -37,6 +37,17 @@ get:
     '404':
       description: Not found
 
+patch:
+  summary: Edit a participant of a congress instance
+  description: >
+    Requires permission: `congress_instances.participants.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/CongressInstanceParticipant'
+
 delete:
   summary: Deletes a participant of a congress instance
   description: >
