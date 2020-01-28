@@ -26,3 +26,26 @@ get:
                   $ref: '#/components/schemas/Permission'
     '404':
       description: Not found
+
+put:
+  summary: Sets all permissions granted to a codeholder
+  description: >
+    Requires permission: `codeholders.update`, `codeholders.perms.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          type: array
+          minItems: 0
+          maxItems: 1023
+          items:
+            properties:
+              permission:
+                $ref: '#/components/schemas/Permission'
+  responses:
+    '204':
+      description: Updated
+     
+    '404':
+      description: Not found
