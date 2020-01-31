@@ -7,28 +7,24 @@ parameters:
       $ref: '#/components/schemas/CodeholderId'
 
 get:
-  summary: Returns all permissions granted to a codeholder
+  summary: Returns a codeholder's direct member restrictions if any
   description: >
     Requires permission: `codeholders.read`, `codeholders.perms.read`
 
 
-    Filterable properties: `permission`
+    No query params allowed.
   responses:
     '200':
       description: OK
       content:
         application/vnd.msgpack:
           schema:
-            type: array
-            items:
-              properties:
-                permission:
-                  $ref: '#/components/schemas/Permission'
+            $ref: '#/components/schemas/MemberRestriction'
     '404':
       description: Not found
 
 put:
-  summary: Sets all permissions granted to a codeholder
+  summary: Sets a codeholder's direct member restrictions
   description: >
     Requires permission: `codeholders.read`, `codeholders.perms.update`
   requestBody:
@@ -36,16 +32,19 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          type: array
-          minItems: 0
-          maxItems: 1023
-          items:
-            properties:
-              permission:
-                $ref: '#/components/schemas/Permission'
+          $ref: '#/components/schemas/MemberRestriction'
   responses:
     '204':
       description: Updated
-     
+    '404':
+      description: Not found
+
+delete:
+  summary: Removes a codeholder's direct member restrictions
+  description: >
+    Requires permission: `codeholders.read`, `codeholders.perms.update`
+  responses:
+    '204':
+      description: Deleted
     '404':
       description: Not found

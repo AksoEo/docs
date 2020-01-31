@@ -1,0 +1,52 @@
+parameters:
+  - name: apiKey
+    in: path
+    required: true
+    description: The client's hex-ified API key
+    schema:
+      type: string
+      minLength: 32
+      maxLength: 32
+
+get:
+  summary: Returns a client's direct member restrictions if any
+  description: >
+    Requires permission: `clients.read`, `clients.perms.read`
+
+
+    No query params allowed.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/MemberRestriction'
+    '404':
+      description: Not found
+
+put:
+  summary: Sets a client's direct member restrictions
+  description: >
+    Requires permission: `client.read`, `clients.perms.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/MemberRestriction'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
+
+delete:
+  summary: Removes a client's direct member restrictions
+  description: >
+    Requires permission: `clients.read`, `clients.perms.update`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found

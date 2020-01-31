@@ -18,7 +18,7 @@ parameters:
 put:
   summary: Grants a permission to a client
   description: >
-    Requires permission: `clients.update`, `clients.perms.update`
+    Requires permission: `clients.read`, `clients.perms.update`
   responses:
     '204':
       description: Added
@@ -29,7 +29,7 @@ put:
 delete:
   summary: Removes a granted permission from a client
   description: >
-    Requires permission: `clients.update`, `clients.perms.update`
+    Requires permission: `clients.read`, `clients.perms.update`
   responses:
     '204':
       description: Removed

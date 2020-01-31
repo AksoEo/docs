@@ -1,0 +1,20 @@
+description: The restrictions in this object are _not_ merged with the user's own member restrictions.
+properties:
+  filter:
+    type: object
+    description: The member filter
+
+  fields:
+    type: object
+    nullable: true
+    description: The member field whitelist. `null` gives `rw` access to all fields.
+    properties:
+      '[field]':
+        type: string
+        pattern: '^r?w?$'
+        description: The `r`ead/`w`rite access level
+
+required:
+  - filter
+  - fields
+        

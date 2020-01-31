@@ -32,7 +32,7 @@ get:
 put:
   summary: Sets all permissions granted to a client
   description: >
-    Requires permission: `clients.update`, `clients.perms.update`
+    Requires permission: `clients.read`, `clients.perms.update`
   requestBody:
     required: true
     content:

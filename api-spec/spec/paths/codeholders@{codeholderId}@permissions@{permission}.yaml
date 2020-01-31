@@ -16,7 +16,7 @@ parameters:
 put:
   summary: Grants a permission to a codeholder
   description: >
-    Requires permission: `codeholders.update`, `codeholders.perms.update`
+    Requires permission: `codeholders.read`, `codeholders.perms.update`
   responses:
     '204':
       description: Added
@@ -27,7 +27,7 @@ put:
 delete:
   summary: Removes a granted permission from a codeholder
   description: >
-    Requires permission: `codeholders.update`, `codeholders.perms.update`
+    Requires permission: `codeholders.read`, `codeholders.perms.update`
   responses:
     '204':
       description: Removed
