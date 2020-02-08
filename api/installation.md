@@ -50,7 +50,7 @@
 
      AKSO_HTTP_PORT=1111
      AKSO_HTTP_PATH='/' # The path of the AKSO API, useful if behind a reverse proxy
-     AKSO_HTTP_TRUST_LOCAL_PROXY=0 # Whether to trust X-Forwarded-For from localhost/192.168.0.1 etc. Only use this if the AKSO API is behind a reverse proxy
+     AKSO_HTTP_TRUST_PROXY=NO_DEFAULT # Whether to trust X-Forwarded-For from certains ips or subnets. Only use this if the AKSO API is behind a reverse proxy. The value of this variable is passed directly to ExpressJS: http://expressjs.com/en/4x/api.html#trust.proxy.options.table
      AKSO_HTTP_THREADS=3 # How many CPU threads to dedicate to the API
      AKSO_HTTP_USE_HELMET=1 # Whether to use Express helmet for additional security, do not disable this on production
      AKSO_HTTP_SESSION_SECRET=NO_DEFAULT # Generate some secure string using e.g. `openssl rand -hex 32`, change it if ever compromised. Use the same string across all instances if using load sharing
