@@ -10,6 +10,14 @@ properties:
     pattern: '^[\w\-:ĥŝĝĉĵŭ]+$'
     description: The unique name of the form input
 
+  oldName:
+    type: string
+    writeOnly: true
+    minLength: 1
+    maxLength: 20
+    pattern: '^[\w\-:ĥŝĝĉĵŭ]+$'
+    description: The old unique name of the form input, only used if renaming
+
   label:
     type: string
     minLength: 1
