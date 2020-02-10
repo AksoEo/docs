@@ -27,4 +27,11 @@ allOf:
         nullable: true
         description: The price of this participant's registration
 
+      sequenceId:
+        type: integer
+        format: int32
+        nullable: true
+        description: The sequential ID of the participant if any
+
+
   - $ref: '#/components/schemas/FormDataEntry'

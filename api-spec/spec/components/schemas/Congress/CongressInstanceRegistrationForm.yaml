@@ -24,6 +24,20 @@ properties:
     default: false
     description: Whether registrations must be manually approved by an admin before they are valid
 
+  sequenceIds:
+    description: Sequential participant IDs if applicable, set to null to disable
+    nullable: true
+    properties:
+      startAt:
+        type: integer
+        format: int32
+        default: 1
+
+      requireValid:
+        type: boolean
+        default: true
+        description: Whether to require a valid registration (price.minUpFront paid, manually approved if required etc.) to assign an ID
+
   price:
     type: object
     nullable: true
