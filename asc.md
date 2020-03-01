@@ -7,10 +7,11 @@ AKSO Script is a very simple untyped functional sandboxed programming language m
 
 High-level design features:
 
-- no runtime errors
+- no runtime errors (except panics)
 - editable with a GUI
 - small runtime
-- no mutability
+- no mutability, almost completely deterministic
+    + sources of nondeterminism are time-related functions in the standard library and form variables
 
 ## Representation
 Scripts are composed of “definitions” at the top level. Each definition can be thought of as a function taking zero or more arguments, though they will often act like variables.
@@ -58,7 +59,7 @@ Calls a definition. Additional keys:
 - `a`: optional list of definition names to be used as function arguments
 
 #### Semantics
-These can be thought of as function calls. Calling a definition that is not explicitly a function simply copies its value. Calling a function applies each argument to the result in sequence. Excess arguments (i.e. arguments given to non-function values) will be ignored. See `fn` for more details.
+These can be thought of as function calls. Calling a definition that is not explicitly a function simply copies its value. Calling a function applies each argument to the result in sequence. Excess arguments (i.e. arguments given to non-function values) will be ignored. See the definition type `f` for more details.
 
 ### Type `f`
 Defines a function. Additional keys:
@@ -78,95 +79,7 @@ Functions are curried, meaning a function `f a b = a + b` (with params a and b) 
 Functions with no parameters act the same way as constant definitions.
 
 ## Suggested Interpretation
-(Pseudocode)
-
-```javascript
-const stdlib = { ... };
-
-// To evaluate a definition named `id`
-function evaluate (definitions, id) {
-    const item = definitions[id];
-    if (!item) panicSomehow(); // unknown item
-
-    if (item.type === 'c') {
-        // call a declaration
-
-        let value;
-        if (item.f.startsWith('@')) {
-            // this is a form variable
-            value = getFormValueSomehow(item.f);
-        } else {
-            // resolve it from definitions otherwise
-            value = evaluate(definitions, item.f);
-        }
-
-        // apply arguments
-        for (let i = 0; i < item.a.length; i++) {
-            if (typeof value === 'function') {
-                const argumentName = item.a[i];
-                const argument = evaluate(definitions, argumentName);
-                value = value(argument);
-            } else {
-                // too many arguments
-                warnAboutThisMaybe();
-                break;
-            }
-        }
-
-        return value;
-    } else if (item.type === 'f') {
-        // define a function
-
-        // define an inner function that contains the body
-        let f = (params) => {
-            const functionScope = {
-                ...definitions, // definitions from the parent scope
-                ...item.b, // function body
-                ...params, // and the parameters
-            };
-            return evaluate(functionScope, '=');
-        };
-
-        if (item.p.length === 0) {
-            // a function with no parameters is the same as a constant
-            return f({});
-        }
-
-        // curried function construction.
-        // we use (params, index) as state and a as the next parameter.
-        // params is a definitions object containing only the parameters.
-        // index is the index in the item.params array.
-        const c = (params, index) => a => {
-            const paramName = item.p[index];
-            const newParams = { ...params, [paramName]: a };
-
-            // we’ve got enough arguments to call f here
-            if (index + 1 === item.p.length) return f(newParams);
-
-            // otherwise just return a “partially applied function”
-            // and wait to collect more arguments
-            return c(newParams, index + 1);
-        };
-
-        // return c with initial state
-        return c({}, 0);
-    } else if (item.type === 'l') {
-        // construct a list
-        return item.items.map(name => evaluate(definitions, name));
-    } else if (item.type === 'n' || item.type === ...etc...) {
-        // constant types should be obvious
-        return item.value;
-    } else {
-        // unknown definition type
-        panicSomehow();
-    }
-}
-
-const script = { ...definitions go here... };
-
-const topScope = { ...stdlib, ...script };
-evaluate(topScope, 'something');
-```
+See [AKSO Script reference implementation](https://github.com/AksoEo/akso-script-js).
 
 ## Standard Library of Functions
 These functions are available in the global scope. All functions (except comparison and logic operators) will return null if an input is null.
