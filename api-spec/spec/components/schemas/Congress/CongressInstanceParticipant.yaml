@@ -33,5 +33,11 @@ allOf:
         nullable: true
         description: The sequential ID of the participant if any
 
+      cancelledTime:
+        type: integer
+        format: uint64
+        nullable: true
+        description: When this participant's registration was cancelled, `null` means not cancelled
+
 
   - $ref: '#/components/schemas/FormDataEntry'
