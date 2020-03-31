@@ -1,0 +1,25 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this PaymentAddon
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 64
+    description: The name of this PaymentAddon unique to its PaymentOrg
+
+  description:
+    type: string
+    format: markdown
+    nullable: true
+    minLength: 1
+    maxLength: 5000
+    description: >
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+
+
+      A description of this PaymentAddon shown to end users.

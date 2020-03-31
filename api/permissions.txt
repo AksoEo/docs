@@ -159,3 +159,10 @@ pay:
 			<org>
 		delete:
 			<org>
+	payment_addons:
+		create:
+			<org>
+		update:
+			<org>
+		delete:
+			<org>

@@ -1,0 +1,54 @@
+parameters:
+  - name: paymentOrgId
+    in: path
+    required: true
+    description: The id of the PaymentOrg
+    schema:
+      type: number
+      format: uint16
+
+get:
+  summary: Returns all AKSOPay PaymentAddons pertaining to a PaymentOrg
+  description: >
+    Requires permission: `pay.read.<org>`
+    
+
+    Filterable properties:
+
+    - `id`, `name`
+
+
+    Searchable properties:
+
+    - `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentAddon'
+    '404':
+      description: Not found
+
+post:
+  summary: Creates a new AKSOPay PaymentAddon
+  description: >
+    Requires permission: `pay.payment_addons.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/PaymentAddon'
+            - required:
+                - name
+                - description
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Not found
