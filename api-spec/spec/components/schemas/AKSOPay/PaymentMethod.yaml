@@ -73,6 +73,7 @@ properties:
   stripeSecretKey:
     type: string
     maxLength: 256
+    writeOnly: true
     description:
       Only for type `stripe`.
 

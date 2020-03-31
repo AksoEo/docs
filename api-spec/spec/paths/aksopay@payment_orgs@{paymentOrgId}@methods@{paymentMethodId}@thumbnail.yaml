@@ -1,0 +1,47 @@
+parameters:
+  - name: paymentOrgId
+    in: path
+    required: true
+    description: The id of the PaymentOrg
+    schema:
+      type: number
+      format: uint16
+
+  - name: PaymentMethodId
+    in: path
+    required: true
+    description: The is of the PaymentMethod
+    schema:
+      type: number
+      format: uint32
+
+put:
+  summary: Updates the thumbnail of a PaymentMethod
+  description: >
+    Permission required: `pay.payment_methods.update.<org>`
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            thumbnail:
+              type: string
+              format: binary
+              description: 'Max size: 12MB. Must either be `image/jpeg` or `image/png`. The largest dimension will be scaled down to 512px by the server.'
+          required: [ thumbnail ]
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes the thumbnail of a PaymentMethod
+  description: >
+    Permission required: `pay.payment_methods.update.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found

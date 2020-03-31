@@ -10,10 +10,24 @@ properties:
   customer:
     oneOf:
       - $ref: '#/components/schemas/CodeholderId'
-      - type: string
-        minLength: 1
-        maxLength: 256
-        description: An arbitrary string identifying a non-codeholder customer
+      - type: object
+        description: A non-codeholder customer
+        properties:
+          email:
+            type: string
+            format: email
+            minLength: 1
+            maxLength: 250
+            description: The customer's email address
+
+          name:
+            type: string
+            minLength: 1
+            maxLength: 100
+            nullable: true
+            description: The customer's full name
+        required:
+          - email
 
   paymentMethodId:
     type: integer
@@ -41,6 +55,12 @@ properties:
           format: uint64
           description: The unix epoch timestamp of this event
     description: The timestamps of the changes to `status` over time
+
+  timeCreated:
+    type: integer
+    format: uint64
+    readOnly: true
+    description: The unix epoch timestamp the PaymentIntent was created at
 
   internalNotes:
     type: string
@@ -74,7 +94,11 @@ properties:
 
   purposes:
     type: array
-    description: The PaymentPurposes of this PaymentIntent
+    description: >
+      The purposes of this PaymentIntent.
+
+
+      Note that the `totalAmount` must be within the bounds of the payment method.
     items:
       oneOf:
         - description: References some purchase within AKSO 
