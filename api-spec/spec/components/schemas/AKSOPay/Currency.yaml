@@ -1,5 +1,5 @@
 type: string
-description: The three-letter ISO code of a currency supported by AKSO
+description: The three-letter ISO code of a currency supported by AKSOPay
 enum:
   - AUD
   - CAD

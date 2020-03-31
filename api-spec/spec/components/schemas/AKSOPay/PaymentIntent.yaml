@@ -1,0 +1,163 @@
+properties:
+  id:
+    type: string
+    format: binary
+    minLength: 15
+    maxLength: 15
+    readOnly: true
+    description: A random 12 byte identifier of this PaymentIntent. This should be encoded in RFC 4648 base32 when shown to humans.
+
+  customer:
+    oneOf:
+      - $ref: '#/components/schemas/CodeholderId'
+      - type: string
+        minLength: 1
+        maxLength: 256
+        description: An arbitrary string identifying a non-codeholder customer
+
+  paymentMethodId:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: A PaymentMethod#id
+
+  currency:
+    allOf:
+      - description: A currency supported by the payment method
+      - $ref: '#/components/schemas/Currency'
+
+  status:
+    $ref: '#/components/schemas/PaymentIntentStatus'
+
+  events:
+    type: array
+    readOnly: true
+    items:
+      properties:
+        status:
+          $ref: '#/components/schemas/PaymentIntentStatus'
+        time:
+          type: integer
+          format: uint64
+          description: The unix epoch timestamp of this event
+    description: The timestamps of the changes to `status` over time
+
+  internalNotes:
+    type: string
+    minLength: 1
+    maxLength: 5000
+    nullable: true
+    description: Internal notes on the PaymentIntent
+
+  customerNotes:
+    type: string
+    minLength: 1
+    maxLength: 5000
+    nullable: true
+    description: Notes submitted by the customer when the PaymentIntent was created
+
+  foreignId:
+    type: string
+    minLength: 1
+    maxLength: 500
+    nullable: true
+    description: >
+      An identifier of this PaymentIntent in external systems.
+
+
+      This property is read-only for type `stripe`.
+
+
+      - type `manual`: Any arbitrary identifier, e.g. a bank transfer id
+
+      - type `stripe`: The `Stripe PaymentIntent#id`
+
+  purposes:
+    type: array
+    description: The PaymentPurposes of this PaymentIntent
+    items:
+      oneOf:
+        - description: References some purchase within AKSO 
+          properties:
+            type:
+              type: string
+              const: trigger
+              description: The type of purpose
+
+            trigger:
+              type: string
+              enum: []
+              description: The type of trigger
+
+            id:
+              type: string
+              minLength: 1
+              maxLength: 500
+              nullable: true
+              description: An identifier of the AKSO purchase
+
+            amount:
+              type: integer
+              format: int32
+              description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+          required:
+            - type
+            - trigger
+            - amount
+        - description: An addon
+          properties:
+            type:
+              type: string
+              const: addon
+              description: The type of purpose
+
+            paymentAddonId:
+              type: integer
+              format: uint32
+              readOnly: true
+              description: The id of a PaymentAddon
+
+            amount:
+              type: integer
+              format: int32
+              description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+          required:
+            - type
+            - paymentAddonId
+            - amount
+        - description: Anything else
+          properties:
+            type:
+              type: string
+              const: manual
+              description: The type of purpose
+
+            amount:
+              type: integer
+              format: int32
+              description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
+            title:
+              type: string
+              pattern: '^[^\n]+$'
+              minLength: 1
+              maxLength: 128
+              description: A title describing the purpose
+
+            description:
+              type: string
+              format: markdown
+              nullable: true
+              minLength: 1
+              maxLength: 5000
+              description: >
+                Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+
+
+                A description of the purpose
+
+  totalAmount:
+    type: integer
+    format: int32
+    readOnly: true
+    description: The summed amount of all purposes, i.e. the total amount charged to the customer by this PaymentIntent
