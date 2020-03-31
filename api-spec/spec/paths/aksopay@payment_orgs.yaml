@@ -1,0 +1,41 @@
+get:
+  summary: Returns all AKSOPay PaymentOrgs
+  description: >
+    Requires permission: `pay.read.<org>`
+    
+
+    Filterable properties:
+
+    - `id`, `org`, `name`
+
+
+    Searchable properties:
+
+    - `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentOrg'
+
+post:
+  summary: Creates a new AKSOPay PaymentOrg
+  description: >
+    Requires permission: `pay.payment_orgs.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/PaymentOrg'
+            - required:
+                - org
+                - name
+  responses:
+    '201':
+      description: Created

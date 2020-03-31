@@ -1,0 +1,23 @@
+properties:
+  id:
+    type: integer
+    format: uint16
+    readOnly: true
+    description: The unique identifier of this PaymentOrg
+
+  org:
+    $ref: '#/components/schemas/AKSOExclusiveOrganization'
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 15
+    description: The unique name of the PaymentOrg
+
+  description:
+    type: string
+    minLength: 1
+    maxLength: 1000
+    nullable: true
+    description: An optional description of the PaymentOrg

@@ -1,0 +1,89 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of this PaymentMethod
+
+  type:
+    type: string
+    enum:
+      - manual
+      - stripe
+    description:
+      How payments made using this PaymentMethod should be treated.
+
+      - `manual` payments require intervention by an authorized user in the form of approving/denying payments based on external sources.
+
+      - `stripe` payments integrate with the [Stripe](https://stripe.com) API and are fully automated.
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 64
+    description: The name of this PaymentMethod unique to its PaymentOrg
+
+  internalDescription:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 1000
+    description: A description of this PaymentMethod with internal (non-public) notes
+
+  description:
+    type: string
+    format: markdown
+    nullable: true
+    minLength: 1
+    maxLength: 5000
+    description: >
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+
+
+      A description of this PaymentMethod shown to end users.
+
+
+      This description should contains information on how to pay using this method, e.g. bank account numbers for a manual method.
+
+  currencies:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: '#/components/schemas/Currency'
+    description:
+      The currencies supported by this payment method.
+
+  paymentValidity:
+    type: integer
+    format: uint32
+    nullable: true
+    description: >
+      How many seconds a PaymentIntent using this PaymentMethod may stay `pending` before it is set to `abandoned`.
+
+
+      Set this to `null` to disable the abandonment feature. Stripe PaymentMethod's will automatically be marked as `abandoned`, when Stripe says so.
+
+  isRecommended:
+    type: boolean
+    default: false
+    description: Whether this payment method is recommended and should be highlighted on the payment page.
+
+  stripeSecretKey:
+    type: string
+    maxLength: 256
+    description:
+      Only for type `stripe`.
+
+
+      The Stripe API secret key.
+
+  stripePublishableKey:
+    type: string
+    maxLength: 256
+    description: >
+      Only for type `stripe`.
+
+
+      The Stripe API publishable key.

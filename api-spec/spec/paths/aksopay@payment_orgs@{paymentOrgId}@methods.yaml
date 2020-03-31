@@ -1,0 +1,57 @@
+parameters:
+  - name: paymentOrgId
+    in: path
+    required: true
+    description: The id of the PaymentOrg
+    schema:
+      type: number
+      format: uint16
+
+get:
+  summary: Returns all AKSOPay PaymentMethods pertaining to a PaymentOrg
+  description: >
+    Requires permission: `pay.read.<org>`
+    
+
+    Filterable properties:
+
+    - `id`, `type`, `name`, `isRecommended`
+
+
+    Searchable properties:
+
+    - `internalDescription`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentMethod'
+    '404':
+      description: Not found
+
+post:
+  summary: Creates a new AKSOPay PaymentMethod
+  description: >
+    Requires permission: `pay.payment_methods.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/PaymentMethod'
+            - required:
+                - type
+                - name
+                - currencies
+                - stripeSecretKey
+                - stripePublishableKey
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Not found

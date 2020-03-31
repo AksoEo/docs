@@ -141,3 +141,21 @@ notif_templates:
 		<org>
 	delete:
 		<org>
+
+pay:
+	read:
+		<org>
+	payment_orgs:
+		create:
+			<org>
+		update:
+			<org>
+		delete:
+			<org>
+	payment_methods:
+		create:
+			<org>
+		update:
+			<org>
+		delete:
+			<org>

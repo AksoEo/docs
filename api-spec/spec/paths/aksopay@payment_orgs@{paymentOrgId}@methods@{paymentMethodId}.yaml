@@ -1,0 +1,56 @@
+parameters:
+  - name: paymentOrgId
+    in: path
+    required: true
+    description: The id of the PaymentOrg
+    schema:
+      type: number
+      format: uint16
+
+  - name: PaymentMethodId
+    in: path
+    required: true
+    description: The is of the PaymentMethod
+    schema:
+      type: number
+      format: uint32
+
+get:
+  summary: Returns an AKSOPay PaymentMethod
+  description: >
+    Requires permission: `pay.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/PaymentMethod'
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates an AKSOPay PaymentMethod
+  description: >
+    Requires permission: `pay.payment_methods.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/PaymentMethod'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes an AKSOPay PaymentMethod
+  description: >
+    Requires permission: `pay.payment_methods.delete.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
