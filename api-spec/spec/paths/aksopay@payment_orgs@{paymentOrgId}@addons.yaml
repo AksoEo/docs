@@ -20,7 +20,7 @@ get:
 
     Searchable properties:
 
-    - `description`
+    - `name`, `description`
   responses:
     '200':
       description: OK
