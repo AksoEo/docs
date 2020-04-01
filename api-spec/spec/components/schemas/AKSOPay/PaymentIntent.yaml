@@ -238,4 +238,5 @@ properties:
 
       This will be capped at a lower bound of 0 as negative charges are not allowed.
 
+
       Additionally, the value will be capped at a lower bound of the equivalent of USD 1, and at an upper bound of USD 500,000.
