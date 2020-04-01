@@ -40,6 +40,11 @@ properties:
     readOnly: true
     description: A PaymentMethod#id
 
+  paymentMethod:
+    allOf:
+      - readOnly: true
+      - $ref: '#/components/schemas/PaymentMethod'
+
   currency:
     allOf:
       - description: A currency supported by the payment method
@@ -124,7 +129,7 @@ properties:
           properties:
             type:
               type: string
-              const: trigger
+              enum: [trigger]
               description: The type of purpose
 
             trigger:
@@ -143,22 +148,46 @@ properties:
               type: integer
               format: int32
               description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
+            title:
+              type: string
+              pattern: '^[^\n]+$'
+              minLength: 1
+              maxLength: 128
+              description: A title describing the purpose
+
+            description:
+              type: string
+              format: markdown
+              nullable: true
+              minLength: 1
+              maxLength: 5000
+              description: >
+                Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`.
+
+
+                A description of the purpose.
           required:
             - type
             - trigger
             - amount
+            - title
         - description: An addon
           properties:
             type:
               type: string
-              const: addon
+              enum: [addon]
               description: The type of purpose
 
             paymentAddonId:
               type: integer
               format: uint32
-              readOnly: true
               description: The id of a PaymentAddon
+
+            paymentAddon:
+              allOf:
+                - readOnly: true
+                - $ref: '#/components/schemas/PaymentAddon'
 
             amount:
               type: integer
@@ -172,13 +201,13 @@ properties:
           properties:
             type:
               type: string
-              const: manual
+              enum: [manual]
               description: The type of purpose
 
             amount:
               type: integer
               format: uint32
-              description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+              description: The price/discount in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
 
             title:
               type: string
