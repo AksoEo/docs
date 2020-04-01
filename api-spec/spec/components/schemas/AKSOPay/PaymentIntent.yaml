@@ -5,29 +5,34 @@ properties:
     minLength: 15
     maxLength: 15
     readOnly: true
-    description: A random 12 byte identifier of this PaymentIntent. This should be encoded in RFC 4648 base32 when shown to humans.
+    description: A random 15 byte identifier of this PaymentIntent. This should be encoded in RFC 4648 base32 when shown to humans.
+
+  codeholderId:
+    allOf:
+      - nullable: true
+        description: The codeholder id of the customer, if the customer is a codeholder
+        readOnly: false
+      - $ref: '#/components/schemas/CodeholderId'
 
   customer:
-    oneOf:
-      - $ref: '#/components/schemas/CodeholderId'
-      - type: object
-        description: A non-codeholder customer
-        properties:
-          email:
-            type: string
-            format: email
-            minLength: 1
-            maxLength: 250
-            description: The customer's email address
+    description: The customer's info, required even if the customer is a codeholder
+    properties:
+      email:
+        type: string
+        format: email
+        minLength: 1
+        maxLength: 250
+        description: The customer's email address
 
-          name:
-            type: string
-            minLength: 1
-            maxLength: 100
-            nullable: true
-            description: The customer's full name
-        required:
-          - email
+      name:
+        type: string
+        minLength: 1
+        maxLength: 100
+        nullable: true
+        description: The customer's full name
+    required:
+      - email
+      - name
 
   paymentMethodId:
     type: integer
@@ -41,7 +46,9 @@ properties:
       - $ref: '#/components/schemas/Currency'
 
   status:
-    $ref: '#/components/schemas/PaymentIntentStatus'
+    allOf:
+      - $ref: '#/components/schemas/PaymentIntentStatus'
+      - readOnly: true
 
   events:
     type: array
@@ -82,18 +89,30 @@ properties:
     maxLength: 500
     nullable: true
     description: >
-      An identifier of this PaymentIntent in external systems.
+      An identifier of this PaymentIntent in external systems. May be any arbitrary identifier, e.g. a bank transfer id
+
+  stripePaymentIntentId:
+    type: string
+    readOnly: true
+    description: >
+      The `Stripe PaymentIntent#id`, this must never be exposed to anyone but the customer.
 
 
-      This property is read-only for type `stripe`.
+      While theoretically authorized users have access to it, it should not be displayed in any administration systems.
+
+  stripeClientSecret:
+    type: string
+    readOnly: true
+    description: >
+      Only for type `stripe`. The `Stripe PaymentIntent#clientSecret`, this must never be exposed to anyone but the customer.
 
 
-      - type `manual`: Any arbitrary identifier, e.g. a bank transfer id
-
-      - type `stripe`: The `Stripe PaymentIntent#id`
+      While theoretically authorized users have access to it, it should not be displayed in any administration systems.
 
   purposes:
     type: array
+    minItems: 1
+    maxItems: 1024
     description: >
       The purposes of this PaymentIntent.
 
@@ -158,7 +177,7 @@ properties:
 
             amount:
               type: integer
-              format: int32
+              format: uint32
               description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
 
             title:
@@ -175,13 +194,19 @@ properties:
               minLength: 1
               maxLength: 5000
               description: >
-                Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+                Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`.
 
 
-                A description of the purpose
+                A description of the purpose.
 
   totalAmount:
     type: integer
     format: int32
     readOnly: true
-    description: The summed amount of all purposes, i.e. the total amount charged to the customer by this PaymentIntent
+    description: >
+      The summed amount of all purposes, i.e. the total amount charged to the customer by this PaymentIntent.
+
+
+      This will be capped at a lower bound of 0 as negative charges are not allowed.
+
+      Additionally, the value will be capped at a lower bound of the equivalent of USD 1, and at an upper bound of USD 500,000.

@@ -1,0 +1,27 @@
+parameters:
+  - name: paymentOrgId
+    in: path
+    required: true
+    description: The id of the PaymentIntent encoded by RFC 4648 base32
+    schema:
+      type: string
+      minLength: 20
+      maxLength: 20
+
+post:
+  summary: Sets the status of an AKSOPay PaymentIntent to `refunded`
+  description: >
+    Requires permission: `pay.payment_intents.update.<org>`
+
+
+    This only works for PaymentIntents using a PaymentMethod of type `manual`.
+
+
+    This can only be done when the current status is `pending`, `submitted`, `canceled`, `succeeded`, `abandoned` or `disputed`.
+  responses:
+    '204':
+      description: Marked as refunded
+    '404':
+      description: Not found
+    '423':
+      description: This PaymentIntent may not be marked as refunded

@@ -1,0 +1,46 @@
+get:
+  summary: Returns all AKSOPay PaymentIntents
+  description: >
+    Requires permission: `pay.payment_intents.read.<org>`
+
+
+    Stripe notice: Access to properties `stripePaymentIntentId` and `stripeClientSecret` requires permission `pay.payment_intents.sensitive_data.<org>`.
+    
+
+    Filterable properties:
+
+    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentMethodId`, `currency`, `status`, `timeCreated`, `foreignId`, `totalAmount`
+
+
+    Searchable properties:
+
+    - `customer.email`, `customer.name`, `internalNotes`, `customerNotes`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentIntent'
+
+post:
+  summary: Creates a new AKSOPay PaymentIntent
+  description: >
+    Requires permission: `pay.payment_intents.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/PaymentIntent'
+            - required:
+              - customer
+              - codeholderId
+              - currency
+              - purposes
+  responses:
+    '201':
+      description: Created

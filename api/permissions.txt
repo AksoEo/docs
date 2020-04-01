@@ -166,3 +166,12 @@ pay:
 			<org>
 		delete:
 			<org>
+	payment_intents:
+		create:
+			<org>
+		read:
+			<org>
+		update:
+			<org>
+		sensitive_data:
+			<org>
