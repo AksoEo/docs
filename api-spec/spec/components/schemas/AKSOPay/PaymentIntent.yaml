@@ -28,7 +28,6 @@ properties:
         type: string
         minLength: 1
         maxLength: 100
-        nullable: true
         description: The customer's full name
     required:
       - email

@@ -17,6 +17,16 @@ properties:
 
       - `stripe` payments integrate with the [Stripe](https://stripe.com) API and are fully automated.
 
+  stripeMethods:
+    type: array
+    uniqueItems: true
+    minItems: 1
+    description: Only for type `stripe`. The payment methods supported by this Stripe integration
+    items:
+      type: string
+      enum:
+        - card
+
   name:
     type: string
     pattern: '^[^\n]+$'
