@@ -26,6 +26,7 @@ properties:
 
       name:
         type: string
+        pattern: '^[^\n]+$'
         minLength: 1
         maxLength: 100
         description: The customer's full name
@@ -36,13 +37,18 @@ properties:
   paymentMethodId:
     type: integer
     format: uint32
-    readOnly: true
-    description: A PaymentMethod#id
+    description: A `PaymentMethod#id`
 
   paymentMethod:
     allOf:
       - readOnly: true
       - $ref: '#/components/schemas/PaymentMethod'
+
+  org:
+    allOf:
+      - readOnly: true
+        description: The `PaymentOrg#org`
+      - $ref: '#/components/schemas/AKSOExclusiveOrganization'
 
   currency:
     allOf:
@@ -145,7 +151,7 @@ properties:
 
             amount:
               type: integer
-              format: int32
+              format: uint32
               description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
 
             title:
@@ -190,7 +196,7 @@ properties:
 
             amount:
               type: integer
-              format: int32
+              format: uint32
               description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
           required:
             - type
@@ -205,7 +211,7 @@ properties:
 
             amount:
               type: integer
-              format: uint32
+              format: int32
               description: The price/discount in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
 
             title:
@@ -226,6 +232,10 @@ properties:
 
 
                 A description of the purpose.
+          required:
+            - type
+            - amount
+            - title
 
   totalAmount:
     type: integer

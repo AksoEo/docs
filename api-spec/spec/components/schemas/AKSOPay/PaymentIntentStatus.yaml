@@ -12,7 +12,7 @@ description: >
   The status of a PaymentIntent.
 
 
-  - `pending`: (stripe, manual) The PaymentIntent has been submitted, but the customer has not yet paid.
+  - `pending`: (stripe, manual) The PaymentIntent has been created, but the customer has not yet paid.
   
   - `processing`: (stripe) The customer has attempted to pay, but Stripe is still processing the payment.
   

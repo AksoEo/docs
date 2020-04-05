@@ -1,12 +1,12 @@
 parameters:
-  - name: paymentOrgId
+  - name: paymentIntentId
     in: path
     required: true
     description: The id of the PaymentIntent encoded by RFC 4648 base32
     schema:
       type: string
-      minLength: 20
-      maxLength: 20
+      minLength: 24
+      maxLength: 24
 
 post:
   summary: Sets the status of an AKSOPay PaymentIntent to `refunded`

@@ -4,7 +4,7 @@ get:
     Requires permission: `pay.payment_intents.read.<org>`
 
 
-    Stripe notice: Access to properties `stripePaymentIntentId` and `stripeClientSecret` requires permission `pay.payment_intents.sensitive_data.<org>`.
+    Stripe notice: Access to the property `stripeClientSecret` requires permission `pay.payment_intents.sensitive_data.<org>`.
     
 
     Filterable properties:
@@ -38,9 +38,9 @@ post:
             - $ref: '#/components/schemas/PaymentIntent'
             - required:
               - customer
-              - codeholderId
               - currency
               - purposes
+              - paymentMethodId
   responses:
     '201':
       description: Created
