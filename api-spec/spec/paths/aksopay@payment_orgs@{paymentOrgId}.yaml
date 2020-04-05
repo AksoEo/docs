@@ -30,7 +30,11 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/PaymentOrg'
+          allOf:
+            - properties:
+                org:
+                  readOnly: true
+            - $ref: '#/components/schemas/PaymentOrg'
   responses:
     '204':
       description: Updated

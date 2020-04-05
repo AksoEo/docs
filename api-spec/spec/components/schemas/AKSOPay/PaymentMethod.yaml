@@ -32,7 +32,7 @@ properties:
     pattern: '^[^\n]+$'
     minLength: 1
     maxLength: 64
-    description: The name of this PaymentMethod unique to its PaymentOrg
+    description: The name of this PaymentMethod
 
   internalDescription:
     type: string

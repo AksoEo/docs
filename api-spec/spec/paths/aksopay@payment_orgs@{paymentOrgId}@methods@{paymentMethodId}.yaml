@@ -38,7 +38,11 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/PaymentMethod'
+          allOf:
+            - properties:
+                type:
+                  readOnly: true
+            - $ref: '#/components/schemas/PaymentMethod'
   responses:
     '204':
       description: Updated

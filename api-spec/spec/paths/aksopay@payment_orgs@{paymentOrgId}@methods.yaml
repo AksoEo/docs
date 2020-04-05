@@ -50,8 +50,11 @@ post:
                 - currencies
                 - stripeSecretKey
                 - stripePublishableKey
+                - stripeMethods
   responses:
     '201':
       description: Created
     '404':
       description: Not found
+    '409':
+      description: Stripe API key invalid

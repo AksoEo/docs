@@ -10,7 +10,7 @@ properties:
     pattern: '^[^\n]+$'
     minLength: 1
     maxLength: 64
-    description: The name of this PaymentAddon unique to its PaymentOrg
+    description: The name of this PaymentAddon
 
   description:
     type: string
