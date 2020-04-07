@@ -26,7 +26,7 @@ get:
       description: Not found
 
 patch:
-  summary: Updates an AKSOPay PaymentIntent
+  summary: Updates an AKSOPay PaymentIntent. This can only be done when the `PaymentIntent` is `pending`.
   description: >
     Requires permission: `pay.payment_intents.update.<org>`
   requestBody:
@@ -41,8 +41,12 @@ patch:
                   readOnly: true
                 currency:
                   readOnly: true
+                paymentMethodId:
+                  readOnly: true
   responses:
     '204':
       description: Updated
     '404':
       description: Not found
+    '409':
+      description: The PaymentIntent is not pending and may not be updated
