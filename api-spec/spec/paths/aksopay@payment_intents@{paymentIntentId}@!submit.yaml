@@ -23,5 +23,5 @@ post:
       description: Submitted
     '404':
       description: Not found
-    '423':
+    '409':
       description: This PaymentIntent may not be submitted

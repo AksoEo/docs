@@ -9,7 +9,7 @@ get:
 
     Filterable properties:
 
-    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentMethodId`, `currency`, `status`, `timeCreated`, `foreignId`, `totalAmount`
+    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentMethodId`, `currency`, `status`, `timeCreated`, `foreignId`, `totalAmount`, `amountRefunded`
 
 
     Searchable properties:

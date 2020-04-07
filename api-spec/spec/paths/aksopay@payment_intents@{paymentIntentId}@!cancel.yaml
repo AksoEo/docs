@@ -14,12 +14,12 @@ post:
     Requires permission: `pay.payment_intents.update.<org>`
 
 
-    This can only be done when the current status is `pending`, `processing`, `submitted` or `disputed`.
+    This can only be done when the current status is `pending` or `submitted` or (`manual` only) `disputed`.
 
   responses:
     '204':
       description: Canceled
     '404':
       description: Not found
-    '423':
+    '409':
       description: This PaymentIntent may not be canceled

@@ -23,5 +23,5 @@ post:
       description: Marked as succeeded
     '404':
       description: Not found
-    '423':
+    '409':
       description: This PaymentIntent may not be marked as succeeded

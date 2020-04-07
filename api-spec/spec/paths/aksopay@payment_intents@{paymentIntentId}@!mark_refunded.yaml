@@ -17,11 +17,26 @@ post:
     This only works for PaymentIntents using a PaymentMethod of type `manual`.
 
 
-    This can only be done when the current status is `pending`, `submitted`, `canceled`, `succeeded`, `abandoned` or `disputed`.
+    This can only be done when the current status is `pending`, `submitted`, `canceled`, `succeeded`, `refunded` or `disputed`.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            totalRefund:
+              type: integer
+              format: uint32
+              minimum: 1
+              description: >
+                The total amount that has been refunded in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
+
+                Defaults to the total amount of the PaymentIntent. Must not exceed the total amount.
   responses:
     '204':
       description: Marked as refunded
     '404':
       description: Not found
-    '423':
+    '409':
       description: This PaymentIntent may not be marked as refunded
