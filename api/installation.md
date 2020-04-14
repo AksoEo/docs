@@ -58,6 +58,7 @@
      AKSO_HTTP_DISABLE_CSRF_CHECK=0 # Whether to disable CSRF, do not enable this on production
      AKSO_HTTP_DISABLE_RATE_LIMIT=0 # Whether to disable rate limiting, do not enable this on production
      AKSO_HTTP_DISABLE_DISABLE_SLOW_DOWN=0 # Whether to disable login slow down, do not enable this on production
+     AKSO_HTTP_OUTSIDE_ADDRESS=NO_DEFAULT # Optionally, the URL prefix the server is behind. This is used for webhook registration. This address must be port forwarded. If no value is provided, AKSO determines your IP address and uses that with the HTTP port. This does not include the HTTP path, which must be appended to this value manually.
 
      AKSO_MYSQL_HOST=NO_DEFAULT
      AKSO_MYSQL_USER=NO_DEFAULT
@@ -74,6 +75,8 @@
      AKSO_STATE_DIR=NO_DEFAULT # The absolute path to the state dir you created in the previous step
 
      AKSO_DISABLE_LOGIN_NOTIFS=0 # Whether to disable notifications to codeholders when they sign in from a fishy location, this should probably not be disabled on production
+
+     AKSO_STRIPE_WEBHOOKS_ARE_TEMP=0 # Whether to delete Stripe webhooks upon shutdown, useful for dev environments where you don't want failed webhook events to build up when the server is unavailable
    ```
 
 11. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.

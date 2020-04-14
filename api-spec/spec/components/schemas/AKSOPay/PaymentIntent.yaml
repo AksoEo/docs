@@ -79,6 +79,12 @@ properties:
     readOnly: true
     description: The unix epoch timestamp the PaymentIntent was created at
 
+  statusTime:
+    type: integer
+    format: uint64
+    readOnly: true
+    description: The unix epoch timestamp the PaymentIntent last had its status updated at
+
   internalNotes:
     type: string
     minLength: 1
@@ -245,10 +251,7 @@ properties:
       The summed amount of all purposes, i.e. the total amount charged to the customer by this PaymentIntent.
 
 
-      This will be capped at a lower bound of 0 as negative charges are not allowed.
-
-
-      Additionally, the value will be capped at a lower bound of the equivalent of USD 1, and at an upper bound of USD 500,000.
+      This value will be capped at a lower bound of the equivalent of USD 1, and at an upper bound of USD 500,000.
 
   amountRefunded:
     type: integer
