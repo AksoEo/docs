@@ -77,6 +77,8 @@
      AKSO_DISABLE_LOGIN_NOTIFS=0 # Whether to disable notifications to codeholders when they sign in from a fishy location, this should probably not be disabled on production
 
      AKSO_STRIPE_WEBHOOKS_ARE_TEMP=0 # Whether to delete Stripe webhooks upon shutdown, useful for dev environments where you don't want failed webhook events to build up when the server is unavailable
+
+     AKSO_OPEN_EXCHANGE_RATES_APP_ID=NO_DEFAULT # The Open Exchange Rates APP id, obtainable at https://openexchangerates.org/. The free plan will work fine.
    ```
 
 11. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
