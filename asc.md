@@ -30,7 +30,7 @@ Scripts are represented as a Javascript object containing all definitions.
 Identifiers may be prefixed:
 
 - `@` to indicate that this references the value of a form field. This may be `null`. Hence definitions may not start with this letter.
-- `_` to indicate that this is a variable that was not explicitly created by the user and may be manipulated arbitrarily by the editor. These will usually have non-human-readable names.
+- `_` to indicate that this is a variable that was not explicitly created by the user and may be manipulated arbitrarily by the editor. These will usually have non-human-readable names. Additionally, these *cannot* be referenced from child scopes (e.g. function bodies).
 
 The `=` identifier is special and indicates a function’s return value.
 
