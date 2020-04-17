@@ -1,0 +1,22 @@
+get:
+  summary: Gets the number of outstanding tasks by category
+  description: >
+    No query parameters allowed.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            properties:
+              aksopay:
+                description: Field only present given the permission `aksopay.payment_intents.read.<org>`.
+                properties:
+                  submitted:
+                    type: number
+                    format: uint32
+                    description: The number of AKSOPay PaymentIntents with the status `submitted`.
+                  disputed:
+                    type: number
+                    format: uint32
+                    description: The number of AKSOPay PaymentIntents with the status `disputed`.
