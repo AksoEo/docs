@@ -6,15 +6,27 @@ properties:
     type: string
     description: The codeholder's name
 
+  lastNamePublicity:
+    description: Whether the codeholder's (legal) last name is public in lists
+    enum: [ private, public, members ]
+
   email:
     type: string
     nullable: true
     description: The codeholder's email address
 
+  emailPublicity:
+    description: The publicity of the codeholder's email address in lists
+    enum: [ private, public, members ]
+
   address:
     type: string
     nullable: true
     description: The codeholder's formatted postal address
+
+  addressPublicity:
+    description: The publicity of the codeholder's address in lists
+    enum: [ private, public, members ]
 
   officePhone:
     type: string
@@ -26,6 +38,10 @@ properties:
     nullable: true
     description: The codeholder's formatted office phone number
 
+  officePhonePublicity:
+    description: The publicity of the codeholder's office phone number in lists
+    enum: [ private, public, members ]
+
   landlinePhone:
     type: string
     nullable: true
@@ -36,6 +52,10 @@ properties:
     nullable: true
     description: The codeholder's formatted landline phone number
 
+  landlinePhonePublicity:
+    description: The publicity of the codeholder's landline phone number in lists
+    enum: [ private, public, members ]
+
   cellphone:
     type: string
     nullable: true
@@ -45,6 +65,10 @@ properties:
     type: string
     nullable: true
     description: The codeholder's formatted cellphone number
+
+  cellphonePublicity:
+    description: The publicity of the codeholder's cellphone number in lists
+    enum: [ private, public, members ]
 
   biography:
     type: string
@@ -63,3 +87,7 @@ properties:
     nullable: true
     readOnly: true
     description: The hash of the codeholder's profile picture, null if the codeholder has no profile picture
+
+  profilePicturePublicity:
+    description: The publicity of the codeholder's profile picture in lists
+    enum: [ private, public, members ]
