@@ -7,7 +7,7 @@ AKSO Script is a very simple untyped functional sandboxed programming language m
 
 High-level design features:
 
-- no runtime errors (except panics)
+- all runtime errors are statically identifiable
 - editable with a GUI
 - small runtime
 - no mutability, almost completely deterministic
@@ -59,7 +59,9 @@ Calls a definition. Additional keys:
 - `a`: optional list of definition names to be used as function arguments
 
 #### Semantics
-These can be thought of as function calls. Calling a definition that is not explicitly a function simply copies its value. Calling a function applies each argument to the result in sequence. Excess arguments (i.e. arguments given to non-function values) will be ignored. See the definition type `f` for more details.
+These can be thought of as function calls. Calling a definition that is not explicitly a function simply copies its value. Calling a function applies each argument to the result in sequence.
+
+Calling a function or referencing a definition with the incorrect number of arguments is an error (if the target definition is not a function, the number of arguments should always be zero).
 
 ### Type `f`
 Defines a function. Additional keys:
@@ -74,9 +76,15 @@ Functions capture the scope in which they were defined. Definitions may be shado
 2. Function body
 3. Parent scopes wrt. definition (starting with the closest)
 
-Functions are curried, meaning a function `f a b = a + b` (with params a and b) resolves to the equivalent of the Javascript expression `a => b => a + b`.
+### Type `w`
+Matches a list of conditions. Additional keys:
 
-Functions with no parameters act the same way as constant definitions.
+- `m`: an array of objects with following keys:
+    + `c`: optional definition name (condition)
+    + `v`: definition name (value)
+
+#### Semantics
+Each condition/value pair in `m` is traversed sequentially, and the value of the first condition that is strictly equal to the boolean value `true` will be returned. If the condition is not given, it will always match. If no condition matches, the result is `null`.
 
 ## Suggested Interpretation
 See [AKSO Script reference implementation](https://github.com/AksoEo/akso-script-js).
@@ -109,8 +117,8 @@ All operations in this section will return null if an argument is not a number.
 ### Strings and Lists
 Some functions will also work with types that are not strings or arrays (such as `map f a` which will simply return `length a` times `f` if `f` is not a function).
 
-- `cat a`: concatenates all items in a
-    + if the arguments are not all arrays or not all strings, will cast everything to strings. The exact format is implementation-defined
+- `cat a b`: concatenates a and b
+    + if the arguments are not both arrays or not both strings, then strings are treated as an array of code points, and other data types are wrapped in a single-element array.
 - `map f a`: maps f over a
 - `flat_map f a`: maps f over a and concatenates the results
 - `fold f r a`: left-folds a with f, and uses r as the initial value
@@ -126,6 +134,8 @@ Some functions will also work with types that are not strings or arrays (such as
 - `contains a b`: returns if a contains b
     + will return false if a is not a string or array
     + will return false if a is a string and b is not
+- `head a b`: splits a at index b and returns the first part
+- `tail a b`: splits a at index b and returns the second part
 
 Convenience functions:
 
@@ -145,8 +155,6 @@ Convenience functions:
 - `datetime_fmt a`: formats epoch timestamp a
 
 ### Miscellaneous
-- `if a b c`: if a then b else c
-    + if a is not a bool, will always pick c
 - `currency_fmt a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
 - `country_fmt a`: if a is an ISO 639-1 country code (case insensitive), returns the country name. Otherwise null
 - `phone_fmt a`: if a is a phone number string, then returns a formatted version. Otherwise null
@@ -160,3 +168,4 @@ Causes:
 - referencing an unknown declaration
 - naming a definition with a leading `@`
 - unknown types of definitions
+- calling with an incorrect number of arguments
