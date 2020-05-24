@@ -41,6 +41,8 @@ patch:
                   readOnly: true
                 currency:
                   readOnly: true
+                paymentOrgId:
+                  readOnly: true
                 paymentMethodId:
                   readOnly: true
   responses:

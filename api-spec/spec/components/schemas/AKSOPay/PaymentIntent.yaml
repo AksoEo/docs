@@ -34,10 +34,15 @@ properties:
       - email
       - name
 
+  paymentOrgId:
+    type: integer
+    format: uint16
+    description: A `PaymentOrg#id`
+
   paymentMethodId:
     type: integer
     format: uint32
-    description: A `PaymentMethod#id`
+    description: A `PaymentMethod#id` belonging to the specified PaymentOrg
 
   paymentMethod:
     allOf:

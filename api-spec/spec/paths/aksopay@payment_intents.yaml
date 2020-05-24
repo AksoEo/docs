@@ -9,7 +9,7 @@ get:
 
     Filterable properties:
 
-    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentMethodId`, `currency`, `status`, `timeCreated`, `statusTime`, `foreignId`, `totalAmount`, `amountRefunded`
+    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentOrgId`, `paymentMethodId`, `org`, `currency`, `status`, `timeCreated`, `statusTime`, `foreignId`, `totalAmount`, `amountRefunded`
 
 
     Searchable properties:
@@ -40,6 +40,7 @@ post:
               - customer
               - currency
               - purposes
+              - paymentOrgId
               - paymentMethodId
   responses:
     '201':

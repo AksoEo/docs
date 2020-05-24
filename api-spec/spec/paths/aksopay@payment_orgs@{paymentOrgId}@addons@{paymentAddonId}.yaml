@@ -7,7 +7,7 @@ parameters:
       type: number
       format: uint16
 
-  - name: paymentAdddonId
+  - name: paymentAddonId
     in: path
     required: true
     description: The is of the PaymentAddon
