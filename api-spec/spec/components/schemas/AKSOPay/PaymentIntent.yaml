@@ -160,6 +160,12 @@ properties:
               nullable: true
               description: An identifier of the AKSO purchase
 
+            originalAmount:
+              type: integer
+              format: uint32
+              nullable: true
+              description: The original price (if different) in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
             amount:
               type: integer
               format: uint32
@@ -205,6 +211,12 @@ properties:
                 - readOnly: true
                 - $ref: '#/components/schemas/PaymentAddon'
 
+            originalAmount:
+              type: integer
+              format: uint32
+              nullable: true
+              description: The original price (if different) in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
             amount:
               type: integer
               format: uint32
@@ -213,12 +225,18 @@ properties:
             - type
             - paymentAddonId
             - amount
-        - description: Anything else
+        - description: Anything else like fees or items that do not fit anything else
           properties:
             type:
               type: string
               enum: [manual]
               description: The type of purpose
+
+            originalAmount:
+              type: integer
+              format: int32
+              nullable: true
+              description: The original price (if different) in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
 
             amount:
               type: integer
