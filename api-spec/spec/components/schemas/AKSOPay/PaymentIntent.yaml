@@ -90,6 +90,20 @@ properties:
     readOnly: true
     description: The unix epoch timestamp the PaymentIntent last had its status updated at
 
+  succeededTime:
+    type: integer
+    format: uint64
+    readOnly: true
+    nullable: true
+    description: The unix epoch timestamp the PaymentIntent succeeded at, null if it has not succeeded
+
+  refundedTime:
+    type: integer
+    format: uint64
+    readOnly: true
+    nullable: true
+    description: The unix epoch timestamp the PaymentIntent was (last) marked as refunded at, null if it has not been refunded
+
   internalNotes:
     type: string
     minLength: 1
