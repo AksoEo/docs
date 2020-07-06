@@ -42,7 +42,7 @@ allOf:
       birthdate:
         type: string
         format: date
-        description: The codeholder's date of birth
+        description: The codeholder's date of birth. Must not be in the future
 
       profession:
         type: string
