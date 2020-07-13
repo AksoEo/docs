@@ -25,6 +25,9 @@ get:
 
 
     Searchable properties: `name`, `description`
+
+
+    Custom filter logic ops: `$open` takes a local date time string in the format `YYYY-MM-DDTHH:mm:ss` filtering for locations that are open at the provided time. Set to `null` to filter for locations without open hours.
   responses:
     '200':
       description: OK
