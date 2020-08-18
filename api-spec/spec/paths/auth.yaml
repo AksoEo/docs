@@ -70,6 +70,10 @@ get:
                 type: boolean
                 description: Whether the user is an admin and may access the admin panel at akso.org
 
+              isActiveMember:
+                type: boolean
+                description: Whether the user is an active member at the current point in time
+
               newCode:
                 type: string
                 description: The user's six-letter UEA code
