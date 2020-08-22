@@ -162,17 +162,10 @@ properties:
               enum: [trigger]
               description: The type of purpose
 
-            trigger:
+            triggers:
               type: string
               enum: []
-              description: The type of trigger
-
-            id:
-              type: string
-              minLength: 1
-              maxLength: 500
-              nullable: true
-              description: An identifier of the AKSO purchase
+              description: What is triggered by this trigger purpose
 
             originalAmount:
               type: integer
@@ -205,7 +198,7 @@ properties:
                 A description of the purpose.
           required:
             - type
-            - trigger
+            - triggers
             - amount
             - title
         - description: An addon
