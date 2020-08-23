@@ -73,12 +73,39 @@ properties:
       How many seconds a PaymentIntent using this PaymentMethod may stay `pending` before it is set to `abandoned`.
 
 
-      Set this to `null` to disable the abandonment feature. Stripe PaymentMethod's will automatically be marked as `abandoned`, when Stripe says so.
+      Set this to `null` to disable the abandonment feature. This is not recommended.
+
+
+      Stripe PaymentMethods will automatically be marked as `abandoned`, when Stripe says so.
 
   isRecommended:
     type: boolean
     default: false
     description: Whether this payment method is recommended and should be highlighted on the payment page.
+
+  feePercent:
+    type: number
+    minimum: 0
+    exclusiveMinimum: true
+    maximum: 1
+    exclusiveMaximum: true
+    nullable: true
+    description: The percentage fee for using this payment method, null for no fee. Combinable with `feeFixed`.
+
+  feeFixed:
+    type: object
+    nullable: true
+    description: The fixed fee for using this payment method, null for no fee. Combinable with `feePercent`.
+    properties:
+      val:
+        type: integer
+        format: uint16
+        description: The fee in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+      cur:
+        $ref: '#/components/schemas/Currency'
+    required:
+      - val
+      - cur
 
   stripeSecretKey:
     type: string
