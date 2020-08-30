@@ -296,7 +296,7 @@ properties:
       The summed amount of all purposes, i.e. the total amount charged to the customer by this PaymentIntent.
 
 
-      This value will be capped at a lower bound of the equivalent of USD 1, and at an upper bound of USD 500,000.
+      This value will be capped at a lower bound of the equivalent of USD 1. It is not possible to have a total amount of more than USD 500,000.
 
   amountRefunded:
     type: integer

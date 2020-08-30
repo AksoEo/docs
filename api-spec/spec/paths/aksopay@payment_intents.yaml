@@ -45,3 +45,6 @@ post:
   responses:
     '201':
       description: Created
+
+    '417':
+      description: The total amount of all purposes exceeds USD 500,000
