@@ -117,7 +117,7 @@ All operations in this section will return null if an argument is not a number.
 ### Strings and Lists
 Some functions will also work with types that are not strings or arrays (such as `map f a` which will simply return `length a` times `f` if `f` is not a function).
 
-- `cat a b`: concatenates a and b
+- `++ a b`: concatenates a and b
     + if the arguments are not both arrays or not both strings, then strings are treated as an array of code points, and other data types are wrapped in a single-element array.
 - `map f a`: maps f over a
 - `flat_map f a`: maps f over a and concatenates the results
