@@ -162,6 +162,11 @@ properties:
               enum: [trigger]
               description: The type of purpose
 
+            invalid:
+              type: boolean
+              readOnly: true
+              description: Indicates if the purpose has been invalidated, e.g. by a refund
+
             triggers:
               type: string
               enum: []
@@ -208,6 +213,11 @@ properties:
               enum: [addon]
               description: The type of purpose
 
+            invalid:
+              type: boolean
+              readOnly: true
+              description: Indicates if the purpose has been invalidated, e.g. by a refund
+
             paymentAddonId:
               type: integer
               format: uint32
@@ -238,6 +248,11 @@ properties:
               type: string
               enum: [manual]
               description: The type of purpose
+
+            invalid:
+              type: boolean
+              readOnly: true
+              description: Indicates if the purpose has been invalidated, e.g. by a refund
 
             originalAmount:
               type: integer
