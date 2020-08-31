@@ -15,6 +15,13 @@ get:
     Searchable properties:
 
     - `customer.email`, `customer.name`, `internalNotes`, `customerNotes`
+
+
+    Special logic operators:
+
+    - `$purposes`: Takes a filter object and returns only intents matching the purpose filter.
+      May use the following properties from `GET /aksopay/payment_intents/{paymentIntentId}#purposes`:
+      `type`, `invalid`, `amount`, `originalAmount`, `paymentAddonId`, `triggers`
   responses:
     '200':
       description: OK
