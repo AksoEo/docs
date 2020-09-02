@@ -2,16 +2,9 @@ get:
   summary: Returns a balance report of AKSOPay PaymentIntents
   description: >
     Requires permission: `pay.payment_intents.read.<org>`
-    
-
-    Filterable properties:
-
-    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentOrgId`, `paymentMethodId`, `org`, `currency`, `status`, `timeCreated`, `statusTime`, `succeededTime`, `refundedTime`, `foreignId`, `totalAmount`, `amountRefunded`
 
 
     Query params:
-    
-    - Normal params: Only `?filter`.
 
     - `?time` is required in the format `<unix_from>-<unix_to>`. This filters not by any particular time prop, and handles refunds properly.
 
@@ -22,82 +15,22 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            properties:
-              converted:
-                nullable: true
-                properties:
-                  total:
-                    type: number
-                    format: int32
-                    description: The total converted into the currency provided by `?currency`
-                  earned:
-                    type: number
-                    format: int32
-                    description: The earned total converted into the currency provided by `?currency`
-                  refunded:
-                    type: number
-                    format: int32
-                    description: The refunded total converted into the currency provided by `?currency`
-              
-              totals:
-                properties:
-                  currency:
-                    description: Totals by currency
-                    properties:
-                      '[currency]':
-                        properties:
-                          total:
-                            type: number
-                            format: int32
-                            description: The total for the given currency
-                          earned:
-                            type: number
-                            format: int32
-                            description: The total earned for the given currency
-                          refunded:
-                            type: number
-                            format: int32
-                            description: The total refunded for the given currency
-
-                          count:
-                            type: number
-                            format: int32
-                            description: The total number of payments received in the given currency
-                          refunds:
-                            type: number
-                            format: int32
-                            description: The total number of refunds made in the given currency
-
-                  paymentMethod:
-                    description: Totals by payment method
+            allOf:
+              - $ref: '#/components/schemas/ReportTotals'
+              - properties:
+                  byPaymentOrg:
                     properties:
                       '[paymentOrgId]':
-                        properties:
-                          '[paymentMethodId]':
-                            properties:
-                              totals:
-                                description: Totals by currency
+                        allOf:
+                          - $ref: '#/components/schemas/ReportTotals-link1'
+                          - properties:
+                              byPaymentMethod:
                                 properties:
-                                  '[currency]':
-                                    properties:
-                                      total:
-                                        type: number
-                                        format: int32
-                                        description: The total for the given currency within this payment method
-                                      earned:
-                                        type: number
-                                        format: int32
-                                        description: The total earned for the given currency within this payment method
-                                      refunded:
-                                        type: number
-                                        format: int32
-                                        description: The total refunded for the given currency within this payment method
+                                  '[paymentMethodId]':
+                                    $ref: '#/components/schemas/ReportTotals-link2'
 
-                                      count:
-                                        type: number
-                                        format: int32
-                                        description: The total number of payments received using this payment method
-                                      refunds:
-                                        type: number
-                                        format: int32
-                                        description: The total number of refunds made using this payment method
+                              byPaymentAddon:
+                                description: Refunds cannot be tracked for addons. Invalidated addons are not included.
+                                properties:
+                                  '[paymentAddonId]':
+                                    $ref: '#/components/schemas/ReportTotalsAddon'

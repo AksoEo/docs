@@ -1,0 +1,44 @@
+properties:
+  byCurrency:
+    description: Totals by currency
+    properties:
+      '[currency]':
+        properties:
+          total:
+            type: number
+            format: int32
+            description: The total for the given currency
+          earned:
+            type: number
+            format: uint32
+            description: The total earned for the given currency
+          invalidated:
+            type: number
+            format: uint32
+            description: The total invalidated for the given currency
+
+          count:
+            type: number
+            format: uint32
+            description: The total number of payments received in the given currency
+          invalidations:
+            type: number
+            format: uint32
+            description: The total number of invalidations made in the given currency
+
+  converted:
+    nullable: true
+    description: Totals in the currency provided by `?currency`, if none specified `null`
+    properties:
+      total:
+        type: number
+        format: int32
+        description: The total converted into the currency provided by `?currency`
+      earned:
+        type: number
+        format: uint32
+        description: The earned total converted into the currency provided by `?currency`
+      invalidated:
+        type: number
+        format: uint32
+        description: The invalidated total converted into the currency provided by `?currency`
