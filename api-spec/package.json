@@ -2,7 +2,7 @@
   "name": "akso",
   "version": "1.0.0",
   "dependencies": {
-    "swagger-repo": "^2.0.0-rc.13",
+    "swagger-repo": "^2.0.0-rc.15",
     "ws": "^3.3.3"
   },
   "private": true,
