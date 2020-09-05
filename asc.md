@@ -86,6 +86,28 @@ Matches a list of conditions. Additional keys:
 #### Semantics
 Each condition/value pair in `m` is traversed sequentially, and the value of the first condition that is strictly equal to the boolean value `true` will be returned. If the condition is not given, it will always match. If no condition matches, the result is `null`.
 
+## Types
+Short notation in parentheses.
+
+### Primitive Types
+- `null` (`u`): created by `u`
+- `bool` (`b`): created by `b`
+- `number` (`n`): created by `n`
+- `string` (`s`): created by `s`
+
+### Type Constructors
+- `array<T>` (`T[]`): created by `m` and `l`
+- `func(...)` (`f()`): created by `f`.
+    Arity must be fixed.
+    May have type variables (denoted here with `$`) on the left-hand side to match any type.
+    Example with arity 2: `f((n, n) -> n, ($a, $b) -> u)`
+- `(a|b)`: union of type `a` and `b` (implicitly created by runtime branching)
+
+### Runtime Types
+There are several more runtime types than types available in syntax:
+
+- `timestamp`: the timestamp type stores a single point in real time, created using stdlib functions
+
 ## Suggested Interpretation
 See [AKSO Script reference implementation](https://github.com/AksoEo/akso-script-js).
 
@@ -95,23 +117,25 @@ These functions are available in the global scope. All functions (except compari
 ### Math
 All operations in this section will return null if an argument is not a number.
 
-- `+`/`-`/`*`/`/`/`^` (on two arguments): basic arithmetic
+Let `A = f((n, n) -> n, ($a, $b) -> u)` and `B = f((n) -> n, ($a) -> u)`
+
+- `+`/`-`/`*`/`/`/`^`: `A`: basic arithmetic
     + division by 0 is 0
     + 0^0 is 1
-- `mod a b`: modulo. Will flip the monoid if b is negative. Will return 0 if b is 0.
-- `floor a`: rounds to the closest integer in the -Infinity direction
-- `ceil a`: rounds to the closest integer in the +Infinity direction
-- `round a`: rounds to the closest integer
-- `trunc a`: rounds to the closest integer towards 0
-- `sign a`: returns the sign, either -1, 0, or 1
-- `abs a`: returns the magnitude of the argument
+- `mod a b`: `A`: modulo. Will flip the monoid if b is negative. Will return 0 if b is 0.
+- `floor a`: `B`: rounds to the closest integer in the -Infinity direction
+- `ceil a`: `B`: rounds to the closest integer in the +Infinity direction
+- `round a`: `B`: rounds to the closest integer
+- `trunc a`: `B`: rounds to the closest integer towards 0
+- `sign a`: `B`: returns the sign, either -1, 0, or 1
+- `abs a`: `B`: returns the magnitude of the argument
 
 ### Comparison and Logic
-- `==`/`!=`/`>`/`<`/`>=`/`<=` (on two arguments): comparison operators
+- `==`/`!=`/`>`/`<`/`>=`/`<=`: `f(($a, $b) -> b)`: comparison operators
     + using ordered comparison on types that are not a number or string always evaluates to false
     + using ordered comparison on two different types always evaluates to false
     + comparing two different types always evaluates to false
-- `and`/`or`/`not`/`xor` (on two arguments): boolean logic
+- `and`/`or`/`not`/`xor`: `f(($a, $b) -> b)`: boolean logic
     + if one argument is not a boolean, always evaluates to false
 
 ### Strings and Lists
@@ -119,7 +143,7 @@ Some functions will also work with types that are not strings or arrays (such as
 
 - `++ a b`: concatenates a and b
     + if the arguments are not both arrays or not both strings, then strings are treated as an array of code points, and other data types are wrapped in a single-element array.
-- `map f a`: maps f over a
+- `map f a`: `f((f($a) -> $b, $a[]) -> $b[], (f($a) -> $b, $a) -> $b, ($a, $b[]) -> $a[], ($a, $b) -> $a)`: maps f over a
 - `flat_map f a`: maps f over a and concatenates the results
 - `fold f r a`: left-folds a with f, and uses r as the initial value
 - `fold1 f a`: like fold, but uses first item as initial value
@@ -151,8 +175,37 @@ Convenience functions:
 - `date_add t a b`: interprets a as an RFC3339 date string, or returns null. Adds b of t, and returns the resulting date string. t may be one of 'days', 'weeks', 'months', 'years'
 - `date_today`: returns the current date
 - `date_fmt a`: returns the formatted version of a interpreted as a RFC3339 date string, or null
-- `time_now`: current epoch timestamp in seconds
-- `datetime_fmt a`: formats epoch timestamp a
+- `date_get t a`: returns field t (`y`, `M`, or `d`) of date string a
+    + should not handle out-of-bounds numbers and just return what it says in the string
+- `date_set t a b`: returns date string a with field t (`y`, `M`, or `d`) set to b
+    + this should handle out-of-bounds numbers correctly, e.g. setting date to -1 should underflow into the previous month
+
+#### Timestamps
+- `ts_now`: `timestamp`: current timestamp
+- `tz_utc`: `n`: utc time zone offset (always zero)
+- `tz_local`: `n`: local time zone offset (in minutes)
+
+##### Timestamp Conversion
+- `ts_from_unix`: `f((n) -> timestamp, ($a) -> u)`: creates a timestamp from a unix timestamp (in seconds)
+- `ts_to_unix`: `f((timestamp) -> n, ($a) -> u)`: returns the unix timestamp (in seconds) for the given timestamp
+- `ts_from_date a tz h m s`: `f((timestamp, n, n, n, n) -> s, ($a, $b) -> u)` returns a timestamp with the given date a, time zone offset tz (in minutes), hours h, minutes m, and seconds s
+- `ts_to_date a tz`: `f((timestamp, n) -> s, ($a, $b) -> u)` returns the date of timestamp a for the given time zone offset tz (in minutes)
+- `ts_parse a`: `f((s) -> (timestamp|u), ($a) -> u)` attempts to parse a timestamp from the given string. Must support RFC3339.
+- `ts_to_string a`: `f((timestamp) -> s, ($a) -> u)` formats the timestamp as RFC3339
+- `ts_fmt a`: `f((timestamp) -> s, ($a) -> u)` formats the timestamp in a human-readable format
+
+##### Timestamp Math
+- `ts_add t a b`: `f((s, timestamp, n) -> (timestamp|u), ($a, $b, $c) -> u)`: adds b of t to a. t may be one of:
+    + `s`: seconds
+    + `m`: minutes
+    + `h`: hours
+    + `d`: days
+    + `w`: weeks
+    + `M`: months
+    + `y`: years
+- `ts_sub t a b`: `f((s, timestamp, timestamp) -> n, ($a, $b, $c) -> u)`: returns the signed difference between a and b in the given unit `t` (see `ts_add` for possible units)
+- `ts_get t tz a`: `f((s, n, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns field t (see `ts_add`) for timestamp a in time zone offset tz (in minutes)
+- `ts_set t tz a b`: `f((s, n, timestamp, n) -> (timestamp|u), ($a, $b, $c, $d) -> u)`: returns a with field t (see `ts_add`) set to b in time zone offset tz (in minutes)
 
 ### Miscellaneous
 - `currency_fmt a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
