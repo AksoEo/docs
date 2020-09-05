@@ -176,7 +176,7 @@ Convenience functions:
 - `date_today`: returns the current date
 - `date_fmt a`: returns the formatted version of a interpreted as a RFC3339 date string, or null
 - `date_get t a`: returns field t (`y`, `M`, or `d`) of date string a
-    + should not handle out-of-bounds numbers and just return what it says in the string
+    + out-of-bounds numbers should either return what it says in the string or overflow correctly
 - `date_set t a b`: returns date string a with field t (`y`, `M`, or `d`) set to b
     + this should handle out-of-bounds numbers correctly, e.g. setting date to -1 should underflow into the previous month
 
@@ -188,7 +188,7 @@ Convenience functions:
 ##### Timestamp Conversion
 - `ts_from_unix`: `f((n) -> timestamp, ($a) -> u)`: creates a timestamp from a unix timestamp (in seconds)
 - `ts_to_unix`: `f((timestamp) -> n, ($a) -> u)`: returns the unix timestamp (in seconds) for the given timestamp
-- `ts_from_date a tz h m s`: `f((timestamp, n, n, n, n) -> s, ($a, $b) -> u)` returns a timestamp with the given date a, time zone offset tz (in minutes), hours h, minutes m, and seconds s
+- `ts_from_date a tz h m s`: `f((s, n, n, n, n) -> timestamp, ($a, $b) -> u)` returns a timestamp with the given date a, time zone offset tz (in minutes), hours h, minutes m, and seconds s
 - `ts_to_date a tz`: `f((timestamp, n) -> s, ($a, $b) -> u)` returns the date of timestamp a for the given time zone offset tz (in minutes)
 - `ts_parse a`: `f((s) -> (timestamp|u), ($a) -> u)` attempts to parse a timestamp from the given string. Must support RFC3339.
 - `ts_to_string a`: `f((timestamp) -> s, ($a) -> u)` formats the timestamp as RFC3339
@@ -204,8 +204,8 @@ Convenience functions:
     + `M`: months
     + `y`: years
 - `ts_sub t a b`: `f((s, timestamp, timestamp) -> n, ($a, $b, $c) -> u)`: returns the signed difference between a and b in the given unit `t` (see `ts_add` for possible units)
-- `ts_get t tz a`: `f((s, n, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns field t (see `ts_add`) for timestamp a in time zone offset tz (in minutes)
-- `ts_set t tz a b`: `f((s, n, timestamp, n) -> (timestamp|u), ($a, $b, $c, $d) -> u)`: returns a with field t (see `ts_add`) set to b in time zone offset tz (in minutes)
+- `ts_get t tz a`: `f((s, n, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns field t (see `ts_add`; except `w`) for timestamp a in time zone offset tz (in minutes)
+- `ts_set t tz a b`: `f((s, n, timestamp, n) -> (timestamp|u), ($a, $b, $c, $d) -> u)`: returns a with field t (see `ts_add`; except `w`) set to b in time zone offset tz (in minutes)
 
 ### Miscellaneous
 - `currency_fmt a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'
