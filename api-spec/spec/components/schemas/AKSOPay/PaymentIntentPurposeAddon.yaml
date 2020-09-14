@@ -1,0 +1,37 @@
+description: An addon
+properties:
+  type:
+    type: string
+    enum: [addon]
+    description: The type of purpose
+
+  invalid:
+    type: boolean
+    readOnly: true
+    description: Indicates if the purpose has been invalidated, e.g. by a refund
+
+  paymentAddonId:
+    type: integer
+    format: uint32
+    description: The id of a PaymentAddon
+
+  paymentAddon:
+    allOf:
+      - readOnly: true
+      - $ref: '#/components/schemas/PaymentAddon'
+
+  originalAmount:
+    type: integer
+    format: uint32
+    nullable: true
+    description: The original price (if different) in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
+  amount:
+    type: integer
+    format: uint32
+    description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+required:
+  - type
+  - paymentAddonId
+  - amount
+  

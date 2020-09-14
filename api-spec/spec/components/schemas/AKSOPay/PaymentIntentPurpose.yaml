@@ -1,0 +1,4 @@
+oneOf:
+  - $ref: '#/components/schemas/PaymentIntentPurposeAddon'
+  - $ref: '#/components/schemas/PaymentIntentPurposeManual'
+  - $ref: '#/components/schemas/PaymentIntentPurposeTrigger'

@@ -1,0 +1,24 @@
+allOf:
+  - $ref: '#/components/schemas/PaymentIntentPurposeTriggerGeneric'
+  - properties:
+      triggers:
+        type: string
+        enum: [ congress_registration ]
+        description: What is triggered by this trigger purpose
+
+      dataId:
+        type: string
+        format: binary
+        minLength: 12
+        maxLength: 12
+        description: >
+          The form data entry id of the registration to trigger a payment for.
+
+
+          This must belong to a congress for which the user has the necessary perms: `congress_instances.participants.update.<org>`
+
+
+          On read access, this `dataId` may no longer exist, if the referenced form data entry has been deleted.
+
+    required:
+      - dataId

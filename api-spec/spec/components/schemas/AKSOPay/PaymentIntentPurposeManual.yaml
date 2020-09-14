@@ -1,0 +1,45 @@
+description: Anything else like fees or items that do not fit anything else
+properties:
+  type:
+    type: string
+    enum: [manual]
+    description: The type of purpose
+
+  invalid:
+    type: boolean
+    readOnly: true
+    description: Indicates if the purpose has been invalidated, e.g. by a refund
+
+  originalAmount:
+    type: integer
+    format: int32
+    nullable: true
+    description: The original price (if different) in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
+  amount:
+    type: integer
+    format: int32
+    description: The price/discount in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
+  title:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 128
+    description: A title describing the purpose
+
+  description:
+    type: string
+    format: markdown
+    nullable: true
+    minLength: 1
+    maxLength: 5000
+    description: >
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`.
+
+
+      A description of the purpose.
+required:
+  - type
+  - amount
+  - title
