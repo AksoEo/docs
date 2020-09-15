@@ -11,7 +11,7 @@ allOf:
       approved:
         type: boolean
         default: false
-        description: Whether this congress participant has been approved, only used if `manualApproval` is set to true in the congress registration form.
+        description: Whether this congress participant has been manually approved.
       
       notes:
         type: string
@@ -25,7 +25,39 @@ allOf:
         type: integer
         format: uint32
         nullable: true
-        description: The price of this participant's registration
+        description: The price of this participant's registration. `null` if price calculation is disabled for the registration form.
+
+      amountPaid:
+        readOnly: true
+        type: integer
+        format: uint32
+        description: The total amount paid in this participant's name.
+
+      hasPaidMinimum:
+        readOnly: true
+        type: boolean
+        nullable: true
+        description: >
+          Whether this participant has paid the minimum for a valid registration.
+
+
+          - `null` if price calculation is disabled for the registration form.
+
+          - `true` if `amountPaid` is greater than or equal to either `price` or the registration form's `price.minUpfront`.
+
+          - otherwise `false`
+
+      isValid:
+        readOnly: true
+        type: boolean
+        description: >
+         Whether this participant's registration is valid.
+
+
+         If `manualApproval` is `true` in the congress registration form, this is the value of `approved`.
+
+
+         Otherwise, this is `approved || hasPaidMinimum`.
 
       sequenceId:
         type: integer
