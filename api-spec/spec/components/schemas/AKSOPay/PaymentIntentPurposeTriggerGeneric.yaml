@@ -4,6 +4,20 @@ properties:
     enum: [trigger]
     description: The type of purpose
 
+  triggerStatus:
+    type: string
+    enum: [ awaiting, processing, triggered ]
+    readOnly: true
+    description: >
+      The status of the trigger.
+
+
+      - `awaiting`: The PaymentIntent has not succeeded.
+
+      - `processing`: The PaymentIntent has succeeded and the trigger is processing.
+
+      - `triggered`: This purpose has been triggered and the effect is in place.
+
   invalid:
     type: boolean
     readOnly: true
