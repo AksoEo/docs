@@ -7,7 +7,8 @@ AKSO Script is a very simple untyped functional sandboxed programming language m
 
 High-level design features:
 
-- all runtime errors are statically identifiable
+- almost all runtime errors are statically identifiable
+    + case where this does not apply: function arity
 - editable with a GUI
 - small runtime
 - no mutability, almost completely deterministic
@@ -188,7 +189,7 @@ Convenience functions:
 ##### Timestamp Conversion
 - `ts_from_unix`: `f((n) -> timestamp, ($a) -> u)`: creates a timestamp from a unix timestamp (in seconds)
 - `ts_to_unix`: `f((timestamp) -> n, ($a) -> u)`: returns the unix timestamp (in seconds) for the given timestamp
-- `ts_from_date a tz h m s`: `f((s, n, n, n, n) -> timestamp, ($a, $b) -> u)` returns a timestamp with the given date a, time zone offset tz (in minutes), hours h, minutes m, and seconds s
+- `ts_from_date a tz h m s`: `f((s, n, n, n, n) -> (timestamp|u), ($a, $b, $c, $d, $e) -> u)` returns a timestamp with the given date a, time zone offset tz (in minutes), hours h, minutes m, and seconds s
 - `ts_to_date a tz`: `f((timestamp, n) -> s, ($a, $b) -> u)` returns the date of timestamp a for the given time zone offset tz (in minutes)
 - `ts_parse a`: `f((s) -> (timestamp|u), ($a) -> u)` attempts to parse a timestamp from the given string. Must support RFC3339.
 - `ts_to_string a`: `f((timestamp) -> s, ($a) -> u)` formats the timestamp as RFC3339
@@ -203,7 +204,7 @@ Convenience functions:
     + `w`: weeks
     + `M`: months
     + `y`: years
-- `ts_sub t a b`: `f((s, timestamp, timestamp) -> n, ($a, $b, $c) -> u)`: returns the signed difference between a and b in the given unit `t` (see `ts_add` for possible units)
+- `ts_sub t a b`: `f((s, timestamp, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns the signed difference between a and b in the given unit `t` (see `ts_add` for possible units)
 - `ts_get t tz a`: `f((s, n, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns field t (see `ts_add`; except `w`) for timestamp a in time zone offset tz (in minutes)
 - `ts_set t tz a b`: `f((s, n, timestamp, n) -> (timestamp|u), ($a, $b, $c, $d) -> u)`: returns a with field t (see `ts_add`; except `w`) set to b in time zone offset tz (in minutes)
 
