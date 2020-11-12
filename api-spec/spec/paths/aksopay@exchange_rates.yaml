@@ -1,0 +1,27 @@
+parameters:
+  - name: base
+    in: query
+    description: The base currency
+    required: true
+    schema:
+      $ref: '#/components/schemas/Currency'
+
+get:
+  summary: Gets the current currency exchange rates of all currencies supported by AKSOPay
+  description: >
+    Returns the equivalent of 100 of the base currency in zero-decimal format
+
+
+    No query params allowed except `base`.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            '[currency]':
+              type: integer
+              format: uint32
+              description: The value of 100 of the base currency in this currency, provided in zero-decimal format
+    '423':
+      description: Not yet ready, please try again later
