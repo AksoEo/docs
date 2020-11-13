@@ -9,7 +9,7 @@ parameters:
 get:
   summary: Gets the current currency exchange rates of all currencies supported by AKSOPay
   description: >
-    Returns the equivalent of 100 of the base currency in zero-decimal format
+    Returns exchange rates relative to the base currency
 
 
     No query params allowed except `base`.
@@ -22,6 +22,6 @@ get:
             '[currency]':
               type: integer
               format: uint32
-              description: The value of 100 of the base currency in this currency, provided in zero-decimal format
+              description: The value of the currency relative to the base currency
     '423':
       description: Not yet ready, please try again later
