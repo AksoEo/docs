@@ -19,9 +19,10 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            '[currency]':
-              type: integer
-              format: uint32
-              description: The value of the currency relative to the base currency
+            properties:
+              '[currency]':
+                type: number
+                format: float
+                description: The value of the currency relative to the base currency
     '423':
       description: Not yet ready, please try again later
