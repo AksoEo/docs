@@ -63,7 +63,7 @@ allOf:
         type: integer
         format: int32
         nullable: true
-        description: The sequential ID of the participant if any
+        description: The sequential ID of the participant if any, unique to this congress instance
 
       cancelledTime:
         type: integer

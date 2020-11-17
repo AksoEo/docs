@@ -47,6 +47,13 @@ patch:
       application/vnd.msgpack:
         schema:
           $ref: '#/components/schemas/CongressInstanceParticipant'
+  responses:
+    '204':
+      description: Updated
+    '409':
+      description: codeholderId is already in use
+    '423':
+      description: sequenceId is already in use
 
 delete:
   summary: Deletes a participant of a congress instance. This should only ever be used to remove registrations made in error and not to cancel a participant's registration.
