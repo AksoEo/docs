@@ -175,3 +175,7 @@ pay:
 			<org>
 		sensitive_data:
 			<org>
+
+registration:
+	offers:
+		read
