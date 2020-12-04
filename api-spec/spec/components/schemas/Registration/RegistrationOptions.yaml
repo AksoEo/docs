@@ -1,0 +1,119 @@
+properties:
+  paymentOrgId:
+    type: integer
+    format: uint16
+    readOnly: true
+    description: The unique identifier of the payment org to use
+
+
+  offers:
+    description: The offers of this year
+    type: array
+    minItems: 1
+    maxItems: 512
+    items:
+      type: object
+      description: A group of registration offers
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 120
+          pattern: '^[^\n]+$'
+          description: The title of the offer group
+
+        description:
+          type: string
+          minLength: 1
+          maxLength: 4000
+          nullable: true
+          description: >
+            A description of the offer group.
+
+
+            Markdown rules enabled: `emphasis`, `strikethrough`, `link`
+
+        offers:
+          type: array
+          minItems: 0
+          maxItems: 64
+          description: The offers of this group, if any.
+          items:
+            oneOf:
+              - properties:
+                  type:
+                    type: string
+                    enum: [addon]
+                    description: The type of offer. `addon` indicates a PaymentAddon.
+
+                  id:
+                    type: integer
+                    format: uint32
+                    readOnly: true
+                    description: The unique identifier of the PaymentAddon
+
+                required:
+                  - type
+                  - id
+
+              - properties:
+                  type:
+                    type: string
+                    enum: [membership]
+                    description: The type of offer. `membership` indicates a membership offer.
+
+                  id:
+                    type: number
+                    format: uint32
+                    description: The id of the membership category
+
+                  price:
+                    type: object
+                    nullable: true
+                    description: The price of the membership offer. If `null`, the offer is unavailable.
+                    properties:
+                      script:
+                        type: object
+                        description: >
+                          An AKSO Script for calculating the price of this membership offer.
+
+
+                          The following codeholder fields are available as form vars:
+
+                            - birthdate
+                            - age
+                            - agePrimo
+                            - codeholderType
+                            - country
+                            - feeCountry
+                            - addressCountryGroups
+                            - feeCountryGroups
+                            - isActiveMember
+                      var:
+                        type: string
+                        minLength: 1
+                        maxLength: 40
+                        description: >
+                          The name of the AKSO Script var containing the price off this membership offer.
+
+
+                          If it resolves to null the offer is unavailable.
+
+                      currency:
+                        $ref: '#/components/schemas/Currency'
+
+                    required:
+                      - script
+                      - var
+                      - currency
+
+                required:
+                  - type
+                  - id
+
+      required:
+        - title
+
+required:
+  - paymentOrgId
+  - offers

@@ -177,5 +177,5 @@ pay:
 			<org>
 
 registration:
-	offers:
+	options:
 		read

@@ -2,15 +2,15 @@ parameters:
   - name: year
     in: path
     required: true
-    description: The year of the registration offers
+    description: The year of the registration options
     schema:
       type: integer
       format: year
 
 get:
-  summary: Gets all registration offers
+  summary: Gets registration options for a given year
   description: >
-    Requires permission: `registration.offers.read`
+    Requires permissions: `registration.options.read`, `pay.read.<org>`
 
 
     Filterable properties: 
@@ -23,4 +23,4 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/RegistrationOffers'
+            $ref: '#/components/schemas/RegistrationOptions'
