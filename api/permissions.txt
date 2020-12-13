@@ -179,3 +179,10 @@ pay:
 registration:
 	options:
 		read
+		update
+		delete
+	registrations:
+		read
+		create
+		update
+		delete

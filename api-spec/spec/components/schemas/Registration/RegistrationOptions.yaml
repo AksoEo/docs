@@ -1,10 +1,20 @@
 properties:
+  year:
+    type: integer
+    format: year
+    readOnly: true
+    description: The year of the registration options
+
   paymentOrgId:
     type: integer
     format: uint16
     readOnly: true
     description: The unique identifier of the payment org to use
 
+  currency:
+    allOf:
+      - description: The currency used in all reference offers
+      - $ref: '#/components/schemas/Currency'
 
   offers:
     description: The offers of this year
@@ -49,7 +59,6 @@ properties:
                   id:
                     type: integer
                     format: uint32
-                    readOnly: true
                     description: The unique identifier of the PaymentAddon
 
                 required:
@@ -80,27 +89,34 @@ properties:
 
                           The following codeholder fields are available as form vars:
 
-                            - birthdate
-                            - age
-                            - agePrimo
-                            - codeholderType
-                            - country
-                            - feeCountry
-                            - addressCountryGroups
-                            - feeCountryGroups
-                            - isActiveMember
+                            - @birthdate
+                            - @age
+                            - @agePrimo
+                            - @country
+                            - @feeCountry
+                            - @addressCountryGroups
+                            - @feeCountryGroups
+                            - @isActiveMember
                       var:
                         type: string
                         minLength: 1
                         maxLength: 40
                         description: >
-                          The name of the AKSO Script var containing the price off this membership offer.
+                          The name of the AKSO Script var containing the price of this membership offer.
 
 
                           If it resolves to null the offer is unavailable.
 
-                      currency:
-                        $ref: '#/components/schemas/Currency'
+                      description:
+                        type: string
+                        minLength: 1
+                        maxLength: 500
+                        nullable: true
+                        description: >
+                          A description of the price calculation. Must be short.
+
+
+                          Markdown rules enabled: `emphasis`, `strikethrough`
 
                     required:
                       - script
@@ -116,4 +132,5 @@ properties:
 
 required:
   - paymentOrgId
+  - currency
   - offers

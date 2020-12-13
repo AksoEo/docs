@@ -1,0 +1,39 @@
+get:
+  summary: Gets all registration entries
+  description: >
+    Requires permission: `registration.registrations.read`
+
+
+    Searchable properties: `internalNotes`
+
+
+    Filterable properties: `id`, `status`, `newCodeholderId`, `timeSubmitted`, `timeStatus`, `currency`
+
+
+    Special logic operators:
+
+    - `$codeholderData`: Takes an integer to search for a codeholder id, or an object to filter by the following properties, either in `codeholderData` or in an existing codeholder.
+      May use the following properties: `address.country`, `feeCountry`, `email`, `birthdate`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RegistrationEntry'
+
+post:
+  summary: Creates a new registration entry
+  description: >
+    Requires permission: `registration.registrations.create`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/RegistrationEntry'
+  responses:
+    '201':
+      description: Created

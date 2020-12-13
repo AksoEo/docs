@@ -20,3 +20,11 @@ get:
                     type: number
                     format: uint32
                     description: The number of AKSOPay PaymentIntents with the status `disputed`.
+
+              registration:
+                description: Field only present given the permission `registration.registrations.read`
+                properties:
+                  pending:
+                    type: number
+                    format: uint32
+                    description: The number of registration entries with the status `pending`.

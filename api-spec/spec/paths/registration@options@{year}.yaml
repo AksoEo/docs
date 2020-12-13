@@ -11,12 +11,6 @@ get:
   summary: Gets registration options for a given year
   description: >
     Requires permissions: `registration.options.read`, `pay.read.<org>`
-
-
-    Filterable properties: 
-
-
-    Searchable properties: 
   responses:
     '200':
       description: OK
@@ -24,3 +18,27 @@ get:
         application/vnd.msgpack:
           schema:
             $ref: '#/components/schemas/RegistrationOptions'
+
+put:
+  summary: Puts registration options for a given year
+  description: >
+    Requires permissions: `registration.options.update`, `pay.read.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/RegistrationOptions'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: PaymentAddon/PaymentOrg/MembershipCategory not found
+
+delete:
+  summary: Deletes registration for a given year
+  description: >
+    Requires permissions: `registration.options.delete`
+  responses:
+    '204':
+      description: Deleted

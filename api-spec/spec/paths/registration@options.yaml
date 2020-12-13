@@ -1,0 +1,16 @@
+get:
+  summary: Gets registration options for all years
+  description: >
+    Requires permissions: `registration.options.read`, `pay.read.<org>`
+
+
+    Filterable properties: `year`, `paymentOrgId`, `currency`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RegistrationOptions'

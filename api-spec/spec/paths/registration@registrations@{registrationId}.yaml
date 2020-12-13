@@ -1,0 +1,51 @@
+parameters:
+  - name: registrationId
+    in: path
+    required: true
+    description: The id of the RegistrationEntry encoded by RFC 4648 base32
+    schema:
+      type: string
+      minLength: 24
+      maxLength: 24
+
+get:
+  summary: Gets a registration entry
+  description: >
+    Requires permission: `registration.registrations.read`
+  responses:
+    '404':
+      description: Not found
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/RegistrationEntry'
+
+patch:
+  summary: Update a registration entry
+  description: >
+    Requires permission: `registration.registrations.update`
+
+
+    When `status` is anything but `submitted`, only `internalNotes` may be patched.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/RegistrationEntry'
+  responses:
+    '204':
+      description: Updated
+
+delete:
+  summary: Deletes a registration entry
+  description: >
+    Requires permission: `registration.registrations.delete`
+
+
+    This should not be used unless the registration was made in error.
+  responses:
+    '204':
+      description: Deleted

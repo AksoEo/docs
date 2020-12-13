@@ -1,0 +1,239 @@
+properties:
+  id:
+    type: string
+    format: binary
+    minLength: 15
+    maxLength: 15
+    readOnly: true
+    description: The unique id of the registration entry. This should be encoded in RFC 4648 base32 when shown to humans.
+
+  status:
+    type: string
+    readOnly: true
+    description: >
+      The status of the registration entry.
+
+
+      - `submitted`: The registration entry has been submitted and is now awaiting payment.
+      - `pending`: The registration entry has been paid for, however there is an issue that requires manual intervention.
+      - `canceled`: The registration entry was canceled by an admin.
+      - `succeeded`: The registration entry has been paid for and has been processed.
+    enum:
+      - submitted
+      - pending
+      - canceled
+      - succeeded
+
+  pendingIssue:
+    readOnly: true
+    nullable: true
+    description: >
+      The issue requiring manual intervention, if `status` is `pending`. Every patch on the RegistrationEntry makes the API recheck if the issue has been resolved. To force a recheck, patch with `internalNotes` identical to the current value.
+    properties:
+      what:
+        type: string
+        enum:
+          - duplicate_data
+        description: >
+          The issue requiring manual intervention, if `status` is `pending`. Every patch on the RegistrationEntry makes the API recheck if the issue has been resolved. To force a recheck, patch with `internalNotes` identical to the current value.
+
+          - `duplicate_data`: `codeholderData` contains unique data already present in a codeholder
+          - `duplicate_offer`: `offers` contains entries that are already present in the codeholder (when `codeholderData` is an codeholder id)
+
+      where:
+        type: string
+        description: >
+          Where the issue is present.
+
+
+          `codeholderData.addressAndName` references a situation in which there's already a codeholder on record with the same `firstNameLegal`, `lastNameLegal` and `address` pair.
+        enum:
+          - offer[index]
+          - codeholderData.email
+          - codeholderData.addressAndName
+
+  newCodeholderId:
+    allOf:
+      - description: The new `codeholderId` of the registree, if `codeholderData` is an object 
+        nullable: true
+        readOnly: true
+      - $ref: '#/components/schemas/CodeholderId'
+
+  timeSubmitted:
+    type: integer
+    format: uint64
+    readOnly: true
+    description: The submission time of the registration entry
+
+  timeStatus:
+    type: integer
+    format: uint64
+    readOnly: true
+    nullable: true
+    description: The time the status of the registration entry was last chanced, `null` if the status is still `submitted`
+
+  internalNotes:
+    type: string
+    minLength: 1
+    maxLength: 4000
+    nullable: true
+    description: Internal notes on the registration entry
+
+  currency:
+    allOf:
+      - description: The currency of all amounts in `offers`
+      - $ref: '#/components/schemas/Currency'
+
+  offers:
+    description: The selected offers
+    type: array
+    minItems: 1
+    items:
+      oneOf:
+        - properties:
+            type:
+              type: string
+              enum: [addon]
+              description: The type of offer. `addon` indicates a PaymentAddon.
+
+            id:
+              type: integer
+              format: uint32
+              description: The unique identifier of the PaymentAddon
+
+            amount:
+              type: integer
+              format: uint32
+              description: The amount of the PaymentAddon
+
+          required:
+            - type
+            - id
+            - amount
+
+        - properties:
+            type:
+              type: string
+              enum: [membership]
+              description: The type of offer. `membership` indicates a membership offer.
+
+            id:
+              type: number
+              format: uint32
+              description: The id of the membership category
+
+            year:
+              type: integer
+              format: year
+              nullable: true
+              description: The year of the membership offer, or `null` for lifetime membership. Must not be lower than the current year UTC.
+
+            amount:
+              type: integer
+              format: uint32
+              description: The amount of the PaymentAddon
+
+          required:
+            - type
+            - id
+            - amount
+
+  codeholderData:
+    allOf:
+      - description: >
+          Data on the codeholder, either the internal id of an existing codeholder, or the data for a new one
+
+
+          Only `enabled` codeholders of `codeholderType = human` may register.
+      - oneOf:
+          - $ref: '#/components/schemas/CodeholderId'
+          - properties:
+              address:
+                allOf:
+                  - description: >
+                      The codeholder's normalized postal address.
+
+
+                      The required properties are determined by google-i18n-address
+
+
+                      The country of the address is only used for recieving mail, and the separate `feeCountry` is used to determine the membership fee.
+                  - $ref: '#/components/schemas/PostalAddress'
+
+              feeCountry:
+                type: string
+                minLength: 2
+                maxLength: 2
+                pattern: ^[a-z]{2}$
+                description: The codeholder's fee country. The ISO 3166-1 alpha-2 code of a `Country`.
+
+              email:
+                type: string
+                format: email
+                minLength: 3
+                maxLength: 200
+                pattern: ^[^\n]*$
+                description: The codeholder's contact and login email address
+
+              firstName:
+                type: string
+                minLength: 1
+                maxLength: 50
+                pattern: ^[^\n]*$
+                nullable: true
+                description: The codeholder's preferred first name, must always be used unless you're 100% sure the legal name is needed. If `null`, `firstNameLegal` should be used. This field is always public in lists.
+
+              firstNameLegal:
+                type: string
+                minLength: 1
+                maxLength: 50
+                pattern: ^[^\n]*$
+                description: The codeholder's legal first name. This field is always public in lists unless overridden by `firstName`.
+
+              lastName:
+                type: string
+                minLength: 1
+                maxLength: 50
+                pattern: ^[^\n]*$
+                nullable: true
+                description: The codeholder's preferred last name, must always be used unless you're 100% sure the legal name is needed. If `null`, `lastNameLegal` should be used.
+
+              lastNameLegal:
+                type: string
+                minLength: 1
+                maxLength: 50
+                pattern: ^[^\n]*$
+                nullable: true
+                description: The codeholder's legal last name
+
+              honorific:
+                allOf:
+                  - $ref: '#/components/schemas/HumanHonorific'
+                  - description: The codeholder's honorific. This field is always public in lists.
+
+              birthdate:
+                type: string
+                format: date
+                description: The codeholder's date of birth
+
+              cellphone:
+                allOf:
+                  - nullable: true
+                    description: The cellphone number of the codeholder
+                  - $ref: '#/components/schemas/PhoneNumber'
+
+            required:
+              - address
+              - feeCountry
+              - email
+              - firstNameLegal
+              - lastNameLegal
+              - birthdate
+
+required:
+  - currency
+  - offers
+  - codeholderData
+
+
+# TODO: Add error sources
