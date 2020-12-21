@@ -5,10 +5,14 @@ properties:
     readOnly: true
     description: The year of the registration options
 
+  enabled:
+    type: boolean
+    default: false
+    description: Whether registration is enabled for this year
+
   paymentOrgId:
     type: integer
     format: uint16
-    readOnly: true
     description: The unique identifier of the payment org to use
 
   currency:
@@ -92,9 +96,7 @@ properties:
                             - @birthdate
                             - @age
                             - @agePrimo
-                            - @country
                             - @feeCountry
-                            - @addressCountryGroups
                             - @feeCountryGroups
                             - @isActiveMember
                       var:

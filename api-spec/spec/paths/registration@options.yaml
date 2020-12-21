@@ -4,7 +4,7 @@ get:
     Requires permissions: `registration.options.read`, `pay.read.<org>`
 
 
-    Filterable properties: `year`, `paymentOrgId`, `currency`
+    Filterable properties: `year`, `enabled`, `paymentOrgId`, `currency`
   responses:
     '200':
       description: OK
