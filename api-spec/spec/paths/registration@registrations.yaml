@@ -7,7 +7,7 @@ get:
     Searchable properties: `internalNotes`
 
 
-    Filterable properties: `id`, `status`, `newCodeholderId`, `timeSubmitted`, `timeStatus`, `currency`
+    Filterable properties: `id`, `year`, `status`, `newCodeholderId`, `timeSubmitted`, `timeStatus`, `currency`
 
 
     Special logic operators:
