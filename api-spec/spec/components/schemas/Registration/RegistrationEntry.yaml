@@ -66,6 +66,11 @@ properties:
           - codeholderData.addressAndName
           - codeholderData.addressAndFeeCountries
 
+  fishyIsOkay:
+    type: boolean
+    default: false
+    description: Whether fishy `codeholderData` is okay. See `pendingIssue` for further information.
+
   newCodeholderId:
     allOf:
       - description: The new `codeholderId` of the registree, if `codeholderData` is an object 
