@@ -181,7 +181,7 @@ registration:
 		read
 		update
 		delete
-	registrations:
+	entries:
 		read
 		create
 		update

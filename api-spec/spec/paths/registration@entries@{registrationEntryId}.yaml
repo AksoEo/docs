@@ -1,5 +1,5 @@
 parameters:
-  - name: registrationId
+  - name: registrationEntryId
     in: path
     required: true
     description: The id of the RegistrationEntry encoded by RFC 4648 base32
@@ -11,7 +11,7 @@ parameters:
 get:
   summary: Gets a registration entry
   description: >
-    Requires permission: `registration.registrations.read`
+    Requires permission: `registration.entries.read`
   responses:
     '404':
       description: Not found
@@ -25,10 +25,10 @@ get:
 patch:
   summary: Update a registration entry
   description: >
-    Requires permission: `registration.registrations.update`
+    Requires permission: `registration.entries.update`
 
 
-    When `status` is anything but `submitted`, only `internalNotes` may be patched.
+    When `status` is anything but `submitted`, only `internalNotes`, `codeholderData` and `fishyIsOkay` may be patched.
   requestBody:
     required: true
     content:

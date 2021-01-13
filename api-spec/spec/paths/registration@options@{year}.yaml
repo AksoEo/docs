@@ -39,6 +39,9 @@ delete:
   summary: Deletes registration for a given year
   description: >
     Requires permissions: `registration.options.delete`
+
+
+    This should be used with great care and barely ever in favor disabling registration, as all registration entries for the given year will also be deleted.
   responses:
     '204':
       description: Deleted
