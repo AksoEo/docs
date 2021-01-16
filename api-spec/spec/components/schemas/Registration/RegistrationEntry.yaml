@@ -11,7 +11,7 @@ properties:
     type: integer
     format: year
     nullable: true
-    description: The year of the membership offer, or `null` for lifetime membership. Must not be lower than the current year UTC.
+    description: The year of registration. Must be a year with enabled registration options. Must not be lower than the current year UTC.
 
   status:
     type: string
@@ -244,6 +244,7 @@ properties:
               - birthdate
 
 required:
+  - year
   - currency
   - offers
   - codeholderData
