@@ -1,0 +1,25 @@
+parameters:
+  - name: registrationEntryId
+    in: path
+    required: true
+    description: The id of the RegistrationEntry encoded by RFC 4648 base32
+    schema:
+      type: string
+      minLength: 24
+      maxLength: 24
+
+delete:
+  summary: Cancels a registration entry
+  description: >
+    Requires permission: `registration.registrations.update`
+
+
+    This can only be done, when the registration entry is `pending` or `submitted`.
+
+
+    This should be used instead of deleting, as proper behavior will be applied in payment intents.
+  responses:
+    '204':
+      description: Canceled
+    '404':
+      description: Not found
