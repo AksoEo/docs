@@ -28,7 +28,7 @@ patch:
     Requires permission: `registration.entries.update`
 
 
-    When `status` is anything but `submitted`, only `internalNotes`, `codeholderData` and `fishyIsOkay` may be patched.
+    When `status` is anything but `submitted`, only `internalNotes` and `fishyIsOkay` may be patched.
   requestBody:
     required: true
     content:
@@ -38,6 +38,8 @@ patch:
   responses:
     '204':
       description: Updated
+    '404':
+      description: Not found
 
 delete:
   summary: Deletes a registration entry
@@ -49,3 +51,5 @@ delete:
   responses:
     '204':
       description: Deleted
+    '404':
+      description: Not found
