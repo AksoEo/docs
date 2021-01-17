@@ -28,7 +28,7 @@ patch:
     Requires permission: `registration.entries.update`
 
 
-    When `status` is anything but `submitted`, only `internalNotes` and `fishyIsOkay` may be patched.
+    When `status` is anything but `submitted`, only `internalNotes`, `codeholderData` and `fishyIsOkay` may be patched.
   requestBody:
     required: true
     content:
