@@ -1,2 +1,3 @@
 oneOf:
   - $ref: '#/components/schemas/PaymentIntentPurposeTriggerCongressRegistration'
+  - $ref: '#/components/schemas/PaymentIntentPurposeTriggerRegistration'

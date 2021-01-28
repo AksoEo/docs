@@ -1,0 +1,23 @@
+allOf:
+  - $ref: '#/components/schemas/PaymentIntentPurposeTriggerGeneric'
+  - properties:
+      triggers:
+        type: string
+        enum: [ registration_entry ]
+        description: What is triggered by this trigger purpose
+
+      registrationEntryId:
+        type: string
+        format: binary
+        minLength: 15
+        maxLength: 15
+        description: >
+          The registration entry id to trigger a payment for.
+
+
+          On read access, this `registrationEntryId` may no longer exist, if the referenced registration entry has been deleted.
+
+          To use this, the permission `registration.entries.update` is required.
+
+    required:
+      - registrationEntryId

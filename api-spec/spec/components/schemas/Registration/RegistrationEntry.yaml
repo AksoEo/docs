@@ -113,27 +113,6 @@ properties:
         - properties:
             type:
               type: string
-              enum: [addon]
-              description: The type of offer. `addon` indicates a PaymentAddon.
-
-            id:
-              type: integer
-              format: uint32
-              description: The unique identifier of the PaymentAddon
-
-            amount:
-              type: integer
-              format: uint32
-              description: The amount of the PaymentAddon
-
-          required:
-            - type
-            - id
-            - amount
-
-        - properties:
-            type:
-              type: string
               enum: [membership]
               description: The type of offer. `membership` indicates a membership offer.
 
