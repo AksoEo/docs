@@ -24,6 +24,8 @@ properties:
      
       - `pending`: The registration entry has been paid for, however there is an issue that requires manual intervention.
      
+      - `processing`: A pending issue on this registration entry has been fixed, and it is now being processed by the system again. Refresh in a little bit for a more useful status.
+
       - `canceled`: The registration entry was canceled by an admin.
      
       - `succeeded`: The registration entry has been paid for and has been processed.
@@ -37,7 +39,7 @@ properties:
     readOnly: true
     nullable: true
     description: >
-      The issue requiring manual intervention, if `status` is `pending`. Every patch on the RegistrationEntry makes the API recheck if the issue has been resolved. To force a recheck, patch with `internalNotes` identical to the current value.
+      The issue requiring manual intervention, if `status` is `pending`. Every patch on the RegistrationEntry makes the API recheck if the issue has been resolved. To force a recheck, patch with `fishyIsOkay` identical to the current value.
     properties:
       what:
         type: string
