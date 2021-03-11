@@ -37,7 +37,11 @@ put:
 
 delete:
   summary: Logs a client out using user-based authentication
-  description: No query parameters allowed
+  description: >
+    No query parameters allowed
+
+
+    This also removes the remember me totp cookie.
   responses:
     '204':
       description: Logged out
