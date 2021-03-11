@@ -22,12 +22,13 @@
 
    Add the following entries:
    ```
-     innodb_ft_min_token_size = 3
-     group_concat_max_len = 1000000
-     event_scheduler = on
+   [mysqld]
+   innodb_ft_min_token_size = 3
+   group_concat_max_len = 1000000
+   event_scheduler = on
    ```
 
-8. Reload MySQL (on Ubuntu run `service mysqld reload`)
+8. Reload MySQL (on Ubuntu run `service mysql reload`)
 
 9. Set up the permanent and state data directories
 
@@ -46,39 +47,101 @@
    The possible env vars with their defaults are: 
 
    ```
-     NODE_ENV=dev # Set this production on production, only affects logging level
+   # Set this production on production, only affects logging level
+   export NODE_ENV=dev
 
-     AKSO_HTTP_PORT=1111
-     AKSO_HTTP_PATH='/' # The path of the AKSO API, useful if behind a reverse proxy
-     AKSO_HTTP_TRUST_PROXY=NO_DEFAULT # Whether to trust X-Forwarded-For from certains ips or subnets. Only use this if the AKSO API is behind a reverse proxy. The value of this variable is passed directly to ExpressJS: http://expressjs.com/en/4x/api.html#trust.proxy.options.table
-     AKSO_HTTP_THREADS=3 # How many CPU threads to dedicate to the API
-     AKSO_HTTP_USE_HELMET=1 # Whether to use Express helmet for additional security, do not disable this on production
-     AKSO_HTTP_SESSION_SECRET=NO_DEFAULT # Generate some secure string using e.g. `openssl rand -hex 32`, change it if ever compromised. Use the same string across all instances if using load sharing
-     AKSO_HTTP_DISABLE_CORS_CHECK=0 # Whether to allow CORS, do not enable this on production
-     AKSO_HTTP_DISABLE_CSRF_CHECK=0 # Whether to disable CSRF, do not enable this on production
-     AKSO_HTTP_DISABLE_RATE_LIMIT=0 # Whether to disable rate limiting, do not enable this on production
-     AKSO_HTTP_DISABLE_DISABLE_SLOW_DOWN=0 # Whether to disable login slow down, do not enable this on production
-     AKSO_HTTP_OUTSIDE_ADDRESS=NO_DEFAULT # Optionally, the URL prefix the server is behind. This is used for webhook registration. This address must be port forwarded. If no value is provided, AKSO determines your IP address and uses that with the HTTP port. This does not include the HTTP path, which must be appended to this value manually.
+   export AKSO_HTTP_PORT=1111
 
-     AKSO_MYSQL_HOST=NO_DEFAULT
-     AKSO_MYSQL_USER=NO_DEFAULT
-     AKSO_MYSQL_PASSWORD=NO_DEFAULT
-     AKSO_MYSQL_DATABASE=NO_DEFAULT # If you just blindly imported the database earlier, this should be set to akso
+   # The path of the AKSO API, useful if behind a reverse proxy
+   export AKSO_HTTP_PATH='/'
 
-     AKSO_SENDGRID_API_KEY=NO_DEFAULT # Put your Sendgrid API key here, there is currently no way to use AKSO without a Sendgrid API key. An unlimited trial key can be obtained for free at https://signup.sendgrid.com/
+   # Whether to trust X-Forwarded-For from certains ips or subnets.
+   # Only use this if the AKSO API is behind a reverse proxy.
+   # The value of this variable is passed directly to ExpressJS: 
+   # http://expressjs.com/en/4x/api.html#trust.proxy.options.table
+   export AKSO_HTTP_TRUST_PROXY=NO_DEFAULT
 
-     AKSO_TELEGRAM_TOKEN=NO_DEFAULT # Put your Telegram bot token here, there is currently no way to use AKSO without a Telegram bot. Read more about how to create a bot here https://core.telegram.org/bots#3-how-do-i-create-a-bot
+   # How many CPU threads to dedicate to the API
+   export AKSO_HTTP_THREADS=3
 
-     AKSO_TOTP_AES_KEY=NO_DEFAULT # Put 32 bytes in hex here, this must be generated securely using e.g. `openssl rand -hex 32`, change it if ever compromised (updating the db as needed). Use the same string across all instances if using load sharing
+   # Whether to use Express helmet for additional security
+   # Do not disable this on production
+   export AKSO_HTTP_USE_HELMET=1
 
-     AKSO_DATA_DIR=NO_DEFAULT # The absolute path to the data dir you created in the previous step
-     AKSO_STATE_DIR=NO_DEFAULT # The absolute path to the state dir you created in the previous step
+   # Generate some secure string using e.g. `openssl rand -hex 32`
+   # Change it if ever compromised.
+   # Use the same string across all instances if using load sharing
+   export AKSO_HTTP_SESSION_SECRET=NO_DEFAULT
 
-     AKSO_DISABLE_LOGIN_NOTIFS=0 # Whether to disable notifications to codeholders when they sign in from a fishy location, this should probably not be disabled on production
+   # Whether to allow CORS, do not disable CORS on production
+   export AKSO_HTTP_DISABLE_CORS_CHECK=0
 
-     AKSO_STRIPE_WEBHOOKS_ARE_TEMP=0 # Whether to delete Stripe webhooks upon shutdown, useful for dev environments where you don't want failed webhook events to build up when the server is unavailable
+   # Whether to disable CSRF, do not disable CSRF this on production
+   export AKSO_HTTP_DISABLE_CSRF_CHECK=0
 
-     AKSO_OPEN_EXCHANGE_RATES_APP_ID=NO_DEFAULT # The Open Exchange Rates APP id, obtainable at https://openexchangerates.org/. The free plan will work fine.
+   # Whether to disable rate limiting
+   # Do not disable rate limiting on production
+   export AKSO_HTTP_DISABLE_RATE_LIMIT=0
+
+   # Whether to disable notifications to codeholders
+   # when they sign in from a fishy location
+   # This should probably not be disabled on production
+   export AKSO_DISABLE_LOGIN_NOTIFS=0
+
+   # Whether to disable login slow down
+   # Do not disable slow down this on production
+   export AKSO_HTTP_DISABLE_DISABLE_SLOW_DOWN=0
+
+   # Optionally, the URL prefix the server is behind.
+   # This is used for webhook registration.
+   # This address must be port forwarded.
+   # If no value is provided, AKSO determines your IP address
+   # and uses that with the HTTP port. This does not include the HTTP path,
+   # which must be appended to this value manually.
+   export AKSO_HTTP_OUTSIDE_ADDRESS=NO_DEFAULT
+
+   export AKSO_MYSQL_HOST=NO_DEFAULT
+   export AKSO_MYSQL_USER=NO_DEFAULT
+   export AKSO_MYSQL_PASSWORD=NO_DEFAULT
+
+   # If you just blindly imported the database earlier,
+   # this should be set to akso
+   export AKSO_MYSQL_DATABASE=NO_DEFAULT
+
+   # Put your Sendgrid API key here
+   # There is currently no way to use AKSO without a Sendgrid API key.
+   # An unlimited trial key can be obtained for free at 
+   # https://signup.sendgrid.com/
+   export AKSO_SENDGRID_API_KEY=NO_DEFAULT
+
+   # Put your Telegram bot token here
+   # There is currently no way to use AKSO without a Telegram bot.
+   # Read more about how to create a bot at:
+   # https://core.telegram.org/bots#3-how-do-i-create-a-bot
+   export AKSO_TELEGRAM_TOKEN=NO_DEFAULT
+
+   # Put 32 bytes in hex here, this must be generated securely using e.g.
+   # `openssl rand -hex 32`
+   # Change it if ever compromised (updating the db as needed).
+   # Use the same string across all instances if using load sharing
+   export AKSO_TOTP_AES_KEY=NO_DEFAULT
+
+   # The absolute path to the data dir you created in the previous step
+   export AKSO_DATA_DIR=NO_DEFAULT 
+
+   # The absolute path to the state dir you created in the previous step
+   export AKSO_STATE_DIR=NO_DEFAULT
+
+   # Whether to delete Stripe webhooks upon shutdown
+   # This is useful for dev environments where you don't want
+   # failed webhook events to build up when the server is unavailable
+   export AKSO_STRIPE_WEBHOOKS_ARE_TEMP=0
+
+   # The Open Exchange Rates APP id, obtainable at 
+   # https://openexchangerates.org/. The free plan will work fine.
+   export AKSO_OPEN_EXCHANGE_RATES_APP_ID=NO_DEFAULT
    ```
 
-11. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
+11. Populate the db using `source api.env && MODE=<mode> npm run populate-db`. Set mode to `prod` (production), `dev` (development) or `test`.
+
+12. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
