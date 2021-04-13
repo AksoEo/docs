@@ -5,15 +5,6 @@ allOf:
         type: string
         enum: [ country ]
 
-      add:
-        type: array
-        maxItems: 100
-        description: The additional countries that can be selected
-        items:
-          type: string
-          pattern: '^_[a-z]{1,2}$'
-          description: The code of the country
-
       exclude:
         type: array
         maxItems: 300
