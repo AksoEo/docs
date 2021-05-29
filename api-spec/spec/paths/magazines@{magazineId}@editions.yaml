@@ -39,14 +39,9 @@ post:
           allOf:
             - $ref: '#/components/schemas/MagazineEdition'
             - required:
-              - id
               - date
   responses:
     '201':
       description: Created
-
     '404':
       description: Magazine not found
-
-    '409':
-      description: Edition id already taken

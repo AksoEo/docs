@@ -2,6 +2,7 @@ properties:
   id:
     type: integer
     format: uint32
+    readOnly: true
     description: The identifier of this edition unique to the magazine it belongs to
 
   idHuman:
