@@ -54,3 +54,9 @@ properties:
     type: boolean
     default: false
     description: Whether this ToC entry is highlighted
+
+  availableRecitationFormats:
+    description: The recitations formats available 
+    type: array
+    items:
+      $ref: '#/components/schemas/MagazineRecitationFormat' 
