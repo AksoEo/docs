@@ -18,6 +18,16 @@ properties:
     format: date
     description: The publication date of the edition
 
+  hasThumbnail:
+    type: boolean
+    readOnly: true
+    description: Whether the magazine edition has a thumbnail
+
+  published:
+    type: boolean
+    default: false
+    description: Whether the magazine edition has been published and is available to the public
+
   description:
     type: string
     format: markdown

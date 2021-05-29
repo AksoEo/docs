@@ -10,7 +10,7 @@ parameters:
 get:
   summary: Returns all editions of a magazine
   description: >
-    Filterable properties: `id`, `date`
+    Filterable properties: `id`, `date`, `published`
 
 
     Searchable properties: `idHuman`, `description`
