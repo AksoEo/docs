@@ -78,6 +78,11 @@ properties:
 
       Stripe PaymentMethods will automatically be marked as `abandoned`, when Stripe says so.
 
+  internal:
+    type: boolean
+    default: false
+    description: Whether this payment method is internal and only to be used in AKSO Admin
+
   isRecommended:
     type: boolean
     default: false

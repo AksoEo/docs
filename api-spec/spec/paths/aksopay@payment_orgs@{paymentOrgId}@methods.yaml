@@ -15,7 +15,7 @@ get:
 
     Filterable properties:
 
-    - `id`, `type`, `name`, `isRecommended`
+    - `id`, `type`, `name`, `isRecommended`, `internal`
 
 
     Searchable properties:
