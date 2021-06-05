@@ -49,8 +49,6 @@ put:
     Besides the form values and global metadata, the following additional form metadata may be used:
 
 
-    - `@@upfront_time (number)`: The unix timestamp at which the user reached the minimum upfront payment (if editing), otherwise `null`.
-
     - `@@is_member (bool)`: Whether the codeholder is a member at the beginning of the congress.
   requestBody:
     required: true
