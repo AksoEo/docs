@@ -19,6 +19,34 @@ properties:
     default: true
     description: Whether participants can cancel their registration
 
+  identifierName:
+    type: string
+    minLength: 1
+    maxLength: 40
+    description: >
+      The name of the AKSO Script variable containing the name of the participant.
+
+
+      This is required as it is used in receipts.
+
+  identifierEmail:
+    type: string
+    minLength: 1
+    maxLength: 40
+    description: >
+      The name of the AKSO Script variable containing the email of the participant.
+
+
+      This is required as it is used in receipts.
+
+  identifierCountryCode:
+    type: string
+    minLength: 1
+    maxLength: 40
+    nullable: true
+    description: >
+      The name of the AKSO Script variable containing the country code of the participant.
+
   manualApproval:
     type: boolean
     default: false
@@ -77,3 +105,5 @@ properties:
 
 required:
   - form
+  - identifierEmail
+  - identifierName
