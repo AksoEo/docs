@@ -18,9 +18,14 @@ properties:
 
       Must be within the bounds of `availabeFrom` and `availableTo` of the membership category.
 
+  canuto:
+    type: boolean
+    default: false
+    description: Whether this membership entry was granted through foundation canuto
+
   nameAbbrev:
     type: string
-    maxLength: 6
+    maxLength: 15
     readOnly: true
     description: The abbreviated name of the membership category
 

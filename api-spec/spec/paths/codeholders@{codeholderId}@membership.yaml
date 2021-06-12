@@ -15,7 +15,7 @@ get:
     Required member fields `r`: `membership`
 
 
-    Filterable properties: `id`, `categoryId`, `year`, `nameAbbrev`, `name`, `givesMembership`, `lifetime`, `availableFrom`, `availableTo`
+    Filterable properties: `id`, `categoryId`, `canuto`, `year`, `nameAbbrev`, `name`, `givesMembership`, `lifetime`, `availableFrom`, `availableTo`
   responses:
     '200':
       description: OK
