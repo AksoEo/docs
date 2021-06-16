@@ -73,6 +73,14 @@ properties:
       type: string
     description: The country groups the fee country belongs to
 
+  publicCountry:
+    type: string
+    nullable: true
+    minLength: 2
+    maxLength: 2
+    pattern: ^[a-z]{2}$
+    description: The codeholder's public country (as used in lists, the delegates' web etc.). The ISO 3166-1 alpha-2 code of a `Country`. If `null` defaults to the country in the address.
+
   addressLatin:
     allOf:
       - nullable: true
@@ -133,6 +141,15 @@ properties:
     nullable: true
     pattern: ^[^\n]*$
     description: The codeholder's contact and login email address
+
+  publicEmail:
+    type: string
+    format: email
+    minLength: 3
+    maxLength: 200
+    nullable: true
+    pattern: ^[^\n]*$
+    description: The codeholder's public email (for use in lists, the delegates' web etc.). If null, defaults to `email`.
 
   emailPublicity:
     description: The publicity of the codeholder's email address in lists

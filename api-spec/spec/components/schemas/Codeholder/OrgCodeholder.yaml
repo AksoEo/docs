@@ -32,5 +32,53 @@ allOf:
         nullable: true
         description: An abbreviation of the organization's name. This field is always public in lists.
 
+      mainDescriptor:
+        type: string
+        minLength: 1
+        maxLength: 30
+        nullable: true
+        pattern: ^[^\n]*$
+        description: The main one-line description of the organization, e.g. "Esperanto office" or "national association of UEA"
+
+      factoids:
+        type: object
+        minProperties: 1
+        maxProperties: 15
+        nullable: true
+        properties:
+          '[factoid name, length 1-30 no newline]':
+            type: object
+            required:
+              - val
+              - type
+            properties:
+              val:
+                description: The value
+              type:
+                type: string
+                enum:
+                  - tel
+                  - text
+                  - number
+                  - email
+                  - url
+                description: >
+                  The type of value in `val`.
+
+
+                  - `tel` expects a fully valid international phone number starting with a plus passed as a string
+
+                  - `text` may be any markdown string. Markdown rules enabled: `emphasis`, `strikethrough`, `link`
+
+                  - `number` must be a float
+
+                  - `email` must be a valid email address (string)
+
+                  - `url` must be a valid url (string) 
+
+
+                  Strings may never exceed 250 chars.
+        description: Factoids (min 1, max 15) about this organization for use in public listings
+
     required:
       - fullName

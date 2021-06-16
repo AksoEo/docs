@@ -30,14 +30,14 @@ get:
       `feeCountry`, `email`, `emailPublicity`, `enabled`, `notes`,
       `officePhone`, `officePhonePublicity`, `isDead`, `deathdate`,
       `profilePictureHash`, `profilePicturePublicity`, `website`, `biography`,
-      `profession`
+      `profession`, `publicCountry`, `publicEmail`
 
     - HumanCodeholder: `firstName`, `firstNameLegal`, `lastName`,
       `lastNameLegal`, `lastNamePublicity`, `honorific`, `birthdate`,
       `landlinePhone`, `landlinePhonePublicity`, `cellphone`,
       `cellphonePublicity`
 
-    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`
+    - OrgCodeholder: `fullName`, `fullNameLocal`, `careOf`, `nameAbbrev`, `mainDescriptor`, `factoids`
 
 
     Filterable properties: `modId`
