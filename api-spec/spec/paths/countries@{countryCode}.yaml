@@ -23,6 +23,7 @@ get:
 
 patch:
   summary: Updates a country
+  description: Requires permission `countries.update`
   requestBody:
     required: true
     content:

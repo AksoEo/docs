@@ -1,0 +1,17 @@
+get:
+  summary: Returns all country org lists
+  description: >
+    Requires permissions: `countries.lists.read`, `codeholders.read`
+
+    Filterable properties:
+
+    - `name`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CountryOrgList'

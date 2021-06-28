@@ -38,6 +38,10 @@ ratelimit:
 	disable # Disables the rate limit for the client
 
 countries:
+	lists:
+		read
+		update
+		delete
 	update
 
 country_groups:
