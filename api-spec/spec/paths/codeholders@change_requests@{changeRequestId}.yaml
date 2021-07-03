@@ -1,0 +1,38 @@
+parameters:
+  - name: changeRequestId
+    in: path
+    required: true
+    description: The codeholder change request id id
+    schema:
+      type: number
+      format: uint64
+
+get:
+  summary: Gets a codeholder change request
+  description: >
+    Permission required: `codeholders.change_requests.read`
+  responses:
+    '404':
+      description: Not found
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CodeholderChangeRequest'
+
+patch:
+  summary: Updates a codeholder change change request
+  description: >
+    Permission required: `codeholders.change_requests.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/CodeholderChangeRequest'
+  responses:
+    '404':
+      description: Not found
+    '204':
+      description: Updated

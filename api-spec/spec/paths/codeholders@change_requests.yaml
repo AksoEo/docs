@@ -1,0 +1,19 @@
+get:
+  summary: Gets all codeholder change requests
+  description: >
+    Permission required: `codeholders.change_requests.read`
+
+
+    Filterable properties: `id`, `time`, `codeholderId`, `status`
+
+
+    Searchable properties: `codeholderDescription`, `internalNotes`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderChangeRequest'

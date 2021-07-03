@@ -12,6 +12,9 @@ codeholders:
 		update
 	disable_totp
 	send_notif
+	change_requests:
+		read
+		update
 
 codeholder_roles:
 	create

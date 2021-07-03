@@ -4,7 +4,7 @@ get:
     Must be logged in using user auth.
 
 
-    Field restrictions: See [perms.js](https://github.com/AksoEo/API/blob/master/src/perms.js#L9)
+    Field restrictions: See [perms.js](https://github.com/AksoEo/API/blob/master/src/workers/http/perms.js#L10)
   responses:
     '200':
       description: OK
@@ -16,3 +16,33 @@ get:
               - $ref: '#/components/schemas/OrgCodeholder'
     '404':
       description: No user using user auth found
+
+patch:
+  summary: Updates the logged in codeholder
+  description: >
+    Must be logged in using user auth.
+
+
+    Field restrictions: See [perms.js](https://github.com/AksoEo/API/blob/master/src/workers/http/perms.js#L10)
+
+
+    Fields with an `a` (ask) permission submits a request for an admin to approve the change.
+
+
+    Only `modDesc` allowed in query.
+  parameters:
+    - in: query
+      name: modDesc
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 500
+        description: An optional description of why these changes are necessary
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          oneOf:
+            - $ref: '#/components/schemas/HumanCodeholderPatch'
+            - $ref: '#/components/schemas/OrgCodeholderPatch'

@@ -1,0 +1,45 @@
+properties:
+  id:
+    type: number
+    format: uint64
+    readOnly: true
+    description: The identifier of the change request
+
+  time:
+    type: number
+    format: uint64
+    readOnly: true
+    description: The unix epoch time the change request was made at
+
+  codeholderId:
+    allOf:
+      - $ref: '#/components/schemas/CodeholderId'
+      - readOnly: true
+
+  data:
+    description: The requested data changes
+    readOnly: true
+    properties:
+      '[codeholder field]':
+        description: The new requested value
+
+  codeholderDescription:
+    readOnly: true
+    type: string
+    nullable: true
+    description: Optional notes from the codeholder on why the change is needed
+
+  internalNotes:
+    type: string
+    minLength: 1
+    maxLength: 5000
+    nullable: true
+    description: Internal notes on this codeholder data change request
+
+  status:
+    type: string
+    description: The status of the request. Set this field to `approved` to approve the request and automatically update the codeholder. This field can only be edited when it is `pending`.
+    enum:
+      - pending
+      - approved
+      - denied
