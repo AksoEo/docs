@@ -43,3 +43,4 @@ properties:
       - pending
       - approved
       - denied
+      - canceled
