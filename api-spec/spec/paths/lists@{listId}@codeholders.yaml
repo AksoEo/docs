@@ -8,9 +8,12 @@ parameters:
       format: uint32
 
 get:
-  summary: Gets all codeholders from a list
+  summary: Gets all codeholder ids from a list
   description: >
-    Query parameters allowed: `?fields`, `?limit`, `?offset`
+    Requires permission: `lists.read`
+
+
+    Query parameters allowed: `?limit`, `?offset`
   responses:
     '200':
       description: OK
@@ -19,6 +22,6 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/ListCodeholder'
+              $ref: '#/components/schemas/CodeholderId'
     '404':
       description: Not found
