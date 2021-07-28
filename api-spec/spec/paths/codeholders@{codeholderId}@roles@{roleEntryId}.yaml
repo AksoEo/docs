@@ -47,6 +47,9 @@ patch:
     Requires permissions: `codeholders.update`, `codeholder_roles.read`
 
 
+    Setting `dataOrg` requires permission `codeholders.read`. The org must be visible through the member filter.
+
+
     Required member fields (`w`): `roles`
   requestBody:
     required: true

@@ -22,6 +22,31 @@ properties:
     readOnly: true
     description: Whether the entry is currently active based on the duration timestamps
 
+  dataCountry:
+    type: string
+    pattern: '^[a-z]{2}$'
+    nullable: true
+    description: >
+      The country code of this role entry, if relevant.
+
+
+      Must be the ISO 3166-1 alpha-2 code of an `enabled` country.
+
+  dataOrg:
+    allOf:
+      - description: The codeholder id of an organization related to this role entry, if relevant.
+        nullable: true
+        readOnly: false
+      - $ref: '#/components/schemas/CodeholderId'
+
+  dataString:
+    type: string
+    minLength: 1
+    maxLength: 50
+    pattern: '^[^\n]+$'
+    nullable: true
+    description: A string complement for this role entry used when no specific data type is appropriate.
+
   roleId:
     type: number
     format: uint32
@@ -33,4 +58,3 @@ properties:
       - description: The codeholder's role
         readOnly: true
       - $ref: '#/components/schemas/CodeholderRole'
-

@@ -18,3 +18,8 @@ properties:
     maxLength: 2000
     nullable: true
     description: A description of the purpose of the codeholder role
+
+  public:
+    type: boolean
+    default: false
+    description: Whether this role should be shown for codeholders in public listings

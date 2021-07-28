@@ -15,7 +15,7 @@ get:
     Required member fields (`r`): `roles`
 
 
-    Filterable properties: `id`, `durationFrom`, `durationTo`, `isActive`, `role.id`, `role.name`
+    Filterable properties: `id`, `durationFrom`, `durationTo`, `isActive`, `role.id`, `role.name`, `dataCountry`, `dataOrg`
 
 
     Searchable properties: `role.name`, `role.description`
@@ -35,6 +35,9 @@ post:
   summary: Adds a new role to a codeholder
   description: >
     Requires permissions: `codeholders.update`, `codeholder_roles.read`
+
+
+    Setting `dataOrg` requires permission `codeholders.read`. The org must be visible through the member filter.
 
 
     Required member fields (`w`): `roles`

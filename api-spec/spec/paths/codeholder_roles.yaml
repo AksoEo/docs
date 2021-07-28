@@ -4,7 +4,7 @@ get:
     Requires permission: `codeholder_roles.read`
 
 
-    Filterable properties: `id`, `name`
+    Filterable properties: `id`, `name`, `public`
 
 
     Searchable properties: `name`, `description`

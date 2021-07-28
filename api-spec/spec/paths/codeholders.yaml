@@ -34,7 +34,7 @@ get:
 
     - `$roles`: Takes a filter object and returns only codeholders matching the roles filter. 
       May use the following properties from `GET /codeholders/{codeholderId}/roles`:
-      `roleId`, `durationFrom`, `durationTo`, `isActive`
+      `roleId`, `durationFrom`, `durationTo`, `isActive`, `dataCountry`, `dataOrg`
   responses:
     '200':
       description: OK
