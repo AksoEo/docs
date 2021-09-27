@@ -2,6 +2,7 @@ parameters:
   - name: group
     in: path
     description: The code of the country group
+    required: true
     schema:
       type: string
       minLength: 3
