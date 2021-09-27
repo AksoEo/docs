@@ -4,6 +4,9 @@ get:
     Requires permission: `geodb.read`
 
 
+    Does not have the headers `X-Total-Items` or `X-Total-Items-No-Filter`.
+
+
     Filterable properties: `id`, `country`, `population`
 
 
