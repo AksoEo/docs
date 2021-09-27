@@ -15,6 +15,27 @@ codeholders:
 	change_requests:
 		read
 		update
+	delegations:
+		read:
+			<org>
+		update:
+			<org>
+		delete:
+			<org>
+
+delegations:
+	subjects:
+		create:
+			<org>
+		read:
+			<org>
+		update:
+			<org>
+		delete:
+			<org>
+
+geodb:
+	read
 
 codeholder_roles:
 	create
