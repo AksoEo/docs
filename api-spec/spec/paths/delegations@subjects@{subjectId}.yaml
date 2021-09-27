@@ -1,0 +1,52 @@
+parameters:
+  - name: subjectId
+    in: path
+    description: The id of the delegation subject
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Gets a delegation subject
+  description: >
+    Requires permission: `delegations.subjects.read.<org>`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/DelegationSubject'
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a delegation subject
+  description: >
+    Requires permission: `delegations.subjects.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - properties:
+                org:
+                  readOnly: true
+            - $ref: '#/components/schemas/DelegationSubject'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a delegation subject
+  description: >
+    Requires permission: `delegations.subjects.delete.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found

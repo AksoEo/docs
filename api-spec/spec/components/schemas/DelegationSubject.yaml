@@ -1,0 +1,25 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of the delegation subject
+  org:
+    type: integer
+    enum: [uea]
+    description: The org of the delegation subject
+  name:
+    type: string
+    minLength: 1
+    maxLength: 200
+    pattern: '^[^\n]$'
+    description: The name of the subject to be displayed to end-users
+  description:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    nullable: true
+    description: Optionally, a description of the subject to be displayed to end-users
+required:
+  - org
+  - name

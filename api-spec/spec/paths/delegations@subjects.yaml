@@ -1,0 +1,35 @@
+get:
+  summary: Gets all delegation subjects
+  description: >
+    Requires permission: `delegations.subjects.read.<org>`
+
+
+    Filterable properties: `id`, `org`
+
+
+    Searchable properties: `name`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DelegationSubject'
+
+post:
+  summary: Creates a delegation subject
+  description: >
+    Requires permission: `delegations.subjects.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/DelegationSubject'
+  responses:
+    '201':
+      description: Created
