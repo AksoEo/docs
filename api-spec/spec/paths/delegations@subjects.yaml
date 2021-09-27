@@ -29,7 +29,11 @@ post:
         schema:
           type: array
           items:
-            $ref: '#/components/schemas/DelegationSubject'
+            allOf:
+              - required:
+                - org
+                - name
+              - $ref: '#/components/schemas/DelegationSubject'
   responses:
     '201':
       description: Created
