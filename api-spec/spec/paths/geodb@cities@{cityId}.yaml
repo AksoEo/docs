@@ -1,0 +1,21 @@
+parameters:
+  - name: id
+    in: path
+    description: The wikidata id of the city
+    required: true
+    schema:
+      type: string
+
+get:
+  summary: Gets a city from geo-db
+  description: >
+    Requires permission: `geodb.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/GeoDBCity'
+    '404':
+      description: Not found

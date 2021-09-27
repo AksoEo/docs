@@ -1,0 +1,34 @@
+properties:
+  id:
+    $ref: '#/components/schemas/WikidataCityId'
+  country:
+    type: string
+    minLength: 2
+    maxLength: 2
+    description: The ISO 3166-1 alpha-2 code of the country. Note that cities in countries not enabled in `/countries` are not listed.
+  population:
+    type: integer
+    format: uint32
+    nullable: true
+    description: The population of the city
+  nativeLabel:
+    type: string
+    nullable: true
+    description: The native name of the city
+  eoLabel:
+    type: string
+    nullable: true
+    description: The name of the city in Esperanto or, when an Esperanto name is unavailable, in some other Latin language
+  ll:
+    allOf:
+      - description: The coordinates of the city
+        nullable: true
+      - $ref: '#/components/schemas/LatLon'
+  subdivision_nativeLabel:
+    type: string
+    nullable: true
+    description: The native name of the city's subdivision
+  subdivision_eoLabel:
+    type: string
+    nullable: true
+    description: The name of the city's subdivision in Esperanto or, when an Esperanto name is unavailable, in some other Latin language

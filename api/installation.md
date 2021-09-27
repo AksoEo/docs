@@ -104,6 +104,9 @@
    export AKSO_MYSQL_USER=NO_DEFAULT
    export AKSO_MYSQL_PASSWORD=NO_DEFAULT
 
+   # The name of the database to store geo-db data in. Can be anything.
+   export AKSO_MYSQL_GEODB_DATABASE=NO_DEFAULT
+
    # If you just blindly imported the database earlier,
    # this should be set to akso
    export AKSO_MYSQL_DATABASE=NO_DEFAULT

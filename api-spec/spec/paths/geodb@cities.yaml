@@ -1,0 +1,19 @@
+get:
+  summary: Gets all cities from geo-db
+  description: >
+    Requires permission: `geodb.read`
+
+
+    Filterable properties: `id`, `country`, `population`
+
+
+    Searchable properties: `nativeLabel`, `eoLabel`, `searchLabel`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/GeoDBCity'
