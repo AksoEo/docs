@@ -7,7 +7,7 @@ get:
     Filterable properties: `id`, `country`, `population`
 
 
-    Searchable properties: `nativeLabel`, `eoLabel`, `searchLabel`
+    Searchable properties: `nativeLabel`, `eoLabel`, `searchLabel`, `subdivision_nativeLabel`, `subdivision_eoLabel`, `subdivision_searchLabel`
   responses:
     '200':
       description: OK
