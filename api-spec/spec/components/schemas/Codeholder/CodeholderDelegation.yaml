@@ -1,0 +1,119 @@
+properties:
+  codeholderId:
+    type: integer
+    format: uint32
+  approvedBy:
+    allOf:
+      - readOnly: true
+      - $ref: '#/components/schemas/CodeholderModBy'
+  approvedTime:
+    type: integer
+    format: uint64
+    readOnly: true
+    description: The unix epoch time the codeholder's delegation was approved
+  org:
+    type: string
+    enum:
+      - uea
+    description:
+      The org of the delegates' system.
+  cities:
+    type: array
+    description: The delegate's city delegations.
+    maxItems: 10
+    items:
+      $ref: '#/components/schemas/WikidataCityId'
+  countries:
+    type: array
+    maxItems: 10
+    description: The countries this codeholder is a delegate of.
+    items:
+      properties:
+        country:
+          type: string
+          minLength: 2
+          maxLength: 2
+          description: The two-letter ISO 3166-1 alpha-2 country code.
+        level:
+          type: integer
+          format: uint8
+          description: The type of delegation. `0` is main, `1` is vice.
+      required:
+        - country
+        - level
+  subjects:
+    type: array
+    maxItems: 50
+    description: The delegate's subject delegation ids.
+    items:
+      type: integer
+      format: uint32
+      description: The id of a delegation subject. Must belong to the same org as this delegation.
+  hosting:
+    nullable: true
+    description: The delegate's information on their ability to host guests. If `null`, the delegate does not currently offer to host guests.
+    properties:
+      maxDays:
+        type: integer
+        format: uint8
+        nullable: true
+        description: The maximum number of days this delegate is willing to host someone
+      maxPersons:
+        type: integer
+        format: uint8
+        nullable: true
+        description: The maximum number of people this delegate is willing to host.
+      description:
+        type: string
+        nullable: true
+        minLength: 1
+        maxLength: 400
+        description: A short description of the delegate's hosting.
+      psProfileURL:
+        type: string
+        format: uri
+        maxLength: 50
+        nullable: true
+        pattern: '^https://www\.pasportaservo\.org/ejo/\d+/?$'
+        description: The URL of the delegate's account on Pasporta Servo. The URL is checked for status 404 and is denied if present with a generic resposne code 400.
+  tos:
+    properties:
+      docDataProtectionUEA:
+        type: boolean
+        description: Must be true.
+      docDataProtectionUEATime:
+        type: integer
+        format: uint64
+        description: The unix epoch time of acceptance. Defaults to now.
+      docDelegatesUEA:
+        type: boolean
+        description: Must be true.
+      docDelegatesUEATime:
+        type: integer
+        format: uint64
+        description: The unix epoch time of acceptance. Defaults to now.
+      docDelegatesDataProtectionUEA:
+        type: boolean
+        description: Must be true.
+      docDelegatesDataProtectionUEATime:
+        type: integer
+        format: uint64
+        description: The unix epoch time of acceptance. Defaults to now.
+      paperAnnualBook:
+        type: boolean
+        description: Optional.
+      paperAnnualBookTime:
+        type: integer
+        format: uint64
+        description: The unix epoch time of acceptance. Defaults to now.
+    required:
+      - docDataProtectionUEA
+      - docDelegatesUEA
+      - docDelegatesDataProtectionUEA
+      - paperAnnualBook
+required:
+  - tos
+  - cities
+  - countries
+  - subjects
+  - hosting

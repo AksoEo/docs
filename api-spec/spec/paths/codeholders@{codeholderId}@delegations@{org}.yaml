@@ -1,0 +1,55 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+get:
+  summary: Gets a codeholder's delegations for a specific org
+  description: >
+    Requires permission: `codeholders.read`, `codeholders.delegations.read.<org>`
+  responses:
+    '200':
+      content:
+        application/vnd.msgpack:
+          schema:
+            allOf:
+              - properties:
+                  codeholderId:
+                    writeOnly: true
+              - $ref: '#/components/schemas/CodeholderDelegation'
+      description: OK
+    '404':
+      description: Not found
+
+put:
+  summary: Set a codeholder's delegations for a specific org
+  description: >
+    Requires permission: `codeholders.read`, `codeholders.delegations.update.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - properties:
+                codeholderId:
+                  readOnly: true
+                org:
+                  readOnly: true
+            - $ref: '#/components/schemas/CodeholderDelegation'
+  responses:
+    '204':
+      description: Updated
+
+delete:
+  summary: Delete a codeholder's delegations for a specific org
+  description: >
+    Requires permission: `codeholders.read`, `codeholders.delegations.delete.<org>`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found

@@ -1,0 +1,28 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+get:
+  summary: Gets a codeholder's delegations
+  description: >
+    Requires permission: `codeholders.read`, `codeholders.delegations.read.<org>`
+
+
+    Filterable properties: `org`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+             type: array
+             items:
+              allOf:
+                - properties:
+                    codeholderId:
+                      writeOnly: true
+                - $ref: '#/components/schemas/CodeholderDelegation'
