@@ -10,7 +10,7 @@ get:
     When filtering by `id`, pass `id` as an integer without the `Q` prefix.
 
 
-    Filterable properties: `id`, `country`, `population`
+    Filterable properties: `id`, `country`, `population`, `subdivision_iso`
 
 
     Searchable properties: `nativeLabel`, `eoLabel`, `searchLabel`, `subdivision_nativeLabel`, `subdivision_eoLabel`
