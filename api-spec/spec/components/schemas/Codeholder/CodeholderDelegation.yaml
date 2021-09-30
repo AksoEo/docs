@@ -2,6 +2,13 @@ properties:
   codeholderId:
     type: integer
     format: uint32
+    description: The id of the codeholder
+  org:
+    type: string
+    enum:
+      - uea
+    description:
+      The org of the delegates' system.
   approvedBy:
     allOf:
       - readOnly: true
@@ -11,12 +18,6 @@ properties:
     format: uint64
     readOnly: true
     description: The unix epoch time the codeholder's delegation was approved
-  org:
-    type: string
-    enum:
-      - uea
-    description:
-      The org of the delegates' system.
   cities:
     type: array
     description: The delegate's city delegations.

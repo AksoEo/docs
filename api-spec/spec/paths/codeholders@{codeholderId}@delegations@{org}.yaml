@@ -19,6 +19,8 @@ get:
               - properties:
                   codeholderId:
                     writeOnly: true
+                  org:
+                    writeOnly: true
               - $ref: '#/components/schemas/CodeholderDelegation'
       description: OK
     '404':

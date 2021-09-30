@@ -1,0 +1,26 @@
+get:
+  summary: Gets all delegates
+  description: >
+    Requires permission: `codeholders.read`, `codeholders.delegations.read.<org>`
+
+
+    Filterable properties: `org`, `approvedBy`, `approvedTime`, `hosting.maxDays`, `hosting.maxPersons`
+
+
+    Searchable properties: `hosting.description`
+
+
+    Special:
+
+      - `subjects`, `cities`: May use `$hasAny`.
+
+      - $purposes: Takes a filter object and returns only delegates matching the country filter. May use the following properties `countries`: `country`, `level`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+             type: array
+             items:
+              $ref: '#/components/schemas/CodeholderDelegation'
