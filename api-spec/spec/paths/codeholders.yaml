@@ -37,7 +37,10 @@ get:
       `roleId`, `durationFrom`, `durationTo`, `isActive`, `dataCountry`, `dataOrg`
 
     - `$delegations`: Takes a filter object and returns only codeholders matcing the delegations filter.
-      May use all of the properties from `GET /codeholders/{codeholderId}/delegations` except `codeholderId`.
+      May use all of the filterable properties from `GET /codeholders/{codeholderId}/delegations` except `codeholderId`.
+
+    - `$delegationApplications`: Takes a filter object and returns only codeholders matcing the delegation applications filter.
+      May use all of the filterable properties from `GET /delegations/applications` except `codeholderId`.
   responses:
     '200':
       description: OK

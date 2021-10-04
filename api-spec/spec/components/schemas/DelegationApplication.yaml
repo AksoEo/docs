@@ -1,0 +1,54 @@
+allOf:
+  - properties:
+      id:
+        type: integer
+        format: uint32
+        readOnly: true
+        description: The unique id of this delegation application
+      applicantNotes:
+        type: string
+        minLength: 1
+        maxLength: 2000
+        nullable: true
+        description: Notes from the applicant on their application
+      internalNotes:
+        type: string
+        minLength: 1
+        maxLength: 5000
+        nullable: true
+        description: Internal notes on the application
+      time:
+        type: integer
+        format: uint64
+        readOnly: true
+        description: The time of submission of the application
+      status:
+        type: string
+        enum:
+          - pending
+          - approved
+          - denied
+        description: The status of the application. Changing this does not do anything. As such, to accept an application a separate request must also be made to create the delegation entry.
+      statusTime:
+        type: integer
+        format: uint64
+        nullable: true
+        readOnly: true
+        description: The time the status was last changed
+      statusBy:
+        allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/CodeholderModBy'
+      approvedBy:
+        readOnly: true
+        writeOnly: true
+      approvedTime:
+        readOnly: true
+        writeOnly: true
+      countries:
+        readOnly: true
+        writeOnly: true
+    required:
+      - org
+      - codeholderId
+  - $ref: '#/components/schemas/CodeholderDelegation'

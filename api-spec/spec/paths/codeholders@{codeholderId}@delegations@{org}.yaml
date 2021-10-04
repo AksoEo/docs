@@ -30,6 +30,8 @@ put:
   summary: Set a codeholder's delegations for a specific org
   description: >
     Requires permission: `codeholders.read`, `codeholders.delegations.update.<org>`
+
+    To set the field `countries` to anything but an empty array, or to `put` on existing resources with a non-empty `countries` with anything but the current value, the permission `codeholders.delegations.update_country_delegates.<org>.<country>` is required.
   requestBody:
     required: true
     content:

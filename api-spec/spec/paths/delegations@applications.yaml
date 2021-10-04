@@ -1,0 +1,37 @@
+get:
+  summary: Gets all delegation applications
+  description: >
+    Requires permission: `codeholders.read`, `delegations.applications.read.<org>`
+
+
+    Filterable properties: `id`, `codeholderId`, `time`, `status`, `statusTime`, `statusBy`, `org`
+
+
+    Searchable properties: `internalNotes`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DelegationApplication'
+
+post:
+  summary: Creates a new delegation application
+  description: >
+    Requires permission: `codeholders.read`, `delegations.applications.create.<org>`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - properties:
+                status:
+                  readOnly: true
+            - $ref: '#/components/schemas/DelegationApplication'
+  responses:
+    '201':
+      description: Created

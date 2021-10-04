@@ -20,10 +20,17 @@ properties:
     description: The unix epoch time the codeholder's delegation was approved
   cities:
     type: array
-    description: The delegate's city delegations.
     maxItems: 10
+    description: The delegate's city delegations.
     items:
       $ref: '#/components/schemas/WikidataCityId'
+  cityCountries:
+    type: array
+    readOnly: true
+    description: The countries of the cities
+    items:
+      type: string
+      description: The ISO 3166-1 alpha-2 code of the country
   countries:
     type: array
     maxItems: 10
@@ -76,7 +83,7 @@ properties:
         maxLength: 50
         nullable: true
         pattern: '^https://www\.pasportaservo\.org/ejo/\d+/?$'
-        description: The URL of the delegate's account on Pasporta Servo. The URL is checked for status 404 and is denied if present with a generic resposne code 400.
+        description: The URL of the delegate's account on Pasporta Servo. The URL is checked for status 404 and is denied if present with a generic response code 400.
   tos:
     properties:
       docDataProtectionUEA:

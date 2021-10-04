@@ -20,10 +20,22 @@ codeholders:
 			<org>
 		update:
 			<org>
+		update_country_delegates:
+			<org>:
+				<country>
 		delete:
 			<org>
 
 delegations:
+	applications:
+		create:
+			<org>
+		read:
+			<org>
+		update:
+			<org>
+		delete:
+			<org>
 	subjects:
 		create:
 			<org>

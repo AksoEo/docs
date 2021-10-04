@@ -14,7 +14,7 @@ get:
 
       - `subjects`, `cities`: May use `$hasAny`.
 
-      - $countries: Takes a filter object and returns only delegates matching the country filter. May use the following properties `countries`: `country`, `level`
+      - $countries: Takes a filter object and returns only delegates matching the country filter. May use the following properties from `GET /countries`: `country`, `level`
   responses:
     '200':
       description: OK
