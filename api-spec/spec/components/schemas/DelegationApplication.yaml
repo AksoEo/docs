@@ -48,6 +48,20 @@ allOf:
       countries:
         readOnly: true
         writeOnly: true
+      tos:
+        properties:
+          docDataProtectionUEATime:
+            readOnly: true
+            writeOnly: true
+          docDelegatesUEATime:
+            readOnly: true
+            writeOnly: true
+          docDelegatesDataProtectionUEATime:
+            readOnly: true
+            writeOnly: true
+          paperAnnualBookTime:
+            readOnly: true
+            writeOnly: true
     required:
       - org
       - codeholderId

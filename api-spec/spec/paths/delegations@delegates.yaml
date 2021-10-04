@@ -4,7 +4,7 @@ get:
     Requires permission: `codeholders.read`, `codeholders.delegations.read.<org>`
 
 
-    Filterable properties: `org`, `approvedBy`, `approvedTime`, `hosting.maxDays`, `hosting.maxPersons`
+    Filterable properties: `org`, `approvedBy`, `approvedTime`, `hosting.maxDays`, `hosting.maxPersons`, `tos.docDataProtectionTime`, `tos.docDelegatesUEATime`, `tos.docDelegatesDataProtectionUEATime`, `tos.paperAnnualBook`, `tos.paperAnnualBookTime`
 
 
     Searchable properties: `hosting.description`
