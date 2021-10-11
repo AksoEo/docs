@@ -47,4 +47,16 @@ properties:
           isActive:
             writeOnly: true
             readOnly: true
+          hasResults:
+            writeOnly: true
+            readOnly: true
+          usedTieBreaker:
+            writeOnly: true
+            readOnly: true
+          viewerCodeholdersMemberFilter:
+            writeOnly: true
+            readOnly: true
+          voterCodeholdersMemberFilter:
+            writeOnly: true
+            readOnly: true
       - $ref: '#/components/schemas/Vote'

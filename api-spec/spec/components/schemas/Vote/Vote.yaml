@@ -289,6 +289,12 @@ properties:
     default: true
     description: Whether the percentage of eligible voters who have voted is public.
 
+  publishResults:
+    type: boolean
+    default: false
+    description: >
+      Whether the result of this vote should be publicly available immediately when the results are ready.
+
   options:
     type: array
     minItems: 2
