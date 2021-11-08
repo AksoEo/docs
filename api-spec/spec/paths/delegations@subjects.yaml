@@ -4,7 +4,7 @@ get:
     Requires permission: `delegations.subjects.read.<org>`
 
 
-    Filterable properties: `id`, `org`
+    Filterable properties: `id`, `org`, `useCount`
 
 
     Searchable properties: `name`

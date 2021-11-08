@@ -20,3 +20,7 @@ properties:
     maxLength: 2000
     nullable: true
     description: Optionally, a description of the subject to be displayed to end-users
+  useCount:
+    type: integer
+    readOnly: true
+    description: The number of uses of this delegation subject. Useful when sorting by popularity.
