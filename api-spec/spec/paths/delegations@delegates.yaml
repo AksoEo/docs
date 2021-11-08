@@ -12,7 +12,7 @@ get:
 
     Special:
 
-      - `subjects`, `cities`: May use `$hasAny`.
+      - `subjects`, `cities`, `cityCountries`: May use `$hasAny`.
 
       - $countries: Takes a filter object and returns only delegates matching the country filter. May use the following properties from `GET /countries`: `country`, `level`
   responses:
