@@ -16,35 +16,23 @@ codeholders:
 		read
 		update
 	delegations:
-		read:
-			<org>
-		update:
-			<org>
+		read: <org>
+		update: <org>
 		update_country_delegates:
-			<org>:
-				<country>
-		delete:
-			<org>
+			<org>: <country>
+		delete: <org>
 
 delegations:
 	applications:
-		create:
-			<org>
-		read:
-			<org>
-		update:
-			<org>
-		delete:
-			<org>
+		create: <org>
+		read: <org>
+		update: <org>
+		delete: <org>
 	subjects:
-		create:
-			<org>
-		read:
-			<org>
-		update:
-			<org>
-		delete:
-			<org>
+		create: <org>
+		read: <org>
+		update: <org>
+		delete: <org>
 
 geodb:
 	read
@@ -101,64 +89,40 @@ admin_groups:
 	delete
 
 magazines:
-	create:
-		<org>
-	read:
-		<org>
-	update:
-		<org>
-	delete:
-		<org>
+	create: <org>
+	read: <org>
+	update: <org>
+	delete: <org>
 	files:
-		update:
-			<org>
-		delete:
-			<org>
+		update: <org>
+		delete: <org>
 	recitations:
-		update:
-			<org>
-		delete:
-			<org>
+		update: <org>
+		delete: <org>
 
 votes:
-	create:
-		<org>
-	read:
-		<org>
-	update:
-		<org>
-	delete:
-		<org>
+	create: <org>
+	read: <org>
+	update: <org>
+	delete: <org>
 
 congresses:
-	create:
-		<org>
-	read:
-		<org>
-	update:
-		<org>
-	delete:
-		<org>
+	create: <org>
+	read: <org>
+	update: <org>
+	delete: <org>
 
 congress_instances:
-	create:
-		<org>
-	read:
-		<org>
-	update:
-		<org>
-	delete:
-		<org>
+	create: <org>
+	read: <org>
+	update: <org>
+	delete: <org>
 
 	participants:
-		create:
-			<org>
-		read:
-			<org>
-		update:
-			<org>
-		delete:
-			<org>
+		create: <org>
+		read: <org>
+		update: <org>
+		delete: <org>
 
 lists:
 	create
@@ -173,48 +137,30 @@ address_label_templates:
 	delete
 
 notif_templates:
-	create:
-		<org>
-	read:
-		<org>
-	update:
-		<org>
-	delete:
-		<org>
+	create: <org>
+	read: <org>
+	update: <org>
+	delete: <org>
 
 pay:
-	read:
-		<org>
+	read: <org>
 	payment_orgs:
-		create:
-			<org>
-		update:
-			<org>
-		delete:
-			<org>
+		create: <org>
+		update: <org>
+		delete: <org>
 	payment_methods:
-		create:
-			<org>
-		update:
-			<org>
-		delete:
-			<org>
+		create: <org>
+		update: <org>
+		delete: <org>
 	payment_addons:
-		create:
-			<org>
-		update:
-			<org>
-		delete:
-			<org>
+		create: <org>
+		update: <org>
+		delete: <org>
 	payment_intents:
-		create:
-			<org>
-		read:
-			<org>
-		update:
-			<org>
-		sensitive_data:
-			<org>
+		create: <org>
+		read: <org>
+		update: <org>
+		sensitive_data: <org>
 
 registration:
 	options:
