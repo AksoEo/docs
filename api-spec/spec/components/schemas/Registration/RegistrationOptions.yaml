@@ -68,6 +68,64 @@ properties:
                 required:
                   - type
                   - id
+              - properties:
+                  type:
+                    type: string
+                    enum: [magazine]
+                    description: The type of offer. `magazine` indicates a subscription to a magazine.
+
+                  id:
+                    type: integer
+                    format: uint32
+                    description: The unique identifier of the magazine.
+
+                  price:
+                    type: object
+                    nullable: true
+                    description: The price of the magazine subscription offer. If `null`, the offer is unavailable.
+                    properties:
+                      script:
+                        type: object
+                        description: >
+                          An AKSO Script for calculating the price of this magazine subscription offer.
+
+
+                          The following codeholder fields are available as form vars:
+
+                            - @birthdate
+                            - @age
+                            - @agePrimo
+                            - @feeCountry
+                            - @feeCountryGroups
+                            - @isActiveMember
+                      var:
+                        type: string
+                        minLength: 1
+                        maxLength: 40
+                        description: >
+                          The name of the AKSO Script var containing the price of this magazine subscription offer.
+
+
+                          If it resolves to null the offer is unavailable.
+
+                      description:
+                        type: string
+                        minLength: 1
+                        maxLength: 500
+                        nullable: true
+                        description: >
+                          A description of the price calculation. Must be short.
+
+
+                          Markdown rules enabled: `emphasis`, `strikethrough`
+
+                    required:
+                      - script
+                      - var
+
+                required:
+                  - type
+                  - id
 
               - properties:
                   type:
@@ -123,7 +181,6 @@ properties:
                     required:
                       - script
                       - var
-                      - currency
 
                 required:
                   - type

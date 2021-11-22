@@ -33,7 +33,7 @@ put:
     '204':
       description: Updated
     '404':
-      description: PaymentAddon/PaymentOrg/MembershipCategory not found
+      description: Not found
 
 delete:
   summary: Deletes registration for a given year

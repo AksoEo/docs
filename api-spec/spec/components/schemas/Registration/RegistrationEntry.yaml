@@ -52,7 +52,7 @@ properties:
 
           - `duplicate_data`: `codeholderData` contains unique data already present in a codeholder
           
-          - `duplicate_offer`: `offers` contains entries that are already present in the codeholder (when `codeholderData` is an codeholder id)
+          - `duplicate_offer`: `offers` contains entries that are already present in the codeholder (when `codeholderData` is a codeholder id)
 
           - `fishy_data`: `codeholderData` contains data that seems fishy and should be reviewed by an admin. To resolve this issue, set `fishyIsOkay` to `true`.
       where:
@@ -126,7 +126,28 @@ properties:
             amount:
               type: integer
               format: uint32
-              description: The amount of the PaymentAddon
+              description: The price of this offer
+
+          required:
+            - type
+            - id
+            - amount
+
+        - properties:
+            type:
+              type: string
+              enum: [magazine]
+              description: The type of offer. `magazine` indicates a magazine subscription offer.
+
+            id:
+              type: number
+              format: uint32
+              description: The id of the magazine
+
+            amount:
+              type: integer
+              format: uint32
+              description: The price of this offer
 
           required:
             - type
