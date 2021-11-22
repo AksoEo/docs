@@ -1,0 +1,28 @@
+properties:
+  id:
+    type: string
+    format: binary
+    minLength: 15
+    maxLength: 15
+    readOnly: true
+    description: The unique id of the magazine subscription. This should be encoded in RFC 4648 base32 when shown to humans.
+  codeholderId:
+    allOf:
+      - readOnly: false
+      - $ref: '#/components/schemas/CodeholderId'
+  year:
+    type: integer
+    format: year
+    nullable: true
+    description: The year of the subscription or null for lifelong.
+  createdTime:
+    type: integer
+    format: uint64
+    readOnly: true
+    description: The unix epoch time at which the subscription was created
+  internalNotes:
+    type: string
+    nullable: true
+    minLength: 1
+    maxLength: 2000
+    description: Internal notes on the subscription

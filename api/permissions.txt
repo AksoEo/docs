@@ -99,6 +99,11 @@ magazines:
 	recitations:
 		update: <org>
 		delete: <org>
+	subscriptions:
+		create: <org>
+		read: <org>
+		update: <org>
+		delete: <org>
 
 votes:
 	create: <org>

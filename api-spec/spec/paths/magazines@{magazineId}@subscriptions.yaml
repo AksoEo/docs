@@ -1,0 +1,51 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Returns subscriptions to a magazine
+  description: >
+    Requires permissions: `magazines.subscriptions.read.<org>`, `codeholders.read`
+
+
+    Filterable properties: `id`, `year`, `codeholderId`, `createdTime`
+
+
+    Searchable properties: `internalNotes`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/MagazineSubscription'
+
+    '404':
+      description: Magazine not found
+
+post:
+  summary: Creates a magazine subscription
+  description: >
+    Requires permissions: `magazines.subscriptions.create.<org>`, `codeholders.read`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/MagazineSubscription'
+            - required:
+                - codeholderId
+                - year
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Magazine not found
