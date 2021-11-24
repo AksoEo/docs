@@ -1,0 +1,41 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '#/components/schemas/CodeholderId'
+
+get:
+  summary: Returns a codeholder's magazine subscriptions
+  description: >
+    Requires permissions: `codeholders.read`, `magazines.subscriptions.read.<org>`
+
+
+    Required member fields (`r`): `roles`
+
+
+    Filterable properties: `id`, `year`, `createdTime`, `magazineId`
+
+
+    Searchable properties: `internalNotes`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '#/components/schemas/MagazineSubscription'
+                - properties:
+                    codeholderId:
+                      readOnly: true
+                      writeOnly: true
+                    magazineId:
+                      type: integer
+                      format: uint32
+                      description: The id of the magazine the codeholder is subscribed to
+    '404':
+      description: Codeholder not found
