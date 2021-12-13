@@ -123,6 +123,11 @@ properties:
               format: uint32
               description: The id of the membership category
 
+            paperVersion:
+              type: boolean
+              default: false
+              description: Whether this offer is for the paper version of the magazine. If `false`, it is an online only subscription offer.
+
             amount:
               type: integer
               format: uint32

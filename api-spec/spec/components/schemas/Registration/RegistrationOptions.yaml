@@ -79,6 +79,11 @@ properties:
                     format: uint32
                     description: The unique identifier of the magazine.
 
+                  paperVersion:
+                    type: boolean
+                    default: false
+                    description: Whether this offer is for the paper version of the magazine. If `false`, it is an online only subscription offer.
+
                   price:
                     type: object
                     nullable: true

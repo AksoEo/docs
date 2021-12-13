@@ -26,3 +26,7 @@ properties:
     minLength: 1
     maxLength: 2000
     description: Internal notes on the subscription
+  paperVersion:
+    type: boolean
+    default: false
+    description: Whether this subscription is for the paper version of the magazine. If `false`, the subscription only gives online access. 

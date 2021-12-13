@@ -13,7 +13,7 @@ get:
     Requires permissions: `magazines.subscriptions.read.<org>`, `codeholders.read`
 
 
-    Filterable properties: `id`, `year`, `codeholderId`, `createdTime`
+    Filterable properties: `id`, `year`, `codeholderId`, `createdTime`, `paperVersion`
 
 
     Searchable properties: `internalNotes`

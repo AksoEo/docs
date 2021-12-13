@@ -15,7 +15,7 @@ get:
     Required member fields (`r`): `roles`
 
 
-    Filterable properties: `id`, `year`, `createdTime`, `magazineId`
+    Filterable properties: `id`, `year`, `createdTime`, `magazineId`, `paperVersion`
 
 
     Searchable properties: `internalNotes`
