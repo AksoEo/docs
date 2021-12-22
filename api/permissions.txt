@@ -104,6 +104,11 @@ magazines:
 		read: <org>
 		update: <org>
 		delete: <org>
+	snapshots:
+		create: <org>
+		read: <org>
+		update: <org>
+		delete: <org>
 
 votes:
 	create: <org>

@@ -1,0 +1,64 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: snapshotId
+    required: true
+    description: The id of the snapshot
+    schema:
+      type: integer
+      format: uint64
+
+get:
+  summary: Return a paper subscriber snapshot
+  description: >
+    Requires permission: `magazines.snapshots.read.<org>`, `codeholders.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/MagazinePaperAccessSnapshot'
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a paper subscriber snapshot
+  description: >
+    Requires permission: `magazines.snapshots.create.<org>`, `codeholders.read`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/MagazinePaperAccessSnapshot'
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a paper subscriber snapshot
+  description: >
+    Requires permission: `magazines.snapshots.delete.<org>`, `codeholders.read`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found

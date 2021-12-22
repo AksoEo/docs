@@ -1,0 +1,51 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+get:
+  summary: Return all paper subscriber snapshots of a magazine edition
+  description: >
+    Requires permission: `magazines.snapshots.read.<org>`, `codeholders.read`
+
+
+    Filterable properties: `id`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/MagazinePaperAccessSnapshot'
+    '404':
+      description: Magazine or edition not found
+
+post:
+  summary: Creates a snapshot of the paper subscribers of a magazine edition
+  description: >
+    Requires permission: `magazines.snapshots.create.<org>`, `codeholders.read`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          $ref: '#/components/schemas/MagazinePaperAccessSnapshot'
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: Magazine or edition not found

@@ -1,0 +1,50 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: snapshotId
+    required: true
+    description: The id of the snapshot
+    schema:
+      type: integer
+      format: uint64
+
+  - in: query
+    name: compare
+    description: Optionally, the id of a snapshot to compare this one to. If present, the set difference of the codeholders will be returned.
+    schema:
+      type: integer
+      format: uint64
+
+get:
+  summary: Return all codeholders of a paper subscriber snapshot
+  description: >
+    Requires permission: `magazines.snapshots.read.<org>`, `codeholders.read`
+
+
+    Only `?limit` and `?offset` allowed in query.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderId'
+    '404':
+      description: Not found

@@ -1,4 +1,4 @@
 type: integer
 format: uint32
 readOnly: true
-description: The codeholder's internal id
+description: The unique, internal id of a codeholder
