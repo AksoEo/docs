@@ -32,6 +32,9 @@ parameters:
 get:
   summary: Returns the thumbnail of a magazine edition
   description: >
+    Requires permission: `magazines.read.<org>`
+
+
     The content type of the picture is either `image/jpeg` or `image/png` depending on the original thumbnail.
 
 

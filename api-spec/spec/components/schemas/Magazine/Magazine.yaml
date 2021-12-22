@@ -34,3 +34,37 @@ properties:
     pattern: ^\d+$
     nullable: true
     description: The ISSN number of the magazine
+
+  subscribers:
+    type: object
+    description: >
+      Settings defining who has access to all editions of the magazine. These settings can be overridden on a per-edition basis.
+
+
+      - `access` defines who has online access to the magazine. All simple subscriptions for this magazine are automatically included.
+
+      - `paper` defines who has a paper subscription to the magazine. All simple subscriptions with `paperVersion` `true` for this magazine are automatically included.
+    properties:
+      access:
+        $ref: '#/components/schemas/MagazinePerms'
+      paper:
+        $ref: '#/components/schemas/MagazinePerms'
+
+  subscriberFiltersCompiled:
+    type: object
+    readOnly: true
+    description: >
+      Compiled filters based on `subscribers`.
+
+
+      If a property of `subscribers` was set to `true`, the filter will instead be `true`.
+    properties:
+      access:
+        oneOf:
+          - type: boolean
+          - type: object
+
+      paper:
+        oneOf:
+          - type: boolean
+          - type: object

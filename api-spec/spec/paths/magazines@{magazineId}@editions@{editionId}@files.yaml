@@ -19,6 +19,9 @@ get:
   summary: Returns metadata on the files attached to a magazine edition
   description: >
     Filterable properties: `format`, `downloads`
+
+
+    Requires permission: `magazines.read.<org>`
   responses:
     '200':
       description: OK

@@ -14,6 +14,9 @@ get:
 
 
     Searchable properties: `idHuman`, `description`
+
+
+    Requires permission: `magazines.read.<org>`
   responses:
     '200':
       description: OK

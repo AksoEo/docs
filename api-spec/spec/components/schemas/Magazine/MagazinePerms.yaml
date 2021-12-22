@@ -1,0 +1,39 @@
+allOf:
+  - default: false
+    description: >
+      Set to `true` to grant access to all codeholders. Set to `false` to disable access to the magazine.
+  - oneOf:
+    - type: boolean
+    - properties:
+        members:
+          allOf:
+            - default: true
+              description: >
+                `true` to include all members this year, `false` to exclude them, a codeholder filter to include only members that also match the filter.
+            - oneOf:
+              - type: boolean
+              - type: object
+
+        membersIncludeLastYear:
+          type: string
+          pattern: '^P(\d\d?Y)?(\d\d?M)?(\d\d?D)?$'
+          default: null
+          nullable: true
+          description: >
+            An ISO-8601 duration indicating how long members and subscribers of last year (who are not members or subscribers this year) retain access to the magazine.
+
+
+            This is usually only used for `access`. For `paper` this is normally determined manually.
+
+        filter:
+          type: object
+          default: null
+          nullable: true
+          description: A codeholder filter matching codeholders to grant access regardless of membership.
+
+        freelyAvailableAfter:
+          type: string
+          pattern: '^P(\d\d?Y)?(\d\d?M)?(\d\d?D)?$'
+          default: null
+          nullable: true
+          description: An ISO-8601 duration indicating how much time has to pass before a magazine edition becomes freely available to the public.

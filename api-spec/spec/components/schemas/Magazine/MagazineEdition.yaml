@@ -39,3 +39,43 @@ properties:
 
 
       Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+
+  subscribers:
+    type: object
+    nullable: true
+    default: null
+    description: >
+      Settings overriding the magazine-wide settings for who has access to this edition.
+
+
+      - `access` defines who has online access to the magazine. All simple subscriptions for this magazine are automatically included.
+
+      - `paper` defines who has a paper subscription to the magazine. All simple subscriptions with `paperVersion` `true` for this magazine are automatically included.
+    properties:
+      access:
+        $ref: '#/components/schemas/MagazinePerms'
+      paper:
+        $ref: '#/components/schemas/MagazinePerms'
+
+  subscriberFiltersCompiled:
+    type: object
+    nullable: true
+    readOnly: true
+    description: >
+      Compiled filters based on `subscribers` to be used instead of those in the magazine.
+
+
+      If a property of `subscribers` was set to `true`, the filter will instead be `true`.
+      
+
+      If `subscribers` is null, this property will also be null. In that case the parent settings from the magazine must be applied instead.
+    properties:
+      access:
+        oneOf:
+          - type: boolean
+          - type: object
+
+      paper:
+        oneOf:
+          - type: boolean
+          - type: object

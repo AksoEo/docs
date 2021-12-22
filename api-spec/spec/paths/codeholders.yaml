@@ -36,11 +36,14 @@ get:
       May use the following properties from `GET /codeholders/{codeholderId}/roles`:
       `roleId`, `durationFrom`, `durationTo`, `isActive`, `dataCountry`, `dataOrg`
 
-    - `$delegations`: Takes a filter object and returns only codeholders matcing the delegations filter.
+    - `$delegations`: Takes a filter object and returns only codeholders matching the delegations filter.
       May use all of the filterable properties from `GET /codeholders/{codeholderId}/delegations` except `codeholderId`.
 
-    - `$delegationApplications`: Takes a filter object and returns only codeholders matcing the delegation applications filter.
+    - `$delegationApplications`: Takes a filter object and returns only codeholders matching the delegation applications filter.
       May use all of the filterable properties from `GET /delegations/applications` except `codeholderId`.
+
+    - `$magazineSubscriptions`: Takes a filter object and returns only codeholders matching the magazine subscriptions filter.
+      May use all of the filterable properties from `GET /codeholders/{codeholderId}/magazine_subscriptions`
   responses:
     '200':
       description: OK
