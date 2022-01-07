@@ -23,6 +23,30 @@ post:
       application/vnd.msgpack:
         schema:
           properties:
+            snapshot:
+              type: integer
+              format: uint64
+              description: >
+                The id of a magazine paper subscriber snapshot. When present, makes the address label generator obtain the list of codeholders from the snapshot instead of a user-provided filter.
+
+
+                This applies the current user's member filter and as such some subscribers may be excluded if the user is behind a restrictive filter. To check for this, one may obtain the list of codeholders from the snapshot and apply the member filter to the output through `GET /codeholders`.
+
+
+                When present, the query must be empty.
+
+
+                Requires permission `magazines.snapshots.read.<org>`.
+
+            snapshotCompare:
+              type: integer
+              format: uint64
+              description: >
+                When present, only codeholders present in `snapshot` but not in `snapshotCompare` will be included.
+
+                
+                May only be used in combination with `snapshot`.
+
             email:
               type: string
               format: email
