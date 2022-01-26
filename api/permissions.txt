@@ -73,6 +73,11 @@ country_groups:
 	update
 	delete
 
+org_lists:
+	read
+	update
+	delete
+
 clients:
 	create
 	read

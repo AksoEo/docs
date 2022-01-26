@@ -8,7 +8,7 @@ parameters:
       minLength: 24
       maxLength: 24
 
-delete:
+post:
   summary: Cancels a registration entry
   description: >
     Requires permission: `registration.registrations.update`
