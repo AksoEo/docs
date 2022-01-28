@@ -187,3 +187,8 @@ registration:
 		create
 		update
 		delete
+
+intermediaries:
+	read
+	update
+	delete

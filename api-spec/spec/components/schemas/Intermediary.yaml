@@ -1,0 +1,30 @@
+properties:
+  countryCode:
+    type: string
+    description: >
+      The ISO 3166-1 alpha-2 code of the country of the intermediary.
+
+
+      Must be a valid enabled Country#code.
+    readOnly: true
+
+  codeholderId:
+    allOf:
+      - description: The codeholder id of the intermediary
+      - readOnly: false
+      - $ref: '#/components/schemas/CodeholderId'
+
+  paymentDescription:
+    type: string
+    format: markdown
+    nullable: true
+    minLength: 1
+    maxLength: 5000
+    description: >
+      Supplementary information on how to pay the intermediary.
+
+
+      Contact information on the intermediary is extracted from the codeholder, including the biography.
+
+
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`

@@ -1,0 +1,55 @@
+parameters:
+  - in: path
+    name: countryCode
+    required: true
+    description: The country code of the intermediary
+    schema:
+      type: string
+      pattern: '^[a-z]{2}$'
+
+get:
+  summary: Returns an intermediary
+  description: >
+    Requires permission: `intermediaries.read`, `codeholders.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/Intermediary'
+
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes an intermediary
+  description: >
+    Requires permission: `intermediaries.delete`, `codeholders.read`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found
+
+put:
+  summary: Updates/creates an intermediary
+  description: >
+    Requires permission: `intermediaries.update`, `codeholders.read`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+              - $ref: '#/components/schemas/Intermediary'
+              - properties:
+                  countryCode:
+                    readOnly: true
+                required:
+                  - codeholderId
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found

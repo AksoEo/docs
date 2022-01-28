@@ -1,0 +1,23 @@
+get:
+  summary: Returns all intermediaries
+  description: >
+    Requires permission: `intermediaries.read`, `codeholders.read`
+    
+
+    Filterable properties:
+
+    - `countryCode`, `codeholderId`
+
+
+    Searchable properties:
+
+    - `paymentDescription`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Intermediary'

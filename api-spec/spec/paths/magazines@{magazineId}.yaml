@@ -17,9 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Magazine'
+            $ref: '#/components/schemas/Magazine'
 
     '404':
       description: Not found
