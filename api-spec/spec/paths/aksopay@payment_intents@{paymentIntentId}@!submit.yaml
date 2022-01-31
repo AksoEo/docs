@@ -11,7 +11,7 @@ parameters:
 post:
   summary: Sets the status of an AKSOPay PaymentIntent to `submitted`
   description: >
-    Requires permission: `pay.payment_intents.update.<org>`
+    Requires permission: `pay.payment_intents.submit.<org>`
 
 
     This only works for PaymentIntents using a PaymentMethod of type `manual`.

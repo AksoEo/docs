@@ -11,7 +11,7 @@ parameters:
 post:
   summary: Sets the status of an AKSOPay PaymentIntent to `refunded`
   description: >
-    Requires permission: `pay.payment_intents.update.<org>`
+    Requires permission: `pay.payment_intents.mark_refunded.<org>`
 
 
     This only works for PaymentIntents using a PaymentMethod of type `manual`.

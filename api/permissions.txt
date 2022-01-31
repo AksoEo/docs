@@ -176,6 +176,11 @@ pay:
 		read: <org>
 		update: <org>
 		sensitive_data: <org>
+		cancel: <org>
+		mark_disputed: <org>
+		mark_refunded: <org>
+		mark_succeeded: <org>
+		submit: <org>
 
 registration:
 	options:
