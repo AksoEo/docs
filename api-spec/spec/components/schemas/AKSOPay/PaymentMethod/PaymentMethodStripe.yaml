@@ -1,0 +1,31 @@
+allOf:
+  - $ref: '#/components/schemas/PaymentMethodGeneric'
+  - properties:
+      stripeMethods:
+        type: array
+        uniqueItems: true
+        minItems: 1
+        description: Only for type `stripe`. The payment methods supported by this Stripe integration
+        items:
+          type: string
+          enum:
+            - card
+
+      stripeSecretKey:
+        type: string
+        maxLength: 256
+        writeOnly: true
+        description:
+          Only for type `stripe`.
+
+
+          The Stripe API secret key.
+
+      stripePublishableKey:
+        type: string
+        maxLength: 256
+        description: >
+          Only for type `stripe`.
+
+
+          The Stripe API publishable key.

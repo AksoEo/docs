@@ -1,0 +1,4 @@
+oneOf:
+  - $ref: '#/components/schemas/PaymentMethodManual'
+  - $ref: '#/components/schemas/PaymentMethodStripe'
+  - $ref: '#/components/schemas/PaymentMethodIntermediary'

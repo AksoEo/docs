@@ -51,6 +51,7 @@ post:
                 - stripeSecretKey
                 - stripePublishableKey
                 - stripeMethods
+                - prices
   responses:
     '201':
       description: Created

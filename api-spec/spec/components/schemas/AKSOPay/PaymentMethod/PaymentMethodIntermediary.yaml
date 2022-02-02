@@ -1,0 +1,142 @@
+allOf:
+  - $ref: '#/components/schemas/PaymentMethodGeneric'
+  - properties:
+      prices:
+        description: >
+          The fixed prices for each supported currency to use in place of current exchange rate conversions.
+        properties:
+          '[year]':
+            description: >
+              The prices for the given year.
+            required:
+              - registrationEntries
+            properties:
+              registrationEntries:
+                description: >
+                  For registration entries the year refers to the year the registration is for, not the year the registration entry was created.
+                required:
+                  - membershipCategories
+                  - magazines
+                properties:
+                  membershipCategories:
+                    type: array
+                    maxItems: 255
+                    items:
+                      required:
+                        - id
+                        - price
+                        - commission
+                      properties:
+                        id:
+                          type: number
+                          format: uint32
+                          description: The id of a membership category
+
+                        commission:
+                          type: integer
+                          minimum: 0
+                          maximum: 100
+                          description: >
+                            The percentage commission given to the intermediary. 0 means 0% goes to the intermediary, 100 means the full amount goes to the intermediary.
+
+                        price:
+                          type: object
+                          nullable: true
+                          description: >
+                            The price of the membership offer. If `null`, the offer is unavailable.
+
+
+                            This property works almost the same as prices in registration options.
+                          required:
+                            - script
+                            - var
+                          properties:
+                            script:
+                              type: object
+                              description: >
+                                An AKSO Script for calculating the price of this membership offer.
+
+
+                                The following codeholder fields are available as form vars:
+
+                                  - `@birthdate`
+                                  - `@age`
+                                  - `@agePrimo`
+                                  - `@feeCountry`
+                                  - `@feeCountryGroups`
+                                  - `@isActiveMember`
+
+                                Additionally, the form var `@currency` contains an AKSOPay currency identifier of the currency for which the price is needed.
+                                The price returned must be in this currency.
+                            var:
+                              type: string
+                              minLength: 1
+                              maxLength: 40
+                              description: >
+                                The name of the AKSO Script var containing the price of this membership offer.
+
+
+                                If it resolves to null the offer is unavailable.
+                  magazines:
+                    type: array
+                    maxItems: 255
+                    items:
+                      required:
+                        - id
+                        - prices
+                      properties:
+                        id:
+                          type: integer
+                          format: uint32
+                          description: The id of a magazine.
+
+                        prices:
+                          properties:
+                            '[paper/access]':
+                              type: object
+                              nullable: true
+                              description: >
+                                The price of the magazine offer. If `null`, the offer is unavailable.
+
+
+                                This property works almost the same as prices in registration options.
+                              required:
+                                - script
+                                - var
+                                - commission
+                              properties:
+                                commission:
+                                  type: integer
+                                  minimum: 0
+                                  maximum: 100
+                                  description: >
+                                    The percentage commission given to the intermediary. 0 means 0% goes to the intermediary, 100 means the full amount goes to the intermediary.
+                                script:
+                                  type: object
+                                  description: >
+                                    An AKSO Script for calculating the price of this magazine offer.
+
+
+                                    The following codeholder fields are available as form vars:
+
+                                      - `@birthdate`
+                                      - `@age`
+                                      - `@agePrimo`
+                                      - `@feeCountry`
+                                      - `@feeCountryGroups`
+                                      - `@isActiveMember`
+
+                                    Additionally, the following form vars are available:
+
+                                    - `@currency` contains an AKSOPay currency identifier of the currency for which the price is needed.
+                                    The price returned must be in this currency.
+                                    - `@subscriptionType` is either `paper` or `access`.
+                                var:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 40
+                                  description: >
+                                    The name of the AKSO Script var containing the price of this magazine offer.
+
+
+                                    If it resolves to null the offer is unavailable.

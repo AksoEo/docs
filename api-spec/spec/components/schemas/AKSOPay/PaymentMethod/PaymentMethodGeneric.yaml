@@ -10,6 +10,7 @@ properties:
     enum:
       - manual
       - stripe
+      - intermediary
     description:
       How payments made using this PaymentMethod should be treated.
 
@@ -17,15 +18,7 @@ properties:
 
       - `stripe` payments integrate with the [Stripe](https://stripe.com) API and are fully automated.
 
-  stripeMethods:
-    type: array
-    uniqueItems: true
-    minItems: 1
-    description: Only for type `stripe`. The payment methods supported by this Stripe integration
-    items:
-      type: string
-      enum:
-        - card
+      - `intermediary` payments are used by intermediaries and must be manually approved like type `manual`.
 
   name:
     type: string
@@ -111,22 +104,3 @@ properties:
     required:
       - val
       - cur
-
-  stripeSecretKey:
-    type: string
-    maxLength: 256
-    writeOnly: true
-    description:
-      Only for type `stripe`.
-
-
-      The Stripe API secret key.
-
-  stripePublishableKey:
-    type: string
-    maxLength: 256
-    description: >
-      Only for type `stripe`.
-
-
-      The Stripe API publishable key.
