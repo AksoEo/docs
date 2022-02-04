@@ -49,3 +49,5 @@ post:
       description: Created
     '404':
       description: Magazine not found
+    '409':
+      description: Subscription already exists
