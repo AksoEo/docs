@@ -4,6 +4,8 @@ get:
     Filterable properties:
 
     - `code`, `name`
+    
+    - Special: `countries`: May use `$hasAny`.
 
 
     Searchable properties:
