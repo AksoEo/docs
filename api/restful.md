@@ -110,7 +110,7 @@ The recognized parameters are as follows:
 
     Valid in: Collections (`GET`)
 
-    Must be a csv containing a string of words to search for as the first column. Each word, separated by spaces, must be made of word characters only (`/[\p{L}\p{N}]/`) and must be at least 3 characters long, except when the word is followed by the wildcard character `*`. The following columns must be the names of the fields to search in. Only string fields may be searched. The entire string must not be any longer than 250 characters.
+    Must be a csv containing a string of words to search for as the first column. Each word, separated by spaces, must be made of word characters only (`/[\p{L}\p{N}]/`) and must be at least 3 characters long, e.g. `abc` or `ab*`. The following columns must be the names of the fields to search in. Only string fields may be searched. The entire string must not be any longer than 250 characters.
 
     The search is performed using [InnoDB MySQL boolean full-text search](https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html) and as such certain operators are permitted: `+`, `-`, `*` and `"`.
 
