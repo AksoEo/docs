@@ -14,7 +14,7 @@ post:
     Requires permission: `pay.payment_intents.mark_succeeded.<org>`
 
 
-    This only works for PaymentIntents using a PaymentMethod of type `manual`.
+    This only works for PaymentIntents using a PaymentMethod of type `manual` or `intermediary`.
 
 
     This can only be done when the current status is `submitted`.

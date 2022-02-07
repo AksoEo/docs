@@ -12,17 +12,25 @@ description: >
   The status of a PaymentIntent.
 
 
-  - `pending`: (stripe, manual) The PaymentIntent has been created, but the customer has not yet paid.
+  - `pending`: (stripe, manual, intermediary) The PaymentIntent has been created, but the customer has not yet paid.
   
   - `processing`: (stripe) The customer has attempted to pay, but Stripe is still processing the payment.
   
-  - `submitted`: (manual) The customer claims to have paid, but an authorized user needs to verify it.
+  - `submitted`: (manual, intermediary)
+
+    - Manual: The customer claims to have paid, but an authorized user needs to verify it.
+
+    - Intermediary: The intermediary has submitted the payment, but an authorized user needs to accept it.
   
-  - `canceled`: (stripe, manual) The PaymentIntent has been canceled, either by an automated procedure, the customer or an authorized user.
+  - `canceled`: (stripe, manual, intermediary) The PaymentIntent has been canceled, either by an automated procedure, the customer/intermediary or an authorized user.
   
-  - `succeeded`: (stripe, manual) The customer has successfully paid and the purposed of the PaymentIntent are to be fulfilled.
+  - `succeeded`: (stripe, manual, intermediary)
+
+    - Stripe/Manual: The customer has successfully paid and the purposes of the PaymentIntent are to be fulfilled.
+
+    - Intermediary: The intermediary payment has been accepted by an authorized user and the purposes of the PaymentIntent are to be fulfilled.
   
-  - `abandoned`: (stripe, manual) The PaymentIntent has automatically been canceled due to a lack of inactivity on the customer's end. This happens either when PaymentMethod#paymentValidity has been reached or when Stripe says so.
+  - `abandoned`: (stripe, manual, intermediary) The PaymentIntent has automatically been canceled due to a lack of inactivity on the customer's end. This happens either when PaymentMethod#paymentValidity has been reached or when Stripe says so.
   
   - `disputed`: (stripe, manual) The payment for this PaymentIntent is disputed. For Stripe payments, dispute management mut be handled through the Stripe dashboard.
   

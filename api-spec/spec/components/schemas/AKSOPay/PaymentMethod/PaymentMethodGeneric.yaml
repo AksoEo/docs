@@ -66,7 +66,7 @@ properties:
       How many seconds a PaymentIntent using this PaymentMethod may stay `pending` before it is set to `abandoned`.
 
 
-      Set this to `null` to disable the abandonment feature. This is not recommended.
+      Set this to `null` to disable the abandonment feature. This is only recommended for intermediary payments.
 
 
       Stripe PaymentMethods will automatically be marked as `abandoned`, when Stripe says so.
