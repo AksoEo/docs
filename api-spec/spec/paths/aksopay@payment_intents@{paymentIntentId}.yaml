@@ -11,7 +11,7 @@ parameters:
 get:
   summary: Returns an AKSOPay PaymentIntent
   description: >
-    Requires permission: `pay.payment_intents.read.<org>`
+    Requires permission: `pay.payment_intents.read.<org>` or (intermediary only) `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
 
 
     Stripe notice: Access to the property `stripeClientSecret` requires permission `pay.payment_intents.sensitive_data.<org>`.
@@ -28,7 +28,7 @@ get:
 patch:
   summary: Updates an AKSOPay PaymentIntent
   description: >
-    Requires permission: `pay.payment_intents.update.<org>`
+    Requires permission: `pay.payment_intents.update.<org>` or (intermediary only) `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
   requestBody:
     required: true
     content:
@@ -44,6 +44,10 @@ patch:
                 paymentOrgId:
                   readOnly: true
                 paymentMethodId:
+                  readOnly: true
+                intermediaryCountryCode:
+                  readOnly: true
+                intermediaryIdentifier:
                   readOnly: true
   responses:
     '204':

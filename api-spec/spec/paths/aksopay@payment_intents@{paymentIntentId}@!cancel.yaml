@@ -11,7 +11,7 @@ parameters:
 post:
   summary: Cancels an AKSOPay PaymentIntent
   description: >
-    Requires permission: `pay.payment_intents.cancel.<org>`
+    Requires permission: `pay.payment_intents.cancel.<org>` or (intermediary only) `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
 
 
     This can only be done when the current status is `pending` or `submitted` or (`manual` only) `disputed`.

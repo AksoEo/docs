@@ -11,7 +11,7 @@ parameters:
 post:
   summary: Sets the status of an AKSOPay PaymentIntent to `submitted`
   description: >
-    Requires permission: `pay.payment_intents.submit.<org>`
+    Requires permission: `pay.payment_intents.submit.<org>` or (intermediary only) `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
 
 
     This only works for PaymentIntents using a PaymentMethod of type `manual` or `intermediary`.

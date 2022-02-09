@@ -1,9 +1,9 @@
 type: string
 readOnly: true
 description: >
-  The user or application who modified the codeholder datum
+  An identifier of a codeholder or client
 
 
   Examples:
-    - `ch:3`: When a codeholder (referenced by its unique id) made the change
-    - `app:2031847ee1a7bbce`: When an app (referenced by its hex-ified API key) made the change
+    - `ch:3`: References a codeholder by its unique id
+    - `app:2031847ee1a7bbce`: References an app by its hex-ified API key

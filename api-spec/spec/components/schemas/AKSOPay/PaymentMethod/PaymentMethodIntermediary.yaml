@@ -67,7 +67,7 @@ allOf:
                                   - `@isActiveMember`
 
                                 Additionally, the form var `@currency` contains an AKSOPay currency identifier of the currency for which the price is needed.
-                                The price returned must be in this currency.
+                                The price returned must be in this currency. All currencies in the `currencies` field of the payment method must be supported.
                             var:
                               type: string
                               minLength: 1

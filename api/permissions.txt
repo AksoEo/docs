@@ -181,6 +181,9 @@ pay:
 		mark_refunded: <org>
 		mark_succeeded: <org>
 		submit: <org>
+		intermediary:
+			<org>:
+				<country>
 
 registration:
 	options:

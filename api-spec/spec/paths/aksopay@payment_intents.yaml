@@ -1,7 +1,7 @@
 get:
   summary: Returns all AKSOPay PaymentIntents
   description: >
-    Requires permission: `pay.payment_intents.read.<org>`
+    Requires permission: `pay.payment_intents.read.<org>` or (intermediary only) `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
 
 
     Stripe notice: Access to the property `stripeClientSecret` requires permission `pay.payment_intents.sensitive_data.<org>`.
@@ -9,7 +9,7 @@ get:
 
     Filterable properties:
 
-    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentOrgId`, `paymentMethodId`, `org`, `currency`, `status`, `timeCreated`, `statusTime`, `succeededTime`, `refundedTime`, `foreignId`, `totalAmount`, `amountRefunded`
+    - `id`, `codeholderId`, `customer.email`, `customer.name`, `paymentOrgId`, `paymentMethodId`, `org`, `currency`, `status`, `timeCreated`, `createdBy`, `statusTime`, `succeededTime`, `refundedTime`, `foreignId`, `totalAmount`, `amountRefunded`, `intermediaryCountryCode`, `intermediaryIdentifier.<year,number>`
 
 
     Searchable properties:
@@ -35,7 +35,7 @@ get:
 post:
   summary: Creates a new AKSOPay PaymentIntent
   description: >
-    Requires permission: `pay.payment_intents.create.<org>`
+    Requires permission: `pay.payment_intents.create.<org>` or (intermediary only) `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
   requestBody:
     required: true
     content:
@@ -49,6 +49,8 @@ post:
               - purposes
               - paymentOrgId
               - paymentMethodId
+              - intermediaryCountryCode
+              - intermediaryIdentifier
   responses:
     '201':
       description: Created

@@ -116,7 +116,11 @@ properties:
     minLength: 1
     maxLength: 5000
     nullable: true
-    description: Notes submitted by the customer when the PaymentIntent was created
+    description: >
+      Notes submitted by the customer when the PaymentIntent was created.
+
+
+      For type `intermediary` this field contains notes from the intermediary.
 
   foreignId:
     type: string
@@ -130,7 +134,7 @@ properties:
     type: string
     readOnly: true
     description: >
-      The `Stripe PaymentIntent#id`, this must never be exposed to anyone but the customer.
+      Only for type `stripe`. The `Stripe PaymentIntent#id`, this must never be exposed to anyone but the customer.
 
 
       While theoretically authorized users have access to it, it should not be displayed in any administration systems.
@@ -171,3 +175,31 @@ properties:
     format: uint32
     readOnly: true
     description: The total amount refunded, if any.
+
+  createdBy:
+    readOnly: true
+    $ref: '#/components/schemas/CodeholderModBy'
+
+  intermediaryCountryCode:
+    type: string
+    minLength: 2
+    maxLength: 2
+    description: >
+      Only for type `intermediary`. The ISO 3166-1 alpha-2 code of the enabled `Country` the intermediary payment is for.
+
+  intermediaryIdentifier:
+    type: object
+    description: >
+      Only for type `intermediary`. Internal identifiers of intermediary payments.
+
+
+      The combination `year, number` must be unique for this `org, intermediaryCountryCode`.
+    required: [ year, number ]
+    properties:
+      year:
+        type: number
+        format: year
+
+      number:
+        type: integer
+        format: uint16
