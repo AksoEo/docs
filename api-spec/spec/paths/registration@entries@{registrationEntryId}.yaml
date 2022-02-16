@@ -11,7 +11,7 @@ parameters:
 get:
   summary: Gets a registration entry
   description: >
-    Requires permission: `registration.entries.read`
+    Requires permissions: `registration.entries.read`, `codeholders.read`
   responses:
     '404':
       description: Not found
@@ -25,7 +25,7 @@ get:
 patch:
   summary: Update a registration entry
   description: >
-    Requires permission: `registration.entries.update`
+    Requires permissions: `registration.entries.update`, `codeholders.read`
 
 
     When `status` is anything but `submitted`, only `internalNotes`, `codeholderData` and `fishyIsOkay` may be patched.
@@ -44,7 +44,7 @@ patch:
 delete:
   summary: Deletes a registration entry
   description: >
-    Requires permission: `registration.registrations.delete`
+    Requires permissions: `registration.registrations.delete`, `codeholders.read`
 
 
     This should not be used unless the registration was made in error.

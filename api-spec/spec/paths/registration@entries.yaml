@@ -1,7 +1,7 @@
 get:
   summary: Gets all registration entries
   description: >
-    Requires permission: `registration.entries.read`
+    Requires permissions: `registration.entries.read`, `codeholders.read`
 
 
     Searchable properties: `internalNotes`
@@ -27,7 +27,7 @@ get:
 post:
   summary: Creates a new registration entry
   description: >
-    Requires permission: `registration.entries.create`
+    Requires permissions: `registration.entries.create`, `codeholders.read`
   requestBody:
     required: true
     content:
