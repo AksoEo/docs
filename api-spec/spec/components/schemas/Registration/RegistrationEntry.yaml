@@ -13,6 +13,19 @@ properties:
     nullable: true
     description: The year of registration. Must be a year with enabled registration options. Must not be lower than the current year UTC.
 
+  intermediary:
+    type: string
+    minLength: 2
+    maxLength: 2
+    nullable: true
+    default: null
+    description: >
+      The country code of the intermediaries responsible for registration entry.
+      Set this field to null, if this registration entry was not created by an intermediary.
+
+
+      Must be `null` or the identifying code of an enabled `Country`. 
+
   status:
     type: string
     readOnly: true
