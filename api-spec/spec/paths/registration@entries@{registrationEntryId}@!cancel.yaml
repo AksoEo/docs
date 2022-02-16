@@ -11,7 +11,7 @@ parameters:
 post:
   summary: Cancels a registration entry
   description: >
-    Requires permissions: `registration.registrations.update`, `codeholders.read`
+    Requires permissions: `codeholders.read` and one of: `registration.entries.cancel`, `registration.entries.intermediary.<country>`, see GET /registration/entries.
 
 
     This can only be done, when the registration entry is `pending` or `submitted`.

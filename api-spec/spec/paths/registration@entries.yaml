@@ -1,7 +1,11 @@
 get:
   summary: Gets all registration entries
   description: >
-    Requires permissions: `registration.entries.read`, `codeholders.read`
+    Requires permissions: `codeholders.read` and one of:
+
+    1. `registration.entries.read` for unlimited access
+
+    2. `registration_entries.intermediary.<country>` for intermediary-only access. In this case the field `intermediary` must be set to a permitted value, and only registration entries with a permitted value can be accessed.
 
 
     Searchable properties: `internalNotes`
@@ -27,7 +31,7 @@ get:
 post:
   summary: Creates a new registration entry
   description: >
-    Requires permissions: `registration.entries.create`, `codeholders.read`
+    Requires permissions: `codeholders.read` and one of: `registration.entries.create`, `registration.entries.intermediary.<country>`, see GET /registration/entries.
   requestBody:
     required: true
     content:
