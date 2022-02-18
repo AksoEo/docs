@@ -1,0 +1,27 @@
+parameters:
+  - name: paymentIntentId
+    in: path
+    required: true
+    description: The id of the PaymentIntent encoded by RFC 4648 base32
+    schema:
+      type: string
+      minLength: 24
+      maxLength: 24
+
+post:
+  summary: Generates a PDF export of an intermediary AKSOPay PaymentIntent
+  description: >
+    Requires permission: `pay.payment_intents.read.<org>` or `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
+
+
+    This can only be done when the current status is `succeeded`.
+
+
+    The response will contain the pdf.
+  responses:
+    '200':
+      description: Succeeded
+    '404':
+      description: Not found
+    '409':
+      description: Payment intent is not succeeded
