@@ -130,7 +130,6 @@ allOf:
 
                                     - `@currency` contains an AKSOPay currency identifier of the currency for which the price is needed.
                                     The price returned must be in this currency.
-                                    - `@subscriptionType` is either `paper` or `access`.
                                 var:
                                   type: string
                                   minLength: 1
