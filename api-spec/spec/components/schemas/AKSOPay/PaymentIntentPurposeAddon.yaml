@@ -30,6 +30,13 @@ properties:
     type: integer
     format: uint32
     description: The price in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal)
+
+  description:
+    type: string
+    minLength: 1
+    maxLength: 255
+    nullable: true
+    description: A description of the purpose
 required:
   - type
   - paymentAddonId
