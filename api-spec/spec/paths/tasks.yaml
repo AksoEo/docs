@@ -15,11 +15,15 @@ get:
                   submitted:
                     type: number
                     format: uint32
-                    description: The number of AKSOPay PaymentIntents with the status `submitted`.
+                    description: The number of non-intermediary AKSOPay PaymentIntents with the status `submitted`.
                   disputed:
                     type: number
                     format: uint32
-                    description: The number of AKSOPay PaymentIntents with the status `disputed`.
+                    description: The number of non-intermediary AKSOPay PaymentIntents with the status `disputed`.
+                  intermediary:
+                    type: number
+                    format: uint32
+                    description: The number of intermediary AKSOPay PaymentIntents with the status `submitted`.
 
               registration:
                 description: Field only present given the permission `registration.registrations.read`
