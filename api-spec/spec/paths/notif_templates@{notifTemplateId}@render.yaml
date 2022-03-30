@@ -29,3 +29,6 @@ get:
               text:
                 type: string
                 description: The rendered plaintext version
+              subject:
+                type: string
+                description: The rendered subject
