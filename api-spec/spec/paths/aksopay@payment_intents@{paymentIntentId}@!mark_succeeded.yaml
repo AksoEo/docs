@@ -17,7 +17,7 @@ post:
     This only works for PaymentIntents using a PaymentMethod of type `manual` or `intermediary`.
 
 
-    This can only be done when the current status is `submitted`.
+    This can only be done when the current status is `submitted`, `disputed` or `pending`.
   responses:
     '204':
       description: Marked as succeeded
