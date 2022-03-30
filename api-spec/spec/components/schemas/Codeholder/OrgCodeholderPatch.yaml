@@ -35,7 +35,7 @@ allOf:
       mainDescriptor:
         type: string
         minLength: 1
-        maxLength: 30
+        maxLength: 80
         nullable: true
         pattern: ^[^\n]*$
         description: The main one-line description of the organization, e.g. "Esperanto office" or "national association of UEA"
