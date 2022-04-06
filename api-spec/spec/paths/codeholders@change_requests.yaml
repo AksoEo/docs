@@ -1,7 +1,7 @@
 get:
   summary: Gets all codeholder change requests
   description: >
-    Permission required: `codeholders.change_requests.read`
+    Permission required: `codeholders.read`, `codeholders.change_requests.read`
 
 
     Filterable properties: `id`, `time`, `codeholderId`, `status`

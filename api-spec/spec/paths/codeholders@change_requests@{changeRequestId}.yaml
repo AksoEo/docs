@@ -2,7 +2,7 @@ parameters:
   - name: changeRequestId
     in: path
     required: true
-    description: The codeholder change request id id
+    description: The codeholder change request id
     schema:
       type: number
       format: uint64
@@ -10,7 +10,7 @@ parameters:
 get:
   summary: Gets a codeholder change request
   description: >
-    Permission required: `codeholders.change_requests.read`
+    Permission required: `codeholders.read`, `codeholders.change_requests.read`
   responses:
     '404':
       description: Not found
@@ -24,7 +24,7 @@ get:
 patch:
   summary: Updates a codeholder change change request
   description: >
-    Permission required: `codeholders.change_requests.update`
+    Permission required: `codeholders.read`, `codeholders.change_requests.update`
   requestBody:
     required: true
     content:
