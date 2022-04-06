@@ -26,9 +26,17 @@ get:
                     description: The number of intermediary AKSOPay PaymentIntents with the status `submitted`.
 
               registration:
-                description: Field only present given the permission `registration.registrations.read`
+                description: Field only present given the permissions `codeholders.read` and `registration.registrations.read`
                 properties:
                   pending:
                     type: number
                     format: uint32
                     description: The number of registration entries with the status `pending`.
+
+              codeholderChangeRequests:
+                description: Field only present given the permissions `codeholders.read` and `codeholders.change_requests.read`. Does not count change requests from codeholders hidden under the member filter.
+                properties:
+                  pending:
+                    type: number
+                    format: uint32
+                    description: The number of change requests with the status `pending`.
