@@ -40,3 +40,15 @@ get:
                     type: number
                     format: uint32
                     description: The number of change requests with the status `pending`.
+
+              delegates:
+                description: Field only present given the permissions `codeholders.read`. Excludes codeholders hidden under the member filter.
+                properties:
+                  pendingApplications:
+                    type: number
+                    format: uint32
+                    description: >
+                      Field only present given the permission `delegations.applications.read.<org>` as well as one of the required perms of the child fields.
+
+
+                      The number of delegation applications with the status `pending`.
