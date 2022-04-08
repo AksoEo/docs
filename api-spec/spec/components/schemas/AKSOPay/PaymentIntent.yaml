@@ -15,7 +15,12 @@ properties:
       - $ref: '#/components/schemas/CodeholderId'
 
   customer:
-    description: The customer's info, required even if the customer is a codeholder
+    description: >
+      The customer's info, required even if the customer is a codeholder.
+
+
+      This may be set to null, ONLY if the payment method is not of type Stripe. Setting this to null will prevent receipts from being sent.
+    nullable: true   
     properties:
       email:
         type: string
