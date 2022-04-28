@@ -8,8 +8,8 @@ parameters:
       minLength: 24
       maxLength: 24
 
-post:
-  summary: Generates a PDF export of an intermediary AKSOPay PaymentIntent
+get:
+  summary: Obtains a PDF export of an intermediary AKSOPay PaymentIntent
   description: >
     Requires permission: `pay.payment_intents.read.<org>` or `pay.payment_intents.intermediary.<org>.<intermediaryCountryCode>`.
 
