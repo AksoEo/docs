@@ -1,0 +1,41 @@
+parameters:
+  - name: paymentIntentId
+    in: path
+    required: true
+    description: The id of the PaymentIntent encoded by RFC 4648 base32
+    schema:
+      type: string
+      minLength: 24
+      maxLength: 24
+
+post:
+  summary: (Re)sends the receipt for an AKSOPay PaymentIntent
+  description: >
+    Requires permission: `pay.payment_intents.read.<org>` and `codeholders.send_notif`.
+
+
+    This can only be done when the current status is `succeeded`.
+
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            email:
+              type: string
+              format: email
+              minLength: 3
+              maxLength: 200
+              description: >
+                Optionally, an email to send the receipt to, if not to the email in the customer field.msgpack
+
+
+                This field is required in situations where the customer field of the intent is null.
+  responses:
+    '204':
+      description: Sent
+    '404':
+      description: Not found
+    '409':
+      description: The status of the PaymentIntent is not succeeded
