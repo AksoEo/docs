@@ -88,6 +88,18 @@ properties:
         description: The codeholder's latinized postal address, for searching.
       - $ref: '#/components/schemas/PostalAddress'
 
+  addressInvalid:
+    type: boolean
+    default: false
+    description: >
+      Whether the codeholder's address is invalid. Set this to true if physical mail bounces to avoid sending out more mail to bounce.
+
+
+      Address label generation by default excludes invalid addresses.
+
+
+      Updating a codeholder's address automatically sets this to false.
+
   searchAddress:
     type: string
     maxLength: 2000

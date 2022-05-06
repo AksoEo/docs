@@ -14,6 +14,17 @@ properties:
           The required fields change depending on the country according to `ValidationRules.required_fields` in https://github.com/mirumee/google-i18n-address
       - $ref: '#/components/schemas/PostalAddress'
   
+  addressInvalid:
+    type: boolean
+    description: >
+      Whether the codeholder's address is invalid. Set this to true if physical mail bounces to avoid sending out more mail to bounce.
+
+
+      Address label generation by default excludes invalid addresses.
+
+
+      Updating a codeholder's address automatically sets this to false.
+
   addressPublicity:
     description: The publicity of the codeholder's address in lists
     enum: [ private, public, members ]
