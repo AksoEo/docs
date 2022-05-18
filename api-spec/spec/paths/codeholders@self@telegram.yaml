@@ -1,0 +1,46 @@
+get:
+  summary: Returns whether the user has linked Telegram to their account
+  description: >
+    Must be logged in using user auth.
+  responses:
+    '204':
+      description: The account is linked
+    '404':
+      description: Not using user auth or the user has not set up Telegram deep linking
+
+post:
+  summary: Requests a token to set up Telegram deep linking
+  description: >
+    Must be logged in using user auth.
+  responses:
+    '200':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: 'string'
+            description: >
+              The URL to which the user needs to be directed to successfully link AKSO to their Telegram account.
+
+
+              The user needs to be informed to press the START button to successfully link Telegram.
+
+
+              The link expires after an hour. A new link can be requested at any time by performing a new POST request.
+
+
+              For more information on Telegram deep-linking, see [Telegram's API page on the subject](https://core.telegram.org/bots#deep-linking).
+    '404':
+      description: Not using user auth
+    '409':
+      description: The user has already linked Telegram to their AKSO account
+
+delete:
+  summary: Unlinks Telegram from the signed in user's AKSO account
+  description: >
+    Must be logged in using user auth.
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not using user auth OR no Telegram link found
