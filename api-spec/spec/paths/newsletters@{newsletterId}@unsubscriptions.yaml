@@ -1,0 +1,28 @@
+parameters:
+  - name: newsletterId
+    in: path
+    required: true
+    description: The newsletter id
+    schema:
+      type: number
+      format: uint32
+
+get:
+  summary: Returns all unsubscriptions of a newsletter
+  description: >
+    Requires permission: `newsletters.<org>.read`
+
+
+    Filterable properties: `id`, `time`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/NewsletterUnsubscriber'
+    '404':
+      description: Newsletter not found
+

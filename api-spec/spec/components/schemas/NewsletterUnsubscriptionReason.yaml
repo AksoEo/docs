@@ -1,0 +1,17 @@
+type: integer
+format: uint8
+default: 0
+maximum: 4
+description: >
+  The reason the user unsubscribed.
+
+
+  - 0: Other, or unspecified
+
+  - 1: The user does not remember having subscribed
+
+  - 2: The user thinks the newsletter is too frequent
+
+  - 3: The user's email client cannot render the emails correctly
+
+  - 4: The user is no longer interested in the content of the newsletter

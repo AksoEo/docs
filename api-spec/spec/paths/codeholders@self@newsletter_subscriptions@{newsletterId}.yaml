@@ -12,6 +12,22 @@ get:
 
 delete:
   summary: Deletes a newsletter subscription from the logged in codeholder
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            reason:
+              $ref: '#/components/schemas/NewsletterUnsubscriptionReason'
+
+            description:
+              type: string
+              minLength: 1
+              maxLength: 400
+              nullable: true
+              description: An optional text explaining why the user unsubscribed.
+
   responses:
     '204':
       description: Deleted

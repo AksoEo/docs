@@ -1,0 +1,21 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    description: The unique identifier of this unsubscription
+  reason:
+    $ref: '#/components/schemas/NewsletterUnsubscriptionReason'
+  description:
+    type: string
+    minLength: 1
+    maxLength: 400
+    nullable: true
+    description: An optional message from the user on why they unsubscribed.
+  time:
+    type: integer
+    format: uint64
+    description: The unix time at which the user unsubscribed
+  subscriberCount:
+    type: integer
+    format: uint32
+    description: The amount of subscribers of the newsletter after the user unsubscribed.
