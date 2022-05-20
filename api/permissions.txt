@@ -55,7 +55,6 @@ newsletters:
 		read
 		update
 		delete
-		send
 
 queries:
 	create
