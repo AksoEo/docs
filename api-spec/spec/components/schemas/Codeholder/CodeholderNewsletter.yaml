@@ -1,0 +1,16 @@
+allOf:
+  - properties:
+      org:
+        readOnly: true
+      name:
+        readOnly: true
+      description:
+        readOnly: true
+      public:
+        readOnly: true
+      time:
+        type: integer
+        format: uint64
+        readOnly: true
+        description: The unix timestamp at which the codeholder subscribed to the newsletter
+  - $ref: '#/components/schemas/Newsletter'

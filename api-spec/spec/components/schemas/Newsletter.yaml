@@ -1,0 +1,38 @@
+properties:
+  id:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The unique identifier of the newsletter
+
+  org:
+    $ref: '#/components/schemas/AKSOOrganization'
+
+  name:
+    type: string
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 60
+    description: The name of the newsletter as shown to potential subscribers
+
+  description:
+    type: string
+    format: markdown
+    pattern: '^[^\n]+$'
+    minLength: 1
+    maxLength: 200
+    nullable: true
+    description: >
+      A short public description of the newsletter, shown as a subtitle.
+
+
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`
+
+  public:
+    type: boolean
+    default: true
+    description: >
+      Whether the newsletter is publicly subscribable by anyone.
+
+
+      Set this to false to effectively archive the newsletter.

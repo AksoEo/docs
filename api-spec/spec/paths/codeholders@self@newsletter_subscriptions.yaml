@@ -1,0 +1,37 @@
+get:
+  summary: Returns the logged in codeholder's newsletter subscriptions
+  description: >
+    Filterable properties: `id`, `org`, `name`, `public`, `time`
+
+
+    Searchable properties: `name`, `description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CodeholderNewsletter'
+    '404':
+      description: No user auth session found
+
+post:
+  summary: Adds a new newsletter subscription for the logged in codeholder
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/CodeholderNewsletter'
+            - required:
+                - id
+  responses:
+    '201':
+      description: Created
+    '404':
+      description: No user auth session found or unknown newsletter id
+    '409':
+      description: Entry already exists

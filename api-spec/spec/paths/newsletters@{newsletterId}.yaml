@@ -1,0 +1,52 @@
+parameters:
+  - name: newsletterId
+    in: path
+    required: true
+    description: The newsletter id
+    schema:
+      type: number
+      format: uint32
+
+get:
+  summary: Returns a newsletter
+  description: >
+    Requires permission: `newsletters.<org>.read`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/Newsletter'
+    '404':
+      description: Not found
+
+patch:
+  summary: Updates a newsletter
+  description: >
+    Requires permission: `magazines.<org>.update`
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/Newsletter'
+            - properties:
+                org:
+                  readOnly: true
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not found
+
+delete:
+  summary: Deletes a newsletter
+  description: >
+    Requires permission: `magazines.<org>.delete`
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not found

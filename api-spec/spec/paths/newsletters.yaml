@@ -1,13 +1,13 @@
 get:
-  summary: Returns all magazines
+  summary: Returns all newsletters
   description: >
-    Filterable properties: `id`, `org`, `name`
+    Filterable properties: `id`, `org`, `name`, `public`
 
 
     Searchable properties: `name`, `description`
 
 
-    Requires permission: `magazines.read.<org>`
+    Requires permission: `newsletters.<org>.read`
   responses:
     '200':
       description: OK
@@ -16,19 +16,19 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Magazine'
+              $ref: '#/components/schemas/Newsletter'
 
 post:
-  summary: Creates a new magazine
+  summary: Creates a new newsletter
   description: >
-    Requires permission: `magazines.create.<org>`
+    Requires permission: `magazines.<org>.create`
   requestBody:
     required: true
     content:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/Magazine'
+            - $ref: '#/components/schemas/Newsletter'
             - required:
               - org
               - name

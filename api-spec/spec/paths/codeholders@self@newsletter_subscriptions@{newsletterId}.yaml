@@ -1,0 +1,19 @@
+get:
+  summary: Returns a newsletter subscription of the logged in codeholder
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CodeholderNewsletter'
+    '404':
+      description: No user auth session found or subscription not found
+
+delete:
+  summary: Deletes a newsletter subscription from the logged in codeholder
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: No user auth session found or subscription not found

@@ -49,6 +49,14 @@ membership_categories:
 	update
 	delete
 
+newsletters:
+	<org>:
+		create
+		read
+		update
+		delete
+		send
+
 queries:
 	create
 	read

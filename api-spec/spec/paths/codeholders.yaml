@@ -44,6 +44,9 @@ get:
 
     - `$magazineSubscriptions`: Takes a filter object and returns only codeholders matching the magazine subscriptions filter.
       May use all of the filterable properties from `GET /codeholders/{codeholderId}/magazine_subscriptions`
+
+    - `$newsletterSubscriptions`: Takes a filter object and returns only codeholders subscribed to a newsletter matching the newsletter filter.
+      May use all of the filterable properties from `GET /codeholders/self/newsletter_subscriptions`.
   responses:
     '200':
       description: OK
@@ -68,10 +71,9 @@ post:
     content:
       application/vnd.msgpack:
         schema:
-          items:
-            oneOf:
-              - $ref: '#/components/schemas/HumanCodeholderCreation'
-              - $ref: '#/components/schemas/OrgCodeholderCreation'
+          oneOf:
+            - $ref: '#/components/schemas/HumanCodeholderCreation'
+            - $ref: '#/components/schemas/OrgCodeholderCreation'
   responses:
     '201':
       description: Created
