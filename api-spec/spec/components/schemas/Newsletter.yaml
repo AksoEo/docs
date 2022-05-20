@@ -36,3 +36,9 @@ properties:
 
 
       Set this to false to effectively archive the newsletter.
+
+  numSubscribers:
+    type: integer
+    format: uint32
+    readOnly: true
+    description: The number of subscribers of the newsletter
