@@ -24,7 +24,7 @@ get:
 patch:
   summary: Updates a newsletter
   description: >
-    Requires permission: `magazines.<org>.update`
+    Requires permission: `newsletters.<org>.update`
   requestBody:
     required: true
     content:
@@ -44,7 +44,7 @@ patch:
 delete:
   summary: Deletes a newsletter
   description: >
-    Requires permission: `magazines.<org>.delete`
+    Requires permission: `newsletters.<org>.delete`
   responses:
     '204':
       description: Deleted
