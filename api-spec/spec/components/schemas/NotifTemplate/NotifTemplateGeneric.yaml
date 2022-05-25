@@ -30,6 +30,7 @@ properties:
     description: The purpose of the notif template. See docs/notif_templating.md for a detailed explanation of each intent
     enum:
       - codeholder
+      - newsletter
 
   script:
     type: object

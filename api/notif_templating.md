@@ -59,3 +59,6 @@ This is used to send simple multi-purpose notifications to codeholders. The foll
 	}
 }
 ```
+
+## `newsletter`
+This is used to send out newsletters to their subscribers. It inherits all fields from `codeholder`.
