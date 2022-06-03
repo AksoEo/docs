@@ -1,0 +1,15 @@
+properties:
+  pref:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    description: >
+      How the codeholder wants to receive notifications. Defaults to only `email`.
+
+
+      `telegram` can only be chosen if a Telegram account is linked to the user.
+    items:
+      type: string
+      enum:
+        - email
+        - telegram
