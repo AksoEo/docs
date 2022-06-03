@@ -22,6 +22,7 @@ properties:
     type: array
     maxItems: 10
     description: The delegate's city delegations.
+    default: []
     items:
       $ref: '#/components/schemas/WikidataCityId'
   cityCountries:
@@ -35,6 +36,7 @@ properties:
     type: array
     maxItems: 10
     description: The countries this codeholder is a delegate of.
+    default: []
     items:
       properties:
         country:
@@ -53,6 +55,7 @@ properties:
     type: array
     maxItems: 50
     description: The delegate's subject delegation ids.
+    default: []
     items:
       type: integer
       format: uint32
@@ -121,7 +124,3 @@ properties:
       - paperAnnualBook
 required:
   - tos
-  - cities
-  - countries
-  - subjects
-  - hosting
