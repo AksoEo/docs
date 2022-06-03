@@ -1,0 +1,56 @@
+parameters:
+  - name: category
+    in: path
+    required: true
+    description: The category of notifs. These may be grouped for bulk changes in user interfaces where deemed appropriate. All categories prefixed with `admin-` should only be shown to users with the permission `admin`.
+    schema:
+      type: string
+      enum:
+        - admin-address-labels-ready
+        - tie-breaker-needed
+        - fishy-location
+        - email-changed-admin
+        - forgot-password
+
+get:
+  summary: Returns the signed in user's categorial notif pref override
+  description: >
+    Must be logged in using user auth.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            $ref: '#/components/schemas/CodeholderNotifPref'
+    '404':
+      description: Not using user auth OR no override
+
+put:
+  summary: Sets the signed in user's categorial notif pref override
+  description: >
+    Must be logged in using user auth.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          allOf:
+            - $ref: '#/components/schemas/CodeholderNotifPref'
+            - required:
+                - pref
+  responses:
+    '204':
+      description: Updated
+    '404':
+      description: Not using user auth
+
+delete:
+  summary: Deletes the signed in user's categorial notif pref override
+  description: >
+    Must be logged in using user auth.
+  responses:
+    '204':
+      description: Deleted
+    '404':
+      description: Not using user auth OR no override
