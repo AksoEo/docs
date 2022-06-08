@@ -52,3 +52,18 @@ get:
 
 
                       The number of delegation applications with the status `pending`.
+
+              magazines:
+                description: Field only present given the permission `magazines.read.<org>`
+                properties:
+                  paperNoAddress:
+                    type: number
+                    format: uint32
+                    description: >
+                      Field only present given the permissions `magazines.subscriptions.read.<org>`, `codeholders.read`.
+
+
+                      The member filter is applied to this count.
+
+
+                      The number of magazine paper subscribers without an address or with the field addressInvalid set to true.
