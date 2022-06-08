@@ -55,10 +55,39 @@ This is used to send simple multi-purpose notifications to codeholders. The foll
 		officePhone
 		landlinePhone
 		age
-		agePrimo // The codeholder's age in whole years at the beginning of hte year
+		agePrimo // The codeholder's age in whole years at the beginning of the year
 	}
 }
 ```
 
 ## `newsletter`
 This is used to send out newsletters to their subscribers. It inherits all fields from `codeholder`.
+
+## `newsletter_magazine`
+This is used to send out magazine announcement newsletters to their subscriberrs. It inherits all fields from `newsletter` and adds the following fields:
+
+```js
+{
+	magazine: {
+		id
+		org
+		name
+		description
+		issn
+		magazineURL // the URL of the magazine on the organization's website
+	},
+	edition: {
+		id
+		idHuman
+		date
+		thumbnailURL // null if no thumbnail
+		description
+		editionURL // the URL of the edition on the organization's website
+	},
+	toc: { // a generated, formatted table of contents of the magazine edition
+		md   // formatted as markdown
+		html // formatted as html
+		text // formatted as plaintext
+	}
+}
+```

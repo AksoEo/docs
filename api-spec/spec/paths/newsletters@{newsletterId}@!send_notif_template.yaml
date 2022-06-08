@@ -24,7 +24,28 @@ post:
                 The id of the notif template to send.
 
 
-                Must have `intent = newsletter` and be of the same org as the newsletter.
+                `intent` must be `newsletter` or `newsletter_*` and be of the same org as the newsletter.
+
+
+                When `intent` is `newsletter_magazine` the perm `magazines.read.<org>` is required.
+
+            magazineId:
+              type: number
+              format: uint32
+              description: >
+                The id of the magazine. Org mismatch between magazine and newsletter is permitted, but the user should be warned.
+
+
+                Required if `intent` is `newsletter_magazine`. Otherwise unavailable.
+
+            editionId:
+              type: number
+              format: uint32
+              description: >
+                The id of the magazine edition.
+
+
+                Required if `intent` is `newsletter_magazine`. Otherwise unavailable.
 
             deleteTemplateOnComplete:
               type: boolean
