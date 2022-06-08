@@ -44,11 +44,19 @@ get:
               delegates:
                 description: Field only present given the permissions `codeholders.read`. Excludes codeholders hidden under the member filter.
                 properties:
+                  missingGeodbCities:
+                    type: number
+                    format: uint32
+                    description: >
+                      Field only present given the permission `codeholders.delegations.read.<org>` and `geodb.read`.
+
+
+                      The number of delegates with a geodb city that does not exist.
                   pendingApplications:
                     type: number
                     format: uint32
                     description: >
-                      Field only present given the permission `delegations.applications.read.<org>` as well as one of the required perms of the child fields.
+                      Field only present given the permission `delegations.applications.read.<org>`.
 
 
                       The number of delegation applications with the status `pending`.
