@@ -45,13 +45,14 @@ get:
                 description: Field only present given the permissions `codeholders.read`. Excludes codeholders hidden under the member filter.
                 properties:
                   missingGeodbCities:
-                    type: number
-                    format: uint32
+                    type: array
+                    items:
+                      type: string
                     description: >
                       Field only present given the permission `codeholders.delegations.read.<org>` and `geodb.read`.
 
 
-                      The number of delegates with a geodb city that does not exist.
+                      The 10 first geodb cities used by delegates that no longer exist in geodb.
                   pendingApplications:
                     type: number
                     format: uint32
