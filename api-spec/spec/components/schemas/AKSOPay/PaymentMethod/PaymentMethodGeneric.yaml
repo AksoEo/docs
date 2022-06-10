@@ -71,6 +71,16 @@ properties:
 
       Stripe PaymentMethods will automatically be marked as `abandoned`, when Stripe says so.
 
+  maxAmount:
+    type: integer
+    format: uint32
+    nullable: true
+    description: >
+      The maximum total amount for intents using this payment method in USD in the [smallest currency unit](https://stripe.com/docs/currencies#zero-decimal).
+
+
+      Set this to `null` to have no maximum amount.
+
   internal:
     type: boolean
     default: false
