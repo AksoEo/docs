@@ -47,7 +47,7 @@ En tiu ĉi objekto estas du ŝlosiloj: »nomo« kaj »koloroj«. Pensu pri ŝlos
 			"plej-ŝatata-koloro": "verda"
 		},
 		"Grundtvig": {
-			"naskiĝtago": "1783-09-8",
+			"naskiĝtago": "1783-09-08",
 			"plej-ŝatata-koloro": "ruĝa"
 		}
 	}
