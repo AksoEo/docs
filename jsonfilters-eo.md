@@ -47,7 +47,7 @@ En tiu ĉi objekto estas du ŝlosiloj: »nomo« kaj »koloroj«. Pensu pri ŝlos
 			"plej-ŝatata-koloro": "verda"
 		},
 		"Grundtvig": {
-			"naskiĝtago": "1783-09-8",
+			"naskiĝtago": "1783-09-08",
 			"plej-ŝatata-koloro": "ruĝa"
 		}
 	}
@@ -211,7 +211,7 @@ En JSON-filtriloj en AKSO-Administranto uzeblas ĉiuj plifaciligoj de JSON5 ([pl
 }
 ```
 
-Rimarku, ke la ŝlosiloj (kampoj) ne estas enkadrigitaj je citiloj (`" "`) krom por `address.country` (loĝlando). En JSON5 citiloj estas nur divigaj por ŝlosiloj enhavantaj je neliteraj signoj, kiel ekz. punkto.
+Rimarku, ke la ŝlosiloj (kampoj) ne estas enkadrigitaj je citiloj (`" "`) krom por `address.country` (loĝlando). En JSON5 citiloj estas nur devigaj por ŝlosiloj enhavantaj je neliteraj signoj, kiel ekz. punkto.
 
 JSON5 ankaŭ permesas komentojn, kiuj estas konservitaj ankaŭ en konservitaj filtriloj. Komentoj utilas por klarigi kion faras la linio(j) sub la komento mem, kiam la filtrilo estas pli komplika. Se vi timas forgesi kial vi skribis ion precipmaniere aŭ kion io faras, aldonu komento(j)n.
 
