@@ -1,4 +1,6 @@
-# Kio estas JSON-filtriloj kaj kiel ili uzeblas?
+Kio estas JSON-filtriloj kaj kiel ili uzeblas?
+===
+
 ## Kio estas datumoj?
 En AKSO datumo estas ekz. membro, revuo, revua numero ktp.
 
@@ -183,6 +185,43 @@ kaj
 }
 ```  
 Akceptas kiel valoron nur liston de JSON-filtrilaj objektoj.
+
+## Specialaj operacioj
+Specifaj kolektoj foje permesas aliajn operaciojn krom tiuj, kiujn permesas ĉiuj resursoj supre listigitaj. Se estas tiaj specialaj operacioj, ili estas listigitaj ĉe la paĝo de la resurso en [dok.akso.org](https://dok.akso.org).
+
+Ni trairu kelkajn oftajn specialajn operaciojn:
+
+### `$hasAny` — havas ajnan valoron el listo
+Uzata sur kampoj, kiuj estas alie nefiltreblaj ĉar ili estas listoj. Ekzemple ĉe membroj, eblus fari jene:
+```json
+{
+	"addressCountryGroups": {
+		"$hasAny": [
+			"x01", "x02"
+		]
+	}
+}
+```
+
+Tio elfiltrus ĉiujn membrojn, kiuj *ne* estas en loĝlandaro 1 aŭ 2.
+
+### Kadraj operacioj
+Uzata por filtri laŭ kampoj, kiuj estas listoj de objektoj, aŭ por filtri laŭ subkolektoj kiel ekz. delegoj de membroj.
+
+Ekz. ĉe membroj eblas filtri jene:
+```json
+{
+	"$membership": {
+		"lifetime": true,
+		"year": {
+			"$lte": 2020
+		},
+		"givesMembership": true
+	}
+}
+```
+
+Tiu filtrilo elfiltros ĉiujn membrojn, kiuj *ne* estis dumvivaj membroj en 2020.
 
 ## Nevalidaj JSON aŭ JSON-filtrilo
 Se vi ricevas eraron de AKSO-administranto pro via JSON-filtrilo, estas tre verŝajna, ke tio okazas pro *sintaksa eraro* en la JSON. Por kontroli ĉu via JSON estas valida, vi povas uzi [interretan validigilon](https://jsonlint.com/). Algluu en la grandan kampon vian JSON-filtrilon kaj alklaku la butonon » Validate JSON «. Sube de la butono troviĝas granda skatolo kun la teksto » Valid JSON « se via filtrilo estas sintakte ĝusta. Se ĝi estas sintakse malĝusta, la skatolo estos ruĝa kaj enhavos anglalingvan klarigon pri la eraro.
