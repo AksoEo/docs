@@ -1,0 +1,33 @@
+parameters:
+  - in: path
+    name: magazineId
+    required: true
+    description: The id of the magazine
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: editionId
+    required: true
+    description: The id of the edition
+    schema:
+      type: integer
+      format: uint32
+
+  - in: path
+    name: format
+    required: true
+    description: The format of the file
+    schema:
+      $ref: '#/components/schemas/MagazineEditionFileFormat'
+
+post:
+  summary: Bumps the download count for this file of this magazine edition
+  description: >
+    Permissions required: `magazines.read.<org>`
+  responses:
+    '204':
+      description: OK
+    '404':
+      description: Not found

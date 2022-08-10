@@ -37,7 +37,7 @@ get:
                 downloads:
                   type: integer
                   format: uint32
-                  description: The number of downloads for this file
+                  description: The number of non-unique downloads for this file
 
                 size:
                   type: integer
