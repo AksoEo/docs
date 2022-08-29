@@ -1,15 +1,13 @@
 {
   "name": "akso",
   "version": "1.0.0",
-  "dependencies": {
-    "swagger-repo": "^2.0.0-rc.15",
-    "ws": "^3.3.3"
-  },
   "private": true,
   "scripts": {
-    "start": "swagger-repo serve",
-    "build": "swagger-repo build -o web_deploy",
-    "test": "swagger-repo validate",
-    "gh-pages": "swagger-repo gh-pages"
+    "start": "node_modules/.bin/redocly preview-docs spec/openapi.yaml",
+    "build": "node_modules/.bin/redoc-cli build spec/openapi.yaml"
+  },
+  "dependencies": {
+    "@redocly/cli": "^1.0.0-beta.108",
+    "redoc-cli": "^0.13.17"
   }
 }
