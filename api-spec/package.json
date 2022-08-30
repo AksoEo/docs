@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node_modules/.bin/redocly preview-docs spec/openapi.yaml",
-    "build": "node_modules/.bin/redoc-cli build spec/openapi.yaml"
+    "start": "./gen-spec.js; node_modules/.bin/redocly preview-docs spec/openapi.yaml",
+    "build": "./gen-spec.js; node_modules/.bin/redoc-cli build spec/openapi.yaml"
   },
   "dependencies": {
     "@redocly/cli": "^1.0.0-beta.108",

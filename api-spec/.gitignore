@@ -2,3 +2,5 @@
 web_deploy
 node_modules
 bundled.yaml
+spec/openapi.yaml
+redoc-static.html

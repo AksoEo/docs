@@ -1,4 +1,3 @@
 type: string
 enum: ['human', 'org']
-required: true
 description: The codeholder's type
