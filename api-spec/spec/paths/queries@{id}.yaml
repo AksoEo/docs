@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/SavedQuery'
+            $ref: '../components/schemas/SavedQuery.yaml'
     '404':
       description: Query filter not found
 

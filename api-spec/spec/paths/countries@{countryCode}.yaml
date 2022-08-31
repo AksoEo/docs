@@ -16,7 +16,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/Country'
+            $ref: '../components/schemas/Country.yaml'
 
     '404':
       description: Not found
@@ -29,7 +29,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/Country'
+          $ref: '../components/schemas/Country.yaml'
   responses:
     '204':
       description: Updated

@@ -33,7 +33,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/MagazineEditionToCEntry'
+            $ref: '../components/schemas/Magazine/MagazineEditionToCEntry.yaml'
     '404':
       description: Not found
 
@@ -46,7 +46,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/MagazineEditionToCEntry'
+          $ref: '../components/schemas/Magazine/MagazineEditionToCEntry.yaml'
   responses:
     '201':
       description: Created

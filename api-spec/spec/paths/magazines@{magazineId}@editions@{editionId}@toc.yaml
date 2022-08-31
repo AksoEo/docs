@@ -33,7 +33,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/MagazineEditionToCEntry'
+              $ref: '../components/schemas/Magazine/MagazineEditionToCEntry.yaml'
     '404':
       description: Magazine or edition not found
 
@@ -47,7 +47,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/MagazineEditionToCEntry'
+            - $ref: '../components/schemas/Magazine/MagazineEditionToCEntry.yaml'
             - required:
               - page
               - title

@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/Vote'
+            $ref: '../components/schemas/Vote/Vote.yaml'
 
     '404':
       description: Not found
@@ -47,7 +47,7 @@ patch:
                   readOnly: true
                 type:
                   readOnly: true
-            - $ref: '#/components/schemas/Vote'
+            - $ref: '../components/schemas/Vote/Vote.yaml'
   responses:
     '204':
       description: Updated

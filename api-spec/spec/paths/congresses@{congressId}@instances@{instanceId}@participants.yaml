@@ -33,7 +33,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CongressInstanceParticipant'
+              $ref: '../components/schemas/Congress/CongressInstanceParticipant.yaml'
 
     '404':
       description: Not found
@@ -48,7 +48,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/CongressInstanceParticipant'
+            - $ref: '../components/schemas/Congress/CongressInstanceParticipant.yaml'
             - required:
                 - data
   responses:

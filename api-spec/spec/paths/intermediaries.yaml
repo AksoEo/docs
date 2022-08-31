@@ -20,4 +20,4 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Intermediary'
+              $ref: '../components/schemas/Intermediary.yaml'

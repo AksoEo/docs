@@ -4,12 +4,12 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
   - in: query
     name: modCmt
     schema:
-      $ref: '#/components/schemas/CodeholderModCmt'
+      $ref: '../components/schemas/Codeholder/CodeholderModCmt.yaml'
 
 put:
   summary: Sets a codeholder's profile picture

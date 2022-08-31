@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Returns the admin groups a codeholder belongs to
@@ -28,7 +28,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/AdminGroup'
+              $ref: '../components/schemas/AdminGroup.yaml'
 
     '404':
       description: Codeholder not found

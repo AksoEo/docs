@@ -21,7 +21,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CountryOrgList'
+            $ref: '../components/schemas/CountryOrgList.yaml'
 
 put:
   summary: Updates/creates a country org list
@@ -32,7 +32,7 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/CountryOrgList'
+          $ref: '../components/schemas/CountryOrgList.yaml'
   responses:
     '204':
       description: Updated

@@ -20,7 +20,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/APIClient'
+              $ref: '../components/schemas/APIClient.yaml'
 
 post:
   summary: Creates a new API client
@@ -32,7 +32,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/APIClient'
+            - $ref: '../components/schemas/APIClient.yaml'
             - required:
               - name
               - ownerName

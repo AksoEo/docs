@@ -45,6 +45,6 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderId'
+              $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
     '404':
       description: Not found

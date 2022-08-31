@@ -28,13 +28,13 @@ get:
               allOf:
                 - properties:
                     codeholderId:
-                      $ref: '#/components/schemas/CodeholderId'
+                      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
                     hasVoted:
                       type: boolean
                       description: Whether the codeholder has voted
                     time:
                       nullable: true
-                - $ref: '#/components/schemas/VoteBallot'
+                - $ref: '../components/schemas/Vote/VoteBallot.yaml'
 
     '404':
       description: Not found

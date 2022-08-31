@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
   - name: fileId
     in: path

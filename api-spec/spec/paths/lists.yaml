@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/List'
+              $ref: '../components/schemas/List.yaml'
 
 post:
   summary: Creates a list
@@ -34,7 +34,7 @@ post:
             - required:
                 - name
                 - filters
-            - $ref: '#/components/schemas/List'
+            - $ref: '../components/schemas/List.yaml'
   responses:
     '201':
       description: Created

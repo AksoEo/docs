@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/MembershipCategory'
+            $ref: '../components/schemas/MembershipCategory.yaml'
     '404':
       description: Membership category not found
 

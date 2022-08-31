@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/Congress'
+            $ref: '../components/schemas/Congress/Congress.yaml'
 
     '404':
       description: Not found
@@ -45,7 +45,7 @@ patch:
             - properties:
                 org:
                   readOnly: true
-            - $ref: '#/components/schemas/Congress'
+            - $ref: '../components/schemas/Congress/Congress.yaml'
   responses:
     '204':
       description: Updated

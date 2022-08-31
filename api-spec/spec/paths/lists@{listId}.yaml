@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/List'
+            $ref: '../components/schemas/List.yaml'
     '404':
       description: Not found
 
@@ -43,7 +43,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/List'
+          $ref: '../components/schemas/List.yaml'
 
   responses:
     '204':

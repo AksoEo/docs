@@ -25,7 +25,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/MagazineSubscription'
+            $ref: '../components/schemas/Magazine/MagazineSubscription.yaml'
 
     '404':
       description: Not found
@@ -43,7 +43,7 @@ patch:
             - properties:
                 codeholderId:
                   readOnly: true
-            - $ref: '#/components/schemas/MagazineSubscription'
+            - $ref: '../components/schemas/Magazine/MagazineSubscription.yaml'
   responses:
     '204':
       description: Updated

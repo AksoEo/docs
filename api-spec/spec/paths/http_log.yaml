@@ -31,12 +31,12 @@ get:
                   allOf:
                     - nullable: true
                       description: The id of the codeholder who made the request, if user authentication was used
-                    - $ref: '#/components/schemas/CodeholderId'
+                    - $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
                 apiKey:
                   allOf:
                     - nullable: true
                       description: The api key of the application that made the request, if application authentication was used 
-                    - $ref: '#/components/schemas/APIKey'
+                    - $ref: '../components/schemas/APIKey.yaml'
                 ip:
                   type: string
                   description: The IP address of the client

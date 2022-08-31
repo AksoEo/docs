@@ -6,7 +6,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CodeholderNewsletter'
+            $ref: '../components/schemas/Codeholder/CodeholderNewsletter.yaml'
     '404':
       description: No user auth session found or subscription not found
 
@@ -19,7 +19,7 @@ delete:
         schema:
           properties:
             reason:
-              $ref: '#/components/schemas/NewsletterUnsubscriptionReason'
+              $ref: '../components/schemas/NewsletterUnsubscriptionReason.yaml'
 
             description:
               type: string

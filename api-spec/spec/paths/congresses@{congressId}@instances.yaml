@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CongressInstance'
+              $ref: '../components/schemas/Congress/CongressInstance.yaml'
     '404':
       description: Not found
 
@@ -30,7 +30,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/CongressInstance'
+            - $ref: '../components/schemas/Congress/CongressInstance.yaml'
             - required:
                 - name
                 - humanId

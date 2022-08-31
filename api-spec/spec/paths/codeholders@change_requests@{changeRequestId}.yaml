@@ -19,7 +19,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CodeholderChangeRequest'
+            $ref: '../components/schemas/Codeholder/CodeholderChangeRequest.yaml'
 
 patch:
   summary: Updates a codeholder change change request
@@ -30,7 +30,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/CodeholderChangeRequest'
+          $ref: '../components/schemas/Codeholder/CodeholderChangeRequest.yaml'
   responses:
     '404':
       description: Not found

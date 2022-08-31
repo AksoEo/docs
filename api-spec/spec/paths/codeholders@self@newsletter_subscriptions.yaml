@@ -13,7 +13,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderNewsletter'
+              $ref: '../components/schemas/Codeholder/CodeholderNewsletter.yaml'
     '404':
       description: No user auth session found
 
@@ -25,7 +25,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/CodeholderNewsletter'
+            - $ref: '../components/schemas/Codeholder/CodeholderNewsletter.yaml'
             - required:
                 - id
   responses:

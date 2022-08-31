@@ -8,7 +8,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CodeholderNotifPref'
+            $ref: '../components/schemas/Codeholder/CodeholderNotifPref.yaml'
     '404':
       description: Not using user auth
 
@@ -22,7 +22,7 @@ put:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/CodeholderNotifPref'
+            - $ref: '../components/schemas/Codeholder/CodeholderNotifPref.yaml'
             - required:
                 - pref
   responses:

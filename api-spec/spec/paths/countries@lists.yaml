@@ -14,4 +14,4 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CountryOrgList'
+              $ref: '../components/schemas/CountryOrgList.yaml'

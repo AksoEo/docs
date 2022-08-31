@@ -25,7 +25,7 @@ get:
             items:
               properties:
                 permission:
-                  $ref: '#/components/schemas/Permission'
+                  $ref: '../components/schemas/Permission.yaml'
     '404':
       description: Not found
 
@@ -44,7 +44,7 @@ put:
           items:
             properties:
               permission:
-                $ref: '#/components/schemas/Permission'
+                $ref: '../components/schemas/Permission.yaml'
   responses:
     '204':
       description: Updated

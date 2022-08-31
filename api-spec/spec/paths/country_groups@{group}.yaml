@@ -16,7 +16,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CountryGroup'
+            $ref: '../components/schemas/CountryGroup.yaml'
     '404':
       description: Country group not found
 

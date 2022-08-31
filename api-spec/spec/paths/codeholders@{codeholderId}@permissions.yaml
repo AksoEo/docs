@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Returns all permissions granted to a codeholder
@@ -23,7 +23,7 @@ get:
             items:
               properties:
                 permission:
-                  $ref: '#/components/schemas/Permission'
+                  $ref: '../components/schemas/Permission.yaml'
     '404':
       description: Not found
 
@@ -42,7 +42,7 @@ put:
           items:
             properties:
               permission:
-                $ref: '#/components/schemas/Permission'
+                $ref: '../components/schemas/Permission.yaml'
   responses:
     '204':
       description: Updated

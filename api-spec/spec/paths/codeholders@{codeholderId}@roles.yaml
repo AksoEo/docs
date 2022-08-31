@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Returns a codeholder's roles
@@ -27,7 +27,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderRoleEntry'
+              $ref: '../components/schemas/Codeholder/CodeholderRoleEntry.yaml'
     '404':
       description: Codeholder not found
 
@@ -47,7 +47,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/CodeholderRoleEntry'
+            - $ref: '../components/schemas/Codeholder/CodeholderRoleEntry.yaml'
             - required:
               - roleId
   responses:

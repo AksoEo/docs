@@ -9,7 +9,7 @@ put:
           properties:
             login:
               oneOf:
-                - $ref: '#/components/schemas/UEACode'
+                - $ref: '../components/schemas/UEACode.yaml'
                 - type: string
                   title: email
                   minLength: 1
@@ -60,7 +60,7 @@ get:
           schema:
             properties:
               csrfToken:
-                $ref: '#/components/schemas/CSRFToken'
+                $ref: '../components/schemas/CSRFToken.yaml'
 
               totpSetUp:
                 type: boolean

@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Gets a codeholder's delegations for a specific org
@@ -21,7 +21,7 @@ get:
                     writeOnly: true
                   org:
                     writeOnly: true
-              - $ref: '#/components/schemas/CodeholderDelegation'
+              - $ref: '../components/schemas/Codeholder/CodeholderDelegation.yaml'
       description: OK
     '404':
       description: Not found
@@ -43,7 +43,7 @@ put:
                   readOnly: true
                 org:
                   readOnly: true
-            - $ref: '#/components/schemas/CodeholderDelegation'
+            - $ref: '../components/schemas/Codeholder/CodeholderDelegation.yaml'
   responses:
     '204':
       description: Updated

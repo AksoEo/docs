@@ -20,7 +20,7 @@ parameters:
     required: true
     description: The format of the file
     schema:
-      $ref: '#/components/schemas/MagazineEditionFileFormat'
+      $ref: '../components/schemas/Magazine/MagazineEditionFileFormat.yaml'
 
 get:
   summary: Returns a file attached to a magazine edition

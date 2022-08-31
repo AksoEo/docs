@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
   - name: loginId
     in: path
@@ -27,7 +27,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CodeholderLogin'
+            $ref: '../components/schemas/Codeholder/CodeholderLogin.yaml'
 
     '404':
       description: Codeholder or login entry not found

@@ -29,7 +29,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/PaymentMethod'
+              $ref: '../components/schemas/AKSOPay/PaymentMethod/PaymentMethod.yaml'
     '404':
       description: Not found
 
@@ -43,7 +43,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/PaymentMethod'
+            - $ref: '../components/schemas/AKSOPay/PaymentMethod/PaymentMethod.yaml'
             - required:
                 - type
                 - name

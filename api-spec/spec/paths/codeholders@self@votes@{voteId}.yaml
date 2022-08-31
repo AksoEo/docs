@@ -17,6 +17,6 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CodeholderVote'
+            $ref: '../components/schemas/Codeholder/CodeholderVote.yaml'
     '404':
       description: Not found

@@ -20,6 +20,6 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/VoteResult'
+            $ref: '../components/schemas/Vote/VoteResult.yaml'
     '404':
       description: Vote result not found

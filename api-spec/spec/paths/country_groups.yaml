@@ -22,7 +22,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CountryGroup'
+              $ref: '../components/schemas/CountryGroup.yaml'
 
 post:
   summary: Creates a new country group
@@ -33,7 +33,7 @@ post:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/CountryGroup'
+          $ref: '../components/schemas/CountryGroup.yaml'
   responses:
     '201':
       description: Created

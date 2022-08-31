@@ -21,7 +21,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/PaymentIntent'
+            $ref: '../components/schemas/AKSOPay/PaymentIntent.yaml'
     '404':
       description: Not found
 
@@ -35,7 +35,7 @@ patch:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/PaymentIntent'
+            - $ref: '../components/schemas/AKSOPay/PaymentIntent.yaml'
             - properties:
                 purposes:
                   readOnly: true

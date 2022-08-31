@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/AddressLabelTemplate'
+              $ref: '../components/schemas/AddressLabelTemplate.yaml'
 
 post:
   summary: Creates an address label template
@@ -37,7 +37,7 @@ post:
                 - rows
                 - colGap
                 - rowGap
-            - $ref: '#/components/schemas/AddressLabelTemplate'
+            - $ref: '../components/schemas/AddressLabelTemplate.yaml'
   responses:
     '201':
       description: Created

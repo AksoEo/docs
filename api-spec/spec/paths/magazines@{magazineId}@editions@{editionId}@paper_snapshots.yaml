@@ -30,7 +30,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/MagazinePaperAccessSnapshot'
+              $ref: '../components/schemas/Magazine/MagazinePaperAccessSnapshot.yaml'
     '404':
       description: Magazine or edition not found
 
@@ -43,7 +43,7 @@ post:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/MagazinePaperAccessSnapshot'
+          $ref: '../components/schemas/Magazine/MagazinePaperAccessSnapshot.yaml'
   responses:
     '201':
       description: Created

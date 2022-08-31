@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/DelegationSubject'
+              $ref: '../components/schemas/DelegationSubject.yaml'
 
 post:
   summary: Creates a delegation subject
@@ -33,7 +33,7 @@ post:
               - required:
                 - org
                 - name
-              - $ref: '#/components/schemas/DelegationSubject'
+              - $ref: '../components/schemas/DelegationSubject.yaml'
   responses:
     '201':
       description: Created

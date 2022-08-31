@@ -20,7 +20,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/AdminGroup'
+              $ref: '../components/schemas/AdminGroup.yaml'
 
 post:
   summary: Creates a new admin group
@@ -32,7 +32,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/AdminGroup'
+            - $ref: '../components/schemas/AdminGroup.yaml'
             - required:
               - name
   responses:

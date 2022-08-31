@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/VoteBallot'
+            $ref: '../components/schemas/Vote/VoteBallot.yaml'
     '404':
       description: Not found
 
@@ -35,7 +35,7 @@ put:
         schema:
           allOf:
             - required: [ ballot ]
-            - $ref: '#/components/schemas/VoteBallot'
+            - $ref: '../components/schemas/Vote/VoteBallot.yaml'
   responses:
     '204':
       description: Ballot (re)submitted

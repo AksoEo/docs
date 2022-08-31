@@ -22,7 +22,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/NewsletterUnsubscriber'
+              $ref: '../components/schemas/NewsletterUnsubscriber.yaml'
     '404':
       description: Newsletter not found
 

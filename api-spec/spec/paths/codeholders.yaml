@@ -56,8 +56,8 @@ get:
              type: array
              items:
               oneOf:
-                - $ref: '#/components/schemas/HumanCodeholder'
-                - $ref: '#/components/schemas/OrgCodeholder'
+                - $ref: '../components/schemas/Codeholder/HumanCodeholder.yaml'
+                - $ref: '../components/schemas/Codeholder/OrgCodeholder.yaml'
 
 post:
   summary: Creates a new codeholder
@@ -72,8 +72,8 @@ post:
       application/vnd.msgpack:
         schema:
           oneOf:
-            - $ref: '#/components/schemas/HumanCodeholderCreation'
-            - $ref: '#/components/schemas/OrgCodeholderCreation'
+            - $ref: '../components/schemas/Codeholder/HumanCodeholderCreation.yaml'
+            - $ref: '../components/schemas/Codeholder/OrgCodeholderCreation.yaml'
   responses:
     '201':
       description: Created

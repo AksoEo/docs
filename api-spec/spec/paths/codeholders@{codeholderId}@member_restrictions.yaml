@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Returns a codeholder's direct member restrictions if any
@@ -19,7 +19,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/MemberRestriction'
+            $ref: '../components/schemas/MemberRestriction.yaml'
     '404':
       description: Not found
 
@@ -32,7 +32,7 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/MemberRestriction'
+          $ref: '../components/schemas/MemberRestriction.yaml'
   responses:
     '204':
       description: Updated

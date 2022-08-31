@@ -18,7 +18,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/APIClient'
+            $ref: '../components/schemas/APIClient.yaml'
     '404':
       description: Not found
 
@@ -42,7 +42,7 @@ patch:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/APIClient'
+            - $ref: '../components/schemas/APIClient.yaml'
             - minProperties: 1
   responses:
     '204':

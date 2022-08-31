@@ -41,7 +41,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CongressInstanceProgramTag'
+              $ref: '../components/schemas/Congress/CongressInstanceProgramTag.yaml'
 
     '404':
       description: Not found

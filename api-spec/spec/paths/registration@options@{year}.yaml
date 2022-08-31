@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/RegistrationOptions'
+            $ref: '../components/schemas/Registration/RegistrationOptions.yaml'
 
 put:
   summary: Puts registration options for a given year
@@ -28,7 +28,7 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/RegistrationOptions'
+          $ref: '../components/schemas/Registration/RegistrationOptions.yaml'
   responses:
     '204':
       description: Updated

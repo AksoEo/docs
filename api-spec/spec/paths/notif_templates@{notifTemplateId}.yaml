@@ -19,7 +19,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/NotifTemplate'
+            $ref: '../components/schemas/NotifTemplate/NotifTemplate.yaml'
 
 delete:
   summary: Deletes a notif template
@@ -41,7 +41,7 @@ patch:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/NotifTemplate'
+            - $ref: '../components/schemas/NotifTemplate/NotifTemplate.yaml'
             - properties:
                 base:
                   readOnly: true

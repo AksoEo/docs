@@ -25,7 +25,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/PaymentAddon'
+            $ref: '../components/schemas/AKSOPay/PaymentAddon.yaml'
     '404':
       description: Not found
 
@@ -38,7 +38,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/PaymentAddon'
+          $ref: '../components/schemas/AKSOPay/PaymentAddon.yaml'
   responses:
     '204':
       description: Updated

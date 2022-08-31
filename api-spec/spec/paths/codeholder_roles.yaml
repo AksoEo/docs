@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderRole'
+              $ref: '../components/schemas/Codeholder/CodeholderRole.yaml'
 
 post:
   summary: Creates a new codeholder role
@@ -28,7 +28,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/CodeholderRole'
+            - $ref: '../components/schemas/Codeholder/CodeholderRole.yaml'
             - required:
               - name
   responses:

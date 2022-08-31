@@ -20,7 +20,7 @@ parameters:
     required: true
     description: The format of the file
     schema:
-      $ref: '#/components/schemas/MagazineEditionFileFormat'
+      $ref: '../components/schemas/Magazine/MagazineEditionFileFormat.yaml'
 
 post:
   summary: Bumps the download count for this file of this magazine edition

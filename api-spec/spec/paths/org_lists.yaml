@@ -14,4 +14,4 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/OrgList'
+              $ref: '../components/schemas/OrgList.yaml'

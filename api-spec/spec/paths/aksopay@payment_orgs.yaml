@@ -20,7 +20,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/PaymentOrg'
+              $ref: '../components/schemas/AKSOPay/PaymentOrg.yaml'
 
 post:
   summary: Creates a new AKSOPay PaymentOrg
@@ -32,7 +32,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/PaymentOrg'
+            - $ref: '../components/schemas/AKSOPay/PaymentOrg.yaml'
             - required:
                 - org
                 - name

@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Returns a codeholder
@@ -17,8 +17,8 @@ get:
         application/vnd.msgpack:
           schema:
             oneOf:
-              - $ref: '#/components/schemas/HumanCodeholder'
-              - $ref: '#/components/schemas/OrgCodeholder'
+              - $ref: '../components/schemas/Codeholder/HumanCodeholder.yaml'
+              - $ref: '../components/schemas/Codeholder/OrgCodeholder.yaml'
     '404':
       description: Codeholder not found
 
@@ -46,15 +46,15 @@ patch:
     - in: query
       name: modCmt
       schema:
-        $ref: '#/components/schemas/CodeholderModCmt'
+        $ref: '../components/schemas/Codeholder/CodeholderModCmt.yaml'
   requestBody:
     required: true
     content:
       application/vnd.msgpack:
         schema:
           oneOf:
-            - $ref: '#/components/schemas/HumanCodeholderPatch'
-            - $ref: '#/components/schemas/OrgCodeholderPatch'
+            - $ref: '../components/schemas/Codeholder/HumanCodeholderPatch.yaml'
+            - $ref: '../components/schemas/Codeholder/OrgCodeholderPatch.yaml'
   responses:
     '204':
       description: Updated

@@ -20,7 +20,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/RegistrationEntry'
+            $ref: '../components/schemas/Registration/RegistrationEntry.yaml'
 
 patch:
   summary: Update a registration entry
@@ -34,7 +34,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/RegistrationEntry'
+          $ref: '../components/schemas/Registration/RegistrationEntry.yaml'
   responses:
     '204':
       description: Updated

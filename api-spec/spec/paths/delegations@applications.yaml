@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/DelegationApplication'
+              $ref: '../components/schemas/DelegationApplication.yaml'
 
 post:
   summary: Creates a new delegation application
@@ -31,7 +31,7 @@ post:
             - properties:
                 status:
                   readOnly: true
-            - $ref: '#/components/schemas/DelegationApplication'
+            - $ref: '../components/schemas/DelegationApplication.yaml'
   responses:
     '201':
       description: Created

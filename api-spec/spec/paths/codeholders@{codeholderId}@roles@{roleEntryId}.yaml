@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
   - name: roleEntryId
     in: path
@@ -24,7 +24,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CodeholderRoleEntry'
+            $ref: '../components/schemas/Codeholder/CodeholderRoleEntry.yaml'
     '404':
       description: Not found
 
@@ -56,7 +56,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/CodeholderRoleEntry'
+          $ref: '../components/schemas/Codeholder/CodeholderRoleEntry.yaml'
   responses:
     '204':
       description: Updated

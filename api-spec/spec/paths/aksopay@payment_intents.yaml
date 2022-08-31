@@ -30,7 +30,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/PaymentIntent'
+              $ref: '../components/schemas/AKSOPay/PaymentIntent.yaml'
 
 post:
   summary: Creates a new AKSOPay PaymentIntent
@@ -42,7 +42,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/PaymentIntent'
+            - $ref: '../components/schemas/AKSOPay/PaymentIntent.yaml'
             - required:
               - customer
               - currency

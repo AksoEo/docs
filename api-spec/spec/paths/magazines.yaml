@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Magazine'
+              $ref: '../components/schemas/Magazine/Magazine.yaml'
 
 post:
   summary: Creates a new magazine
@@ -28,7 +28,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/Magazine'
+            - $ref: '../components/schemas/Magazine/Magazine.yaml'
             - required:
               - org
               - name

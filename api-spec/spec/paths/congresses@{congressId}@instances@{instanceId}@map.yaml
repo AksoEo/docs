@@ -35,12 +35,12 @@ get:
               boundSW:
                 allOf:
                   - description: The south-west bound of the map
-                  - $ref: '#/components/schemas/LatLon'
+                  - $ref: '../components/schemas/LatLon.yaml'
 
               boundNE:
                 allOf:
                   - description: The north-east bound of the map
-                  - $ref: '#/components/schemas/LatLon'
+                  - $ref: '../components/schemas/LatLon.yaml'
 
     '404':
       description: Congress instance not found, or no locations found

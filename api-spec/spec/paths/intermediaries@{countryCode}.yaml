@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/Intermediary'
+            $ref: '../components/schemas/Intermediary.yaml'
 
     '404':
       description: Not found
@@ -42,7 +42,7 @@ put:
       application/vnd.msgpack:
         schema:
           allOf:
-              - $ref: '#/components/schemas/Intermediary'
+              - $ref: '../components/schemas/Intermediary.yaml'
               - properties:
                   countryCode:
                     readOnly: true

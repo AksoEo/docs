@@ -21,7 +21,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/OrgList'
+            $ref: '../components/schemas/OrgList.yaml'
 
 put:
   summary: Updates/creates an org list
@@ -32,7 +32,7 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/OrgList'
+          $ref: '../components/schemas/OrgList.yaml'
   responses:
     '204':
       description: Updated

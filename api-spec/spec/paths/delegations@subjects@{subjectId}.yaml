@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/DelegationSubject'
+            $ref: '../components/schemas/DelegationSubject.yaml'
     '404':
       description: Not found
 
@@ -34,7 +34,7 @@ patch:
             - properties:
                 org:
                   readOnly: true
-            - $ref: '#/components/schemas/DelegationSubject'
+            - $ref: '../components/schemas/DelegationSubject.yaml'
   responses:
     '204':
       description: Updated

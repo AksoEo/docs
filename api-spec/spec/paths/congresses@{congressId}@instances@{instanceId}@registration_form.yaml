@@ -25,7 +25,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CongressInstanceRegistrationForm'
+            $ref: '../components/schemas/Congress/CongressInstanceRegistrationForm.yaml'
 
     '404':
       description: Not found
@@ -55,7 +55,7 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/CongressInstanceRegistrationForm'
+          $ref: '../components/schemas/Congress/CongressInstanceRegistrationForm.yaml'
   responses:
     '204':
       description: Updated

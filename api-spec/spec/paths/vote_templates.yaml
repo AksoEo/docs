@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/VoteTemplate'
+              $ref: '../components/schemas/Vote/VoteTemplate.yaml'
 
 post:
   summary: Creates a vote template
@@ -32,7 +32,7 @@ post:
                 - org
                 - name
                 - vote
-            - $ref: '#/components/schemas/VoteTemplate'
+            - $ref: '../components/schemas/Vote/VoteTemplate.yaml'
   responses:
     '201':
       description: Created

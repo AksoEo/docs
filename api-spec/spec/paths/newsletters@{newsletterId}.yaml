@@ -17,7 +17,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/Newsletter'
+            $ref: '../components/schemas/Newsletter.yaml'
     '404':
       description: Not found
 
@@ -31,7 +31,7 @@ patch:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/Newsletter'
+            - $ref: '../components/schemas/Newsletter.yaml'
             - properties:
                 org:
                   readOnly: true

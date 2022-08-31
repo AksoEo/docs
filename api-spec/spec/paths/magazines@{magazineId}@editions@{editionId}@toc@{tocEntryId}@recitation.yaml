@@ -40,7 +40,7 @@ get:
             items:
               properties:
                 format:
-                  $ref: '#/components/schemas/MagazineRecitationFormat'
+                  $ref: '../components/schemas/Magazine/MagazineRecitationFormat.yaml'
 
                 downloads:
                   type: integer

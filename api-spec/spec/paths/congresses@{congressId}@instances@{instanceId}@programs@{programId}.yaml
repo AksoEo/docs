@@ -33,7 +33,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CongressInstanceProgram'
+            $ref: '../components/schemas/Congress/CongressInstanceProgram.yaml'
 
     '404':
       description: Not found
@@ -57,7 +57,7 @@ patch:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/CongressInstanceProgram'
+          $ref: '../components/schemas/Congress/CongressInstanceProgram.yaml'
 
   responses:
     '204':

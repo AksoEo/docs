@@ -16,21 +16,21 @@ get:
         application/vnd.msgpack:
           schema:
             allOf:
-              - $ref: '#/components/schemas/ReportTotals'
+              - $ref: '../components/schemas/AKSOPay/ReportTotals.yaml'
               - properties:
                   byPaymentOrg:
                     properties:
                       '[paymentOrgId]':
                         allOf:
-                          - $ref: '#/components/schemas/ReportTotals-link1'
+                          - $ref: '../components/schemas/AKSOPay/ReportTotals-link1.yaml'
                           - properties:
                               byPaymentMethod:
                                 properties:
                                   '[paymentMethodId]':
-                                    $ref: '#/components/schemas/ReportTotals-link2'
+                                    $ref: '../components/schemas/AKSOPay/ReportTotals-link2.yaml'
 
                               byPaymentAddon:
                                 description: Refunds cannot be tracked for addons. Invalidated addons are not included.
                                 properties:
                                   '[paymentAddonId]':
-                                    $ref: '#/components/schemas/ReportTotalsAddon'
+                                    $ref: '../components/schemas/AKSOPay/ReportTotalsAddon.yaml'

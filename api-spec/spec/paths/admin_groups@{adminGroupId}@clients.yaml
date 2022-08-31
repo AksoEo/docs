@@ -22,6 +22,6 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/APIClient'
+              $ref: '../components/schemas/APIClient.yaml'
     '404':
       description: Not found

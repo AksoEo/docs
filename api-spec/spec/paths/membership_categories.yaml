@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/MembershipCategory'
+              $ref: '../components/schemas/MembershipCategory.yaml'
 
 post:
   summary: Creates a new membership category
@@ -27,7 +27,7 @@ post:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/MembershipCategory'
+          $ref: '../components/schemas/MembershipCategory.yaml'
   responses:
     '201':
       description: Created

@@ -16,6 +16,6 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/GeoDBCity'
+            $ref: '../components/schemas/GeoDB/GeoDBCity.yaml'
     '404':
       description: Not found

@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Returns a list of a codeholder's attached files
@@ -42,7 +42,7 @@ get:
                   allOf:
                     - description: The id of the codeholder who added the file, null if added by an application
                     - nullable: true
-                    - $ref: '#/components/schemas/CodeholderId'
+                    - $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
                 name:
                   type: string

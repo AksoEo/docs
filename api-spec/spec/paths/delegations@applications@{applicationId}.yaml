@@ -19,7 +19,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/DelegationApplication'
+            $ref: '../components/schemas/DelegationApplication.yaml'
 
 patch:
   summary: Updates a delegation application
@@ -44,7 +44,7 @@ patch:
                   readOnly: true
                 tos:
                   readOnly: true
-            - $ref: '#/components/schemas/DelegationApplication'
+            - $ref: '../components/schemas/DelegationApplication.yaml'
   responses:
     '204':
       description: Updated

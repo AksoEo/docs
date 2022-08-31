@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
   - name: membershipId
     in: path
@@ -27,7 +27,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/CodeholderMembership'
+            $ref: '../components/schemas/Codeholder/CodeholderMembership.yaml'
     '404':
       description: Codeholder or membership entry not found
 

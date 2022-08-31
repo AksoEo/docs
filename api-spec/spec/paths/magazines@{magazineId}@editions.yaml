@@ -25,7 +25,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/MagazineEdition'
+              $ref: '../components/schemas/Magazine/MagazineEdition.yaml'
 
     '404':
       description: Not found
@@ -40,7 +40,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/MagazineEdition'
+            - $ref: '../components/schemas/Magazine/MagazineEdition.yaml'
             - required:
               - date
   responses:

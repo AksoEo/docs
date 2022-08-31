@@ -41,7 +41,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CongressInstanceLocationTag'
+              $ref: '../components/schemas/Congress/CongressInstanceLocationTag.yaml'
 
     '404':
       description: Not found

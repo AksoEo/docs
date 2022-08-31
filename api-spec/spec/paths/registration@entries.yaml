@@ -26,7 +26,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/RegistrationEntry'
+              $ref: '../components/schemas/Registration/RegistrationEntry.yaml'
 
 post:
   summary: Creates a new registration entry
@@ -37,7 +37,7 @@ post:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/RegistrationEntry'
+          $ref: '../components/schemas/Registration/RegistrationEntry.yaml'
   responses:
     '201':
       description: Created

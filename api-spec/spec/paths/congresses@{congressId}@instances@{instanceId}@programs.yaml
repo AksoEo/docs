@@ -33,7 +33,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CongressInstanceProgram'
+              $ref: '../components/schemas/Congress/CongressInstanceProgram.yaml'
 
     '404':
       description: Not found
@@ -52,7 +52,7 @@ post:
                 - title
                 - timeFrom
                 - timeTo
-            - $ref: '#/components/schemas/CongressInstanceProgram'
+            - $ref: '../components/schemas/Congress/CongressInstanceProgram.yaml'
 
   responses:
     '201':

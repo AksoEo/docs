@@ -4,7 +4,7 @@ parameters:
     description: The base currency
     required: true
     schema:
-      $ref: '#/components/schemas/Currency'
+      $ref: '../components/schemas/AKSOPay/Currency.yaml'
 
 get:
   summary: Gets the current currency exchange rates of all currencies supported by AKSOPay

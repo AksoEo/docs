@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
   - name: datum
     in: path
@@ -57,16 +57,16 @@ get:
                       description: The previous value of the codeholder datum until the specified time
 
                 modId:
-                  $ref: '#/components/schemas/CodeholderModId'
+                  $ref: '../components/schemas/Codeholder/CodeholderModId.yaml'
 
                 modTime:
-                  $ref: '#/components/schemas/CodeholderModTime'
+                  $ref: '../components/schemas/Codeholder/CodeholderModTime.yaml'
 
                 modBy:
-                  $ref: '#/components/schemas/CodeholderModBy'
+                  $ref: '../components/schemas/Codeholder/CodeholderModBy.yaml'
 
                 modCmt:
-                  $ref: '#/components/schemas/CodeholderModCmt'
+                  $ref: '../components/schemas/Codeholder/CodeholderModCmt.yaml'
     
     '404':
       description: Codeholder or datum not found

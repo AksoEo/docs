@@ -16,4 +16,4 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderChangeRequest'
+              $ref: '../components/schemas/Codeholder/CodeholderChangeRequest.yaml'

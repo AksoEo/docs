@@ -16,6 +16,6 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderVote'
+              $ref: '../components/schemas/Codeholder/CodeholderVote.yaml'
     '404':
       description: No user using user auth found

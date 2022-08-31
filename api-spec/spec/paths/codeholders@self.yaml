@@ -12,8 +12,8 @@ get:
         application/vnd.msgpack:
           schema:
             oneOf:
-              - $ref: '#/components/schemas/HumanCodeholder'
-              - $ref: '#/components/schemas/OrgCodeholder'
+              - $ref: '../components/schemas/Codeholder/HumanCodeholder.yaml'
+              - $ref: '../components/schemas/Codeholder/OrgCodeholder.yaml'
     '404':
       description: No user using user auth found
 
@@ -44,5 +44,5 @@ patch:
       application/vnd.msgpack:
         schema:
           oneOf:
-            - $ref: '#/components/schemas/HumanCodeholderPatch'
-            - $ref: '#/components/schemas/OrgCodeholderPatch'
+            - $ref: '../components/schemas/Codeholder/HumanCodeholderPatch.yaml'
+            - $ref: '../components/schemas/Codeholder/OrgCodeholderPatch.yaml'

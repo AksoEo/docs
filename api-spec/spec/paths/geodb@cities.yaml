@@ -22,4 +22,4 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/GeoDBCity'
+              $ref: '../components/schemas/GeoDB/GeoDBCity.yaml'

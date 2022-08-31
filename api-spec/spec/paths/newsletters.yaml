@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Newsletter'
+              $ref: '../components/schemas/Newsletter.yaml'
 
 post:
   summary: Creates a new newsletter
@@ -28,7 +28,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/Newsletter'
+            - $ref: '../components/schemas/Newsletter.yaml'
             - required:
               - org
               - name

@@ -37,8 +37,8 @@ get:
             type: array
             items:
               oneOf:
-                - $ref: '#/components/schemas/CongressInstanceLocationExternal'
-                - $ref: '#/components/schemas/CongressInstanceLocationInternal'
+                - $ref: '../components/schemas/Congress/CongressInstanceLocationExternal.yaml'
+                - $ref: '../components/schemas/Congress/CongressInstanceLocationInternal.yaml'
 
     '404':
       description: Not found
@@ -58,10 +58,10 @@ post:
                 - type
             - oneOf:
               - allOf:
-                - $ref: '#/components/schemas/CongressInstanceLocationExternal'
+                - $ref: '../components/schemas/Congress/CongressInstanceLocationExternal.yaml'
                 - required:
                     - ll
-              - $ref: '#/components/schemas/CongressInstanceLocationInternal'
+              - $ref: '../components/schemas/Congress/CongressInstanceLocationInternal.yaml'
 
   responses:
     '201':

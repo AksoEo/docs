@@ -28,7 +28,7 @@ parameters:
     required: true
     description: The format of the recitation file
     schema:
-      $ref: '#/components/schemas/MagazineRecitationFormat'
+      $ref: '../components/schemas/Magazine/MagazineRecitationFormat.yaml'
 
 get:
   summary: Returns a recitation of a ToC entry

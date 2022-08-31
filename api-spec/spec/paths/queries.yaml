@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/SavedQuery'
+              $ref: '../components/schemas/SavedQuery.yaml'
 
 post:
   summary: Saves a new query filter
@@ -30,7 +30,7 @@ post:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/SavedQuery'
+          $ref: '../components/schemas/SavedQuery.yaml'
   responses:
     '201':
       description: Created

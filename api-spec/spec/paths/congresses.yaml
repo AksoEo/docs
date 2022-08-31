@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Congress'
+              $ref: '../components/schemas/Congress/Congress.yaml'
 
 post:
   summary: Creates a congress
@@ -28,7 +28,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/Congress'
+            - $ref: '../components/schemas/Congress/Congress.yaml'
             - required:
                 - name
                 - org

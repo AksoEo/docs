@@ -13,7 +13,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderLogin'
+              $ref: '../components/schemas/Codeholder/CodeholderLogin.yaml'
 
     '404':
       description: No active user auth session found

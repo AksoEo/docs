@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Vote'
+              $ref: '../components/schemas/Vote/Vote.yaml'
 
 post:
   summary: Creates a vote
@@ -28,7 +28,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/Vote'
+            - $ref: '../components/schemas/Vote/Vote.yaml'
             - required:
                 - name
                 - org

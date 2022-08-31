@@ -25,7 +25,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/PaymentMethod'
+            $ref: '../components/schemas/AKSOPay/PaymentMethod/PaymentMethod.yaml'
     '404':
       description: Not found
 
@@ -42,7 +42,7 @@ patch:
             - properties:
                 type:
                   readOnly: true
-            - $ref: '#/components/schemas/PaymentMethod'
+            - $ref: '../components/schemas/AKSOPay/PaymentMethod/PaymentMethod.yaml'
   responses:
     '204':
       description: Updated

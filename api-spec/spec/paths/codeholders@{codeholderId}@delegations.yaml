@@ -4,7 +4,7 @@ parameters:
     required: true
     description: The codeholder's internal id
     schema:
-      $ref: '#/components/schemas/CodeholderId'
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
 
 get:
   summary: Gets a codeholder's delegations
@@ -25,4 +25,4 @@ get:
                 - properties:
                     codeholderId:
                       writeOnly: true
-                - $ref: '#/components/schemas/CodeholderDelegation'
+                - $ref: '../components/schemas/Codeholder/CodeholderDelegation.yaml'

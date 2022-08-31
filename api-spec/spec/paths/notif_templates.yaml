@@ -16,7 +16,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/NotifTemplate'
+              $ref: '../components/schemas/NotifTemplate/NotifTemplate.yaml'
 
 post:
   summary: Creates a notif template
@@ -28,7 +28,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/NotifTemplate'
+            - $ref: '../components/schemas/NotifTemplate/NotifTemplate.yaml'
             - required:
                 - base
                 - org

@@ -21,7 +21,7 @@ get:
       content:
         application/vnd.msgpack:
           schema:
-            $ref: '#/components/schemas/MemberRestriction'
+            $ref: '../components/schemas/MemberRestriction.yaml'
     '404':
       description: Not found
 
@@ -34,7 +34,7 @@ put:
     content:
       application/vnd.msgpack:
         schema:
-          $ref: '#/components/schemas/MemberRestriction'
+          $ref: '../components/schemas/MemberRestriction.yaml'
   responses:
     '204':
       description: Updated

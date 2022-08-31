@@ -25,7 +25,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/MagazineSubscription'
+              $ref: '../components/schemas/Magazine/MagazineSubscription.yaml'
 
     '404':
       description: Magazine not found
@@ -40,7 +40,7 @@ post:
       application/vnd.msgpack:
         schema:
           allOf:
-            - $ref: '#/components/schemas/MagazineSubscription'
+            - $ref: '../components/schemas/Magazine/MagazineSubscription.yaml'
             - required:
                 - codeholderId
                 - year

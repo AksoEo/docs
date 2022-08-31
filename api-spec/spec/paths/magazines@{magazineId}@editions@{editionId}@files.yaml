@@ -32,7 +32,7 @@ get:
             items:
               properties:
                 format:
-                  $ref: '#/components/schemas/MagazineEditionFileFormat'
+                  $ref: '../components/schemas/Magazine/MagazineEditionFileFormat.yaml'
 
                 downloads:
                   type: integer

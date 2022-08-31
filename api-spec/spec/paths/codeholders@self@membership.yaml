@@ -10,6 +10,6 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/CodeholderMembership'
+              $ref: '../components/schemas/Codeholder/CodeholderMembership.yaml'
     '404':
       description: No user auth session found

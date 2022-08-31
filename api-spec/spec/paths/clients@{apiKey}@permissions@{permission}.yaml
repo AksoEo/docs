@@ -13,7 +13,7 @@ parameters:
     required: true
     description: A permission string
     schema:
-      $ref: '#/components/schemas/Permission'
+      $ref: '../components/schemas/Permission.yaml'
 
 put:
   summary: Grants a permission to a client

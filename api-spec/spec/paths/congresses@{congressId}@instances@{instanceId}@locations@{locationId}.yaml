@@ -34,8 +34,8 @@ get:
         application/vnd.msgpack:
           schema:
             oneOf:
-              - $ref: '#/components/schemas/CongressInstanceLocationExternal'
-              - $ref: '#/components/schemas/CongressInstanceLocationInternal'
+              - $ref: '../components/schemas/Congress/CongressInstanceLocationExternal.yaml'
+              - $ref: '../components/schemas/Congress/CongressInstanceLocationInternal.yaml'
 
     '404':
       description: Not found
@@ -64,8 +64,8 @@ patch:
                 type:
                   readOnly: true
             - oneOf:
-              - $ref: '#/components/schemas/CongressInstanceLocationExternal'
-              - $ref: '#/components/schemas/CongressInstanceLocationInternal'
+              - $ref: '../components/schemas/Congress/CongressInstanceLocationExternal.yaml'
+              - $ref: '../components/schemas/Congress/CongressInstanceLocationInternal.yaml'
   responses:
     '204':
       description: Updated

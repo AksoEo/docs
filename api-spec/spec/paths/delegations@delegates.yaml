@@ -25,4 +25,4 @@ get:
           schema:
              type: array
              items:
-              $ref: '#/components/schemas/CodeholderDelegation'
+              $ref: '../components/schemas/Codeholder/CodeholderDelegation.yaml'
