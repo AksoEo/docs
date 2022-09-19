@@ -45,11 +45,11 @@ En tiu ĉi objekto estas du ŝlosiloj: »nomo« kaj »koloroj«. Pensu pri ŝlos
 {
 	"homoj": {
 		"Zamenhof": {
-			"naskiĝtago": "1859-12-15",
+			"naskiĝdato": "1859-12-15",
 			"plej-ŝatata-koloro": "verda"
 		},
 		"Grundtvig": {
-			"naskiĝtago": "1783-09-08",
+			"naskiĝdato": "1783-09-08",
 			"plej-ŝatata-koloro": "ruĝa"
 		}
 	}
