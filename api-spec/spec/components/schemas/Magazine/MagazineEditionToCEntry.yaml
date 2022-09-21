@@ -58,5 +58,6 @@ properties:
   availableRecitationFormats:
     description: The recitations formats available 
     type: array
+    readOnly: true
     items:
       $ref: '#/components/schemas/MagazineRecitationFormat' 
