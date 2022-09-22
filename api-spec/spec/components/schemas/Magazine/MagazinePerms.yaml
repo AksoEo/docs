@@ -14,6 +14,14 @@ allOf:
               - type: boolean
               - type: object
 
+        membersFilterInner:
+          type: object
+          nullable: true
+          description: >
+            A codeholder filter to insert inside the `$membership` block of the generated subscribers filter.
+
+            Defaults to `{ givesMembership: true }`
+
         membersIncludeLastYear:
           type: string
           pattern: '^P(\d\d?Y)?(\d\d?M)?(\d\d?D)?$'
