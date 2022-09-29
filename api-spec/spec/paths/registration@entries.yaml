@@ -16,7 +16,7 @@ get:
 
     Special logic operators:
 
-    - `$codeholderData`: Takes an integer to search for a codeholder id, or an object to filter by the following properties, either in `codeholderData` or in an existing codeholder.
+    - `$codeholderData`: Takes an integer to search for a codeholder id (i.e. only for existing codeholders), or an object to filter by the following properties in `codeholderData` (i.e. only for new codeholders).
       May use the following properties: `address.country`, `feeCountry`, `email`, `birthdate`
   responses:
     '200':
