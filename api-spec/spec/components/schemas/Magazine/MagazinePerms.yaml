@@ -20,6 +20,9 @@ allOf:
           description: >
             A codeholder filter to insert inside the `$membership` block of the generated subscribers filter.
 
+
+            Note that the members filter is still limited to active memberships in the current year (see the `members` field) and/or the previous year (see the `membersIncludeLastYear` field).
+
             Defaults to `{ givesMembership: true }`
 
         membersIncludeLastYear:
