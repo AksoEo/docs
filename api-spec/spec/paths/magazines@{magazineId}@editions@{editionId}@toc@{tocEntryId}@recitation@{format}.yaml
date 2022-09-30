@@ -63,7 +63,7 @@ put:
             file:
               type: string
               format: binary
-              description: 'Max size: 25MB'
+              description: 'Max size: 80MB'
   responses:
     '204':
       description: Updated
