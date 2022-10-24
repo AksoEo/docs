@@ -134,7 +134,8 @@ properties:
             id:
               type: number
               format: uint32
-              description: The id of the membership category
+              nullable: true
+              description: The id of the membership category. `null` if it has been deleted.
 
             amount:
               type: integer
@@ -155,7 +156,8 @@ properties:
             id:
               type: number
               format: uint32
-              description: The id of the magazine
+              nullable: true
+              description: The id of the magazine. `null` if it has been deleted
 
             amount:
               type: integer
