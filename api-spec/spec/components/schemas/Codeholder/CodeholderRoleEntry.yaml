@@ -42,7 +42,7 @@ properties:
   dataString:
     type: string
     minLength: 1
-    maxLength: 50
+    maxLength: 128
     pattern: '^[^\n]+$'
     nullable: true
     description: A string complement for this role entry used when no specific data type is appropriate.
