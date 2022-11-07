@@ -64,7 +64,7 @@ This is used to send simple multi-purpose notifications to codeholders. The foll
 This is used to send out newsletters to their subscribers. It inherits all fields from `codeholder`.
 
 ## `newsletter_magazine`
-This is used to send out magazine announcement newsletters to their subscriberrs. It inherits all fields from `newsletter` and adds the following fields:
+This is used to send out magazine announcement newsletters to their subscribers. It inherits all fields from `newsletter` and adds the following fields:
 
 ```js
 {
@@ -88,6 +88,25 @@ This is used to send out magazine announcement newsletters to their subscriberrs
 		md   // formatted as markdown
 		html // formatted as html
 		text // formatted as plaintext
+	}
+}
+```
+
+## `congress_registration`
+This is used to send out registration confirmation emails to new registrants. It contains the following fields:
+
+```js
+{
+	registrationEntry: {
+		price
+		currency
+		sequenceId
+		createdTime
+		canEdit
+		dataId
+		dataKeys
+		dataMeta // an array of arrays containing the following fields: type, label, variant/currency/tz (or null)
+		dataVals // when combined with dataKeys this is essentially a map
 	}
 }
 ```

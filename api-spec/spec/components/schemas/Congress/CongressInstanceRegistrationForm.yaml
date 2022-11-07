@@ -52,6 +52,16 @@ properties:
     default: false
     description: Whether registrations must be manually approved by an admin before they are valid
 
+  confirmationNotifTemplateId:
+    type: integer
+    format: uint32
+    nullable: true
+    description: >
+      The unique identifier of the notif template to use for confirmation emails. Must have intent `congress_registration`.
+
+
+      The org of the notif template must match the org of the congress.
+
   sequenceIds:
     description: Sequential participant IDs if applicable, set to null to disable
     nullable: true
