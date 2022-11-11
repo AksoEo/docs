@@ -123,6 +123,9 @@
    # https://core.telegram.org/bots#3-how-do-i-create-a-bot
    export AKSO_TELEGRAM_TOKEN=NO_DEFAULT
 
+   # Put the URL to the AKSO payment facilitator here
+   export AKSO_PAYMENT_FACILITATOR='https://pago.akso.org'
+
    # Put 32 bytes in hex here, this must be generated securely using e.g.
    # `openssl rand -hex 32`
    # Change it if ever compromised (updating the db as needed).
