@@ -71,5 +71,18 @@ allOf:
         nullable: true
         description: When this participant's registration was cancelled, `null` means not cancelled
 
+      customFormVars:
+        type: object
+        description: Value overrides for custom per-participant form vars. The keys must match custom form vars defined in the registration form.
+        minProperties: 0
+        maxProperties: 64
+        patternProperties:
+          '^@@v_[\w\-:ĥŝĝĉĵŭ]{1,18}$':
+              nullable: true
+              description: >
+                A custom form var for this participant.
+
+
+                The type of this property depends on the type of the custom form var as defined in the registration form. `string` is used for all types except e.g. `boolean` for `type=boolean`, `number` for `type=number` etc.
 
   - $ref: '#/components/schemas/FormDataEntry'

@@ -106,6 +106,39 @@ properties:
       - currency
       - var
 
+  customFormVars:
+    type: object
+    description: Custom per-participant form vars. The key of each mapping is the resulting name of the form var.
+    minProperties: 0
+    maxProperties: 64
+    patternProperties:
+      '^@@v_[\w\-:ĥŝĝĉĵŭ]{1,18}$':
+        type: object
+        description: A custom form var
+        required:
+          - type
+          - default
+        properties:
+          type:
+            type: string
+            enum:
+              - boolean
+              - number
+              - text
+          oldName:
+            type: string
+            pattern: '^@@v_[\w\-:ĥŝĝĉĵŭ]{1,18}$'
+            writeOnly: true
+            description: The old name of the custom form var if renaming.
+          default:
+            nullable: true
+            description: >
+              The default value inherited by all participants without an override. May also be set to `null`.
+
+
+              The type of this property depends on the field type. `string` is used for all types except e.g. `boolean` for `type=boolean`, `number` for `type=number` etc.
+
+
   form:
     type: array
     minItems: 1
