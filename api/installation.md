@@ -150,4 +150,6 @@
 
 11. Populate the db using `source api.env && MODE=<mode> npm run populate-db`. Set mode to `prod` (production), `dev` (development) or `test`.
 
+   Mode can also be set to `client` to create an API client with star perms. This should only be used in combination with `prod`.
+
 12. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
