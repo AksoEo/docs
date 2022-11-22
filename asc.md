@@ -78,7 +78,7 @@ Functions capture the scope in which they were defined. Definitions may be shado
 3. Parent scopes wrt. definition (starting with the closest)
 
 ### Type `w`
-Matches a list of conditions. Additional keys:
+Matches a list of conditions (like a switch). Additional keys:
 
 - `m`: an array of objects with following keys:
     + `c`: optional definition name (condition)
