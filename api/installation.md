@@ -8,7 +8,7 @@
 
 3. Make sure you have the required native dependencies:
 
-   - On Ubuntu, run: `apt install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev python2.7`
+   - On Ubuntu, run: `apt install python2.7`
 
 4. Make sure you have MySQL 5.7.15 or higher:
 
@@ -16,9 +16,7 @@
 
 5. Install the API by running `npm i`
 
-6. Set up the native dependencies properly by running `npm rebuild`
-
-7. Set up MySQL by editing `my.cnf` (on Ubuntu that's in `/etc/mysql/my.cnf`)
+6. Set up MySQL by editing `my.cnf` (on Ubuntu that's in `/etc/mysql/my.cnf`)
 
    Add the following entries:
    ```
@@ -28,9 +26,9 @@
    event_scheduler = on
    ```
 
-8. Reload MySQL (on Ubuntu run `service mysql reload`)
+7. Reload MySQL (on Ubuntu run `service mysql reload`)
 
-9. Set up the permanent and state data directories
+8. Set up the permanent and state data directories
 
    AKSO needs two data directories:
 
@@ -40,7 +38,7 @@
 
    To create this directories do something like `mkdir akso-data && mkdir akso-state-data` in an appropriate location.
 
-10. Set up the env vars
+9. Set up the env vars
 
    On most setups you'll want a file `api.env` in some secure location. It's important this file can only be read by trusted users as it will contain passwords and API keys
 
@@ -148,8 +146,8 @@
    export AKSO_OPEN_EXCHANGE_RATES_APP_ID=NO_DEFAULT
    ```
 
-11. Populate the db using `source api.env && MODE=<mode> npm run populate-db`. Set mode to `prod` (production), `dev` (development) or `test`.
+10. Populate the db using `source api.env && MODE=<mode> npm run populate-db`. Set mode to `prod` (production), `dev` (development) or `test`.
 
    Mode can also be set to `client` to create an API client with star perms. This should only be used in combination with `prod`.
 
-12. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
+11. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
