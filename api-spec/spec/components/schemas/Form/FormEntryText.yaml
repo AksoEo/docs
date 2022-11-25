@@ -4,13 +4,14 @@ properties:
     enum: [ text ]
 
   text:
+    type: string
     minLength: 1
-    maxLength: 5000
+    maxLength: 10000
     description: >
-      Either a markdown string to display or an AKSO Script expression resolving to a markdown string.
+      A markdown string to display. May include AKSO notif templating (see docs/notif_templating.md).
 
 
-      Markdown rules enabled: `blockquote`, `code`, `heading`, `hr`, `table`, `emphasis`, `image`, `link`, `list`, `strikethrough`
+      Markdown rules enabled: `blockquote`, `code`, `heading`, `hr`, `table`, `emphasis`, `image`, `link`, `list`, `strikethrough`.
 
 required:
   - el
