@@ -54,7 +54,7 @@ Where `time` is a string of the format `hh:MM`.
 ### boolean_table
 `array <boolean|null>[]`
 
-`null` is only allowed in cells without a checkbox.
+`null` is only allowed in cells without a checkbox. The outer array is rows, the inner arrays are columns giving a layout of y,x.
 
 When used in `default`, this must be a `boolean` applied to the entire table.
 

@@ -57,12 +57,12 @@ allOf:
         type: array
         nullable: true
         maxItems: 400
-        description: Cells that will not contain a checkbox defined as an array of arrays of the x,y coordinates
+        description: Cells that will not contain a checkbox defined as an array of arrays of the y,x coordinates
         items:
           type: array
           minItems: 2
           maxItems: 2
-          description: The x,y coordinate of the cell
+          description: The coordinate of the cell as an y,x array
           items:
             type: integer
             minimum: 0
