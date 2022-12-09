@@ -53,6 +53,10 @@ properties:
     default: false
     description: Whether the form entry is disabled. Must be a boolean or an AKSO Script expression
 
+  hideIfDisabled:
+    default: false
+    description: Whether the form entry should be hidden if disabled. Must be a boolean.
+
   editable:
     type: boolean
     default: true
