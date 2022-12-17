@@ -172,7 +172,7 @@ Convenience functions:
 - `sort a`: returns a sorted version of a, or null
 
 ### Date and Time
-- `date_sub t a b`: returns the signed difference between a and b interpreted as RFC3339 date strings, or null. a determines the type of difference; may be one of 'days', 'weeks', 'months', 'years'
+- `date_sub t a b`: returns the signed difference between a and b interpreted as RFC3339 date strings, or null. t determines the type of difference; may be one of 'days', 'weeks', 'months', 'years'
 - `date_add t a b`: interprets a as an RFC3339 date string, or returns null. Adds b of t, and returns the resulting date string. t may be one of 'days', 'weeks', 'months', 'years'
 - `date_today`: returns the current date
 - `date_fmt a`: returns the formatted version of a interpreted as a RFC3339 date string, or null
