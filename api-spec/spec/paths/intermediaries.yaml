@@ -6,12 +6,7 @@ get:
 
     Filterable properties:
 
-    - `countryCode`, `codeholderId`
-
-
-    Searchable properties:
-
-    - `paymentDescription`
+    - `countryCode`
   responses:
     '200':
       description: OK

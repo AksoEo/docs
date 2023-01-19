@@ -8,23 +8,33 @@ properties:
       Must be a valid enabled Country#code.
     readOnly: true
 
-  codeholderId:
-    allOf:
-      - description: The codeholder id of the intermediary
-      - readOnly: false
-      - $ref: '#/components/schemas/CodeholderId'
+  codeholders:
+    type: array
+    minItems: 1
+    maxItems: 127
+    description: The codeholders for this country
+    items:
+      type: object
+      required:
+        - codeholderId
+      properties:
+        codeholderId:
+          allOf:
+            - description: The codeholder id of the intermediary
+            - readOnly: false
+            - $ref: '#/components/schemas/CodeholderId'
 
-  paymentDescription:
-    type: string
-    format: markdown
-    nullable: true
-    minLength: 1
-    maxLength: 5000
-    description: >
-      Supplementary information on how to pay the intermediary.
+        paymentDescription:
+          type: string
+          format: markdown
+          nullable: true
+          minLength: 1
+          maxLength: 5000
+          description: >
+            Supplementary information on how to pay the intermediary.
 
 
-      Contact information on the intermediary is extracted from the codeholder, including the biography.
+            Contact information on the intermediary is extracted from the codeholder, including the biography.
 
 
-      Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
+            Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`

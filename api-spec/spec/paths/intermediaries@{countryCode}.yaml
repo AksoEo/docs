@@ -47,7 +47,7 @@ put:
                   countryCode:
                     readOnly: true
                 required:
-                  - codeholderId
+                  - codeholders
   responses:
     '204':
       description: Updated
