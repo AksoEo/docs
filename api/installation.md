@@ -116,7 +116,7 @@
    export AKSO_SENDGRID_API_KEY=NO_DEFAULT
 
    # Put your Telegram bot token here
-   # There is currently no way to use AKSO without a Telegram bot.
+   # You can leave this blank to run without Telegram support
    # Read more about how to create a bot at:
    # https://core.telegram.org/bots#3-how-do-i-create-a-bot
    export AKSO_TELEGRAM_TOKEN=NO_DEFAULT
