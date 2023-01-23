@@ -18,6 +18,16 @@ post:
 
 
     This can only be done when the current status is `submitted`, `disputed` or `pending`.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            sendReceipt:
+              type: boolean
+              default: true
+              description: Whether or not to send a receipt email to the client.
   responses:
     '204':
       description: Marked as succeeded
