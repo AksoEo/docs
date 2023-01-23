@@ -44,10 +44,28 @@ properties:
       Markdown rules enabled: `emphasis`, `strikethrough`, `link`, `list`, `table`
 
 
-      A description of this PaymentMethod shown to end users.
+      A description of this PaymentMethod shown to end users after they have chosen a PaymentMethod.
 
 
-      This description should contains information on how to pay using this method, e.g. bank account numbers for a manual method.
+      This description should contain information on how to pay using this method, e.g. bank account numbers for a manual method.
+
+
+      If null, it falls back to the description preview, if present.
+
+  descriptionPreview:
+    type: string
+    format: markdown
+    nullable: true
+    minLength: 1
+    maxLength: 2000
+    description: >
+      Markdown rules enabled: `emphasis`, `strikethrough`, `link`
+
+
+      A short description of this PaymentMethod to show to end users before they have chosen a PaymentMethod.
+
+
+      This descripton must not contain information on how to pay using this method, it should merely outline what kind of payment method it is. If it is null, no preview will be shown.
 
   currencies:
     type: array
