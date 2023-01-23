@@ -84,7 +84,11 @@ properties:
   internal:
     type: boolean
     default: false
-    description: Whether this payment method is internal and only to be used in AKSO Admin
+    description: >
+      Whether this payment method is internal and only to be used in AKSO Admin
+
+
+      Internal payment methods never send instructions email, but receipts are still sent by default.
 
   isRecommended:
     type: boolean
