@@ -1,0 +1,35 @@
+parameters:
+  - name: congressId
+    in: path
+    description: The id of the congress
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: instanceId
+    in: path
+    description: The id of the congress instance
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+  - name: dataId
+    in: path
+    description: The data id of the participant in hex
+    required: true
+    schema:
+      type: string
+
+post:
+  summary: Resends a confirmation notif to a congress instance participant
+  description: >
+    Requires permission: `congress_instances.participants.update.<org>`
+  responses:
+    '204':
+      description: Sent
+    '409':
+      description: No confirmation notif id set
+    '404':
+      description: Not found
