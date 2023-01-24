@@ -30,7 +30,7 @@ get:
 
     - `$membership`: Takes a filter object and returns only codeholders matching the membership filter.
       May use the following properties from `GET /codeholders/{codeholderId}/membership`:
-      `categoryId`, `givesMembership`, `lifetime`, `year`, `canuto`
+      `categoryId`, `givesMembership`, `lifetime`, `year`, `canuto`, `isActive`
 
     - `$roles`: Takes a filter object and returns only codeholders matching the roles filter. 
       May use the following properties from `GET /codeholders/{codeholderId}/roles`:

@@ -66,4 +66,9 @@ properties:
     readOnly: true
     description: The last year the membership category is orderable, null for no limit
 
+  isActive:
+    type: boolean
+    readOnly: true
+    description: Whether the membership entry is currently active (i.e. the year is the current year, or less for lifetime membership categories)
+
 required: [ categoryId, year ]
