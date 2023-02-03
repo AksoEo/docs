@@ -1,0 +1,5 @@
+properties:
+  ballots:
+    $ref: '#/components/schemas/VoteResultBallotCounts'
+  mentions:
+    $ref: '#/components/schemas/VoteResultMentions'

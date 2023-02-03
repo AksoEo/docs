@@ -1,0 +1,15 @@
+properties:
+  status:
+    type: string
+    enum:
+      - "majority-empty"
+    description: More than half of the ballots are empty (after excluding candidates with too few mentions), and the vote cannot continue.
+  ballots:
+    $ref: '#/components/schemas/VoteResultBallotCounts'
+  mentions:
+    $ref: '#/components/schemas/VoteResultMentions'
+  type:
+    type: string
+    enum:
+      - "rp"
+    description: The type of vote.

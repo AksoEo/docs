@@ -1,0 +1,18 @@
+properties:
+  mentions:
+    type: object
+    description: number of mentions of each candidate
+    properties:
+      '[candidate]':
+        type: number
+        description: number of mentions of this candidate
+  includedByMentions:
+    type: array
+    description: candidates included by the mention threshold. If there is no threshold, then this includes all candidates.
+    items:
+      type: number
+  excludedByMentions:
+    type: array
+    description: candidates excluded by the mention threshold.
+    items:
+      type: number

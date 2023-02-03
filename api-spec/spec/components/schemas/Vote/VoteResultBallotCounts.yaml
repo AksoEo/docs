@@ -1,0 +1,11 @@
+type: object
+properties:
+  count:
+    type: number
+    description: number of ballots submitted
+  blank:
+    type: number
+    description: number of entirely blank ballots
+  voters:
+    type: number
+    description: number of eligible voters

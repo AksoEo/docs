@@ -1,0 +1,17 @@
+properties:
+  status:
+    type: string
+    enum:
+      - "too-many-blanks"
+    description: Too many ballots are blank (according to vote configuration).
+  ballots:
+    $ref: '#/components/schemas/VoteResultBallotCounts'
+  type:
+    type: string
+    enum:
+      - "yn"
+      - "ynb"
+      - "tm"
+      - "rp"
+      - "stv"
+    description: The type of vote.

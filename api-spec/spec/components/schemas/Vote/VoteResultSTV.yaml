@@ -1,5 +1,0 @@
-allOf:
-  - $ref: '#/components/schemas/VoteResultGeneric'
-  - properties:
-      newBlaBla:
-        type: blaBla

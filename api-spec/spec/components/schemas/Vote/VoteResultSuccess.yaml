@@ -1,0 +1,12 @@
+allOf:
+  - properties:
+      status:
+        type: string
+        enum:
+          - "success"
+        description: The vote succeeded with a result.
+  - oneOf:
+    - $ref: '#/components/schemas/VoteResultSuccessRP'
+    - $ref: '#/components/schemas/VoteResultSuccessSTV'
+    - $ref: '#/components/schemas/VoteResultSuccessTM'
+    - $ref: '#/components/schemas/VoteResultSuccessYN'

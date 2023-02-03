@@ -1,6 +1,6 @@
 oneOf:
-  - $ref: '#/components/schemas/VoteResultRP'
-  - $ref: '#/components/schemas/VoteResultSTV'
-  - $ref: '#/components/schemas/VoteResultTM'
-  - $ref: '#/components/schemas/VoteResultYNB'
-  - $ref: '#/components/schemas/VoteResultYN'
+  - $ref: '#/components/schemas/VoteResultSuccess'
+  - $ref: '#/components/schemas/VoteResultTieBreakerNeeded'
+  - $ref: '#/components/schemas/VoteResultMajorityEmpty'
+  - $ref: '#/components/schemas/VoteResultNoQuorum'
+  - $ref: '#/components/schemas/VoteResultTooManyBlanks'

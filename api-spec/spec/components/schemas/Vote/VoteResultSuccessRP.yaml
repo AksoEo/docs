@@ -1,0 +1,46 @@
+allOf:
+  - $ref: '#/components/schemas/VoteResultSuccessGeneric'
+  - properties:
+      type:
+        type: string
+        enum:
+          - "rp"
+        description: The type of vote.
+      value:
+        type: object
+        description: Vote result data
+        properties:
+          winners:
+            type: array
+            description: Array of winner candidates
+            items:
+              type: number
+          rounds:
+            type: array
+            description: Ranked-pairs rounds
+            items:
+              type: object
+              properties:
+                winner:
+                  type: number
+                  description: The candidate that won this round
+                orderedPairs:
+                  type: array
+                  description: Order of candidate pairs this round
+                  items:
+                    type: array
+                    prefixItems:
+                      - type: number
+                        description: First candidate of the pair
+                      - type: number
+                        description: Second candidate of the pair
+                lockGraphEdges:
+                  type: array
+                  description: Edges of the lock graph this round
+                  items:
+                    type: array
+                    prefixItems:
+                      - type: number
+                        description: First candidate of the pair
+                      - type: number
+                        description: Second candidate of the pair
