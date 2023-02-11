@@ -33,6 +33,7 @@ properties:
       - newsletter
       - newsletter_magazine
       - congress_registration
+      - vote_cast_ballot
 
   script:
     type: object

@@ -1,0 +1,45 @@
+parameters:
+  - name: voteId
+    in: path
+    description: The vote's identifier
+    required: true
+    schema:
+      type: integer
+      format: uint32
+
+post:
+  summary: Sends a cast ballot notif to all eligible voters who have not yet voted
+  description: >
+    Requires permissions: `votes.read.<vote_org>`, `notif_templates.read.<notif_org>`
+
+
+    The orgs of the vote and the notif template are not required to be the same.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          properties:
+            notifTemplateId:
+              type: integer
+              format: uint32
+              description: The id of a notif template with the intent `vote_cast_ballot`
+
+            deleteTemplateOnComplete:
+              type: boolean
+              default: false
+              description: >
+                Whether to delete the notif template once all the codeholder notifications have been sent. This is useful for single-use templates.
+
+
+                If true, the permission `notif_templates.delete.<notif_org>` is required.
+
+          required:
+            - notifTemplateId
+  responses:
+    '404':
+      description: Not found
+    '409':
+      description: The vote has ended
+    '202':
+      description: Accepted
