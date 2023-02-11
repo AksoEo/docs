@@ -143,7 +143,8 @@ Let `A = f((n, n) -> n, ($a, $b) -> u)` and `B = f((n) -> n, ($a) -> u)`
 Some functions will also work with types that are not strings or arrays (such as `map f a` which will simply return `length a` times `f` if `f` is not a function).
 
 - `++ a b`: concatenates a and b
-    + if the arguments are not both arrays or not both strings, then strings are treated as an array of code points, and other data types are wrapped in a single-element array.
+    + if either argument is an array, then strings are treated as an array of code points, and other data types are wrapped in a single-element array.
+    + if neither argument is an array, then all arguments will be stringified
 - `map f a`: `f((f($a) -> $b, $a[]) -> $b[], (f($a) -> $b, $a) -> $b, ($a, $b[]) -> $a[], ($a, $b) -> $a)`: maps f over a
 - `flat_map f a`: maps f over a and concatenates the results
 - `fold f r a`: left-folds a with f, and uses r as the initial value
@@ -154,6 +155,9 @@ Some functions will also work with types that are not strings or arrays (such as
 - `index a b`: returns the item at index b inside a
     + will return null if the index is out of bounds
     + will return null if b is not an integer
+- `find_index a b`: returns the leftmost index of item b inside a
+    + will return null if no such item is found
+    + will return null if a is not a string or array
 - `length a`: returns length of a
     + will return null if a is not a string or array
 - `contains a b`: returns if a contains b
@@ -189,8 +193,8 @@ Convenience functions:
 ##### Timestamp Conversion
 - `ts_from_unix`: `f((n) -> timestamp, ($a) -> u)`: creates a timestamp from a unix timestamp (in seconds)
 - `ts_to_unix`: `f((timestamp) -> n, ($a) -> u)`: returns the unix timestamp (in seconds) for the given timestamp
-- `ts_from_date a tz h m s`: `f((s, n, n, n, n) -> (timestamp|u), ($a, $b, $c, $d, $e) -> u)` returns a timestamp with the given date a, time zone offset tz (in minutes), hours h, minutes m, and seconds s
-- `ts_to_date a tz`: `f((timestamp, n) -> s, ($a, $b) -> u)` returns the date of timestamp a for the given time zone offset tz (in minutes)
+- `ts_from_date a tz h m s`: `f((s, s|n, n, n, n) -> (timestamp|u), ($a, $b, $c, $d, $e) -> u)` returns a timestamp with the given date a, time zone offset tz (IANA name, or in minutes), hours h, minutes m, and seconds s
+- `ts_to_date a tz`: `f((timestamp, s|n) -> s, ($a, $b) -> u)` returns the date of timestamp a for the given time zone offset tz (in minutes)
 - `ts_parse a`: `f((s) -> (timestamp|u), ($a) -> u)` attempts to parse a timestamp from the given string. Must support RFC3339.
 - `ts_to_string a`: `f((timestamp) -> s, ($a) -> u)` formats the timestamp as RFC3339
 - `ts_fmt a`: `f((timestamp) -> s, ($a) -> u)` formats the timestamp in a human-readable format
@@ -205,8 +209,8 @@ Convenience functions:
     + `M`: months
     + `y`: years
 - `ts_sub t a b`: `f((s, timestamp, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns the signed difference between a and b in the given unit `t` (see `ts_add` for possible units)
-- `ts_get t tz a`: `f((s, n, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns field t (see `ts_add`; except `w`) for timestamp a in time zone offset tz (in minutes)
-- `ts_set t tz a b`: `f((s, n, timestamp, n) -> (timestamp|u), ($a, $b, $c, $d) -> u)`: returns a with field t (see `ts_add`; except `w`) set to b in time zone offset tz (in minutes)
+- `ts_get t tz a`: `f((s, s|n, timestamp) -> (n|u), ($a, $b, $c) -> u)`: returns field t (see `ts_add`; except `w`) for timestamp a in time zone offset tz (IANA name, or in minutes)
+- `ts_set t tz a b`: `f((s, s|n, timestamp, n) -> (timestamp|u), ($a, $b, $c, $d) -> u)`: returns a with field t (see `ts_add`; except `w`) set to b in time zone offset tz (IANA name, or in minutes)
 
 ### Miscellaneous
 - `currency_fmt a b`: returns b (interpreted as smallest currency unit, e.g. cents) formatted in currency a, where a is a string like 'USD'

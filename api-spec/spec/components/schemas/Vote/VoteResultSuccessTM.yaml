@@ -1,0 +1,25 @@
+allOf:
+  - $ref: '#/components/schemas/VoteResultSuccessGeneric'
+  - properties:
+      type:
+        type: string
+        enum:
+          - "tm"
+        description: The type of vote.
+      value:
+        type: object
+        description: Vote result data
+        properties:
+          winners:
+            type: array
+            description: Array of winner candidates
+            items:
+              type: number
+          tally:
+            type: object
+            description: Tally of votes for each candidate
+            properties:
+              '[candidate]':
+                type: number
+                description: Number of votes for this candidate
+

@@ -1,0 +1,40 @@
+allOf:
+  - properties:
+      status:
+        type: string
+        enum:
+          - "tie-breaker-needed"
+        description: The vote requires a tie breaker ballot to continue.
+      ballots:
+        $ref: '#/components/schemas/VoteResultBallotCounts'
+      mentions:
+        $ref: '#/components/schemas/VoteResultMentions'
+  - oneOf:
+    - properties:
+        type:
+          type: string
+          enum:
+            - "tm"
+            - "stv"
+          description: The type of vote.
+        tiedNodes:
+          type: array
+          description: Tied candidates
+          items:
+            type: number
+    - properties:
+        type:
+          type: string
+          enum:
+            - "rp"
+          description: The type of vote.
+        tiedPairs:
+          type: array
+          description: Tied pairs of candidates
+          items:
+            type: array
+            prefixItems:
+              - type: number
+                description: First candidate of the pair
+              - type: number
+                description: Second candidate of the pair

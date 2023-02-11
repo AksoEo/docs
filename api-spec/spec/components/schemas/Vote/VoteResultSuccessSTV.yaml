@@ -1,0 +1,73 @@
+allOf:
+  - $ref: '#/components/schemas/VoteResultSuccessGeneric'
+  - properties:
+      type:
+        type: string
+        enum:
+          - "stv"
+        description: The type of vote.
+      value:
+        type: object
+        description: Vote result data
+        properties:
+          winners:
+            type: array
+            description: Array of winner candidates
+            items:
+              type: number
+          events:
+            type: array
+            description: Sequence of STV events
+            items:
+              oneOf:
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - "elect-with-quota"
+                      description: "Candidates were elected using the quota"
+                    elected:
+                      type: array
+                      description: Candidates elected
+                      items:
+                        type: number
+                    values:
+                      type: object
+                      description: New candidate ballot values
+                      properties:
+                        '[candidate]':
+                          type: number
+                          description: The current vote count of this candidate. Note this is probably a fractional value, because this STV method transfers fractional votes.
+                    quota:
+                      type: number
+                      description: The quota these candidates were elected with
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - "elect-rest"
+                      description: "Candidates were elected because we ran out of candidates"
+                    elected:
+                      type: array
+                      description: Candidates elected
+                      items:
+                        type: number
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - "eliminate"
+                      description: "A candidates was eliminated"
+                    candidate:
+                      type: number
+                      description: The candidate that was eliminated
+                    values:
+                      type: object
+                      description: New candidate ballot values
+                      properties:
+                        '[candidate]':
+                          type: number
+                          description: The current vote count of this candidate. Note this is probably a fractional value, because this STV method transfers fractional votes.

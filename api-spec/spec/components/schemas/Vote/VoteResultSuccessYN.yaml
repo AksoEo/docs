@@ -1,0 +1,39 @@
+properties:
+  ballots:
+    $ref: '#/components/schemas/VoteResultBallotCounts'
+  type:
+    type: string
+    enum:
+      - "yn"
+      - "ynb"
+    description: The type of vote.
+  value:
+    type: object
+    description: YN/YNB vote result
+    properties:
+      tally:
+        type: object
+        description: number of votes
+        properties:
+          yes:
+            type: number
+            description: number of “yes” votes
+          no:
+            type: number
+            description: number of “no” votes
+          blank:
+            type: number
+            description: "number of blank ballots. Always 0 for `yn` votes."
+      pass:
+        type: object
+        description: information about whether the vote passed, according to thresholds set by the vote configuration.
+        properties:
+          result:
+            type: boolean
+            description: whether the entire vote passed
+          majority:
+            type: boolean
+            description: whether the majority of ballots voted yes
+          voters:
+            type: boolean
+            description: whether the majority of voters voted yes
