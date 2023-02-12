@@ -30,10 +30,10 @@ properties:
         properties:
           result:
             type: boolean
-            description: whether the entire vote passed
+            description: whether the entire vote passed. This is a combination of `majority` and `voters`, according to vote configuration.
           majority:
             type: boolean
             description: whether the majority of ballots voted yes
           voters:
             type: boolean
-            description: whether the majority of voters voted yes
+            description: whether the majority of eligible voters voted yes
