@@ -38,9 +38,14 @@ allOf:
                   type: array
                   description: Edges of the lock graph this round
                   items:
-                    type: array
-                    prefixItems:
-                      - type: number
-                        description: First candidate of the pair
-                      - type: number
-                        description: Second candidate of the pair
+                    type: object
+                    properties:
+                      from:
+                        type: number
+                        description: Edge source candidate (the winner)
+                      to:
+                        type: number
+                        description: Edge target candidate
+                      diff:
+                        type: number
+                        description: Difference in votes between the two candidates. This may be zero if the tie breaker was needed
