@@ -14,7 +14,6 @@ allOf:
         type:
           type: string
           enum:
-            - "tm"
             - "stv"
           description: The type of vote.
         tiedNodes:
@@ -28,7 +27,7 @@ allOf:
           enum:
             - "rp"
           description: The type of vote.
-        tiedPairs:
+        pairs:
           type: array
           description: Tied pairs of candidates
           items:

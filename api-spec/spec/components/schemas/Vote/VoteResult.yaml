@@ -1,6 +1,7 @@
 oneOf:
   - $ref: '#/components/schemas/VoteResultSuccess'
   - $ref: '#/components/schemas/VoteResultTieBreakerNeeded'
+  - $ref: '#/components/schemas/VoteResultTie'
   - $ref: '#/components/schemas/VoteResultMajorityEmpty'
   - $ref: '#/components/schemas/VoteResultNoQuorum'
   - $ref: '#/components/schemas/VoteResultTooManyBlanks'

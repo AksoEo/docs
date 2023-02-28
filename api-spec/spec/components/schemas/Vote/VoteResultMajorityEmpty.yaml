@@ -3,7 +3,14 @@ properties:
     type: string
     enum:
       - "majority-empty"
-    description: More than half of the ballots are empty (after excluding candidates with too few mentions), and the vote cannot continue.
+    description: >
+      Too many ballots are empty (after excluding candidates with too few mentions), and the vote cannot continue.
+
+
+      For ranked pairs, this means that the majority of all ballots (≥ 50 %) mentioned fewer than two candidates that weren’t excluded, i.e. they contained no candidate pair.
+
+
+      For other vote types, this means that all ballots were rendered empty due to the mention threshold.
   ballots:
     $ref: '#/components/schemas/VoteResultBallotCounts'
   mentions:
@@ -11,5 +18,7 @@ properties:
   type:
     type: string
     enum:
+      - "tm"
       - "rp"
+      - "stv"
     description: The type of vote.
