@@ -15,7 +15,7 @@ allOf:
           The registration entry id to trigger a payment for.
 
 
-          On read access, this `registrationEntryId` may no longer exist, if the referenced registration entry has been deleted.
+          On read access, this `registrationEntryId` may no longer exist, if the referenced registration entry has been deleted. In this case this field will be `null`.
 
           To use this, the permission `registration.entries.update` is required.
 

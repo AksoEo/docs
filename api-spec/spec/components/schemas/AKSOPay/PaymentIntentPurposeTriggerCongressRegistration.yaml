@@ -18,7 +18,7 @@ allOf:
           This must belong to a congress for which the user has the necessary perms: `congress_instances.participants.update.<org>`
 
 
-          On read access, this `dataId` may no longer exist, if the referenced form data entry has been deleted.
+          On read access, this `dataId` may no longer exist, if the referenced form data entry has been deleted. In this case this field will be `null`.
 
     required:
       - dataId
