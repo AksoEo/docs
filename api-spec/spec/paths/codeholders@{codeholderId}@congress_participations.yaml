@@ -1,0 +1,48 @@
+parameters:
+  - name: codeholderId
+    in: path
+    required: true
+    description: The codeholder's internal id
+    schema:
+      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
+
+get:
+  summary: Returns data on the congress instances of which a codeholder is registered as a participant
+  description: >
+    Requires permission: `codeholders.read`, `congress_instances.participants.read.<org>`
+
+
+    Filterable properties:
+
+    - `congressId`, `congressInstanceId`, `dataId`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              properties:
+                congressId:
+                  type: integer
+                  format: uint32
+                  readOnly: true
+                  description: The unique identifier of this congress
+
+                congressInstanceId:
+                  type: integer
+                  format: uint32
+                  readOnly: true
+                  description: The unique identifier of this congress instance
+
+                dataId:
+                  type: string
+                  format: binary
+                  minLength: 12
+                  maxLength: 12
+                  readOnly: true
+                  description: The unique identifier of this form data entry
+
+    '404':
+      description: Codeholder not found
