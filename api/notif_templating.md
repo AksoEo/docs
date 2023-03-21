@@ -92,8 +92,8 @@ This is used to send out magazine announcement newsletters to their subscribers.
 }
 ```
 
-## `congress_registration`
-This is used to send out registration confirmation notifs to new registrants. It contains the following fields:
+## `congress`
+This is used to send out arbitrary notifs to congress participants. It contains the following fields:
 
 ```js
 {
@@ -110,6 +110,9 @@ This is used to send out registration confirmation notifs to new registrants. It
 	}
 }
 ```
+
+## `congress_registration`
+This is used to send out registration confirmation notifs to new registrants. It inherits all fields from `congress`.
 
 ## `vote_cast_ballot`
 This is used to send out notifications that an eligible voter can cast their vote in a ballot, either as the first notif or as a reminder to those who have not yet voted. It inherits all fields from `codeholder` and adds the following fields:
