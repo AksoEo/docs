@@ -146,8 +146,10 @@
    export AKSO_OPEN_EXCHANGE_RATES_APP_ID=NO_DEFAULT
    ```
 
-10. Populate the db using `source api.env && MODE=<mode> npm run populate-db`. Set mode to `prod` (production), `dev` (development) or `test`.
+10. Load the database using `source api.env && ./loaddb.sh`.
+
+11. Populate the database using `MODE=<mode> npm run populate-db`. Set mode to `prod` (production), `dev` (development) or `test`.
 
    Mode can also be set to `client` to create an API client with star perms. This should only be used in combination with `prod`.
 
-11. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
+12. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
