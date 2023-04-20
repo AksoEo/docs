@@ -150,6 +150,8 @@
 
 11. Populate the database using `MODE=<mode> npm run populate-db`. Set mode to `prod` (production), `dev` (development) or `test`.
 
-   Mode can also be set to `client` to create an API client with star perms. This should only be used in combination with `prod`.
+   Mode can also be set to `client` to create an API client with star perms, useful for granting access to specific user or when using a migration tool.
 
-12. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
+12. Populate geo-db using `GEODB_PATH=<path to geo.db> npm run populate-geo-db`. Obtain a copy of geo.db using the [geo-db downloader](https://github.com/AksoEo/geo-db/). This process will take quite a while so consider setting it up in screen and letting it run overnight.
+
+13. Run the API using `source api.env && npm start`. You might want to turn this into a daemon for init.d or use something like `pm2`.
