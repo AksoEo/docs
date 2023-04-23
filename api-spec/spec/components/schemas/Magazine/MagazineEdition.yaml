@@ -28,6 +28,13 @@ properties:
     default: false
     description: Whether the magazine edition has been published and is available to the public
 
+  files:
+    type: array
+    readOnly: true
+    description: The file formats available
+    items:
+      $ref: '#/components/schemas/MagazineEditionFileFormat'
+
   description:
     type: string
     format: markdown
