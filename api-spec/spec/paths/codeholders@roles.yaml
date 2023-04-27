@@ -1,0 +1,28 @@
+get:
+  summary: Returns all codeholders' roles
+  description: >
+    Requires permissions: `codeholders.read`, `codeholder_roles.read`
+
+
+    Required member fields (`r`): `roles`
+
+
+    Filterable properties: `id`, `codeholderId`, `durationFrom`, `durationTo`, `isActive`, `role.id`, `role.name`, `dataCountry`, `dataOrg`
+
+
+    Searchable properties: `role.name`, `role.description`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              allOf:
+                - properties:
+                    codeholderId:
+                      $ref: '../components/schemas/Codeholder/CodeholderId.yaml'
+                - $ref: '../components/schemas/Codeholder/CodeholderRoleEntry.yaml'
+    '404':
+      description: Codeholder not found
