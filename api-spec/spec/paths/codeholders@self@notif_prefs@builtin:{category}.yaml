@@ -2,15 +2,13 @@ parameters:
   - name: category
     in: path
     required: true
-    description: The category of notifs. These may be grouped for bulk changes in user interfaces where deemed appropriate. All categories prefixed with `admin-` should only be shown to users with the permission `admin`.
+    description: The category of notifs. These may be grouped for bulk changes in user interfaces where deemed appropriate. The `admin` category should only be shown to users with the permission `admin`.
     schema:
       type: string
       enum:
-        - admin-address-labels-ready
-        - tie-breaker-needed
-        - fishy-location
-        - email-changed-admin
-        - forgot-password
+        - admin
+        - vote
+        - account
 
 get:
   summary: Returns the signed in user's categorial notif pref override
