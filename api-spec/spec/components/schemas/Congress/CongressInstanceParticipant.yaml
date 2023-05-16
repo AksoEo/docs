@@ -71,6 +71,12 @@ allOf:
         nullable: true
         description: When this participant's registration was cancelled, `null` means not cancelled
 
+      checkInTime:
+        type: integer
+        format: uint64
+        nullable: true
+        description: When the participant was marked as checked in, `null` means not yet checked in
+
       customFormVars:
         type: object
         description: Value overrides for custom per-participant form vars. The keys must match custom form vars defined in the registration form.
