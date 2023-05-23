@@ -65,6 +65,9 @@ get:
                   type: integer
                   description: The file's size in bytes
 
+                url:
+                  $ref: '../components/schemas/S3Url.yaml'
+
     '404':
       description: Codeholder not found
 

@@ -14,28 +14,6 @@ parameters:
       type: number
       format: uint32
 
-get:
-  summary: Returns an attached file from a codeholder
-  description: >
-    Requires permission: `codeholders.read`
-
-
-    Required member fields (`r`): `files`
-
-
-    No query parameters allowed.
-  responses:
-    '200':
-      description: OK
-      content:
-        '[mimeType]':
-          schema:
-            type: string
-            format: binary
-
-    '404':
-      description: Codeholder or file not found
-
 delete:
   summary: Removes an attached file from a codeholder
   description: >

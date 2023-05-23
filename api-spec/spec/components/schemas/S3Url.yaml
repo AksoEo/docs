@@ -1,0 +1,4 @@
+type: string
+format: uri
+readOnly: true
+description: The S3 URL of the file. Note that this URL may have an expiration date and should only be served freshly.
