@@ -221,6 +221,29 @@ properties:
     enum: [ public, members ]
     default: public
 
+  profilePicture:
+    type: object
+    readOnly: true
+    nullable: true
+    description: >
+      Urls of the codeholder's profile picture, if any.
+
+
+      All sizes are in pixels and must be one of:
+
+      - 32
+
+      - 64
+
+      - 128
+
+      - 256
+
+      - 512
+    properties:
+      '[size]':
+        $ref: '#/components/schemas/S3Url'
+
   isActiveMember:
     type: boolean
     readOnly: true

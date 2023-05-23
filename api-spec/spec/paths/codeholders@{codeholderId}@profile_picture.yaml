@@ -40,7 +40,7 @@ put:
       description: Codeholder not found
 
 delete:
-  summary: Removes a codeholder's profile picture
+  summary: Deletes a codeholder's profile picture
   description: >
     Only `modCmt` allowed in query.
 
@@ -51,6 +51,6 @@ delete:
     Requires permission: `codeholders.update`
   responses:
     '204':
-      description: Profile picture removed
+      description: Profile picture deleted
     '404':
       description: Codeholder not found or codeholder already has no picture
