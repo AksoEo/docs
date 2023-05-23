@@ -43,3 +43,30 @@ properties:
       - internal
       - external
     description: Whether this location is internal of external
+
+  thumbnail:
+    type: object
+    nullable: true
+    readOnly: true
+    description: >
+      Urls of the location's thumbnail, if any.
+
+
+      All sizes are in pixels and must be one of:
+
+      - 32
+
+      - 64
+
+      - 128
+
+      - 256
+
+      - 512
+
+      - 1024
+
+      - 2048
+    properties:
+      '[size]':
+        $ref: '#/components/schemas/S3Url'
