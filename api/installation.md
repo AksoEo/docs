@@ -140,7 +140,7 @@
 
    # Connection information for an S3-compatible object storage api
    export AKSO_S3_BUCKET=NO_DEFAULT
-   export AKSO_S3_ENDPOINT=NO_DEFAULT # This must be the full bucket endpoint
+   export AKSO_S3_ENDPOINT=NO_DEFAULT
    export AKSO_S3_ACCESS_KEY_ID=NO_DEFAULT
    export AKSO_S3_SECRET_ACCESS_KEY=NO_DEFAULT
    export AKSO_S3_REGION=NO_DEFAULT
