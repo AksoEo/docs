@@ -136,3 +136,26 @@ properties:
     required:
       - val
       - cur
+
+  thumbnail:
+    type: object
+    nullable: true
+    readOnly: true
+    description: >
+      Urls of the payment method's thumbnail, if any.
+
+
+      All sizes are in pixels and must be one of:
+
+      - 32
+
+      - 64
+
+      - 128
+
+      - 256
+
+      - 512
+    properties:
+      '[size]':
+        $ref: '#/components/schemas/S3Url'
