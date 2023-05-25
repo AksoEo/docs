@@ -22,16 +22,6 @@ parameters:
     schema:
       $ref: '../components/schemas/Magazine/MagazineEditionFileFormat.yaml'
 
-get:
-  summary: Returns a file attached to a magazine edition
-  description: >
-    Permissions required: `magazines.read.<org>`
-  responses:
-    '200':
-      description: OK
-    '404':
-      description: Not found
-
 delete:
   summary: Deletes a file attached to a magazine edition
   description: >

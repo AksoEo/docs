@@ -30,16 +30,6 @@ parameters:
     schema:
       $ref: '../components/schemas/Magazine/MagazineRecitationFormat.yaml'
 
-get:
-  summary: Returns a recitation of a ToC entry
-  description: >
-    Permissions required: `magazines.read.<org>`
-  responses:
-    '200':
-      description: OK
-    '404':
-      description: Not found
-
 delete:
   summary: Removes a recitation of a ToC entry
   description: >
@@ -51,7 +41,7 @@ delete:
       description: Not found
 
 put:
-  summary: Updates a recitation of a ToC entry
+  summary: Puts a recitation of a ToC entry
   description: >
     Permissions required: `magazines.recitations.update.<org>`
   requestBody:
@@ -66,6 +56,6 @@ put:
               description: 'Max size: 80MB'
   responses:
     '204':
-      description: Updated
+      description: Updated/Created
     '404':
       description: Not found

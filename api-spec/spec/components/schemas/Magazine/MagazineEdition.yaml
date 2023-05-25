@@ -18,10 +18,30 @@ properties:
     format: date
     description: The publication date of the edition
 
-  hasThumbnail:
-    type: boolean
+  thumbnail:
+    type: object
+    nullable: true
     readOnly: true
-    description: Whether the magazine edition has a thumbnail
+    description: >
+      Urls of the edition's thumbnail, if any.
+
+
+      All sizes are in pixels and must be one of:
+
+      - 32
+
+      - 64
+
+      - 128
+
+      - 256
+
+      - 512
+
+      - 1024
+    properties:
+      '[size]':
+        $ref: '#/components/schemas/S3Url'
 
   published:
     type: boolean

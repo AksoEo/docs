@@ -43,5 +43,8 @@ get:
                   type: integer
                   format: uint32
                   description: The size of the file in bytes
+
+                url:
+                  $ref: '#/components/schemas/S3Url'
     '404':
       description: Magazine or edition not found
