@@ -28,15 +28,11 @@
 
 7. Reload MySQL (on Ubuntu run `service mysql reload`)
 
-8. Set up the permanent and state data directories
+8. Set up the state data directory
 
-   AKSO needs two data directories:
+   AKSO needs a state dir, which stores the email backlog, address label orders etc.
 
-   - The data dir, which stores all permanent data like codeholder profile pictures
-
-   - The state dir, which stores the email backlog, address label orders etc.
-
-   To create this directories do something like `mkdir akso-data && mkdir akso-state-data` in an appropriate location.
+   To create this directory do something like `mkdir akso-state-data` in an appropriate location.
 
 9. Set up the env vars
 
@@ -130,9 +126,6 @@
    # Use the same string across all instances if using load sharing
    export AKSO_TOTP_AES_KEY=NO_DEFAULT
 
-   # The absolute path to the data dir you created in the previous step
-   export AKSO_DATA_DIR=NO_DEFAULT 
-
    # The absolute path to the state dir you created in the previous step
    export AKSO_STATE_DIR=NO_DEFAULT
 
@@ -144,6 +137,13 @@
    # The Open Exchange Rates APP id, obtainable at 
    # https://openexchangerates.org/. The free plan will work fine.
    export AKSO_OPEN_EXCHANGE_RATES_APP_ID=NO_DEFAULT
+
+   # Connection information for an S3-compatible object storage api
+   export AKSO_S3_BUCKET=NO_DEFAULT
+   export AKSO_S3_ENDPOINT=NO_DEFAULT # This must be the full bucket endpoint
+   export AKSO_S3_ACCESS_KEY_ID=NO_DEFAULT
+   export AKSO_S3_SECRET_ACCESS_KEY=NO_DEFAULT
+   export AKSO_S3_REGION=NO_DEFAULT
    ```
 
 10. Load the database using `source api.env && ./loaddb.sh`.
