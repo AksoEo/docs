@@ -105,16 +105,22 @@
    # this should be set to akso
    export AKSO_MYSQL_DATABASE=NO_DEFAULT
 
-   # Put your Sendgrid API key here
-   # There is currently no way to use AKSO without a Sendgrid API key.
-   # An unlimited trial key can be obtained for free at 
-   # https://signup.sendgrid.com/
-   export AKSO_SENDGRID_API_KEY=NO_DEFAULT
+   # Put your email sending settings here
+   # This is a JSON object parsed and passed to nodemailer
+   # For SMTP see: https://nodemailer.com/smtp/
+   # For other transports see: https://nodemailer.com/transports/
+   export AKSO_NODEMAILER='{ "host": "", "port": 465, "secure": true, "pool": true, "auth": { "user": "", "pass": "" } }'
+
+   # Put a connection url for a RabbitMQ instance here
+   # There is no way to use AKSO without RabbitMQ
+   # See https://www.rabbitmq.com/download.html
+   export AKSO_RABBITMQ=NO_DEFAULT
 
    # Put your Telegram bot token here
    # You can leave this blank to run without Telegram support
    # Read more about how to create a bot at:
    # https://core.telegram.org/bots#3-how-do-i-create-a-bot
+   # There is no way to use AKSO without Telegram support
    export AKSO_TELEGRAM_TOKEN=NO_DEFAULT
 
    # Put the URL to the AKSO payment facilitator here
