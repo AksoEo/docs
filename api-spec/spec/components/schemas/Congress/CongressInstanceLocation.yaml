@@ -44,6 +44,13 @@ properties:
       - external
     description: Whether this location is internal of external
 
+  tags:
+    type: array
+    description: The tags of this congress instance location
+    readOnly: true
+    items:
+      $ref: '#/components/schemas/CongressInstanceLocationTag'
+
   thumbnail:
     type: object
     nullable: true
