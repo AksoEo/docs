@@ -1,0 +1,32 @@
+get:
+  summary: Gets the status of all worker queues
+  description: >
+    Requires permission: `status.worker_queues`
+
+
+    No query parameters allowed.
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                queue:
+                  type: string
+                  enum:
+                    - SEND_EMAIL
+                    - SEND_TELEGRAM
+                    - ADDRESS_LABELS
+                  description: The internal name of the worker queue
+
+                consumerCount:
+                  type: integer
+                  description: The amount of consumers listening to this worker queue. This should never be less than 1 (unless all consumer workers are down for some reason).
+
+                messageCount:
+                  type: integer
+                  description: The amount of unhandled jobs in this worker queue. At times this might be a high value, but concern should be applied if it exceeds a reasonable ceiling.

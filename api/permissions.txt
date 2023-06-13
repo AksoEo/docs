@@ -210,3 +210,6 @@ intermediaries:
 	read
 	update
 	delete
+
+status:
+	worker_queues
