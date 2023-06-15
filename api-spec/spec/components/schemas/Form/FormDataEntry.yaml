@@ -28,7 +28,11 @@ properties:
 
   data:
     type: object
-    description: The data of this form data entry
+    description: >
+      The data of this form data entry.
+
+
+      All form fields must be present. Non-required field may be set to null. Disabled field must be set to null.
     properties:
       '[fieldName]':
         type: any
