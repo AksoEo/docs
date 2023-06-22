@@ -213,3 +213,6 @@ intermediaries:
 
 status:
 	worker_queues
+
+statistics:
+	read

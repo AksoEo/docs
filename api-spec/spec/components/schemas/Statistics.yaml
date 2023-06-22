@@ -1,0 +1,90 @@
+properties:
+  date:
+    type: string
+    format: date
+    description: The date of this statistics dump
+
+  data:
+    type: object
+    description: The statistics data
+    properties:
+      '[feeCountryCode, "total" or null]':
+        type: object
+        properties:
+          membershipCategories:
+            type: array
+            items:
+              type: object
+              properties:
+                membershipCategoryId:
+                  type: integer
+                  format: uint32
+
+                membershipCategory:
+                  type: object
+
+                count:
+                  type: integer
+                  description: The amount of codeholders with this membership category in this country
+
+                countTEJO:
+                  type: integer
+                  description: Like `count` but only counting those in TEJO age
+
+                age:
+                  type: object
+                  properties:
+                    avg:
+                      type: number
+                      description: The average age
+
+                    min:
+                      type: integer
+                      description: The minimum age
+
+                    max:
+                      type: integer
+                      description: The maximum age
+
+                agePrimo:
+                  type: object
+                  description: Like age but for agePrimo (see Codeholder)
+
+          roles:
+            type: array
+            items:
+              type: object
+              properties:
+                roleId:
+                  type: integer
+                  format: uint32
+
+                role:
+                  type: object
+
+                count:
+                  type: integer
+                  description: The amount of codeholders with this role in this country
+
+                countTEJO:
+                  type: integer
+                  description: Like `count` but only counting those in TEJO age
+
+                age:
+                  type: object
+                  properties:
+                    avg:
+                      type: number
+                      description: The average age
+
+                    min:
+                      type: integer
+                      description: The minimum age
+
+                    max:
+                      type: integer
+                      description: The maximum age
+
+                agePrimo:
+                  type: object
+                  description: Like age but for agePrimo (see Codeholder)

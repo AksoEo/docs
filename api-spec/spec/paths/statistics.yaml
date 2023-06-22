@@ -1,0 +1,16 @@
+get:
+  summary: Returns all statistics
+  description: >
+    Requires permission: `statistics.read`
+
+
+    Filterable properties: `date`
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.msgpack:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/Statistics.yaml'
