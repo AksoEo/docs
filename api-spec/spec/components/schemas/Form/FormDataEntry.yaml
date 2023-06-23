@@ -24,7 +24,21 @@ properties:
     writeOnly: true
     type: boolean
     default: false
-    description: Whether to allow data that doesn't conform to the user restrictions applied to the FormEntryInput's. Useful for admin form data editing, must not be `true` when using untrusted data.
+    description: >
+      Whether to allow data that doesn't conform to the user restrictions applied to the FormEntryInput's. Useful for admin form data editing, must not be `true` when using untrusted data.
+
+
+      Some restrictions still apply, namely:
+
+      - `minLength`, `maxLength` for `string`s of variant textarea
+
+      - `minLength`, `maxLength`, no newlines, for all other variants of `string`
+
+      - format requirements for `string`s with variant `email`, `tel`, `uri`
+
+      - general type checks like a `boolean` must be a `boolean`, a `number` must be a `number`
+
+      - type `country` does not permit excluded countries
 
   data:
     type: object
