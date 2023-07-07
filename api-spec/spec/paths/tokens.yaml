@@ -1,15 +1,27 @@
 put:
   summary: Submits a one-time token for processing
   description: >
-    Query parameters:
-
-    - `ctx` the case in-sensitive context parameter (e.g. `delete_email_address`)
-    - `token` the one-time token encoded with a hexadecimal respresentation
-
-
-    It is encouraged for applications to request a new token when a 404 is received from a legit attempt.
+    For query parameters, see GET.
   responses:
     '202':
       description: Accepted
+    '404':
+      description: Invalid token + ctx combination
+
+get:
+  summary: Obtains the payload from a one-time token
+  description: >
+    Query parameters:
+
+    - `ctx` the case in-sensitive context parameter. Must be one of:
+
+        - `delete_email_address`
+
+        - `unsubscribe_newsletter`
+
+    - `token` the one-time token encoded with a hexadecimal respresentation
+  responses:
+    '200':
+      description: OK
     '404':
       description: Invalid token + ctx combination
