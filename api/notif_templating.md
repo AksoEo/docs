@@ -99,6 +99,7 @@ This is used to send out arbitrary notifs to congress participants. It contains 
 {
 	registrationEntry: {
 		price
+		amountPaid
 		currency
 		sequenceId
 		createdTime
