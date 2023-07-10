@@ -13,13 +13,15 @@ get:
   description: >
     Query parameters:
 
-    - `ctx` the case in-sensitive context parameter. Must be one of:
+    - `ctx`: the case in-sensitive context parameter. Must be one of:
 
         - `delete_email_address`
 
         - `unsubscribe_newsletter`
 
-    - `token` the one-time token encoded with a hexadecimal respresentation
+    - `token`: the one-time token encoded with a hexadecimal respresentation
+
+    - `unsubscribeReason`: only for ctx `unsubscribe_newsletter`, for spec see `DELETE /codeholders/self/newsletter_subscriptions/{newsletterId}`.
   responses:
     '200':
       description: OK
