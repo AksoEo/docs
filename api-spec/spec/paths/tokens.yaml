@@ -1,7 +1,27 @@
 put:
   summary: Submits a one-time token for processing
-  description: >
-    For query parameters, see GET.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          type: object
+          properties:
+            ctx:
+              type: string
+              description: The case in-sensitive context parameter
+              enum:
+                - delete_email_address
+                - unsubscribe_newsletter
+            token:
+              type: string
+              format: hexadecimal
+              description: The one-time token (ott)
+            unsubscribeReason:
+              $ref: '../components/schemas/NewsletterUnsubscriptionReason.yaml'
+          required:
+            - ctx
+            - token
   responses:
     '202':
       description: Accepted
@@ -13,15 +33,9 @@ get:
   description: >
     Query parameters:
 
-    - `ctx`: the case in-sensitive context parameter. Must be one of:
-
-        - `delete_email_address`
-
-        - `unsubscribe_newsletter`
+    - `ctx`: the case in-sensitive context parameter. For valid values see PUT.
 
     - `token`: the one-time token encoded with a hexadecimal respresentation
-
-    - `unsubscribeReason`: only for ctx `unsubscribe_newsletter`, for spec see `DELETE /codeholders/self/newsletter_subscriptions/{newsletterId}`.
   responses:
     '200':
       description: OK
