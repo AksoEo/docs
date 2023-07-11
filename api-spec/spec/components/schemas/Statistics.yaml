@@ -32,23 +32,19 @@ properties:
                   description: Like `count` but only counting those in TEJO age
 
                 age:
-                  type: object
-                  properties:
-                    avg:
-                      type: number
-                      description: The average age
-
-                    min:
-                      type: integer
-                      description: The minimum age
-
-                    max:
-                      type: integer
-                      description: The maximum age
+                  $ref: '#/components/schemas/StatisticsAge'
 
                 agePrimo:
-                  type: object
-                  description: Like age but for agePrimo (see Codeholder)
+                  allOf:
+                    - $ref: '#/components/schemas/StatisticsAge'
+                    - properties:
+                        counts:
+                          type: object
+                          description: Counts by age interval, the property key is the inclusive start of the interval until the next exclusive value. Except for 0, 5, intervals are blocks of 10. The special value `rest` contains all codeholders with agePrimo ≥ 125.
+                          properties:
+                            '[<integer>|rest]':
+                              type: integer
+
 
           roles:
             type: array
@@ -71,20 +67,15 @@ properties:
                   description: Like `count` but only counting those in TEJO age
 
                 age:
-                  type: object
-                  properties:
-                    avg:
-                      type: number
-                      description: The average age
-
-                    min:
-                      type: integer
-                      description: The minimum age
-
-                    max:
-                      type: integer
-                      description: The maximum age
+                  $ref: '#/components/schemas/StatisticsAge'
 
                 agePrimo:
-                  type: object
-                  description: Like age but for agePrimo (see Codeholder)
+                  allOf:
+                    - $ref: '#/components/schemas/StatisticsAge'
+                    - properties:
+                        counts:
+                          type: object
+                          description: Counts by age interval, the property key is the inclusive start of the interval until the next exclusive value. Except for 0, 5, intervals are blocks of 10. The special value `rest` contains all codeholders with agePrimo ≥ 125.
+                          properties:
+                            '[<integer>|rest]':
+                              type: integer

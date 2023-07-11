@@ -1,5 +1,5 @@
 get:
-  summary: Returns all statistics
+  summary: Returns all statistics snapshots
   description: >
     Requires permission: `statistics.read`
 

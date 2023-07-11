@@ -1,0 +1,13 @@
+type: object
+properties:
+  avg:
+    type: number
+    description: The average age
+
+  min:
+    type: integer
+    description: The minimum age
+
+  max:
+    type: integer
+    description: The maximum age
