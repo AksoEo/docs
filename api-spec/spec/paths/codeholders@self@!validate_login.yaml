@@ -1,0 +1,36 @@
+post:
+  summary: Validates the signed in user's password and/or totp login
+  description: >
+    Must be logged in using user auth.
+  requestBody:
+    required: true
+    content:
+      application/vnd.msgpack:
+        schema:
+          type: object
+          properties:
+            password:
+              type: string
+              description: The user's password for validation
+            totp:
+              type: string
+              minLength: 6
+              maxLength: 6
+              description: The TOTP key for validation
+          minProperties: 1
+  responses:
+    '200':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: object
+            properties:
+              password:
+                type: boolean
+                description: The validity of the password. This property is only present if the equivalent property was passed in the request body.
+              totp:
+                type: boolean
+                description: The validity of the totp key. This property is only present if the equivalent property was passed in the request body. If the user has not set up totp, this will be null.
+    '404':
+      description: Not using user auth
