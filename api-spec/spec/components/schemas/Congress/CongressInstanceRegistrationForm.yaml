@@ -79,7 +79,11 @@ properties:
   price:
     type: object
     nullable: true
-    description: The price settings for this form. `null` to disable pricing, making sign ups free
+    description: >
+      The price settings for this form. `null` to disable pricing, making sign ups free.
+
+
+      Note: The currency may not be changed if there are participants with a non-zero amountPaid.
     properties:
       currency:
         $ref: '#/components/schemas/Currency'
