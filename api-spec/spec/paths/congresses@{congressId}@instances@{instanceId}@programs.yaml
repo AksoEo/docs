@@ -25,6 +25,9 @@ get:
 
 
     Searchable properties: `title`, `description`
+
+
+    Custom filter comp ops: `tags` may use `$hasAny`.
   responses:
     '200':
       description: OK

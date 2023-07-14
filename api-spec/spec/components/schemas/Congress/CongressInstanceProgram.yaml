@@ -49,4 +49,11 @@ properties:
     type: integer
     format: uint32
     nullable: true
-    description: The location this program takes place at
+    description: The location at which this program takes place
+
+  tags:
+    type: array
+    description: The tags of this congress instance program
+    readOnly: true
+    items:
+      $ref: '#/components/schemas/CongressInstanceProgramTag'
