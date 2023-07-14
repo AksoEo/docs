@@ -20,5 +20,17 @@ allOf:
 
           On read access, this `dataId` may no longer exist, if the referenced form data entry has been deleted. In this case this field will be `null`.
 
+      congressId:
+        type: integer
+        format: uint32
+        readOnly: true
+        description: The congress id the `dataId` belongs to.
+
+      congressInstanceId:
+        type: integer
+        format: uint32
+        readOnly: true
+        description: The congress instance id the `dataId` belongs to.
+
     required:
       - dataId
