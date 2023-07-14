@@ -36,6 +36,17 @@ patch:
   summary: Updates a vote
   description: >
     Requires permission: `votes.update.<org>`
+
+
+    Only the following fields may be patched when the vote has ended:
+
+      - `viewerCodeholders`
+
+      - `publishVotersPercentage`
+
+      - `publishResults`
+      
+      - `tieBreakerCodeholder`
   requestBody:
     required: true
     content:
@@ -53,5 +64,3 @@ patch:
       description: Updated
     '404':
       description: Not found
-    '409':
-      description: The vote has ended and may not be updated
