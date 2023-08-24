@@ -7,13 +7,13 @@ properties:
 
   durationFrom:
     type: number
-    format: uint64
+    format: int64
     nullable: true
     description: The unix epoch timestamp of the beginning of the entry's validity
 
   durationTo:
     type: number
-    format: uint64
+    format: int64
     nullable: true
     description: The unix epoch timestamp of the expiration of this entry. If null, never expires.
 

@@ -15,7 +15,7 @@ properties:
       - $ref: '#/components/schemas/CodeholderModBy'
   approvedTime:
     type: integer
-    format: uint64
+    format: int64
     readOnly: true
     description: The unix epoch time the codeholder's delegation was approved
   cities:
@@ -94,28 +94,28 @@ properties:
         description: Must be true.
       docDataProtectionUEATime:
         type: integer
-        format: uint64
+        format: int64
         description: The unix epoch time of acceptance. Defaults to now.
       docDelegatesUEA:
         type: boolean
         description: Must be true.
       docDelegatesUEATime:
         type: integer
-        format: uint64
+        format: int64
         description: The unix epoch time of acceptance. Defaults to now.
       docDelegatesDataProtectionUEA:
         type: boolean
         description: Must be true.
       docDelegatesDataProtectionUEATime:
         type: integer
-        format: uint64
+        format: int64
         description: The unix epoch time of acceptance. Defaults to now.
       paperAnnualBook:
         type: boolean
         description: Optional.
       paperAnnualBookTime:
         type: integer
-        format: uint64
+        format: int64
         description: The unix epoch time of acceptance. Defaults to now.
     required:
       - docDataProtectionUEA

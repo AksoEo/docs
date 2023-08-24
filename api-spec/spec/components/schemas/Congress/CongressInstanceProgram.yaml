@@ -37,12 +37,12 @@ properties:
 
   timeFrom:
     type: integer
-    format: uint64
+    format: int64
     description: The unix epoch timestamp of the beginning of the program
 
   timeTo:
     type: integer
-    format: uint64
+    format: int64
     description: The unix epoch timestamp of the end of the program. Must be greater than or equal to `timeFrom`.
 
   location:

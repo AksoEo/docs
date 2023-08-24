@@ -13,12 +13,12 @@ allOf:
 
       min:
         type: integer
-        format: uint64
+        format: int64
         nullable: true
         description: The first allowed unix timestamp
 
       max:
         type: integer
-        format: uint64
+        format: int64
         nullable: true
         description: The last allowed unix timestamp

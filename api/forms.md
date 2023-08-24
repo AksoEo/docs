@@ -49,7 +49,7 @@ Min length: 1 char, Max length: 8192 chars.
 Where `time` is a string of the format `hh:MM`.
 
 ### datetime
-`number <uint64>` or `null`. Can be migrated to `text`, `number`.
+`number <int64>` or `null`. Can be migrated to `text`, `number`.
 
 ### boolean_table
 `array <boolean|null>[]`
