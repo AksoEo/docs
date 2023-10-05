@@ -207,3 +207,8 @@ status:
 
 statistics:
 	read
+
+cms: # only if using the experimental AKSO cms
+	<org>:
+		<name>: # the name of the cms instance, unique to the org
+			... stuff to come
